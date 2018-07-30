@@ -1,7 +1,6 @@
 const merge = require('webpack-merge');
-// const style = require('./style');
+const style = require('./style');
 const app = require('./app');
-const worker = require('./worker');
 
 const watchOptions = {
     watchOptions: {
@@ -11,7 +10,6 @@ const watchOptions = {
 };
 
 module.exports = [
-    // merge(style, watchOptions),
-    // merge(worker, watchOptions),
+    merge(style, watchOptions),
     merge(app, watchOptions),
 ];
