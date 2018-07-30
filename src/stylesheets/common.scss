@@ -1,0 +1,90 @@
+// 全体の共通設定
+$main-color: #FD6D84;
+$text-color: #615561;
+$minor-text-color: #c7c7c7;
+$facebook-color: #3B5998;
+$critical-color: #FB2943;
+$sub-color: #F0EFEF;
+
+body {
+    color: $text-color;
+    font-family: 'Nunito', 'Yu Gothic', 'Hiragino Kaku Gothic Pro', 'Meiryo', 'sans-serif';
+    font-weight: 400;
+}
+
+h1 {
+    font-weight: 800;
+}
+
+h2 {
+    font-weight: 800;
+}
+h3, h4 {
+    font-weight: 400;
+}
+
+h1, h2, h3, h4, h5, p, span, div {
+    margin: 0;
+    color: inherit;
+    letter-spacing: 0.9px;
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+h2 {
+    font-size: 1.6rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+}
+
+h4 {
+    font-size: 1.4rem;
+}
+
+i {
+    color: inherit;
+}
+
+ul {
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+$component-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+$text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.8);
+
+.btn-maincolor {
+    border: none;
+    color: white;
+    background-color: $main-color;
+    &:disabled {
+        background-color: $minor-text-color;
+    }
+}
+
+.btn-facebook {
+    background-color: $facebook-color;
+    color: white;
+    border: none;
+}
+
+.btn-critical {
+    border: none;
+    color: white;
+    background-color: $critical-color;
+}
+
+.btn-shadow {
+    box-shadow: $component-shadow;
+}
+
+.btn-default {
+    color: $text-color;
+}

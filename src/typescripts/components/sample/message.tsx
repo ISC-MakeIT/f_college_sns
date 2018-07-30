@@ -25,7 +25,7 @@ export class Message extends React.Component<Props, State> {
 
     public render() {
         return (
-            <div>
+            <div className='sample'>
                 <MessageInput value={this.state.inputValue} handleChange={this.handleChange} />
                 <Button handleClick={this.handleClick} />
                 <Messages hello='Hello' value={this.state.outputValue} />

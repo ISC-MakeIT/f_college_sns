@@ -6,7 +6,7 @@ interface Props {
 
 export const Button: React.StatelessComponent<Props> = props => {
     return (
-        <button onClick={props.handleClick}>
+        <button className='btn' onClick={props.handleClick}>
             send
         </button>
     );
