@@ -10,7 +10,8 @@ interface Props {
 
 interface State {
     inputValue: string;
-    outputValue: string;
+    // outputValue: string;
+    outputArray: any[];
 }
 
 export class Message extends React.Component<Props, State> {
@@ -19,16 +20,18 @@ export class Message extends React.Component<Props, State> {
         super(props);
         this.state = {
             inputValue: '',
-            outputValue: '',
+            // outputValue: '',
+            outputArray: [],
         };
     }
 
     public render() {
+        const messages = this.state.outputArray.map( e => <Messages hello='Hello' value={e} />);
         return (
             <div className='sample'>
                 <MessageInput value={this.state.inputValue} handleChange={this.handleChange} />
                 <Button handleClick={this.handleClick} />
-                <Messages hello='Hello' value={this.state.outputValue} />
+                {messages}
             </div>
         );
     }
@@ -38,7 +41,11 @@ export class Message extends React.Component<Props, State> {
     }
 
     private handleClick = (): void => {
-        this.setState({inputValue: '', outputValue: this.state.inputValue});
+        this.setState({
+            inputValue: '',
+            outputArray: this.state.outputArray.concat(this.state.inputValue),
+        });
+           // outputValue: this.state.inputValue,
     }
 
 }
