@@ -3,6 +3,9 @@
         "stylelint-scss"
     ],
     "extends": "stylelint-config-recommended",
+    "ignoreFiles": [
+        "./src/stylesheets/common.scss"
+    ],
     "rules": {
         "indentation": 4,
         "string-quotes": "double",
