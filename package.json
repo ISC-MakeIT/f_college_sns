@@ -7,7 +7,7 @@
         "start": "webpack --watch --config ./webpack/dev.js --mode development",
         "build": "webpack --config ./webpack/prod.js --mode production",
         "lint:style": "stylelint --fix src/stylesheets/**/**/*.scss",
-        "lint:ts":"tslint --fix src/typescripts/**/**/*"
+        "lint:ts": "tslint --fix src/typescripts/**/**/*"
     },
     "author": "",
     "license": "ISC",
