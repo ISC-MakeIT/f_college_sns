@@ -6,7 +6,7 @@ export class ProductFactory {
             product.id,
             product.owner,
             product.concept,
-            product.image_path,
+            product.imageURLPath,
         );
     }
 }

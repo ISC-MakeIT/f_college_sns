@@ -9,7 +9,7 @@ export class ProductService {
     public static async getAll() {
         const array = [];
         for (let i = 0; i < 3; i++) {
-            const p = new Product( i, `${i}さん`, `this concept is hogehoge`, `${i}_hoge` );
+            const p = new Product( i, `${i}さん`, `this concept is hogehoge`, `assets/images/${i}` );
             array.push(p);
         }
         return array;
