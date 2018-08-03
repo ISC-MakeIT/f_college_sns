@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {ProductService} from '../services';
+import { ProductService } from '../services';
 import { RouteComponentProps } from 'react-router-dom';
 import Screen from './screen';
 import {Product} from '../entities';

@@ -1,4 +1,4 @@
-// sample
+// sample TODO delete
 export * from './sample/button';
 export * from './sample/message';
 export * from './sample/message_input';

@@ -1,4 +1,3 @@
+export * from './sample'; // TODO delete
 export * from './root';
-export * from './sample';
-
 export * from './products';
