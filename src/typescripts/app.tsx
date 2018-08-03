@@ -16,9 +16,8 @@ class App extends React.Component<{}, {loaded: boolean}> {
         return (
             <Router>
                 <Switch>
-                    <Route path='/' component={Screens.Root}/>
-                    <Route exact path='/sample' component={Screens.Sample} />
-                    {/* <Route> */}
+                    <Route exact path='/' component={Screens.Root}/>
+                    <Route exact path='/products' component={Screens.Products}/>
                 </Switch>
             </Router>
         );

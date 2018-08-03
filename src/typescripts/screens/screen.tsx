@@ -10,10 +10,10 @@ export default class Screen extends React.Component<Props, {}> {
     }
 
     public render() {
+        console.info(`${this.props.name}'s screen`); // tslint:disable-line:no-console
         return (
             <div className={`screen ${this.props.name}`} >
                 <div className='contents'>
-                    <h1>ここが {this.props.name}</h1>
                     {this.props.children}
                 </div>
             </div>
