@@ -1,0 +1,21 @@
+.screen.root {
+
+    .title {
+        margin-bottom: 10px;
+        font-size: 5rem;
+    }
+
+    .link {
+        font-size: 3.5rem;
+        line-height: 3.5rem;
+        margin: 5px;
+
+        &:visited {
+            color: red;
+        }
+
+        &:hover {
+            color: cadetblue;
+        }
+    }
+}

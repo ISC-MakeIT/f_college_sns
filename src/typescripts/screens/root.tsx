@@ -9,14 +9,14 @@ interface Props extends RouteComponentProps<{}> {
 export class Root extends React.Component<Props, {}> {
 
     public render() {
-      // TODO TOPページはここに書くか。
-      // 　もしくは他に書いたのを呼ぶだけ.現状は導線用のリンクをはるだけにしてる
+    // TODO TOPページはここに書くか。
+    // 　もしくは他に書いたのを呼ぶだけ.現状は導線用のリンクをはるだけにしてる
         return (
             <Screen name='root'>
-                <h2>
+                <h1 className='title'>
                     this is Root Component
-                </h2>
-                <Link to='/products'>
+                </h1>
+                <Link to='/products' className='link'>
                     '/products'へのリンク
                 </Link>
             </Screen>

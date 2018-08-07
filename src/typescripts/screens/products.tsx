@@ -28,15 +28,20 @@ export class Products extends React.Component<Props, State> {
 
     public render() {
         const products = this.state.products.map( p => (
-            <div key={p.id}>
-                <p>{p.owner}</p>
-                <p>{p.concept}</p>
+            <div key={p.id} className='product'>
+                <p className='owner'>{p.owner}</p>
+                <p className='concept'>{p.concept}</p>
             </div>
         ));
 
         return (
             <Screen name='products'>
-                {products}
+                <h1 className='title'>
+                    Productの紹介
+                </h1>
+                <div className='products_index'>
+                    {products}
+                </div>
             </Screen>
         );
     }

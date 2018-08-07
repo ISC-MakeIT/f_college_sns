@@ -10,6 +10,16 @@ body {
     color: $text-color;
     font-family: "Nunito", "Yu Gothic", "Hiragino Kaku Gothic Pro", "Meiryo", "sans-serif";
     font-weight: 400;
+    font-size:62.5%; /* 10px */
+}
+
+.screen {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // FIXME max-width: 300px; スマホだけにする？
 }
 
 h1 {
@@ -55,7 +65,10 @@ ul {
 
 li {
     list-style: none;
+    font-size: 1.6em; /* 16px */
 }
+
+p  { font-size: 1.6em; } /* 16px */
 
 $component-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
 $text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.8);
