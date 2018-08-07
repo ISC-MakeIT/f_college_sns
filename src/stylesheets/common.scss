@@ -13,6 +13,15 @@ body {
     font-size:62.5%; /* 10px */
 }
 
+.screen {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // FIXME max-width: 300px; スマホだけにする？
+}
+
 h1 {
     font-weight: 800;
 }
