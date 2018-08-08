@@ -18,6 +18,7 @@ class App extends React.Component<{}, {loaded: boolean}> {
                 <Switch>
                     <Route exact path='/' component={Screens.Root}/>
                     <Route exact path='/products' component={Screens.Products}/>
+                    <Route exact path='/products/:id' component={Screens.ProductShow}/>
                 </Switch>
             </Router>
         );

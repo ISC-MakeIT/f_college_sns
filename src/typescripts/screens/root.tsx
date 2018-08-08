@@ -19,6 +19,9 @@ export class Root extends React.Component<Props, {}> {
                 <Link to='/products' className='link'>
                     '/products'へのリンク
                 </Link>
+                <Link to='products/1' className='link'>
+                    'product/:id'へのリンク
+                </Link>
             </Screen>
         );
     }
