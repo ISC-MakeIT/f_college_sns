@@ -2,6 +2,7 @@ import * as React from 'react';
 import { render } from 'react-dom';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import * as Screens from './screens';
+import { Loading } from './components';
 
 class App extends React.Component<{}, {loaded: boolean}> {
     public async componentDidMount() {
@@ -11,8 +12,8 @@ class App extends React.Component<{}, {loaded: boolean}> {
     }
 
     public render() {
-        // TODO ロードして。
-        // if(!this.state) return null;
+        // if (this.state == null) return( <Loading /> );
+
         return (
             <Router>
                 <Switch>
