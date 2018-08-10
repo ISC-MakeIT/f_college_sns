@@ -12,7 +12,7 @@ class App extends React.Component<{}, {loaded: boolean}> {
     }
 
     public render() {
-        if (this.state == null) return( <Loading /> );
+        // if (this.state == null) return( <Loading /> );
 
         return (
             <Router>
