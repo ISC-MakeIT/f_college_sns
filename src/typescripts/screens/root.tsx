@@ -1,6 +1,7 @@
 import * as React from 'react';
 import Screen from './screen';
 import { RouteComponentProps, Link} from 'react-router-dom';
+import { Loading } from '../components';
 
 interface Props extends RouteComponentProps<{}> {
 
@@ -22,6 +23,7 @@ export class Root extends React.Component<Props, {}> {
                 <Link to='products/1' className='link'>
                     'product/:id'へのリンク
                 </Link>
+                <Loading />
             </Screen>
         );
     }
