@@ -13,18 +13,17 @@ export class Root extends React.Component<Props, {}> {
     // TODO TOPページはここに書くか。
     // 　もしくは他に書いたのを呼ぶだけ.現状は導線用のリンクをはるだけにしてる
         return (
-            <Screen name='root' style='d-flex flex-column justify-content-center'>
-                <h1 className='title'>
+            <Screen name='root' style='d-flex flex-column text-center justify-content-center'>
+                <h1 className='title mb-4'>
                     this is Root Component
                 </h1>
-                <Link to='/products' className='link'>
+                <Link to='/products' className='link btn btn-sm mt-3'>
                     '/products'へのリンク
                 </Link>
-                <Link to='products/1' className='link'>
+                <Link to='products/1' className='link btn btn-sm mt-3'>
                     'product/:id'へのリンク
                 </Link>
 
-                <button className='btn btn-sm btn-primary'>btn sample</button>
                 <Loading />
             </Screen>
         );

@@ -2,7 +2,7 @@ import * as React from 'react';
 
 interface Props {
     name: string;
-    style: string | null;
+    style?: string;
 }
 
 export default class Screen extends React.Component<Props, {}> {
