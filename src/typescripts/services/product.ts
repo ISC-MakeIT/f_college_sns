@@ -1,6 +1,7 @@
 import { Product } from '../entities';
 import { ApiClient } from '../infrastructure';
-import { ProductFactory } from '../factories';
+import { ProductFactory, UserFactory } from '../factories';
+import { UserService } from './user';
 
 export class ProductService {
 
@@ -8,10 +9,11 @@ export class ProductService {
         // APIClient.get('/products')で全てのプロダクトJSONもらいたい
         const array = [];
         for (let i = 0; i < 3; i++) {
+            const owner = UserFactory.createFromJSON(await UserService.get(i));
             const p = new Product(
                 i,
                 `${i}のための〇〇`,
-                `${i}さん`,
+                owner,
                 `this concept is hogehoge`,
                 `assets/images/${i}`,
                 null, null, null);
@@ -23,10 +25,11 @@ export class ProductService {
     public static async get(id: number) {
         // const ret = ApiClient.get(`api/products/${id}`);
         // const product = ProductFactory.createFromJSON(ret);
+        const owner = UserFactory.createFromJSON(await UserService.get(id));
         const product = new Product(
             id,
             '情熱と希望の賛歌',
-            `${id}：斎藤ほのか`,
+            owner,
             'このサービスは,情熱をテーマに作成しました。細部までこだわって作成しているのでモデルの手足のその先にある情熱を感じていただけたら幸いです。',
             `public/assets/images/${id}.jpg`,
             [`public/assets/images/${id}.jpg`, `public/assets/images/${id}.jpg`],

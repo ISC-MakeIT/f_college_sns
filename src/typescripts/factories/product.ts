@@ -1,11 +1,13 @@
 import { Product } from '../entities';
+import { UserFactory } from './user';
 
 export class ProductFactory {
     public static createFromJSON(product: any) {
+        const owner = UserFactory.createFromJSON(product.owner);
         return new Product(
             product.id,
             product.title,
-            product.owner,
+            owner,
             product.concept,
             product.imageURLPath,
             product.otherImageURLPath,
