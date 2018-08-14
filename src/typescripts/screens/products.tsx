@@ -27,12 +27,19 @@ export class Products extends React.Component<Props, State> {
     }
 
     public render() {
-        const products = this.state.products.map( p => (
-            <div key={p.id} className='product'>
-                <p className='owner'>{p.owner}</p>
-                <p className='concept'>{p.concept}</p>
-            </div>
-        ));
+        const products = this.state.products.map( p => {
+            const owner = p.owner;
+            console.log(p);
+            console.log(owner);
+            return (
+                <div key={p.id} className='product'>
+                    <p className='concept'>{p.concept}</p>
+                    <p className='owner'>{owner.name}</p>
+                    <p>{owner.subject}</p>
+                    <img src={owner.profilePhoto} width='100' height='100'/>
+                </div>
+            );
+        });
 
         return (
             <Screen name='products'>
