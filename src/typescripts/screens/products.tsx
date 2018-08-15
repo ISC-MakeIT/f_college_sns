@@ -4,7 +4,7 @@ import { RouteComponentProps } from 'react-router-dom';
 import Screen from './screen';
 import { Product } from '../entities';
 import { Photo } from '../components/photo';
-import { createPhotoPath } from '../components/createPhotoPath';
+import { PhotoService } from '../services/photo';
 
 interface Props {
     id: number[];
@@ -20,7 +20,7 @@ public id = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     constructor(props: Props) {
         super(props);
         this.state = {
-            photoPath: createPhotoPath(this.id),
+            photoPath: PhotoService.createPhotoPath(this.id),
         };
     }
 
