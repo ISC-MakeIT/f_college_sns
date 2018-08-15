@@ -6,3 +6,4 @@ export * from './sample/messages';
 // sampleおわり
 
 export * from './loading';
+export * from './photo';

@@ -1,6 +1,7 @@
 import { ApiClient } from '../infrastructure';
 import { UserFactory } from '../factories';
 import { User } from '../entities';
+import { PhotoService } from './photo';
 
 export class UserService {
 
@@ -33,9 +34,9 @@ export class UserService {
 
     private static userPhotoNames() {
         return [
-            {name: '山下 美月', subject: 'ブライダル科 ３年', path: 'yamashitamizuki_prof.jpg'},
-            {name: '西野 七瀬', subject: 'ビューティ科 １年', path: 'nishinonanase_prof.jpg'},
-            {name: '鈴木 絢音', subject: 'ファッション科 ２年', path: 'suzukiayane_prof.jpg'},
+            {name: '山下 美月', subject: 'ブライダル科 ３年', path: PhotoService.buildPhotoPath('yamashitamizuki_prof', 'users')},
+            {name: '西野 七瀬', subject: 'ビューティ科 １年', path: PhotoService.buildPhotoPath('nishinonanase_prof', 'users')},
+            {name: '鈴木 絢音', subject: 'ファッション科 ２年', path: PhotoService.buildPhotoPath('suzukiayane_prof', 'users')},
         ];
     }
 }
