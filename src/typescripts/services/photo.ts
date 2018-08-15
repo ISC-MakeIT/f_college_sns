@@ -1,15 +1,15 @@
 export class PhotoService {
     public static buildPhotoPath = (name: string, dir: string) => {
-        const _ = [
-            '01_Br2A_SHIOYA_Konatsu',
-            '02_Br2A_TATEHASHI_Yui',
-            '03_Br2A_MARUYAMA_Shiori',
-            '04_Br2B_OONUKI_Erii',
-            '05_Br2B_NEMOTO_Maho',
-            '06_FLD2_KITAZAWA_Saaya',
-            '07_FB1A_NAKANO_Kaito',
-            '08_FB1A_ALABADO_Natasha',
-            '09_FB1B_MIYAUCHI_Haruka',
+        const imageNames = [
+            '1_Br2A_SHIOYA_Konatsu',
+            '2_Br2A_TATEHASHI_Yui',
+            '3_Br2A_MARUYAMA_Shiori',
+            '4_Br2B_OONUKI_Erii',
+            '5_Br2B_NEMOTO_Maho',
+            '6_FLD2_KITAZAWA_Saaya',
+            '7_FB1A_NAKANO_Kaito',
+            '8_FB1A_ALABADO_Natasha',
+            '9_FB1B_MIYAUCHI_Haruka',
             '10_FB2_KAYANUMA_Azumi',
             '11_FB2_KIMURA_Takaya',
             '12_FB2_MURAYAMA_Sakura',

@@ -43,19 +43,17 @@ export class Products extends React.Component<Props, State> {
         return (
             <Screen name='products'>
                 {products}
-                <div className='display'>
-                    <div>
-                        <Photo photoName={'01_Br2A_SHIOYA_Konatsu'} dirName={'products'} />
-                        <Photo photoName={'03_Br2A_MARUYAMA_Shiori'} dirName={'products'} />
-                        <Photo photoName={'04_Br2B_OONUKI_Erii'} dirName={'products'} />
-                        <Photo photoName={'06_FLD2_KITAZAWA_Saaya'} dirName={'products'} />
-                        <Photo photoName={'09_FB1B_MIYAUCHI_Haruka'} dirName={'products'} />
-                        <Photo photoName={'12_FB2_MURAYAMA_Sakura'} dirName={'products'} />
-                        <Photo photoName={'14_FLD1_OKUMA_Aoi'} dirName={'products'} />
-                        <Photo photoName={'17_FLD1_Yamauchi_Ryo'} dirName={'products'} />
-                        <Photo photoName={'22_FLD2_ISHIDA_Hinata'} dirName={'products'} />
-                        <Photo photoName={'28_FLD3_OGURA_Mariko'} dirName={'products'} />
-                    </div>
+                <div className='d-flex flex-wrap'>
+                    <Photo photoName={'1_Br2A_SHIOYA_Konatsu'} dirName={'products'} />
+                    <Photo photoName={'3_Br2A_MARUYAMA_Shiori'} dirName={'products'} />
+                    <Photo photoName={'4_Br2B_OONUKI_Erii'} dirName={'products'} />
+                    <Photo photoName={'6_FLD2_KITAZAWA_Saaya'} dirName={'products'} />
+                    <Photo photoName={'9_FB1B_MIYAUCHI_Haruka'} dirName={'products'} />
+                    <Photo photoName={'12_FB2_MURAYAMA_Sakura'} dirName={'products'} />
+                    <Photo photoName={'14_FLD1_OKUMA_Aoi'} dirName={'products'} />
+                    <Photo photoName={'17_FLD1_Yamauchi_Ryo'} dirName={'products'} />
+                    <Photo photoName={'22_FLD2_ISHIDA_Hinata'} dirName={'products'} />
+                    <Photo photoName={'28_FLD3_OGURA_Mariko'} dirName={'products'} />
                 </div>
             </Screen>
         );
