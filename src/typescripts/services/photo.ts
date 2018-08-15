@@ -1,5 +1,10 @@
 export class PhotoService {
+
     public static buildPhotoPath = (name: string, dir: string) => {
+        return `${PhotoService.basePhotoPath()}/${dir}/${name}.jpg`;
+    }
+
+    public static buildPhotoPathFromId = (id: number) => {
         const imageNames = [
             '1_Br2A_SHIOYA_Konatsu',
             '2_Br2A_TATEHASHI_Yui',
@@ -33,6 +38,9 @@ export class PhotoService {
             '30_FLD3_SUZUKI_Minatsu',
         ];
 
-        return `./public/assets/images/${dir}/${name}.jpg`;
+        const img = imageNames.find(i => Number(i.split('_')[0]) === id);
+        return `${PhotoService.basePhotoPath()}/products/${img}.jpg`;
     }
+
+    private static basePhotoPath = () => './public/assets/images';
 }

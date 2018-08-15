@@ -27,14 +27,22 @@ export class Products extends React.Component<Props, State> {
 
     public render() {
         const products = this.state.products.map( p => {
+            {/*
+                FIXME
+                ↓でゴニョごにょしている箇所をコンポーネントにしたい
+                <Product key={p.id} product={p} /> のように呼び出して
+                同様の処理になるようなコンポーネントを作って欲しい
+            */}
+
             const owner = p.owner;
             console.log(p);
             console.log(owner);
             return (
-                <div key={p.id} className='product'>
+                <div key={p.id} className='product d-flex flex-column'>
                     <p className='concept'>{p.concept}</p>
                     <p className='owner'>{owner.name}</p>
                     <p>{owner.subject}</p>
+                    <img src={p.imageURLPath} width='100' height='100' />
                     <img src={owner.profilePhotoPath} width='100' height='100'/>
                 </div>
             );

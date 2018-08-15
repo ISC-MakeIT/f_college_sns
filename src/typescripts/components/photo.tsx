@@ -9,7 +9,7 @@ interface Props {
 export const Photo: React.StatelessComponent<Props> = props => {
     const imagePath = PhotoService.buildPhotoPath(props.photoName, props.dirName);
     return (
-        <div className='photos' >
+        <div className='photo component' >
             <img src={imagePath} />
         </div>
     );
