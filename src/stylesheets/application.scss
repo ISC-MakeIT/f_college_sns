@@ -1,12 +1,8 @@
 @import "./common";
 
-// ====================================
-// sample
-@import "./components/message";
-// ====================================
-
+// component
 @import "./components/root";
 @import "./components/loading";
+@import "./components/photo";
 @import "./components/products";
 @import "./components/product_show";
-@import "./components/product_style";
