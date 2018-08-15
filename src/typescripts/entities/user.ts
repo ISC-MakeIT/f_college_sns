@@ -5,8 +5,4 @@ export class User {
         public subject: string,
         public profilePhotoPath: string,
     ) {}
-
-    public get profilePhoto() {
-        return 'public/assets/images/users/' + this.profilePhotoPath;
-    }
 }

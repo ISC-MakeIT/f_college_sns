@@ -1,5 +1,5 @@
 export class PhotoService {
-    public static buildPhotoPath = (name: string) => {
+    public static buildPhotoPath = (name: string, dir: string) => {
         const _ = [
             '01_Br2A_SHIOYA_Konatsu',
             '02_Br2A_TATEHASHI_Yui',
@@ -33,6 +33,6 @@ export class PhotoService {
             '30_FLD3_SUZUKI_Minatsu',
         ];
 
-        return `./public/assets/images/products/${name}.jpg`;
+        return `./public/assets/images/${dir}/${name}.jpg`;
     }
 }
