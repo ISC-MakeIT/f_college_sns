@@ -2,22 +2,25 @@ import * as React from 'react';
 import { ProductService } from '../services';
 import { RouteComponentProps } from 'react-router-dom';
 import Screen from './screen';
-import {Product} from '../entities';
+import { Product } from '../entities';
+import { Photo } from '../components/photo';
+import { createPhotoPath } from '../components/createPhotoPath';
 
-interface Props extends RouteComponentProps<{}> {
-
+interface Props {
+    id: number[];
 }
 
 interface State {
     products: Product[];
+    photoPath: string[];
 }
 
 export class Products extends React.Component<Props, State> {
-
+public id = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     constructor(props: Props) {
         super(props);
         this.state = {
-            products: [],
+            photoPath: createPhotoPath(this.id),
         };
     }
 
@@ -43,11 +46,19 @@ export class Products extends React.Component<Props, State> {
 
         return (
             <Screen name='products'>
-                <h1 className='title'>
-                    Productの紹介
-                </h1>
-                <div className='products_index'>
-                    {products}
+                <div className='display'>
+                    <div>
+                        <Photo photoPath={this.state.photoPath[0]} />
+                        <Photo photoPath={this.state.photoPath[1]} />
+                        <Photo photoPath={this.state.photoPath[2]} />
+                        <Photo photoPath={this.state.photoPath[3]} />
+                        <Photo photoPath={this.state.photoPath[4]} />
+                        <Photo photoPath={this.state.photoPath[5]} />
+                        <Photo photoPath={this.state.photoPath[6]} />
+                        <Photo photoPath={this.state.photoPath[7]} />
+                        <Photo photoPath={this.state.photoPath[8]} />
+                        <Photo photoPath={this.state.photoPath[9]} />
+                    </div>
                 </div>
             </Screen>
         );
