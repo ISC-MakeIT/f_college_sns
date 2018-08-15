@@ -1,11 +1,15 @@
 import * as React from 'react';
+import { PhotoService } from '../services/photo';
 
 interface Props {
-    photoPath: string;
-  }
+    photoName: string;
+}
 
-export const Photo: React.StatelessComponent<Props> = props => (
-            <div className='photos' >
-                <img src={props.photoPath} />
-            </div>
-);
+export const Photo: React.StatelessComponent<Props> = props => {
+    const imagePath = PhotoService.buildPhotoPath(props.photoName);
+    return (
+        <div className='photos' >
+            <img src={imagePath} />
+        </div>
+    );
+};
