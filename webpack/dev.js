@@ -7,6 +7,18 @@ const watchOptions = {
         ignored: /node_modules/,
         poll: 1000,
     },
+    devtool: 'inline-source-map',
+    devServer: {
+        // contentBase: path.resolve(__dirname),
+        // contentBase: path.join(__dirname, '../', 'index.html'),
+        publicPath: '/',
+        compress: true,
+        historyApiFallback: true,
+        open: true,
+        port: 3000,
+        hot: true,
+        inline: true
+    },
 };
 
 module.exports = [
