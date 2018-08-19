@@ -42,5 +42,5 @@ export class PhotoService {
         return `${PhotoService.basePhotoPath()}/products/${img}.jpg`;
     }
 
-    private static basePhotoPath = () => './public/assets/images';
+    private static basePhotoPath = () => './assets/images';
 }
