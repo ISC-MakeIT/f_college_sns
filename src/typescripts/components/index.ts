@@ -7,3 +7,4 @@ export * from './sample/messages';
 
 export * from './loading';
 export * from './photo';
+export * from './icon';
