@@ -1,22 +1,16 @@
 .screen.root {
+    height: 100vh;
+    width: 100vw;
+    background-image: url("./assets/images/top/top.png");
 
-    .title {
-        margin-bottom: 10px;
-        font-size: 5rem;
-    }
-
-    .link {
-        font-size: 3.5rem;
-        line-height: 3.5rem;
-        margin: 5px;
-        display: block;
-
-        &:visited {
-            color: red;
-        }
-
-        &:hover {
-            color: cadetblue;
+    .img-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .icon {
+            margin-bottom: 30px;
+            width: 180px;
         }
     }
+
 }
