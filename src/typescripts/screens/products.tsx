@@ -4,11 +4,13 @@ import { ProductService } from '../services';
 import Screen from './screen';
 import { Product } from '../entities';
 import { Photo } from '../components/photo';
+import { Tab } from '../components/tab';
 
 interface Props extends RouteComponentProps<{}> {}
 
 interface State {
     products: Product[];
+    activeCategory: 'beauty' | 'fashion';
 }
 
 export class Products extends React.Component<Props, State> {
@@ -17,7 +19,16 @@ export class Products extends React.Component<Props, State> {
         super(props);
         this.state = {
             products: [],
+            activeCategory: 'fashion',
         };
+    }
+
+    public changeActiveCategory = (e: any) => {
+        const activeCategory = this.state.activeCategory;
+        if (e.target.className.includes(`${activeCategory}-active`)) return;
+
+        const category = activeCategory === 'fashion' ? 'beauty' : 'fashion';
+        this.setState({activeCategory: category});
     }
 
     public async componentDidMount() {
@@ -26,6 +37,7 @@ export class Products extends React.Component<Props, State> {
     }
 
     public render() {
+        // const products = this.state.products.filter(p => p.beauty).map( p => {
         const products = this.state.products.map( p => {
             {/*
                 FIXME
@@ -35,8 +47,8 @@ export class Products extends React.Component<Props, State> {
             */}
 
             const owner = p.owner;
-            console.log(p);
-            console.log(owner);
+ //           console.log(p);
+ //           console.log(owner);
             return (
                 <div key={p.id} className='product d-flex flex-column'>
                     <p className='concept'>{p.concept}</p>
@@ -54,17 +66,33 @@ export class Products extends React.Component<Props, State> {
                     '/products'へのリンク
                 </Link>
                 {products}
-                <div className='d-flex flex-wrap'>
-                    <Photo photoName={'1_Br2A_SHIOYA_Konatsu'} dirName={'products'} />
-                    <Photo photoName={'3_Br2A_MARUYAMA_Shiori'} dirName={'products'} />
-                    <Photo photoName={'4_Br2B_OONUKI_Erii'} dirName={'products'} />
-                    <Photo photoName={'6_FLD2_KITAZAWA_Saaya'} dirName={'products'} />
-                    <Photo photoName={'9_FB1B_MIYAUCHI_Haruka'} dirName={'products'} />
-                    <Photo photoName={'12_FB2_MURAYAMA_Sakura'} dirName={'products'} />
-                    <Photo photoName={'14_FLD1_OKUMA_Aoi'} dirName={'products'} />
-                    <Photo photoName={'17_FLD1_Yamauchi_Ryo'} dirName={'products'} />
-                    <Photo photoName={'22_FLD2_ISHIDA_Hinata'} dirName={'products'} />
-                    <Photo photoName={'28_FLD3_OGURA_Mariko'} dirName={'products'} />
+                {/*
+                    <div className='d-flex flex-wrap'>
+                        <Photo photoName={'1_Br2A_SHIOYA_Konatsu'} dirName={'products'} />
+                        <Photo photoName={'3_Br2A_MARUYAMA_Shiori'} dirName={'products'} />
+                        <Photo photoName={'4_Br2B_OONUKI_Erii'} dirName={'products'} />
+                        <Photo photoName={'6_FLD2_KITAZAWA_Saaya'} dirName={'products'} />
+                        <Photo photoName={'9_FB1B_MIYAUCHI_Haruka'} dirName={'products'} />
+                        <Photo photoName={'12_FB2_MURAYAMA_Sakura'} dirName={'products'} />
+                        <Photo photoName={'14_FLD1_OKUMA_Aoi'} dirName={'products'} />
+                        <Photo photoName={'17_FLD1_Yamauchi_Ryo'} dirName={'products'} />
+                        <Photo photoName={'22_FLD2_ISHIDA_Hinata'} dirName={'products'} />
+                        <Photo photoName={'28_FLD3_OGURA_Mariko'} dirName={'products'} />
+                    </div>
+                */}
+
+                <div className='d-flex flex-row'>
+                    <Tab
+                        stateChange={this.changeActiveCategory}
+                        value={'ファッション部門'}
+                        class={`fashion${this.state.activeCategory === 'fashion' ? '-active' : ''}`}
+                    />
+
+                    <Tab
+                        stateChange={this.changeActiveCategory}
+                        value={'ビューティー部門'}
+                        class={`beauty${this.state.activeCategory === 'beauty' ? '-active' : ''}`}
+                    />
                 </div>
             </Screen>
         );
