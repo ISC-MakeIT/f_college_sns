@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { RouteComponentProps } from 'react-router-dom';
+import { RouteComponentProps, Link } from 'react-router-dom';
 import { ProductService } from '../services';
 import Screen from './screen';
 import { Product } from '../entities';
@@ -50,6 +50,9 @@ export class Products extends React.Component<Props, State> {
 
         return (
             <Screen name='products'>
+                <Link to='/products' className='link btn btn-sm mt-3'>
+                    '/products'へのリンク
+                </Link>
                 {products}
                 <div className='d-flex flex-wrap'>
                     <Photo photoName={'1_Br2A_SHIOYA_Konatsu'} dirName={'products'} />
