@@ -4,7 +4,7 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "start": "./node_modules/.bin/webpack-dev-server --watch --config ./webpack/dev.js --mode development --history-api-fallback",
+        "start": "./node_modules/.bin/webpack-dev-server --watch --config ./webpack/dev.js --mode development --history-api-fallback --open --hot --inline",
         "build": "webpack --config ./webpack/prod.js --mode production",
         "lint:style": "stylelint --fix src/stylesheets/**/**/*.scss",
         "lint:ts": "tslint --fix src/typescripts/**/**/*"
