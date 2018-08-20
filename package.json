@@ -4,7 +4,7 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "start": "./node_modules/.bin/webpack-dev-server --watch --config ./webpack/dev.js --mode development --history-api-fallback --open --hot --inline",
+        "start": "./node_modules/.bin/webpack-dev-server --watch --config ./webpack/dev.js --mode development --history-api-fallback --open --hot --inline & node src/api/server.js",
         "build": "webpack --config ./webpack/prod.js --mode production",
         "lint:style": "stylelint --fix src/stylesheets/**/**/*.scss",
         "lint:ts": "tslint --fix src/typescripts/**/**/*"
@@ -38,9 +38,11 @@
         "@types/react-bootstrap": "^0.32.11",
         "@types/react-dom": "^16.0.6",
         "@types/react-router-dom": "^4.3.0",
+        "body-parser": "^1.18.3",
+        "express": "^4.16.3",
         "react": "^16.4.1",
-        "react-dom": "^16.4.1",
         "react-bootstrap": "^0.32.1",
+        "react-dom": "^16.4.1",
         "react-router-dom": "^4.3.1"
     }
 }
