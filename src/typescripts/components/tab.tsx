@@ -1,9 +1,10 @@
 import * as React from 'react';
+import { Icon } from './icon';
 
 interface Props {
     value: string;
     class: string;
-    stateChange(e: any): void;
+    stateChange(e: React.MouseEvent<HTMLElement>): void;
 }
 
 export const Tab: React.StatelessComponent<Props> = props => {
@@ -12,6 +13,7 @@ export const Tab: React.StatelessComponent<Props> = props => {
             onClick={props.stateChange}
             className={props.class}
         >
+            <Icon name='caret-up' fas />
             {props.value}
         </button>
     );

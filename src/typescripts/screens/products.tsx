@@ -23,7 +23,7 @@ export class Products extends React.Component<Props, State> {
         };
     }
 
-    public changeActiveCategory = (e: any) => {
+    public changeActiveCategory = (e: React.MouseEvent<HTMLElement>) => {
         const activeCategory = this.state.activeCategory;
         if (e.target.className.includes(`${activeCategory}-active`)) return;
 
@@ -85,13 +85,13 @@ export class Products extends React.Component<Props, State> {
                     <Tab
                         stateChange={this.changeActiveCategory}
                         value={'ファッション部門'}
-                        class={`fashion${this.state.activeCategory === 'fashion' ? '-active' : ''}`}
+                        class={`${this.state.activeCategory === 'fashion' ? 'fashion-active' : 'not-fashion'}`}
                     />
 
                     <Tab
                         stateChange={this.changeActiveCategory}
                         value={'ビューティー部門'}
-                        class={`beauty${this.state.activeCategory === 'beauty' ? '-active' : ''}`}
+                        class={`${this.state.activeCategory === 'beauty' ? 'beauty-active' : 'not-beauty'}`}
                     />
                 </div>
             </Screen>
