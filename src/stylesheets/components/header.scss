@@ -7,8 +7,8 @@
     z-index: 5;
     background-color: $main-color;
     display: grid;
-    grid-template-areas: "back logo";
-    grid-template-columns: 50px 1fr 50px;
+    grid-template-areas: "back logo crown";
+    grid-template-columns: 1fr 5fr 1fr;
     -webkit-transform: translate3d(0, 0, 0);
     .back-button {
         grid-area: back;
@@ -23,4 +23,26 @@
             width: 250px;
         }
     }
+
+    .ribbon {
+        grid-area: crown;
+        background: $header-ribbon-color;
+        width: 100px;
+        height: 95px;
+        text-align: center;
+        box-shadow: $component-shadow;
+
+        box-shadow: 5px 5px 15px -3px #babcbb;
+        border-radius: 3px 3px 10px 10px ;
+
+
+        .fa-crown {
+            display: block;
+            font-size: 5rem;
+            margin: 10px auto 0;
+            color: $white-text-color;
+        }
+
+    }
+
 }

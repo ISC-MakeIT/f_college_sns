@@ -16,6 +16,9 @@ export class Header extends React.Component<Props, {}> {
                 <Link to='/' className='header-logo'>
                     <img src='./assets/images/top/logo.png' alt='header-logo'/>
                 </Link>
+                <div className='ribbon mt-2'>
+                    <Icon name='crown' fas />
+                </div>
             </header>
         );
     }
