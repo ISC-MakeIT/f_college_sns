@@ -1,16 +1,57 @@
 .component.product{
 
+    // define
+    $img-size: 550px;
+
     text-decoration: none;
     margin-top: 20px;
+    height: $img-size;
 
     img {
         width: 45vw;
-        height: 550px;
+        height: $img-size;
         object-fit: fill;
         border-radius: 20px;
     }
 
     .product-creator {
-        display: none;
+        background-color: gray;
+        opacity: 0.85;
+        height: 100px;
+        width: 100%;
+        position: relative;
+        bottom: 100px;
+        border-radius: 0 0 20px 20px;
+
+        p {
+            text-decoration: none;
+            color: $white-text-color;
+        }
+        .owner-subject {
+            font-size: 2rem;
+        }
+
+        .owner-name {
+            font-size: 2.5rem;
+        }
+
+        .profile_image {
+            width: 80px;
+            height: 80px;
+            border-radius: 50px;
+            margin: 0 auto;
+        }
+
+        // .title {
+        //     margin-bottom: 10px;
+        //     font-size: 5rem;
+        // }
+
+
+        .concept {
+            font-weight: 800;
+            font-size: 1.8rem;
+        }
+
     }
 }

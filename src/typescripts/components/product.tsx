@@ -16,10 +16,11 @@ export class Product extends React.Component<Props, {}> {
             <div key={product.id} className='component product d-flex flex-column'>
                 <Link to={`/products/${product.id}`} className=''>
                     <img src={product.imageURLPath} className='product-img'/>
-                    {/* <p className='concept'>{product.concept}</p> */}
-                    <div className='product-creator'>
-                        <p className='owner'>{owner.name}</p>
-                        <p>{owner.subject}</p>
+                    <div className='product-creator d-flex flex-row align-items-center'>
+                        <div className='mt-3 ml-5'>
+                            <p className='owner-subject'>{owner.subject}</p>
+                            <p className='owner-name'>{owner.name}</p>
+                        </div>
                         <img src={owner.profilePhotoPath} className='profile_image'/>
                     </div>
                 </Link>
