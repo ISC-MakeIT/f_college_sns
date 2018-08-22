@@ -1,0 +1,13 @@
+.screen.products {
+
+    .contents {
+        margin-top: $header-height;
+        margin-bottom: $footer-height;
+        background: linear-gradient($main-color, $gradation-purple-color);
+    }
+
+    .product-index {
+        justify-content: space-evenly;
+    }
+
+}
