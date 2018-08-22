@@ -23,9 +23,9 @@ export class Products extends React.Component<Props, State> {
         };
     }
 
-    public changeActiveCategory = (e: React.MouseEvent<HTMLElement>) => {
+    public changeActiveCategory = (e: React.MouseEvent) => {
         const activeCategory = this.state.activeCategory;
-        if (e.target.className.includes(`${activeCategory}-active`)) return;
+        if (e.currentTarget.classList.contains(`${activeCategory}-active`)) return;
 
         const category = activeCategory === 'fashion' ? 'beauty' : 'fashion';
         this.setState({activeCategory: category});
