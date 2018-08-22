@@ -1,10 +1,13 @@
 @import "./common";
 
 // component
-@import "./components/root";
+
 @import "./components/loading";
 @import "./components/photo";
-@import "./components/products";
-@import "./components/product_show";
+@import "./components/product";
 @import "./components/tab";
-@import "./components/footer"
+@import "./components/footer";
+
+@import "./screens/root";
+@import "./screens/products";
+@import "./screens/product_show";
