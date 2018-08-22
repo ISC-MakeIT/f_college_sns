@@ -13,8 +13,9 @@
     .back-button {
         grid-area: back;
         display: block;
-        font-size: 1.6rem;
+        font-size: 6rem;
         margin: auto;
+        color: $white-text-color;
     }
     .header-logo {
         margin: auto;
@@ -34,7 +35,6 @@
 
         box-shadow: 5px 5px 15px -3px #babcbb;
         border-radius: 3px 3px 10px 10px ;
-
 
         .fa-crown {
             display: block;

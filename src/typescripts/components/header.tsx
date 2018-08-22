@@ -24,13 +24,13 @@ export class Header extends React.Component<Props, {}> {
             </header>
         );
     }
-
 }
 
 const BackButton = withRouter(props => (
     <Icon
-        name='arrow-left'
+        name='angle-left'
         className='back-button'
         onClick={() => props.history.goBack()}
+        fas
     />
 ));
