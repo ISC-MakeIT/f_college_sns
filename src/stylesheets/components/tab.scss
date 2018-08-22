@@ -1,0 +1,48 @@
+.component.tab {
+
+    width: 50%;
+    height: 100%;
+    font-size: 26px;
+    background-color: $black;
+    color: white;
+    padding-bottom: 25px;
+    text-align: center;
+
+    i {
+        position: relative;
+        font-size: 5.5rem;
+        bottom: 47px;
+        right: 12vw;
+    }
+
+    &.fashion-active{
+        background-color: $fashion;
+        border: none;
+        i {
+            color: $fashion;
+        }
+    }
+
+    &.beauty-active {
+        background-color: $beauty;
+        border: none;
+        i {
+            color: $beauty;
+        }
+    }
+
+    .fashion {
+        border: none;
+        i {
+            display: none;
+        }
+    }
+
+    .beauty {
+        border: none;
+        i {
+            display: none;
+            right: 100px;
+        }
+    }
+}
