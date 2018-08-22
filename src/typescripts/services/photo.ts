@@ -1,7 +1,7 @@
 export class PhotoService {
 
     public static buildPhotoPath = (name: string, dir: string) => {
-        return `${PhotoService.basePhotoPath()}/${dir}/${name}.jpg`;
+        return `${PhotoService.basePhotoPath()}/${dir}/${name}`;
     }
 
     public static buildPhotoPathFromId = (id: number) => {
