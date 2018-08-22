@@ -12,7 +12,7 @@ export class Root extends React.Component<Props, {}> {
 
     public render() {
         return (
-            <Screen name='root' style='d-flex flex-column text-center justify-content-center'>
+            <Screen name='root' style='d-flex flex-column text-center justify-content-center' hideHeader>
                 {/* <Loading /> */}
                 <div className='img-container'>
                     <img

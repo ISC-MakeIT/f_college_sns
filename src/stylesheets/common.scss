@@ -9,20 +9,14 @@ $fashion: #FE6EAB;
 $beauty: #BC6EFE;
 $black: #31282C;
 
+$header-height: 100px;
+$footer-height: 80px;
+
 body {
     color: $text-color;
     font-family: "Nunito", "Yu Gothic", "Hiragino Kaku Gothic Pro", "Meiryo", "sans-serif";
     font-weight: 400;
     font-size:62.5%; /* 10px */
-}
-
-.screen {
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  // FIXME max-width: 300px; スマホだけにする？
 }
 
 h1 {
