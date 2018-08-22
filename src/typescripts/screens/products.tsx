@@ -2,14 +2,14 @@ import * as React from 'react';
 import { RouteComponentProps, Link } from 'react-router-dom';
 import { ProductService } from '../services';
 import Screen from './screen';
-import { Product } from '../entities';
-import { Photo } from '../components/photo';
+import { Product as ProductEntity } from '../entities';
+import { Product } from '../components/product';
 import { Tab } from '../components/tab';
 
 interface Props extends RouteComponentProps<{}> {}
 
 interface State {
-    products: Product[];
+    products: ProductEntity[];
     activeCategory: 'beauty' | 'fashion';
 }
 
@@ -38,29 +38,7 @@ export class Products extends React.Component<Props, State> {
 
     public render() {
         // const products = this.state.products.filter(p => p.beauty).map( p => {
-        const products = this.state.products.map( p => {
-            {/*
-                FIXME
-                ↓でゴニョごにょしている箇所をコンポーネントにしたい
-                <Product key={p.id} product={p} /> のように呼び出して
-                同様の処理になるようなコンポーネントを作って欲しい
-            */}
-
-            const owner = p.owner;
- //           console.log(p);
- //           console.log(owner);
-            return (
-                <div key={p.id} className='product d-flex flex-column'>
-                    <img src={p.imageURLPath} className='product-img'/>
-                    {/*
-                        <p className='concept'>{p.concept}</p>
-                        <p className='owner'>{owner.name}</p>
-                        <p>{owner.subject}</p>
-                        <img src={owner.profilePhotoPath} className='profile_image'/>
-                    */}
-                </div>
-            );
-        });
+        const products = this.state.products.map( product => <Product key={product.id} product={product} />);
 
         return (
             <Screen name='products'>
