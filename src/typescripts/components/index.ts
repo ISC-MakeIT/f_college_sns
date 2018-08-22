@@ -9,3 +9,4 @@ export * from './loading';
 export * from './photo';
 export * from './icon';
 export * from './product';
+export * from './header';

@@ -1,0 +1,26 @@
+.component.header {
+    height: 100px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 5;
+    background-color: $main-color;
+    display: grid;
+    grid-template-areas: "back logo";
+    grid-template-columns: 50px 1fr 50px;
+    -webkit-transform: translate3d(0, 0, 0);
+    .back-button {
+        grid-area: back;
+        display: block;
+        font-size: 1.6rem;
+        margin: auto;
+    }
+    .header-logo {
+        margin: auto;
+        grid-area: logo;
+        img {
+            width: 250px;
+        }
+    }
+}

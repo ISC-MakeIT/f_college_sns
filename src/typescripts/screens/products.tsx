@@ -5,6 +5,7 @@ import Screen from './screen';
 import { Product as ProductEntity } from '../entities';
 import { Product } from '../components/product';
 import { Tab } from '../components/tab';
+import { Header } from '../components/header';
 
 interface Props extends RouteComponentProps<{}> {}
 
@@ -42,6 +43,7 @@ export class Products extends React.Component<Props, State> {
 
         return (
             <Screen name='products'>
+                <Header />
                 <div className='product-index d-flex align-content-center flex-wrap'>
                     {products}
                 </div>
