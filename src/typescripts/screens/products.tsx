@@ -51,11 +51,13 @@ export class Products extends React.Component<Props, State> {
  //           console.log(owner);
             return (
                 <div key={p.id} className='product d-flex flex-column'>
-                    <p className='concept'>{p.concept}</p>
-                    <p className='owner'>{owner.name}</p>
-                    <p>{owner.subject}</p>
-                    <img src={p.imageURLPath} width='100' height='100' />
-                    <img src={owner.profilePhotoPath} width='100' height='100'/>
+                    <img src={p.imageURLPath} className='product-img'/>
+                    {/*
+                        <p className='concept'>{p.concept}</p>
+                        <p className='owner'>{owner.name}</p>
+                        <p>{owner.subject}</p>
+                        <img src={owner.profilePhotoPath} className='profile_image'/>
+                    */}
                 </div>
             );
         });
@@ -65,7 +67,9 @@ export class Products extends React.Component<Props, State> {
                 <Link to='/products' className='link btn btn-sm mt-3'>
                     '/products'へのリンク
                 </Link>
-                {products}
+                <div className='product-index d-flex align-content-center flex-wrap'>
+                    {products}
+                </div>
                 {/*
                     <div className='d-flex flex-wrap'>
                         <Photo photoName={'1_Br2A_SHIOYA_Konatsu'} dirName={'products'} />
@@ -81,19 +85,19 @@ export class Products extends React.Component<Props, State> {
                     </div>
                 */}
 
-                <div className='d-flex flex-row'>
+                <footer className='d-flex flex-row tab-bar'>
                     <Tab
                         stateChange={this.changeActiveCategory}
                         value={'ファッション部門'}
-                        class={`${this.state.activeCategory === 'fashion' ? 'fashion-active' : 'not-fashion'}`}
+                        class={`${this.state.activeCategory === 'fashion' ? 'fashion-active' : 'fashion'}`}
                     />
 
                     <Tab
                         stateChange={this.changeActiveCategory}
                         value={'ビューティー部門'}
-                        class={`${this.state.activeCategory === 'beauty' ? 'beauty-active' : 'not-beauty'}`}
+                        class={`${this.state.activeCategory === 'beauty' ? 'beauty-active' : 'beauty'}`}
                     />
-                </div>
+                </footer>
             </Screen>
         );
     }

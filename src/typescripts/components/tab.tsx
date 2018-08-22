@@ -11,7 +11,7 @@ export const Tab: React.StatelessComponent<Props> = props => {
     return (
         <button
             onClick={props.stateChange}
-            className={props.class}
+            className={`component tab ${props.class}`}
         >
             <Icon name='caret-up' fas />
             {props.value}
