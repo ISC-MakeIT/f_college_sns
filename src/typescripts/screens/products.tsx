@@ -43,8 +43,9 @@ export class Products extends React.Component<Props, State> {
 
         return (
             <Screen name='products'>
-                <Header />
-                <div className='product-index d-flex align-content-center flex-wrap'>
+                <div className='product-index d-flex align-content-around flex-wrap'>
+                    {products}
+                    {products}
                     {products}
                 </div>
                 {/*

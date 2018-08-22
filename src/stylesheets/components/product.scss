@@ -1,0 +1,16 @@
+.component.product{
+
+    text-decoration: none;
+    margin-top: 20px;
+
+    img {
+        width: 45vw;
+        height: 550px;
+        object-fit: fill;
+        border-radius: 20px;
+    }
+
+    .product-creator {
+        display: none;
+    }
+}
