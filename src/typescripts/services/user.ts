@@ -34,9 +34,26 @@ export class UserService {
 
     private static userPhotoNames() {
         return [
-            {name: '山下 美月', subject: 'ブライダル科 ３年', path: PhotoService.buildPhotoPath('yamashitamizuki_prof', 'users')},
-            {name: '西野 七瀬', subject: 'ビューティ科 １年', path: PhotoService.buildPhotoPath('nishinonanase_prof', 'users')},
-            {name: '鈴木 絢音', subject: 'ファッション科 ２年', path: PhotoService.buildPhotoPath('suzukiayane_prof', 'users')},
+            {
+                name: '山下 美月', subject: 'ブライダル科 ３年',
+                path: PhotoService.buildPhotoPath('yamashitamizuki_prof.jpg', 'users'),
+            },
+            {
+                name: '西野 七瀬', subject: 'ビューティ科 １年',
+                path: PhotoService.buildPhotoPath('nishinonanase_prof.jpg', 'users'),
+            },
+            {
+                name: '鈴木 絢音', subject: 'ファッション科 ２年',
+                path: PhotoService.buildPhotoPath('suzukiayane_prof.jpg', 'users'),
+            },
+            {
+                name: 'Gopherくん', subject: 'ファッション科 2年',
+                path: PhotoService.buildPhotoPath('golang.png', 'users'),
+            },
+            {
+                name: 'きずなあい', subject: 'ビューティ科 ４年',
+                path: PhotoService.buildPhotoPath('kizunaai.jpeg', 'users'),
+            },
         ];
     }
 }

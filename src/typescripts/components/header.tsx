@@ -16,16 +16,21 @@ export class Header extends React.Component<Props, {}> {
                 <Link to='/' className='header-logo'>
                     <img src='./assets/images/top/logo.png' alt='header-logo'/>
                 </Link>
+                <div className='ribbon mt-2'>
+                    <Link to='/votes' className='link btn btn-sm mt-3' >
+                        <Icon name='crown' fas />
+                    </Link>
+                </div>
             </header>
         );
     }
-
 }
 
 const BackButton = withRouter(props => (
     <Icon
-        name='arrow-left'
+        name='angle-left'
         className='back-button'
         onClick={() => props.history.goBack()}
+        fas
     />
 ));
