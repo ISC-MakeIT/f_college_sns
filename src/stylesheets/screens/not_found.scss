@@ -1,0 +1,37 @@
+.screen.not-found > .contents {
+    background: linear-gradient($main-color, $gradation-purple-color);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .content-title {
+        color: $white-text-color;
+        h1 {
+            font-weight: inherit;
+            font-size: 14rem;
+            letter-spacing: 13px;
+        }
+        p {
+            font-size: 2.5rem;
+        }
+    }
+
+    .content-nav {
+        color: $white-text-color;
+        margin-top: 45px;
+        font-size: 1.3rem;
+        font-weight: 100;
+    }
+
+    .redirect-link {
+        margin-top: 75px;
+        height: 80px;
+        line-height: 75px;
+        width: 300px;
+        border-radius: 45px;
+        color: $link-main-color;
+        font-size: 1.5rem;
+    }
+}
