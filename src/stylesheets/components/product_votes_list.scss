@@ -1,4 +1,4 @@
-.component.sub_header{
+.component.product_votes_list{
     /*================================================
         リストページCSS
     =================================================*/
@@ -26,34 +26,40 @@
         margin-right: 35px;
     }
 
-    .main_fashion span, .main_beauty span {
-        font-size: 40px;
+    .main_sub_list {
+        height: 76px;
+        color: #F4F4F4;
+        font-size: 16px;
+        border-bottom: 1px solid #707070;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        line-height: 27px;
+        padding: 0 10px;
+    }
+
+    .main_sub_list p {
+        width: 70%;
+        padding: 0 0 0 10px;
+    }
+
+    @media (min-width: 500px) {  
+        .main_sub_list p {
+            width: 80%;
+            padding: 0 0 0 10px;
+        }
+    }
+
+    .main_sub_list img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        border: 1px solid #F4F4F4;
+    }
+
+    .main_sub_list span {
         font-weight: 600;
-        padding: 0 5px;
-    }
-
-    .main_fashion h2 {
-        width: 180px;
-        height: 37px;
-        font-size: 17px;
-        font-weight: normal;
-        background-color: #FE6EAB;
-        border-radius: 0 19px 19px 0;
-        line-height: 37px;
-        text-align: center;
-        padding-right: 8px;
-    }
-
-    .main_beauty h2 {
-        width: 180px;
-        height: 37px;
-        font-size: 17px;
-        font-weight: normal;
-        background-color: #BC6EFE;
-        border-radius: 0 19px 19px 0;
-        line-height: 37px;
-        text-align: center;
-        padding-right: 8px;
+        display: block;
     }
 
     .list_arrow{
@@ -63,4 +69,5 @@
         border-color: #F4F4F4 #F4F4F4 transparent transparent;
         transform: rotate(45deg);
     }
+
 }

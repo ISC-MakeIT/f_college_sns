@@ -1,14 +1,32 @@
 footer {
+        width: 100%;
+        position: fixed;
+        bottom: 0px;
+        
+    /*================================================
+        フッダーCSS
+    =================================================*/
 
-    width: 100vw;
-    height: $footer-height;
-    position: fixed;
-    bottom: 0;
-    // box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.26);
-    flex-grow: 0;
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    z-index: 5;
-    -webkit-transform: translate3d(0, 0, 0);
+    #footer_menu {
+        height: 37px;
+        display: flex;
+        align-items: center;
+        color: #ADADAD;
+        font-size: 17px;
+        text-align: center;
+    }
+
+    .footer_fashion {
+        width: 50%;
+        height: 37px;
+        background-color: #575757;
+        line-height: 37px;
+    }
+
+    .footer_beauty {
+        width: 50%;
+        height: 37px;
+        background-color: #31282C;
+        line-height: 37px;
+    }
 }

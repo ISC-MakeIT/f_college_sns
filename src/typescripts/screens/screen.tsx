@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Header } from '../components/header';
+import { Footer } from '../components/footer';
 
 interface Props {
     name: string;
@@ -25,6 +26,7 @@ export default class Screen extends React.Component<Props, {}> {
                 <div className={`contents ${this.props.style ? this.props.style : ''}`}>
                     {this.props.children}
                 </div>
+                <Footer/>
             </div>
         );
     }
