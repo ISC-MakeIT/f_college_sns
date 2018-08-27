@@ -11,26 +11,22 @@ export class Header extends React.Component<Props, {}> {
     public render() {
 
         return (
-            <header className='component header'>
+            <header id="header_wrap" className="component">
                 {this.props.showBackButton ? <BackButton/> : null}
                 <Link to='/' className='header-logo'>
-                    <img src='./assets/images/top/logo.png' alt='header-logo'/>
+                    <img src='./assets/images/top/logo.svg' alt='header-logo' className='header_logo'/>
                 </Link>
-                <div className='ribbon mt-2'>
-                    <Link to='/votes' className='link btn btn-sm mt-3' >
-                        <Icon name='crown' fas />
-                    </Link>
-                </div>
+                <Link to='/votes'>
+                    <div id="header_label">
+                        <span>あと５票</span>
+                        <div className="label_push">5</div>
+                    </div>
+                </Link>
             </header>
         );
     }
 }
 
 const BackButton = withRouter(props => (
-    <Icon
-        name='angle-left'
-        className='back-button'
-        onClick={() => props.history.goBack()}
-        fas
-    />
+    <div className='back-arrow'/>
 ));

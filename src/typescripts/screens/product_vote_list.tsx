@@ -4,6 +4,7 @@ import Screen from './screen';
 import { Product as ProductEntity } from '../entities/product';
 import { ProductService } from '../services/product';
 import { Loading } from '../components';
+import { SubHeader } from '../components';
 
 interface Props extends RouteComponentProps<{}> {}
 
@@ -37,9 +38,8 @@ export class ProductVoteList extends React.Component<Props, State> {
 
         return(
             <Screen name='product_vote_list' showBackButton>
-                <div className='d-flex flex-column'>
-                    {votedProducts}
-                </div>
+                <SubHeader category='fashion' count={2}/>
+                <SubHeader category='beauty' count={3}/>
             </Screen>
         );
     }

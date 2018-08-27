@@ -1,0 +1,102 @@
+.component.sub_header{
+    /*================================================
+        リストページCSS
+    =================================================*/
+    #main_list {
+        color: #FFFFFF;
+        min-height: 100vh;
+        max-height: auto;
+        background: rgba(0, 0, 0, 0.7);
+        padding: 67px 0 37px;
+        box-sizing: border-box;
+    }
+
+    .main_fashion, .main_beauty {
+        font-size: 22px;
+        font-weight: 500;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 0;
+        border-bottom: 1px solid #707070;
+    }
+
+    .main_list_votes {
+        letter-spacing: 2px;
+        margin-right: 35px;
+    }
+
+    .main_fashion span, .main_beauty span {
+        font-size: 40px;
+        font-weight: 600;
+        padding: 0 5px;
+    }
+
+    .main_fashion h2 {
+        width: 180px;
+        height: 37px;
+        font-size: 17px;
+        font-weight: normal;
+        background-color: #FE6EAB;
+        border-radius: 0 19px 19px 0;
+        line-height: 37px;
+        text-align: center;
+        padding-right: 8px;
+    }
+
+    .main_beauty h2 {
+        width: 180px;
+        height: 37px;
+        font-size: 17px;
+        font-weight: normal;
+        background-color: #BC6EFE;
+        border-radius: 0 19px 19px 0;
+        line-height: 37px;
+        text-align: center;
+        padding-right: 8px;
+    }
+
+    .main_list_tab {
+        height: 76px;
+        color: #F4F4F4;
+        font-size: 15px;
+        border-bottom: 1px solid #707070;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        line-height: 27px;
+        padding: 0 10px;
+    }
+
+    .main_list_tab p {
+        width: 70%;
+        padding: 0 0 0 10px;
+    }
+
+    @media (min-width: 400px) {  
+        .main_list_tab p {
+            width: 80%;
+            padding: 0 0 0 10px;
+        }
+    }
+
+    .main_list_tab img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        border: 1px solid #F4F4F4;
+    }
+
+    .main_list_tab span {
+        font-weight: 600;
+        display: block;
+    }
+
+    .list_arrow{
+        width: 25px;
+        height: 25px;
+        border: 2px solid;
+        border-color: #F4F4F4 #F4F4F4 transparent transparent;
+        transform: rotate(45deg);
+    }
+}

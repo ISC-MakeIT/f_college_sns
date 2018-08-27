@@ -1,7 +1,11 @@
 .screen.product_vote_list {
 
     .contents {
-        margin-top: $header-height;
-        background: linear-gradient($main-color, $gradation-purple-color);
+        color: #FFFFFF;
+        min-height: 100vh;
+        max-height: auto;
+        background: rgba(0, 0, 0, 0.7);
+        padding: 67px 0 37px;
+        box-sizing: border-box;
     }
 }

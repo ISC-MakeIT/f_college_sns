@@ -10,3 +10,4 @@ export * from './photo';
 export * from './icon';
 export * from './product';
 export * from './header';
+export * from './sub_header';
