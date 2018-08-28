@@ -13,7 +13,7 @@ export class SubHeader extends React.Component<Props, {}> {
         const category = this.props.category;
         return (
             <div className='component sub_header'>
-                <div key={1} className={category === 'fashion' ? 'main_fashion' : 'main_beauty'}>
+                <div className={category === 'fashion' ? 'main_fashion' : 'main_beauty'}>
                     <h2>{category === 'fashion' ? 'ファッション部門' : 'ビューティー部門'}</h2>
                     <div className='main_list_votes'>
                     あと<span>{this.props.count}</span>票

@@ -28,5 +28,5 @@ export class Header extends React.Component<Props, {}> {
 }
 
 const BackButton = withRouter(props => (
-    <div className='back-arrow'/>
+    <div className='back-arrow' onClick={() => props.history.goBack()}/>
 ));
