@@ -35,4 +35,4 @@ export class Root extends React.Component<Props, {}> {
             </Screen>
         );
     }
-};
+}

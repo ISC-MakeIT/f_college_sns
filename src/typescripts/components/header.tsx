@@ -11,15 +11,15 @@ export class Header extends React.Component<Props, {}> {
     public render() {
 
         return (
-            <header id="header_wrap" className="component">
+            <header id='header_wrap' className='component'>
                 {this.props.showBackButton ? <BackButton/> : null}
                 <Link to='/' className='header-logo'>
                     <img src='./assets/images/top/logo.svg' alt='header-logo' className='header_logo'/>
                 </Link>
                 <Link to='/votes'>
-                    <div id="header_label">
+                    <div id='header_label'>
                         <span>あと５票</span>
-                        <div className="label_push">5</div>
+                        <div className='label_push'>5</div>
                     </div>
                 </Link>
             </header>

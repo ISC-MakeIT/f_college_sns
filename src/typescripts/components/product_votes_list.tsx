@@ -14,7 +14,7 @@ export class ProductVotesList extends React.Component<Props, {}> {
         return (
             <section className='component product_votes_list'>
                 <section className='main_sub_list'>
-                    <img src="./assets/images/users/kizunaai.jpeg" alt=""/>
+                    <img src='./assets/images/users/kizunaai.jpeg' alt=''/>
                     <p>
                         <span>{owner.subject} {owner.name}</span>
                         {product.concept}
