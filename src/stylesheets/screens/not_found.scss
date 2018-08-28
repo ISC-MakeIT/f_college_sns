@@ -10,28 +10,28 @@
         color: $white-text-color;
         h1 {
             font-weight: inherit;
-            font-size: 14rem;
-            letter-spacing: 13px;
+            font-size: 32vmin;
+            letter-spacing: 1vmin;
+            margin-top: 20px;
         }
         p {
-            font-size: 2.5rem;
+            font-size: 6vmin;
         }
     }
 
     .content-nav {
         color: $white-text-color;
         margin-top: 45px;
-        font-size: 1.3rem;
+        font-size: 3.3vmin;
         font-weight: 100;
     }
 
     .redirect-link {
-        margin-top: 75px;
-        height: 80px;
-        line-height: 75px;
-        width: 300px;
+        margin-top: 55px;
+        width: 60vmin;
+        padding: 22px 0 18px;
         border-radius: 45px;
         color: $link-main-color;
-        font-size: 1.5rem;
+        font-size: 4.5vmin;
     }
 }

@@ -12,7 +12,7 @@
     }
 
     .main_fashion, .main_beauty {
-        font-size: 22px;
+        font-size: 7vmin;
         font-weight: 500;
         display: flex;
         justify-content: space-between;
@@ -23,37 +23,40 @@
 
     .main_list_votes {
         letter-spacing: 2px;
-        margin-right: 35px;
+        margin-top: 5px;
+        margin-right: 5vmin;
     }
 
     .main_fashion span, .main_beauty span {
-        font-size: 40px;
+        font-size: 11vmin;
         font-weight: 600;
         padding: 0 5px;
     }
 
     .main_fashion h2 {
-        width: 190px;
-        height: 37px;
-        font-size: 17px;
+        width: 55vmin;
+        height: 38px;
+        font-size: 5vmin;
         font-weight: 200;
         background-color: #fe6eab;
         border-radius: 0 19px 19px 0;
-        line-height: 37px;
-        text-align: center;
-        padding-right: 8px;
+        padding: 5px 8px 0 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     .main_beauty h2 {
-        width: 190px;
-        height: 37px;
-        font-size: 17px;
+        width: 55vmin;
+        height: 38px;
+        font-size: 5vmin;
         font-weight: 200;
         background-color: #bc6efe;
         border-radius: 0 19px 19px 0;
-        line-height: 37px;
-        text-align: center;
-        padding-right: 8px;
+        padding: 5px 8px 0 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     .list_arrow{

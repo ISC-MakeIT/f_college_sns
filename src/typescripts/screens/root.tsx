@@ -24,7 +24,6 @@ export class Root extends React.Component<Props, {}> {
                         alt='top page f-college logo'
                         className='logo'
                         src='./assets/images/top/logo.svg'
-                        width={800}
                     />
                 </div>
 

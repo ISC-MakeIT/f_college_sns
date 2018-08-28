@@ -2,35 +2,45 @@
     height: 100vh;
     width: 100vw;
     background-image: url("./assets/images/top/top.png");
+    background-size: cover;
 
     .img-container {
         display: flex;
         flex-direction: column;
         align-items: center;
-        img .icon {
-            margin-bottom: 30px;
-            width: 180px;
+        .icon {
+            margin-bottom: 20px;
+            width: 62px;
+            height: 48.5px;
+        }
+        .logo {
+            width: 75%;
+            height: auto;
         }
     }
 
     .circle {
         margin: 0 auto;
         border-radius: 50%;
-        width: 10rem;
-        border: 3px solid rgba(255, 255, 255, 1);
+        width: 16vw;
+        height: 16vw;
+        border: 1px solid rgba(255, 255, 255, 1);
         position: absolute;
-        bottom: 5rem;
+        bottom: 6vw;
         left: 0;
         right: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     i {
-        font-size: 10rem;
-        width: 10rem;
-        color: white;
-        position: relative;
-        right: 2px;
-        top: 10px;
+        width: 8vmin;
+        height: 8vmin;
+        border: 2px solid;
+        border-color: #f4f4f4 #f4f4f4 transparent transparent;
+        transform: rotate(135deg);
+        margin-top: -10px;
     }
 
 }

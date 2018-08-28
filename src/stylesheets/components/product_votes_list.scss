@@ -2,25 +2,6 @@
     /*================================================
         リストページCSS
     =================================================*/
-    #main_list {
-        color: #fff;
-        min-height: 100vh;
-        max-height: auto;
-        background: rgba(0, 0, 0, 0.7);
-        padding: 67px 0 37px;
-        box-sizing: border-box;
-    }
-
-    .main_fashion, .main_beauty {
-        font-size: 22px;
-        font-weight: 500;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 10px 0;
-        border-bottom: 1px solid #707070;
-    }
-
     .main_list_votes {
         letter-spacing: 2px;
         margin-right: 35px;
@@ -29,19 +10,18 @@
     .main_sub_list {
         height: 76px;
         color: #f4f4f4;
-        font-size: 16px;
         border-bottom: 1px solid #707070;
         display: flex;
         justify-content: space-around;
         align-items: center;
-        line-height: 27px;
-        padding: 0 20px;
+        padding: 0 15px;
     }
 
     .main_sub_list p {
-        width: 70%;
+        width: 72%;
         padding: 0 0 0 10px;
-        font-size: 16px;
+        font-size: 4vmin;
+        line-height: 170%;
     }
 
     @media (min-width: 500px) {  
@@ -52,8 +32,8 @@
     }
 
     .main_sub_list img {
-        width: 55px;
-        height: 55px;
+        width: 15vmin;
+        height: auto;
         border-radius: 50%;
         border: 1px solid #f4f4f4;
     }
