@@ -3,7 +3,7 @@
         リストページCSS
     =================================================*/
     #main_list {
-        color: #FFFFFF;
+        color: #fff;
         min-height: 100vh;
         max-height: auto;
         background: rgba(0, 0, 0, 0.7);
@@ -28,7 +28,7 @@
 
     .main_sub_list {
         height: 76px;
-        color: #F4F4F4;
+        color: #f4f4f4;
         font-size: 16px;
         border-bottom: 1px solid #707070;
         display: flex;
@@ -41,6 +41,7 @@
     .main_sub_list p {
         width: 70%;
         padding: 0 0 0 10px;
+        font-size: 16px;
     }
 
     @media (min-width: 500px) {  
@@ -54,7 +55,7 @@
         width: 55px;
         height: 55px;
         border-radius: 50%;
-        border: 1px solid #F4F4F4;
+        border: 1px solid #f4f4f4;
     }
 
     .main_sub_list span {
@@ -63,10 +64,10 @@
     }
 
     .list_arrow{
-        width: 25px;
-        height: 25px;
+        width: 30px;
+        height: 30px;
         border: 2px solid;
-        border-color: #F4F4F4 #F4F4F4 transparent transparent;
+        border-color: #f4f4f4 #f4f4f4 transparent transparent;
         transform: rotate(45deg);
     }
 

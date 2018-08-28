@@ -3,7 +3,7 @@
         リストページCSS
     =================================================*/
     #main_list {
-        color: #FFFFFF;
+        color: #fff;
         min-height: 100vh;
         max-height: auto;
         background: rgba(0, 0, 0, 0.7);
@@ -33,11 +33,11 @@
     }
 
     .main_fashion h2 {
-        width: 188px;
+        width: 190px;
         height: 37px;
         font-size: 17px;
-        font-weight: normal;
-        background-color: #FE6EAB;
+        font-weight: 200;
+        background-color: #fe6eab;
         border-radius: 0 19px 19px 0;
         line-height: 37px;
         text-align: center;
@@ -45,11 +45,11 @@
     }
 
     .main_beauty h2 {
-        width: 188px;
+        width: 190px;
         height: 37px;
         font-size: 17px;
-        font-weight: normal;
-        background-color: #BC6EFE;
+        font-weight: 200;
+        background-color: #bc6efe;
         border-radius: 0 19px 19px 0;
         line-height: 37px;
         text-align: center;
@@ -60,7 +60,7 @@
         width: 25px;
         height: 25px;
         border: 2px solid;
-        border-color: #F4F4F4 #F4F4F4 transparent transparent;
+        border-color: #f4f4f4 #f4f4f4 transparent transparent;
         transform: rotate(45deg);
     }
 }
