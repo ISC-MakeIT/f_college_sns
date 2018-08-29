@@ -10,10 +10,8 @@
         width: 54px;
         height: 60px;
         color: #fff;
-        font-size: 11px;
+        font-size: 10px;
         text-align: center;
-        background: url(f_college/logo_icon.png) no-repeat center 7px;
-        background-size: 39px;
         background-color: #ffce2c;
         border-radius: 0 0 5px 5px;
         box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
@@ -21,9 +19,18 @@
         top: 0px;
         right: 10px;
         z-index: 10;
-        padding-top: 39px;
         box-sizing: border-box;
         display: block;
+
+        span {
+            display: block;
+            margin: 0 auto;
+        }
+
+        i {
+            font-size: 35px;
+            margin: 3px 0 5px;
+        }
     }
 
     #header_label .label_push {

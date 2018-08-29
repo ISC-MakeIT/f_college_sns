@@ -29,7 +29,7 @@ export class Root extends React.Component<Props, {}> {
 
                 <Link to='/products' className='link btn btn-sm mt-3' >
                     <div className='circle'>
-                        <Icon name='chevron-down' fas />
+                        <i className='root_icon' />
                     </div>
                 </Link>
             </Screen>

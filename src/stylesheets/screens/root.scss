@@ -32,15 +32,14 @@
         display: flex;
         align-items: center;
         justify-content: center;
-    }
-
-    i {
-        width: 8vmin;
-        height: 8vmin;
-        border: 2px solid;
-        border-color: #f4f4f4 #f4f4f4 transparent transparent;
-        transform: rotate(135deg);
-        margin-top: -10px;
+        .root_icon {
+            width: 8vmin;
+            height: 8vmin;
+            border: 2px solid;
+            border-color: #f4f4f4 #f4f4f4 transparent transparent;
+            transform: rotate(135deg);
+            margin-top: -10px;
+        }
     }
 
 }
