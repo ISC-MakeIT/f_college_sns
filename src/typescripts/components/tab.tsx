@@ -9,12 +9,12 @@ interface Props {
 
 export const Tab: React.StatelessComponent<Props> = props => {
     return (
-        <button
+        <div
             onClick={props.stateChange}
             className={`component tab ${props.class}`}
         >
-            <Icon name='caret-up' fas />
-            {props.value}
-        </button>
+            <p className='text'>{props.value}</p>
+        <i />
+        </div>
     );
 };

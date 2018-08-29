@@ -1,45 +1,56 @@
 .component.tab {
-
     width: 50%;
-    height: 100%;
-    font-size: 26px;
+    height: 37px;
+    font-size: 4.2vmin;
     background-color: $black;
     color: white;
     padding-bottom: 25px;
     text-align: center;
+    line-height: 37px;
+
+    .text {
+        font-size: 4.2vmin;
+        position: relative;
+        z-index: 10;
+        padding-top: 3px;
+    }
 
     i {
-        position: relative;
-        font-size: 5.5rem;
-        bottom: 47px;
-        right: 12vw;
+        width: 25px;
+        height: 25px;
+        transform: rotate(225deg);
+        position: absolute;
     }
 
     &.fashion-active{
         background-color: $fashion;
-        border: none;
         i {
-            color: $fashion;
+            background-color: $fashion;
+            border: 1px solid $fashion;
+            z-index: 5;
+            top: -12px;
+            left: 10px;
         }
     }
 
     &.beauty-active {
         background-color: $beauty;
-        border: none;
         i {
-            color: $beauty;
+            background-color: $beauty;
+            border: 1px solid $beauty;
+            z-index: 5;
+            top: -12px;
+            right: 10px;
         }
     }
 
     .fashion {
-        border: none;
         i {
             display: none;
         }
     }
 
     .beauty {
-        border: none;
         i {
             display: none;
             right: 100px;
