@@ -62,6 +62,18 @@ export class Products extends React.Component<Props, State> {
                         <Photo photoName={'28_FLD3_OGURA_Mariko'} dirName={'products'} />
                     </div>
                 */}
+                <footer>
+                    <Tab
+                        stateChange={this.changeActiveCategory}
+                        value={'ファッション部門'}
+                        class={`${this.state.activeCategory === 'fashion' ? 'fashion-active' : 'fashion'}`}
+                    />
+                     <Tab
+                        stateChange={this.changeActiveCategory}
+                        value={'ビューティー部門'}
+                        class={`${this.state.activeCategory === 'beauty' ? 'beauty-active' : 'beauty'}`}
+                    />
+                </footer>
             </Screen>
         );
     }

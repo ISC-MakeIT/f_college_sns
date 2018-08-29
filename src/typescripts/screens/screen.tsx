@@ -27,7 +27,7 @@ export default class Screen extends React.Component<Props, {}> {
                 <div className={`contents ${this.props.style ? this.props.style : ''}`}>
                     {this.props.children}
                 </div>
-                {footer}
+                {/* {footer} */}
             </div>
         );
     }
