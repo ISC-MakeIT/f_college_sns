@@ -141,3 +141,7 @@ https://tech.gamewith.co.jp/entry/2018/05/22/154951
 
   ### how2use
    `***Service.***`として呼び出すことが多そう。
+
+
+ 最後になってしまったが、基本的に新規のファイルを作成したらそのDirにある`index.ts`にて **export**することが必須。
+ 'scss'の場合は`application.scss` での **import宣言** なのでうまく動かない場合はそこらへんを疑うといいかも
