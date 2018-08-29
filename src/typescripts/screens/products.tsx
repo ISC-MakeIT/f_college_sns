@@ -48,27 +48,14 @@ export class Products extends React.Component<Props, State> {
                     {products}
                     {products}
                 </div>
-                {/*
-                    <div className='d-flex flex-wrap'>
-                        <Photo photoName={'1_Br2A_SHIOYA_Konatsu'} dirName={'products'} />
-                        <Photo photoName={'3_Br2A_MARUYAMA_Shiori'} dirName={'products'} />
-                        <Photo photoName={'4_Br2B_OONUKI_Erii'} dirName={'products'} />
-                        <Photo photoName={'6_FLD2_KITAZAWA_Saaya'} dirName={'products'} />
-                        <Photo photoName={'9_FB1B_MIYAUCHI_Haruka'} dirName={'products'} />
-                        <Photo photoName={'12_FB2_MURAYAMA_Sakura'} dirName={'products'} />
-                        <Photo photoName={'14_FLD1_OKUMA_Aoi'} dirName={'products'} />
-                        <Photo photoName={'17_FLD1_Yamauchi_Ryo'} dirName={'products'} />
-                        <Photo photoName={'22_FLD2_ISHIDA_Hinata'} dirName={'products'} />
-                        <Photo photoName={'28_FLD3_OGURA_Mariko'} dirName={'products'} />
-                    </div>
-                */}
-                <footer>
+
+                <footer className='d-flex align-items-center'>
                     <Tab
                         stateChange={this.changeActiveCategory}
                         value={'ファッション部門'}
                         class={`${this.state.activeCategory === 'fashion' ? 'fashion-active' : 'fashion'}`}
                     />
-                     <Tab
+                    <Tab
                         stateChange={this.changeActiveCategory}
                         value={'ビューティー部門'}
                         class={`${this.state.activeCategory === 'beauty' ? 'beauty-active' : 'beauty'}`}
