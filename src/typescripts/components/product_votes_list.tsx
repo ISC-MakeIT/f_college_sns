@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { Product as ProductEntity } from '../entities/product';
+import { Product } from '../entities/product';
 import { Link } from 'react-router-dom';
 
 interface Props {
-    product: any;
+    product: Product;
 }
 
 export class ProductVotesList extends React.Component<Props, {}> {
