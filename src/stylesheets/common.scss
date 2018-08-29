@@ -12,15 +12,16 @@ $fashion: #FE6EAB;
 $beauty: #BC6EFE;
 $black: #31282C;
 
-$header-height: 100px;
+$header-height: 67px;
 $header-ribbon-color: #FFCE2C;
-$footer-height: 80px;
+$footer-height: 37px;
 
 body {
     color: $text-color;
     font-family: "Shree Devanagari 714", "Optima", "Nunito", "Yu Gothic", "Hiragino Kaku Gothic Pro", "Meiryo", "sans-serif";
     font-weight: 400;
     font-size:62.5%; /* 10px */
+    background: linear-gradient($main-color,$gradation-purple-color);
 }
 
 h1 {

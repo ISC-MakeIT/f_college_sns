@@ -1,0 +1,54 @@
+.component.product_votes_list{
+    /*================================================
+        リストページCSS
+    =================================================*/
+    .main_list_votes {
+        letter-spacing: 2px;
+        margin-right: 35px;
+    }
+
+    .main_sub_list {
+        height: 76px;
+        color: #f4f4f4;
+        border-bottom: 1px solid #707070;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 0 15px;
+    }
+
+    .main_sub_list p {
+        width: 72%;
+        padding: 0 0 0 10px;
+        font-size: 4vmin;
+        line-height: 170%;
+    }
+
+    @media (min-width: 500px) {  
+        .main_sub_list p {
+            width: 80%;
+            padding: 0 0 0 10px;
+        }
+    }
+
+    .main_sub_list img {
+        width: 15vmin;
+        height: auto;
+        border-radius: 50%;
+        border: 1px solid #f4f4f4;
+    }
+
+    .main_sub_list span {
+        font-weight: 600;
+        display: block;
+    }
+
+    .list_arrow{
+        width: 30px;
+        height: 30px;
+        border: 2px solid;
+        border-color: #f4f4f4 #f4f4f4 transparent transparent;
+        transform: rotate(45deg);
+    }
+
+}

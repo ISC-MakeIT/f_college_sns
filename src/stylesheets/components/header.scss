@@ -1,48 +1,67 @@
-.component.header {
-    height: $header-height;
+#header_wrap {
+    width: 100%;
+    background-color: #fe6eab;
+    padding: 7px 0 8px;
     position: fixed;
     top: 0;
-    left: 0;
-    width: 100%;
     z-index: 5;
-    background-color: $main-color;
-    display: grid;
-    grid-template-areas: "back logo crown";
-    grid-template-columns: 1fr 5fr 1fr;
-    -webkit-transform: translate3d(0, 0, 0);
-    .back-button {
-        grid-area: back;
-        display: block;
-        font-size: 6rem;
-        margin: auto;
-        color: $white-text-color;
-    }
-    .header-logo {
-        margin: auto;
-        grid-area: logo;
-        img {
-            width: 250px;
-        }
-    }
 
-    .ribbon {
-        grid-area: crown;
-        background: $header-ribbon-color;
-        width: 100px;
-        height: 95px;
+    #header_label {
+        width: 54px;
+        height: 60px;
+        color: #fff;
+        font-size: 10px;
         text-align: center;
-        box-shadow: $component-shadow;
+        background-color: #ffce2c;
+        border-radius: 0 0 5px 5px;
+        box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+        position: fixed;
+        top: 0px;
+        right: 10px;
+        z-index: 10;
+        box-sizing: border-box;
+        display: block;
 
-        box-shadow: 5px 5px 15px -3px #babcbb;
-        border-radius: 3px 3px 10px 10px ;
-
-        .fa-crown {
+        span {
             display: block;
-            font-size: 5rem;
-            margin: 10px auto 0;
-            color: $white-text-color;
+            margin: 0 auto;
         }
 
+        i {
+            font-size: 35px;
+            margin: 3px 0 5px;
+        }
+    }
+
+    #header_label .label_push {
+        width: 19px;
+        height: 19px;
+        color: #fff;
+        font-size: 14px;
+        text-align: center;
+        background-color: #d90b0b;
+        border-radius: 50%;
+        position: absolute;
+        top: 3px;
+        right: -5px;
+    }
+
+    .header_logo {
+        width: 151px;
+        height: 52px;
+        display: block;
+        margin: 0 auto;
+    }
+
+    .back-arrow {
+        width: 25px;
+        height: 25px;
+        border: 2px solid;
+        border-color: #f4f4f4 #f4f4f4 transparent transparent;
+        transform: rotate(225deg);
+        position: absolute;
+        left: 15px;
+        top: 22px;
     }
 
 }

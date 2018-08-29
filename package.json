@@ -6,8 +6,8 @@
     "scripts": {
         "start": "./node_modules/.bin/webpack-dev-server --watch --config ./webpack/dev.js --mode development --history-api-fallback --open --hot --inline",
         "build": "webpack --config ./webpack/prod.js --mode production",
-        "lint:style": "stylelint --fix src/stylesheets/**/**/*.scss",
-        "lint:ts": "tslint --fix src/typescripts/**/**/*"
+        "lint:style": "./node_modules/.bin/stylelint src/stylesheets/**/*.scss --fix",
+        "lint:ts": "./node_modules/.bin/tslint src/typescripts/**/*.tsx --fix"
     },
     "author": "",
     "license": "ISC",

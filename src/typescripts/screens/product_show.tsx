@@ -39,4 +39,3 @@ export class ProductShow extends React.Component<Props, State> {
         );
     }
 }
-

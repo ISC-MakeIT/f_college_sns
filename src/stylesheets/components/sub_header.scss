@@ -1,0 +1,69 @@
+.component.sub_header{
+    /*================================================
+        リストページCSS
+    =================================================*/
+    #main_list {
+        color: #fff;
+        min-height: 100vh;
+        max-height: auto;
+        background: rgba(0, 0, 0, 0.7);
+        padding: 67px 0 37px;
+        box-sizing: border-box;
+    }
+
+    .main_fashion, .main_beauty {
+        font-size: 7vmin;
+        font-weight: 500;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 0;
+        border-bottom: 1px solid #707070;
+    }
+
+    .main_list_votes {
+        letter-spacing: 2px;
+        margin-top: 5px;
+        margin-right: 5vmin;
+    }
+
+    .main_fashion span, .main_beauty span {
+        font-size: 11vmin;
+        font-weight: 600;
+        padding: 0 5px;
+    }
+
+    .main_fashion h2 {
+        width: 55vmin;
+        height: 38px;
+        font-size: 5vmin;
+        font-weight: 200;
+        background-color: #fe6eab;
+        border-radius: 0 19px 19px 0;
+        padding: 5px 8px 0 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .main_beauty h2 {
+        width: 55vmin;
+        height: 38px;
+        font-size: 5vmin;
+        font-weight: 200;
+        background-color: #bc6efe;
+        border-radius: 0 19px 19px 0;
+        padding: 5px 8px 0 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .list_arrow{
+        width: 25px;
+        height: 25px;
+        border: 2px solid;
+        border-color: #f4f4f4 #f4f4f4 transparent transparent;
+        transform: rotate(45deg);
+    }
+}

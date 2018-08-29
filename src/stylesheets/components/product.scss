@@ -1,15 +1,14 @@
 .component.product{
 
-    // define
-    $img-size: 550px;
-
     text-decoration: none;
     margin-top: 20px;
-    height: $img-size;
+
+    .link-container {
+        height: 260px;
+    }
 
     img {
         width: 45vw;
-        height: $img-size;
         object-fit: fill;
         border-radius: 20px;
     }
@@ -17,41 +16,46 @@
     .product-creator {
         background-color: gray;
         opacity: 0.85;
-        height: 100px;
         width: 100%;
         position: relative;
-        bottom: 100px;
-        border-radius: 0 0 20px 20px;
+        bottom: 55px;
+        padding-left: 9px;
 
         p {
             text-decoration: none;
             color: $white-text-color;
         }
         .owner-subject {
-            font-size: 2rem;
+            font-size: 0.6rem;
         }
 
         .owner-name {
-            font-size: 2.5rem;
+            font-size: 1rem;
         }
 
         .profile_image {
-            width: 80px;
-            height: 80px;
+            width: 35px;
+            height: 35px;
             border-radius: 50px;
             margin: 0 auto;
         }
-
-        // .title {
-        //     margin-bottom: 10px;
-        //     font-size: 5rem;
-        // }
 
 
         .concept {
             font-weight: 800;
             font-size: 1.8rem;
         }
+    }
 
+    .likes-count {
+        position: relative;
+        bottom: 55px;
+        background-color: #31282c;
+        border-radius: 0 0 20px 20px;
+        color: $white-text-color;
+        padding-left: 15px;
+        height: 16px;
+        line-height: 20px;
+        font-size: 0.7rem;
     }
 }

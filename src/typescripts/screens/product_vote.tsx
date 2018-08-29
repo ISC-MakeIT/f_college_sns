@@ -4,6 +4,8 @@ import Screen from './screen';
 import { Product as ProductEntity } from '../entities/product';
 import { ProductService } from '../services/product';
 import { Loading } from '../components';
+import { SubHeader } from '../components';
+import { ProductVotesList } from '../components';
 
 interface Props extends RouteComponentProps<{}> {}
 
@@ -29,17 +31,14 @@ export class ProductVoteList extends React.Component<Props, State> {
         if (this.state.products === null) return( <Loading />);
 
         const votedProducts = this.state.products.map( p => (
-                <div key={p.id}>
-                    <img src={p.owner.profilePhotoPath} alt={p.concept} width='100' height='100'/>
-                    <p>{p.owner.name}</p>
-                </div>
+            <ProductVotesList key={p.id} product={p}/>
         ));
 
         return(
             <Screen name='product_vote_list' showBackButton>
-                <div className='d-flex flex-column'>
-                    {votedProducts}
-                </div>
+                <SubHeader category='fashion' count={2}/>
+                <SubHeader category='beauty' count={3}/>
+                {votedProducts}
             </Screen>
         );
     }

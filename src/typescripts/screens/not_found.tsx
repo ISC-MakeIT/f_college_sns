@@ -6,7 +6,7 @@ interface Props extends RouteComponentProps<{}> {}
 
 export const NotFound: React.StatelessComponent<Props> = () => {
     return (
-        <Screen name='not-found' hideHeader>
+        <Screen name='not-found' hideHeader hideFooter>
             <section className='text-center'>
                 <div className='content-title'>
                     <h1 className='404'>

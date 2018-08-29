@@ -6,17 +6,17 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: npm-{{ .Branch }}-{{ checksum "package-lock.json" }}
+          key: npm-{{ .Branch }}-{{ checksum "yarn"}}
       - run:
-          name: npm install
-          command: npm install
+          name: yarn install
+          command: yarn install
       - save_cache:
-          key: npm-{{ .Branch }}-{{ checksum "package-lock.json" }}
+          key: npm-{{ .Branch }}-{{ checksum "yarn" }}
           paths:
           - ~/workspace/node_modules
       - run:
           name: stylelint
-          command: ./node_modules/stylelint/bin/stylelint.js src/stylesheets/**/**/*
+          command: ./node_modules/.bin/stylelint src/stylesheets/**/*.scss
       - run:
           name: tslint
-          command: ./node_modules/tslint/bin/tslint src/typescripts/**/**/*
+          command: ./node_modules/.bin/tslint ./src/typescripts/**/*.tsx

@@ -10,3 +10,6 @@ export * from './photo';
 export * from './icon';
 export * from './product';
 export * from './header';
+export * from './sub_header';
+export * from './product_votes_list';
+export * from './footer';
