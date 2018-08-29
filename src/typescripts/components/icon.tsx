@@ -10,7 +10,8 @@ interface Props extends React.HTMLProps<HTMLElement> {
 export const Icon = (props: Props) => (
     <i
         onClick={(e => props.onClick ? props.onClick(e) : null)}
-        className={`component icon ${faModuleNameFromProps(props)}`}
+        className={`component icon ${faModuleNameFromProps(props)}
+        fa-${props.name} ${props.className || ''}`}
     />
 );
 
