@@ -14,7 +14,7 @@ export class Product extends React.Component<Props, {}> {
         const owner = product.owner;
 
         return (
-            <div key={product.id} className='component product d-flex flex-column'>
+            <div key={product.id} className='component product'>
                 <Link to={`/products/${product.id}`} className='link-container'>
                     <img src={product.imageURLPath} className='product-img'/>
                     <div className='product-creator d-flex flex-row align-items-center'>

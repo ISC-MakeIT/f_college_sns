@@ -43,7 +43,7 @@ export class Products extends React.Component<Props, State> {
 
         return (
             <Screen name='products'>
-                <div className='product-index d-flex align-content-around flex-wrap'>
+                <div className='product-index'>
                     {products}
                     {products}
                     {products}

@@ -1,32 +1,39 @@
 .component.product{
-
+    display: flex;
     text-decoration: none;
-    margin-top: 20px;
+    margin-top: 13px;
 
     .link-container {
-        height: 260px;
+        height: 240px;
     }
 
-    img {
-        width: 45vw;
-        object-fit: fill;
-        border-radius: 20px;
+    
+    .product-img {
+        width: 46vw;
+        object-fit: cover;
+        object-position: 0% 0%;
+        border-radius: 5px;
+        overflow: hidden;
     }
-
+    
     .product-creator {
-        background-color: gray;
-        opacity: 0.85;
+        background-color: rgba(36, 22, 30, 0.75);
         width: 100%;
         position: relative;
-        bottom: 55px;
-        padding-left: 9px;
+        bottom: 69px;
+        padding: 10px 0 3px 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
         p {
             text-decoration: none;
             color: $white-text-color;
         }
+
         .owner-subject {
-            font-size: 0.6rem;
+            font-size: 0.5rem;
+            color: #adadad;
         }
 
         .owner-name {
@@ -36,10 +43,9 @@
         .profile_image {
             width: 35px;
             height: 35px;
-            border-radius: 50px;
-            margin: 0 auto;
+            border-radius: 50%;
+            margin: 0 auto 5px;
         }
-
 
         .concept {
             font-weight: 800;
@@ -49,13 +55,18 @@
 
     .likes-count {
         position: relative;
-        bottom: 55px;
+        bottom: 69px;
         background-color: #31282c;
-        border-radius: 0 0 20px 20px;
+        border-radius: 0 0 5px 5px;
         color: $white-text-color;
-        padding-left: 15px;
+        padding-left: 10px;
         height: 16px;
         line-height: 20px;
-        font-size: 0.7rem;
+        font-size: 0.6rem;
+        color: #ababab;
+
+        i {
+            padding-right: 5px;
+        }
     }
 }
