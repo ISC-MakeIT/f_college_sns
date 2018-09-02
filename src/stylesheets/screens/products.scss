@@ -7,7 +7,10 @@
     }
 
     .product-index {
-        justify-content: space-evenly;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        padding: 0 10px 20px;
     }
 
     footer {
