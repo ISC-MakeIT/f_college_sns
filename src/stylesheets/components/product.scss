@@ -7,7 +7,7 @@
         height: 240px;
     }
 
-    
+
     .product-img {
         width: 46vw;
         object-fit: cover;
@@ -15,7 +15,7 @@
         border-radius: 5px;
         overflow: hidden;
     }
-    
+
     .product-creator {
         background-color: rgba(36, 22, 30, 0.75);
         width: 100%;
@@ -58,12 +58,11 @@
         bottom: 69px;
         background-color: #31282c;
         border-radius: 0 0 5px 5px;
-        color: $white-text-color;
+        color: #ababab;
         padding-left: 10px;
         height: 16px;
         line-height: 20px;
         font-size: 0.6rem;
-        color: #ababab;
 
         i {
             padding-right: 5px;

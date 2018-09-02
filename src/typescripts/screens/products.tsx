@@ -68,7 +68,7 @@ export class Products extends React.Component<Props, State> {
                         value={'ファッション部門'}
                         class={`${this.state.activeCategory === 'fashion' ? 'fashion-active' : 'fashion'}`}
                     />
-                     <Tab
+                    <Tab
                         stateChange={this.changeActiveCategory}
                         value={'ビューティー部門'}
                         class={`${this.state.activeCategory === 'beauty' ? 'beauty-active' : 'beauty'}`}
