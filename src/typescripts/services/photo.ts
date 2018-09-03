@@ -4,6 +4,10 @@ export class PhotoService {
         return `${PhotoService.basePhotoPath()}/${dir}/${name}`;
     }
 
+    public static s3basePhotoPath = () => {
+        return `https://s3-ap-northeast-1.amazonaws.com/f-college-images`;
+    }
+
     public static buildPhotoPathFromId = (id: number) => {
         const imageNames = [
             '1_Br2A_SHIOYA_Konatsu',

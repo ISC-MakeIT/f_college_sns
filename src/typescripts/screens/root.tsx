@@ -3,6 +3,7 @@ import Screen from './screen';
 import { RouteComponentProps, Link} from 'react-router-dom';
 import { Icon } from '../components/icon';
 import { Loading } from '../components';
+import { PhotoService } from '../services/photo';
 
 interface Props extends RouteComponentProps<{}> {
 
@@ -18,12 +19,12 @@ export class Root extends React.Component<Props, {}> {
                     <img
                         alt='top page icon'
                         className='icon'
-                        src='./assets/images/top/icon.png'
+                        src={`${PhotoService.s3basePhotoPath()}/logos/icon.png`}
                     />
                     <img
                         alt='top page f-college logo'
                         className='logo'
-                        src='./assets/images/top/logo.svg'
+                        src={`${PhotoService.s3basePhotoPath()}/logos/logo.svg`}
                     />
                 </div>
 
