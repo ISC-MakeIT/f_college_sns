@@ -8,6 +8,7 @@
 .LSOverride
 .vscode/launch.json
 package-lock.json
+.aws/*
 
 # Icon must end with two \r
 Icon
