@@ -38,9 +38,16 @@ export class PhotoService {
             '30_FLD3_SUZUKI_Minatsu',
         ];
 
-        const img = imageNames.find(i => Number(i.split('_')[0]) === id);
-        return `${PhotoService.basePhotoPath()}/products/${img}.jpg`;
+        const img = imageNames.find(i => Number(i.split('_')[0]) === id) + '.jpg' || '';
+        const photoName = PhotoService.getS3PhotoPath(img, 'products');
+        return photoName;
     }
 
+    public static getS3PhotoPath = (img: string, dir?: string) => {
+        if (dir === undefined) {
+            return `https://s3-ap-northeast-1.amazonaws.com/f-college-images/${img}`;
+        }
+        return `https://s3-ap-northeast-1.amazonaws.com/f-college-images/${dir}/${img}`;
+    }
     private static basePhotoPath = () => './assets/images';
 }
