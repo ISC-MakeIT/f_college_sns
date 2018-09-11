@@ -38,7 +38,7 @@ export class PhotoService {
             '30_FLD3_SUZUKI_Minatsu',
         ];
 
-        const img = imageNames.find(i => Number(i.split('_')[0]) === id) + '.jpg' || '';
+        const img = imageNames.find(i => Number(i.split('_')[0]) === Number(id)) + '.jpg' || '';
         const photoName = PhotoService.getS3PhotoPath(img, 'products');
         return photoName;
     }
