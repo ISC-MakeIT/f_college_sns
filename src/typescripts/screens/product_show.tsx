@@ -89,6 +89,8 @@ export class ProductShow extends React.Component<Props, State> {
                             />
                         </div>
                     </div>
+                </div>
+
                 <Link to='/products' className='link btn btn-sm mt-3'>
                     '/products'へのリンク
                 </Link>
