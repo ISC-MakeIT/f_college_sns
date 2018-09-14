@@ -45,26 +45,36 @@ export class ProductShow extends React.Component<Props, State> {
 
         subImages.unshift(
             <p className='img-container'>
-                <img src={product.imageURLPath} width={100} height={100} />
+                {/* FIXME URL */}
+                {/* <img src={product.imageURLPath} width={100} height={100} /> */}
+                <img
+                    src={'/assets/images/products/1_Br2A_SHIOYA_Konatsu.jpg'}
+                    width={100}
+                    height={100}
+                />
             </p>);
 
-        const activeImage = this.state.activeImagePath;
+        // const activeImage = this.state.activeImagePath;
+        const activeImage = '/assets/images/products/1_Br2A_SHIOYA_Konatsu.jpg';
 
         return (
-            <Screen name='product_show' showBackButton>
+            <Screen name='product-show' showBackButton>
                 {/*
                     <h1 className='title'>
                         {this.state.product.title}
                     </h1>
                 */}
-                <img
-                    className='product-img'
-                    src={activeImage}
-                />
-                <div className='sub-images-container d-flex'>
-                    {subImages}
+                <div className='image-container'>
+                    <img
+                        className='product-img'
+                        src={activeImage}
+                    />
+                    <div className='sub-images-container d-flex'>
+                        {subImages}
+                    </div>
                 </div>
 
+                {/*
                 <div className='product-container'>
                     <div className='concept'>
                         <h2>Concept</h2>
@@ -90,6 +100,7 @@ export class ProductShow extends React.Component<Props, State> {
                         </div>
                     </div>
                 </div>
+                */}
 
                 <Link to='/products' className='link btn btn-sm mt-3'>
                     '/products'へのリンク

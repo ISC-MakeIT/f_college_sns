@@ -1,34 +1,40 @@
-.screen.product_show {
-    display: flex;
-    text-decoration: none;
-    margin-top: 13px;
+.screen.product-show {
     background-image: url(#{$base-photo-url}/logos/top.png);
     background-size: cover;
+    display: flex;
+    margin-top: 13px;
+    text-decoration: none;
 
     .title {
-        margin-bottom: 10px;
         font-size: 12px;
+        margin-bottom: 10px;
+    }
+
+    .image-container {
+        width: 100vw;
+        height: calc(100vw + 100px);
     }
 
     .product-img {
-        width: 100vw;
+        border-radius: 5px;
         object-fit: cover;
         object-position: 0% 0%;
-        border-radius: 5px;
         overflow: hidden;
+        width: 100vw;
     }
 
     .sub-images-container{
+        overflow-y: overlay;
 
-        .img-container{
+        .img-container {
             background-color: rgba(36, 22, 30, 0.75);
         }
 
-        img .active{
+        img.active {
 
         }
 
-        img{
+        img {
             opacity: 0.3;
             position: relative;
             padding: 10px 0 3px 10px;
