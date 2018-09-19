@@ -1,23 +1,23 @@
 #header_wrap {
     width: 100%;
     background-color: #fe6eab;
-    padding: 7px 0 8px;
+    padding: 2vmin 0 2vmin;
     position: fixed;
     top: 0;
     z-index: 5;
 
     #header_label {
-        width: 54px;
-        height: 60px;
+        width: 15vmin;
+        height: 16.3vmin;
         color: #fff;
-        font-size: 10px;
+        font-size: 3vmin;
         text-align: center;
         background-color: #ffce2c;
-        border-radius: 0 0 5px 5px;
-        box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+        border-radius: 0 0 1.3vmin 1.3vmin;
+        box-shadow: 1vmin 1vmin 1vmin rgba(0, 0, 0, 0.2);
         position: fixed;
         top: 0px;
-        right: 10px;
+        right: 2vmin;
         z-index: 10;
         box-sizing: border-box;
         display: block;
@@ -28,41 +28,41 @@
         }
 
         i {
-            font-size: 35px;
-            margin: 3px 0 5px;
+            font-size: 9.7vmin;
+            margin: 1vmin 0 1vmin;
         }
     }
 
     #header_label .label_push {
-        width: 19px;
-        height: 19px;
+        width: 4.5vmin;
+        height: 4.5vmin;
         color: #fff;
-        font-size: 14px;
+        font-size: 3.4vmin;
         text-align: center;
         background-color: #d90b0b;
         border-radius: 50%;
         position: absolute;
-        top: 4px;
-        right: -5px;
+        top: 1vmin;
+        right: -1.2vmin;
         padding-top: 1px;
     }
 
     .header_logo {
-        width: 151px;
-        height: 52px;
+        width: auto;
+        height: 14vmin;
         display: block;
         margin: 0 auto;
     }
 
     .back-arrow {
-        width: 25px;
-        height: 25px;
-        border: 2px solid;
+        width: 9vmin;
+        height: 9vmin;
+        border: 0.4vmin solid;
         border-color: #f4f4f4 #f4f4f4 transparent transparent;
         transform: rotate(225deg);
         position: absolute;
-        left: 15px;
-        top: 22px;
+        left: 5vmin;
+        top: 5vmin;
     }
 
 }

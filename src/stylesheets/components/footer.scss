@@ -8,7 +8,9 @@ footer {
     =================================================*/
 
     #footer_menu {
-        height: 37px;
+        height: 10vmin;
+        display: flex;
+        align-items: center;
         color: #adadad;
         font-size: 17px;
         text-align: center;
@@ -16,14 +18,14 @@ footer {
 
     .footer_fashion {
         width: 50%;
-        height: 37px;
+        height: 10vmin;
         background-color: #575757;
         line-height: 37px;
     }
 
     .footer_beauty {
         width: 50%;
-        height: 37px;
+        height: 10vmin;
         background-color: #31282c;
         line-height: 37px;
     }

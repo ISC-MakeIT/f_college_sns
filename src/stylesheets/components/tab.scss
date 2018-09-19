@@ -1,23 +1,22 @@
 .component.tab {
     width: 50%;
-    height: 37px;
+    height: 10vmin;
     font-size: 4.2vmin;
     background-color: $black;
     color: white;
-    padding-bottom: 25px;
     text-align: center;
-    line-height: 37px;
+    line-height: 10vmin;
 
     .text {
-        font-size: 4.2vmin;
+        font-size: 4.5vmin;
         position: relative;
         z-index: 10;
-        padding-top: 3px;
+        padding-top: 0.3vmin;
     }
 
     i {
-        width: 20px;
-        height: 20px;
+        width: 7vmin;
+        height: 7vmin;
         transform: rotate(225deg);
         position: absolute;
     }
@@ -28,8 +27,8 @@
             background-color: $fashion;
             border: 1px solid $fashion;
             z-index: 5;
-            top: -10px;
-            left: 10px;
+            top: -2vmin;
+            left: 3vmin;
         }
     }
 
@@ -39,8 +38,8 @@
             background-color: $beauty;
             border: 1px solid $beauty;
             z-index: 5;
-            top: -10px;
-            right: 10px;
+            top: -2vmin;
+            right: 3vmin;
         }
     }
 
