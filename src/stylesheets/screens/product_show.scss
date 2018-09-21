@@ -1,6 +1,104 @@
-.screen.product_show {
+.screen.product-show {
+    background-image: url(#{$base-photo-url}/logos/top.png);
+    background-size: cover;
+    display: flex;
+    margin-top: 13px;
+    text-decoration: none;
+
     .title {
+        font-size: 12px;
         margin-bottom: 10px;
-        font-size: 5rem;
+    }
+
+    .image-container {
+        // FIXME ここのpx指定辛い気がする
+        margin-top: 55px;
+        width: 100vw;
+    }
+
+    .product-img {
+        border-radius: 5px;
+        object-fit: cover;
+        object-position: 0% 0%;
+        overflow: hidden;
+        width: 100vw;
+    }
+
+    .sub-images-container{
+        overflow-y: overlay;
+
+        .img-container {
+            background-color: rgba(36, 22, 30, 0.75);
+        }
+
+        // img.active {}
+
+        img {
+            opacity: 0.3;
+            position: relative;
+            padding: 10px 0 3px 10px;
+        }
+    }
+
+    .product-container {
+        background-color: black;
+        opacity: 0.7;
+
+        .separator {
+            height: 20px;
+            width: 100vw;
+        }
+
+        h2 {
+            border-bottom: solid $link-main-color;
+            font-size: 25px;
+            padding: 0 10px;
+            display: inline-block;
+            color: white;
+        }
+
+        div > .text {
+            margin-top: 20px;
+            color: $white-text-color;
+        }
+
+        .concept {
+
+            p {
+                font-size: 14px;
+            }
+        }
+
+        // TODO 複数のクリエイターのパターンの対応
+        // 現状はエリア保持のためのpadding bottom
+        .creators { padding-bottom: 20px; }
+
+        .main-creator > .subject { margin-bottom: 5px; }
+        .main-creator > .name { margin-left: 15px; }
+
+        .main-creator > .comment {
+            border: solid $minor-text-color 1px;
+            border-radius: 5px;
+            display: inline-block;
+            padding: 10px;
+        }
+
+        .main-creator > .profile-img {
+            border-radius: 50%;
+        }
+    }
+
+    .bottom {
+        text-align: center;
+    }
+
+    .vote-button {
+        background-color: $link-main-color;
+        border-radius: 5px;
+        color: $white-text-color;
+        font-size: 17px;
+        width: 225px;
+        height: 50px;
+        margin: 10px 0;
     }
 }

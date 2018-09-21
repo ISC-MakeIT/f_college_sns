@@ -26,7 +26,7 @@ export class ProductService {
     public static async getVotedProducts() {
         // ApiClient.get('/products/vote')
         const array = [];
-        for ( let i = 0; i < 5; i++ ) {
+        for ( let i = 1; i <= 5; i++ ) {
             // array.push(ProductFactory.createFromJSON(await ProductService.get(i)));
             const owner = UserFactory.createFromJSON(await UserService.get(i));
             const p = new Product(
@@ -34,7 +34,7 @@ export class ProductService {
                 `${i}のための〇〇`,
                 owner,
                 `this concept is hogehoge`,
-                PhotoService.buildPhotoPathFromId(i + 1),
+                PhotoService.buildPhotoPathFromId(i),
                 null, null, null);
             array.push(p);
         }
