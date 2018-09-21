@@ -8,18 +8,18 @@
     }
 
     .main_sub_list {
-        height: 76px;
+        height: 20vmin;
         color: #f4f4f4;
         border-bottom: 1px solid #707070;
         display: flex;
         justify-content: space-around;
         align-items: center;
-        padding: 0 15px;
+        padding: 0 4vmin;
     }
 
     .main_sub_list p {
         width: 72%;
-        padding: 0 0 0 10px;
+        padding: 0 0 0 3vmin;
         font-size: 4vmin;
         line-height: 170%;
     }
@@ -27,7 +27,7 @@
     @media (min-width: 500px) {  
         .main_sub_list p {
             width: 80%;
-            padding: 0 0 0 10px;
+            padding: 0 0 0 4vmin;
         }
     }
 
@@ -44,9 +44,9 @@
     }
 
     .list_arrow{
-        width: 30px;
-        height: 30px;
-        border: 2px solid;
+        width: 7.5vmin;
+        height: 7.5vmin;
+        border: 0.4vmin solid;
         border-color: #f4f4f4 #f4f4f4 transparent transparent;
         transform: rotate(45deg);
     }
