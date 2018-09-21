@@ -3,7 +3,7 @@ import { ProductService } from '../services';
 import { RouteComponentProps, Link} from 'react-router-dom';
 import Screen from './screen';
 import {Product} from '../entities';
-import { Loading } from '../components';
+import { Loading, Icon } from '../components';
 import { PhotoService } from '../services/photo';
 
 interface Props extends RouteComponentProps<{id: number}> {}
@@ -74,37 +74,54 @@ export class ProductShow extends React.Component<Props, State> {
                     </div>
                 </div>
 
-                {/*
                 <div className='product-container'>
+                    <div className='separator'/>
                     <div className='concept'>
                         <h2>Concept</h2>
-                        <p>作品のコンセプト</p>
+                        <p className='text'>hogehoge fugafuga</p>
                     </div>
+                    <div className='separator'/>
                     <div className='creators'>
                         <h2>Creator</h2>
-                        <div className='main creator'>
-                            <div>
-                                <p className='subject'>
-                                    ブライダル科 １年
-                                    <span className='name'>
-                                        山田花子
-                                    </span>
-                                </p>
-                                <p className='comment'>
-                                    ドレスのバラっぽい所を頑張りました。j
-                                </p>
+                        <div className='main-creator text'>
+                            <div className='d-flex justify-content-around'>
+                                <div>
+                                    <p className='subject'>
+                                        ブライダル科 １年
+                                        <span className='name'>
+                                            山田花子
+                                        </span>
+                                    </p>
+
+                                    <p className='comment'>
+                                        ドレスのバラっぽい所を頑張りました。
+                                    </p>
+                                </div>
+                                <img
+                                    src='/assets/images/users/yamashitamizuki_prof.jpg'
+                                    className='profile-img'
+                                    width={65}
+                                    height={65}
+                                />
                             </div>
-                            <img
-                                src=''
-                            />
                         </div>
                     </div>
                 </div>
-                */}
 
-                <Link to='/products' className='link btn btn-sm mt-3'>
-                    '/products'へのリンク
-                </Link>
+                <div className='bottom'>
+                    <button
+                        className='vote-button'
+                    >
+                        <Icon name='crown'/>
+                        投票する
+                    </button>
+                </div>
+
+                {/*
+                    <Link to='/products' className='link btn btn-sm mt-3'>
+                        '/products'へのリンク
+                    </Link>
+                */}
             </Screen>
         );
     }
