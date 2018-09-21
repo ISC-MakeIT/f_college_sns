@@ -45,17 +45,10 @@ export class ProductShow extends React.Component<Props, State> {
 
         subImages.unshift(
             <p className='img-container'>
-                {/* FIXME URL */}
-                {/* <img src={product.imageURLPath} width={100} height={100} /> */}
-                <img
-                    src={'/assets/images/products/1_Br2A_SHIOYA_Konatsu.jpg'}
-                    width={100}
-                    height={100}
-                />
+                <img src={product.imageURLPath} width={100} height={100} />
             </p>);
 
-        // const activeImage = this.state.activeImagePath;
-        const activeImage = '/assets/images/products/1_Br2A_SHIOYA_Konatsu.jpg';
+        const activeImage = this.state.activeImagePath;
 
         return (
             <Screen name='product-show' showBackButton>
@@ -98,6 +91,7 @@ export class ProductShow extends React.Component<Props, State> {
                                     </p>
                                 </div>
                                 <img
+                                    // FIXME S3にuserの場所作る
                                     src='/assets/images/users/yamashitamizuki_prof.jpg'
                                     className='profile-img'
                                     width={65}

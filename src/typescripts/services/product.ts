@@ -34,9 +34,7 @@ export class ProductService {
                 `${i}のための〇〇`,
                 owner,
                 `this concept is hogehoge`,
-                // FIXME URL
-                // PhotoService.buildPhotoPathFromId(i),
-                '/Users/fumihumi/f_college_sns/public/assets/images/products/1_Br2A_SHIOYA_Konatsu.jpg',
+                PhotoService.buildPhotoPathFromId(i),
                 null, null, null);
             array.push(p);
         }
@@ -52,9 +50,7 @@ export class ProductService {
             '情熱と希望の賛歌',
             owner,
             'このサービスは,情熱をテーマに作成しました。細部までこだわって作成しているのでモデルの手足のその先にある情熱を感じていただけたら幸いです。',
-            // FIXME URL
-            // PhotoService.buildPhotoPathFromId(id),
-            '/Users/fumihumi/f_college_sns/public/assets/images/products/1_Br2A_SHIOYA_Konatsu.jpg',
+            PhotoService.buildPhotoPathFromId(id),
             [`public/assets/images/${id}.jpg`, `public/assets/images/${id}.jpg`],
             '細部へのこだわりのほか、全体的な配色にもこだわりがあります。正面から見ると妖艶な濃厚な赤を、後ろ姿からは真紅な赤を基調とすることでどこから見ても情熱を感じられるような構成となっています。',
             ['阿部智恵美', '佐々木みなみ', '鍋島恵里奈'],
