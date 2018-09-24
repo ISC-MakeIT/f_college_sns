@@ -9,7 +9,7 @@ export class UserService {
         // ApiClient.get('/users')
 
         const array = [];
-        for (let i = 0; i < 3; i++) {
+        for (let i = 1; i <= 3; i++) {
             const u = new User(
                 i,
                 this.userPhotoNames()[i].name,
@@ -49,6 +49,10 @@ export class UserService {
             {
                 name: 'Gopherくん', subject: 'ファッション科 2年',
                 path: PhotoService.buildPhotoPath('golang.png', 'users'),
+            },
+            {
+                name: 'きずなあい', subject: 'ビューティ科 ４年',
+                path: PhotoService.buildPhotoPath('kizunaai.jpeg', 'users'),
             },
             {
                 name: 'きずなあい', subject: 'ビューティ科 ４年',
