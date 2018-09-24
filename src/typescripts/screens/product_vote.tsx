@@ -31,7 +31,7 @@ export class ProductVoteList extends React.Component<Props, State> {
         if (this.state.products === null) return( <Loading />);
 
         const votedProducts = this.state.products.map( p => (
-            <ProductVotesList key={p.id} product={p}/>
+            <ProductVotesList key={p.id} product={p} />
         ));
 
         return(
