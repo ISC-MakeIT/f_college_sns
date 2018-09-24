@@ -9,8 +9,8 @@ export class ProductService {
     public static async getAll() {
         // APIClient.get('/products')で全てのプロダクトJSONもらいたい
         const array = [];
-        for (let i = 0; i < 3; i++) {
-            const owner = UserFactory.createFromJSON(await UserService.get(i));
+        for (let i = 1; i <= 3; i++) {
+            const owner = UserFactory.createFromJSON(await UserService.get(i - 1));
             const p = new Product(
                 i,
                 `${i}のための〇〇`,
