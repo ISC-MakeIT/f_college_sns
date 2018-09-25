@@ -20,7 +20,7 @@ export const NotFound: React.StatelessComponent<Props> = () => {
                     <p>見つかりませんでした</p>
                 </div>
 
-                <Link className='btn btn-light redirect-link' to='/'>
+                <Link className='btn btn-light redirect-link' to='/products'>
                     トップページへ戻る
                 </Link>
             </section>
