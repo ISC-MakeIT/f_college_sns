@@ -13,7 +13,7 @@ export class Header extends React.Component < Props, {} > {
         return (
             <header id='header_wrap' className='component'>
                 {this.props.showBackButton ? <BackButton/> : null}
-                <Link to='/' className='header-logo'>
+                <Link to='/products' className='header-logo'>
                 <img
                     alt='header-logo'
                     className='header_logo'
