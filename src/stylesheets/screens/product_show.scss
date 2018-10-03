@@ -1,8 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+
 .screen.product-show {
     background-image: url(#{$base-photo-url}/logos/top.png);
     background-size: cover;
     display: flex;
-    margin-top: 13px;
     text-decoration: none;
 
     .title {
@@ -11,13 +12,11 @@
     }
 
     .image-container {
-        // FIXME ここのpx指定辛い気がする
-        margin-top: 55px;
+        margin-top: 18vmin;
         width: 100vw;
     }
 
     .product-img {
-        border-radius: 5px;
         object-fit: cover;
         object-position: 0% 0%;
         overflow: hidden;
@@ -36,25 +35,23 @@
         img {
             opacity: 0.3;
             position: relative;
-            padding: 10px 0 3px 10px;
         }
     }
 
     .product-container {
         background-color: black;
         opacity: 0.7;
-
-        .separator {
-            height: 20px;
-            width: 100vw;
-        }
+        border-top: 1vmin solid $main-color;
+        border-bottom: 1vmin solid $main-color;
+        padding: 7vmin 0;
 
         h2 {
-            border-bottom: solid $link-main-color;
-            font-size: 25px;
-            padding: 0 10px;
+            border-left: 1vmin solid $link-main-color;
+            font-size: 7vmin;
+            padding: 0 3vmin;
             display: inline-block;
             color: white;
+            font-family: "Raleway", sans-serif;
         }
 
         div > .text {
@@ -63,7 +60,8 @@
         }
 
         .concept {
-
+            padding: 0 5vmin;
+            
             p {
                 font-size: 14px;
             }
@@ -71,19 +69,28 @@
 
         // TODO 複数のクリエイターのパターンの対応
         // 現状はエリア保持のためのpadding bottom
-        .creators { padding-bottom: 20px; }
+        .creators { padding: 0 5vmin; }
 
-        .main-creator > .subject { margin-bottom: 5px; }
-        .main-creator > .name { margin-left: 15px; }
+        .main-creator .subject { margin-bottom: 3vmin; }
+        .main-creator .name { margin-left: 3vmin; }
 
         .main-creator > .comment {
+            width: 60vw;
+            font-size: 3.7vmin;
             border: solid $minor-text-color 1px;
-            border-radius: 5px;
+            border-radius: 2vmin;
             display: inline-block;
-            padding: 10px;
+            padding: 3vmin;
+            margin-right: 5vmin;
         }
 
         .main-creator > .profile-img {
+            border-radius: 50%;
+        }
+
+        .owner-img {
+            width: 25vmin;
+            height: 25vmin;
             border-radius: 50%;
         }
     }
@@ -94,11 +101,14 @@
 
     .vote-button {
         background-color: $link-main-color;
-        border-radius: 5px;
+        border-radius: 1vmin;
         color: $white-text-color;
-        font-size: 17px;
-        width: 225px;
-        height: 50px;
-        margin: 10px 0;
+        font-size: 5vmin;
+        width: 65vmin;
+        height: 15vmin;
+        padding-top: 2vmin;
+        margin: 8vmin 0;
+        border: 0px;
+        box-shadow: 0 1.2vmin 0 rgb(91, 76, 160);
     }
 }
