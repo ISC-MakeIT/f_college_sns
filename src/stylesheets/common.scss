@@ -1,19 +1,19 @@
 // 全体の共通設定
-$main-color: #FE6EAB;
+$main-color: #ffffff;
 $gradation-purple-color: #D9D7FC;
 $text-color: #615561;
+$active-text-color: #868686;
 $minor-text-color: #c7c7c7;
 $white-text-color: #F4F4F4;
 $facebook-color: #3b5998;
 $critical-color: #fb2943;
 $link-main-color: #8B79DB;
 $sub-color: #f0efef;
-$fashion: #FE6EAB;
-$beauty: #BC6EFE;
+$footer-color: #FAFAFA;
 $black: #31282C;
 
 $header-height: 18vmin;
-$header-ribbon-color: #FFCE2C;
+$header-ribbon-color: #D5C592;
 $footer-height: 10vmin;
 
 $base-photo-url: 'https://s3-ap-northeast-1.amazonaws.com/f-college-images';
@@ -23,7 +23,7 @@ body {
     font-family: "Shree Devanagari 714", "Optima", "Nunito", "Yu Gothic", "Hiragino Kaku Gothic Pro", "Meiryo", "sans-serif";
     font-weight: 400;
     font-size:62.5%; /* 10px */
-    background: linear-gradient($main-color,$gradation-purple-color);
+    background-color: $main-color;
 }
 
 h1 {

@@ -14,45 +14,15 @@
         padding-top: 0.3vmin;
     }
 
-    i {
-        width: 7vmin;
-        height: 7vmin;
-        transform: rotate(225deg);
-        position: absolute;
-    }
-
     &.fashion-active{
-        background-color: $fashion;
-        i {
-            background-color: $fashion;
-            border: 1px solid $fashion;
-            z-index: 5;
-            top: -2vmin;
-            left: 3vmin;
-        }
+        color: $active-text-color;
+        background-color: $footer-color;
+        border-top: #f0f0f0 1px solid;
     }
 
     &.beauty-active {
-        background-color: $beauty;
-        i {
-            background-color: $beauty;
-            border: 1px solid $beauty;
-            z-index: 5;
-            top: -2vmin;
-            right: 3vmin;
-        }
-    }
-
-    .fashion {
-        i {
-            display: none;
-        }
-    }
-
-    .beauty {
-        i {
-            display: none;
-            right: 100px;
-        }
+        color: $active-text-color;
+        background-color: $footer-color;
+        border-top: #f0f0f0 1px solid;
     }
 }

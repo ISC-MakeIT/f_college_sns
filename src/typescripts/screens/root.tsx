@@ -15,24 +15,26 @@ export class Root extends React.Component<Props, {}> {
         return (
             <Screen name='root' style='d-flex flex-column text-center justify-content-center' hideHeader hideFooter>
                 {/* <Loading /> */}
-                <div className='img-container'>
-                    <img
-                        alt='top page icon'
-                        className='icon'
-                        src={PhotoService.getS3PhotoPath('icon.png', 'logos')}
-                    />
-                    <img
-                        alt='top page f-college logo'
-                        className='logo'
-                        src={PhotoService.getS3PhotoPath('logo.svg', 'logos')}
-                    />
-                </div>
-
-                <Link to='/products' className='link btn btn-sm mt-3' >
-                    <div className='circle'>
-                        <i className='root_icon' />
+                <div className='back-overlay'>
+                    <div className='img-container'>
+                        <img
+                            alt='top page icon'
+                            className='icon'
+                            src={PhotoService.getS3PhotoPath('icon.png', 'logos')}
+                        />
+                        <img
+                            alt='top page f-college logo'
+                            className='logo'
+                            src='./assets/images/logo_png2.png'
+                        />
                     </div>
-                </Link>
+
+                    <Link to='/products' className='link btn btn-sm mt-3' >
+                        <div className='circle'>
+                            <i className='root_icon' />
+                        </div>
+                    </Link>
+                </div>
             </Screen>
         );
     }

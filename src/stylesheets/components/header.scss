@@ -1,6 +1,6 @@
 #header_wrap {
     width: 100%;
-    background-color: #fe6eab;
+    background-color: #fff;
     padding: 2vmin 0 2vmin;
     position: fixed;
     top: 0;
@@ -10,9 +10,9 @@
         width: 15vmin;
         height: 16.3vmin;
         color: #fff;
-        font-size: 3vmin;
+        font-size: 2.9vmin;
         text-align: center;
-        background-color: #ffce2c;
+        background-color: $header-ribbon-color;
         border-radius: 0 0 1.3vmin 1.3vmin;
         box-shadow: 1vmin 1vmin 1vmin rgba(0, 0, 0, 0.2);
         position: fixed;
@@ -21,6 +21,8 @@
         z-index: 10;
         box-sizing: border-box;
         display: block;
+        font-weight: 600;
+
 
         span {
             display: block;
@@ -44,7 +46,7 @@
         position: absolute;
         top: 1vmin;
         right: -1.2vmin;
-        padding-top: 1px;
+        padding-top: 0.72px;
     }
 
     .header_logo {
@@ -58,7 +60,7 @@
         width: 9vmin;
         height: 9vmin;
         border: 0.4vmin solid;
-        border-color: #f4f4f4 #f4f4f4 transparent transparent;
+        border-color: $black $black transparent transparent;
         transform: rotate(225deg);
         position: absolute;
         left: 5vmin;
