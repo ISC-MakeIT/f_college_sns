@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Allura');
+@import url("https://fonts.googleapis.com/css?family=Allura");
 
 .screen.product-show {
     background-color: #fff;
@@ -44,14 +44,14 @@
         h2 {
             font-size: 10vmin;
             margin: 7vmin auto 5vmin;
-            font-family: 'Allura', cursive;
+            font-family: "Allura", cursive;
             text-align: center;
             font-weight: 300;
         }
 
         .concept {
             padding: 0 7vmin;
-            
+
             p {
                 font-size: 3.8vmin;
                 line-height: 180%;
@@ -60,7 +60,7 @@
 
         // TODO 複数のクリエイターのパターンの対応
         // 現状はエリア保持のためのpadding bottom
-        .creators { padding: 0 5vmin; border: #F2F2F2 1px solid; padding: 2vmin 3.2vmin; }
+        .creators { border: #f2f2f2 1px solid; padding: 2vmin 3.2vmin; }
         .main-creator { font-size: 2.4vmin; }
         .main-creator .subject { margin: 1.5vmin 0 1vmin; font-weight: 600; }
         .main-creator .name { margin-left: 3vmin; }

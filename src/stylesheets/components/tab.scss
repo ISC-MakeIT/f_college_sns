@@ -16,13 +16,13 @@
 
     &.fashion-active{
         color: $active-text-color;
-        background-color: $fashion;
-        border-top: #F0F0F0 1px solid;
+        background-color: $footer-color;
+        border-top: #f0f0f0 1px solid;
     }
 
     &.beauty-active {
         color: $active-text-color;
-        background-color: $beauty;
-        border-top: #F0F0F0 1px solid;
+        background-color: $footer-color;
+        border-top: #f0f0f0 1px solid;
     }
 }
