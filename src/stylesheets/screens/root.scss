@@ -4,10 +4,19 @@
     background-image: url(#{$base-photo-url}/logos/top.png);
     background-size: cover;
 
+    .back-overlay {
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.7);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
     .img-container {
         display: flex;
         flex-direction: column;
         align-items: center;
+        margin: 0 auto;
         .icon {
             margin-bottom: 3vmin;
             width: 15vmin;
@@ -16,6 +25,7 @@
         .logo {
             width: 75%;
             height: auto;
+            margin: 10px 0;
         }
     }
 

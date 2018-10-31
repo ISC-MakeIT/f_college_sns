@@ -68,14 +68,14 @@ export class ProductShow extends React.Component<Props, State> {
                 </div>
 
                 <div className='product-container'>
-                    <div className='concept'>
-                        <h2>Concept</h2>
-                        <p className='text'>hogehoge fugafuga</p>
-                    </div>
                     <div className='creators'>
-                        <h2>Creator</h2>
                         <div className='main-creator text'>
-                            <div className='d-flex justify-content-around'>
+                            <div className='d-flex justify-content-around align-items-center'>
+                                <img
+                                    // FIXME S3にuserの場所作る
+                                    src='/assets/images/users/yamashitamizuki_prof.jpg'
+                                    className='owner-img'
+                                />
                                 <div className='main-creator'>
                                     <p className='subject'>
                                         ブライダル科 １年
@@ -84,17 +84,18 @@ export class ProductShow extends React.Component<Props, State> {
                                         </span>
                                     </p>
 
-                                    <p className='comment'>
-                                        ドレスのバラっぽい所を頑張りました。
+                                    <p className='concept'>
+                                        作品コンセプト
                                     </p>
                                 </div>
-                                <img
-                                    // FIXME S3にuserの場所作る
-                                    src='/assets/images/users/yamashitamizuki_prof.jpg'
-                                    className='owner-img'
-                                />
                             </div>
                         </div>
+                    </div>
+                    <div className='concept'>
+                        <h2>Creator Comment</h2>
+                        <p className='text'>
+                        ドレスの薔薇っぽいところをがんばりました。 薔薇を薔薇っぽく見せるのに苦労しました。 すごくがんばったのでよろしくお願いします。
+                        </p>
                     </div>
                 </div>
 
@@ -103,7 +104,7 @@ export class ProductShow extends React.Component<Props, State> {
                         className='vote-button'
                     >
                         <Icon name='crown'/>
-                        投票する
+                        <span>投票する</span>
                     </button>
                 </div>
 

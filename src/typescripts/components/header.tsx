@@ -17,7 +17,7 @@ export class Header extends React.Component < Props, {} > {
                 <img
                     alt='header-logo'
                     className='header_logo'
-                    src={PhotoService.getS3PhotoPath('logo.svg', 'logos')}
+                    src='../assets/images/logo_png.png'
                 />
                 </Link>
                 <Link to='/votes'>

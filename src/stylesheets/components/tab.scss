@@ -14,45 +14,15 @@
         padding-top: 0.3vmin;
     }
 
-    i {
-        width: 7vmin;
-        height: 7vmin;
-        transform: rotate(225deg);
-        position: absolute;
-    }
-
     &.fashion-active{
+        color: $active-text-color;
         background-color: $fashion;
-        i {
-            background-color: $fashion;
-            border: 1px solid $fashion;
-            z-index: 5;
-            top: -2vmin;
-            left: 3vmin;
-        }
+        border-top: #F0F0F0 1px solid;
     }
 
     &.beauty-active {
+        color: $active-text-color;
         background-color: $beauty;
-        i {
-            background-color: $beauty;
-            border: 1px solid $beauty;
-            z-index: 5;
-            top: -2vmin;
-            right: 3vmin;
-        }
-    }
-
-    .fashion {
-        i {
-            display: none;
-        }
-    }
-
-    .beauty {
-        i {
-            display: none;
-            right: 100px;
-        }
+        border-top: #F0F0F0 1px solid;
     }
 }

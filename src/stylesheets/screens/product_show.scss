@@ -1,8 +1,7 @@
-@import url('https://fonts.googleapis.com/css?family=Raleway');
+@import url('https://fonts.googleapis.com/css?family=Allura');
 
 .screen.product-show {
-    background-image: url(#{$base-photo-url}/logos/top.png);
-    background-size: cover;
+    background-color: #fff;
     display: flex;
     text-decoration: none;
 
@@ -27,7 +26,7 @@
         overflow-y: overlay;
 
         .img-container {
-            background-color: rgba(36, 22, 30, 0.75);
+            background-color: $black;
         }
 
         // img.active {}
@@ -39,49 +38,37 @@
     }
 
     .product-container {
-        background-color: black;
-        opacity: 0.7;
-        border-top: 1vmin solid $main-color;
-        border-bottom: 1vmin solid $main-color;
-        padding: 7vmin 0;
+        color: $black;
+        padding: 0;
 
         h2 {
-            border-left: 1vmin solid $link-main-color;
-            font-size: 7vmin;
-            padding: 0 3vmin;
-            display: inline-block;
-            color: white;
-            font-family: "Raleway", sans-serif;
-        }
-
-        div > .text {
-            margin-top: 20px;
-            color: $white-text-color;
+            font-size: 10vmin;
+            margin: 7vmin auto 5vmin;
+            font-family: 'Allura', cursive;
+            text-align: center;
+            font-weight: 300;
         }
 
         .concept {
-            padding: 0 5vmin;
+            padding: 0 7vmin;
             
             p {
-                font-size: 14px;
+                font-size: 3.8vmin;
+                line-height: 180%;
             }
         }
 
         // TODO 複数のクリエイターのパターンの対応
         // 現状はエリア保持のためのpadding bottom
-        .creators { padding: 0 5vmin; }
-
-        .main-creator .subject { margin-bottom: 3vmin; }
+        .creators { padding: 0 5vmin; border: #F2F2F2 1px solid; padding: 2vmin 3.2vmin; }
+        .main-creator { font-size: 2.4vmin; }
+        .main-creator .subject { margin: 1.5vmin 0 1vmin; font-weight: 600; }
         .main-creator .name { margin-left: 3vmin; }
 
-        .main-creator > .comment {
-            width: 60vw;
-            font-size: 3.7vmin;
-            border: solid $minor-text-color 1px;
-            border-radius: 2vmin;
+        .main-creator > .concept {
+            width: 67vw;
             display: inline-block;
-            padding: 3vmin;
-            margin-right: 5vmin;
+            padding: 0;
         }
 
         .main-creator > .profile-img {
@@ -89,8 +76,8 @@
         }
 
         .owner-img {
-            width: 25vmin;
-            height: 25vmin;
+            width: 16vmin;
+            height: 16vmin;
             border-radius: 50%;
         }
     }
@@ -101,14 +88,16 @@
 
     .vote-button {
         background-color: $link-main-color;
-        border-radius: 1vmin;
         color: $white-text-color;
         font-size: 5vmin;
-        width: 65vmin;
+        width: 60vmin;
         height: 15vmin;
         padding-top: 2vmin;
         margin: 8vmin 0;
         border: 0px;
-        box-shadow: 0 1.2vmin 0 rgb(91, 76, 160);
+        border-radius: 10vmin;
+        span {
+            padding: 0 2vmin;
+        }
     }
 }
