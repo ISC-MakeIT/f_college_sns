@@ -1,6 +1,5 @@
 footer {
     width: 100%;
-    position: fixed;
     bottom: 0px;
 
     /*================================================
@@ -12,7 +11,7 @@ footer {
         display: flex;
         align-items: center;
         color: #adadad;
-        font-size: 17px;
+        font-size: 4.5vmin;
         text-align: center;
     }
 
@@ -20,13 +19,13 @@ footer {
         width: 50%;
         height: 10vmin;
         background-color: #575757;
-        line-height: 37px;
+        line-height: 10vmin;
     }
 
     .footer_beauty {
         width: 50%;
         height: 10vmin;
         background-color: #31282c;
-        line-height: 37px;
+        line-height: 10vmin;
     }
 }

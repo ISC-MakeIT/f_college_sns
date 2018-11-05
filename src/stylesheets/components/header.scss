@@ -8,30 +8,30 @@
 
     #header_label {
         width: 15vmin;
-        height: 16.3vmin;
+        height: 16.7vmin;
         color: #fff;
-        font-size: 2.9vmin;
+        font-size: 2.85vmin;
         text-align: center;
         background-color: $header-ribbon-color;
         border-radius: 0 0 1.3vmin 1.3vmin;
-        box-shadow: 1vmin 1vmin 1vmin rgba(0, 0, 0, 0.2);
+        box-shadow: 0.7vmin 0.7vmin 0.7vmin rgba(0, 0, 0, 0.13);
         position: fixed;
-        top: 0px;
+        top: 0;
         right: 2vmin;
         z-index: 10;
         box-sizing: border-box;
         display: block;
         font-weight: 600;
 
-
         span {
             display: block;
             margin: 0 auto;
+            letter-spacing: 0.2vmin;
         }
 
         i {
-            font-size: 9.7vmin;
-            margin: 1vmin 0 1vmin;
+            font-size: 9vmin;
+            margin: 1.2vmin 0;
         }
     }
 
@@ -39,14 +39,13 @@
         width: 4.5vmin;
         height: 4.5vmin;
         color: #fff;
-        font-size: 3.4vmin;
+        font-size: 3.3vmin;
         text-align: center;
         background-color: #d90b0b;
         border-radius: 50%;
         position: absolute;
         top: 1vmin;
         right: -1.2vmin;
-        padding-top: 0.72px;
     }
 
     .header_logo {

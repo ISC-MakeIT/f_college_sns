@@ -5,6 +5,7 @@ import Screen from './screen';
 import {Product} from '../entities';
 import { Loading, Icon } from '../components';
 import { PhotoService } from '../services/photo';
+import { Footer } from '../components/product_show_footer';
 
 interface Props extends RouteComponentProps<{id: number}> {}
 
@@ -108,11 +109,7 @@ export class ProductShow extends React.Component<Props, State> {
                     </button>
                 </div>
 
-                {/*
-                    <Link to='/products' className='link btn btn-sm mt-3'>
-                        '/products'へのリンク
-                    </Link>
-                */}
+                <Footer/>
             </Screen>
         );
     }
