@@ -23,17 +23,20 @@
         width: 100vw;
     }
 
-    .sub-images-container{
+    .sub-images-container {
         overflow-y: overlay;
 
-        .img-container {
+        .img-container.cover {
             background-color: $black;
         }
 
-        // img.active {}
+        .active {
+            background: whitesmoke;
+            opacity: .9;
+        }
 
-        img {
-            opacity: 0.3;
+        .img {
+            opacity: .3;
             position: relative;
         }
     }

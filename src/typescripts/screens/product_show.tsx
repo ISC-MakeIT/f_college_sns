@@ -31,12 +31,12 @@ export class ProductShow extends React.Component<Props, State> {
 
         if (this.state.product === null ) return ( <Loading />);
 
-        const subImages = ['01.png', '02.png', '11.png', '17.png'].map(i => {
-            const path = PhotoService.getS3PhotoPath(i, 'products/sample');
+        // TODO activeIMGのClass周りの動的な書き換え
+        const subImages = ['01.png', '02.png', '11.png', '17.png'].map((img, index) => {
+            const path = PhotoService.getS3PhotoPath(img, 'products/sample');
             return (
-                // tslint:disable-next-line:jsx-key
-                <p className='img-container'>
-                    <img src={path} width={100} height={100} />
+                <p key={index} className='img-container cover' onClick={this.changeActiveImage}>
+                    <img className='img non-active' src={path} width={100} height={100} />
                 </p>
             );
         });
@@ -44,11 +44,9 @@ export class ProductShow extends React.Component<Props, State> {
         const product = this.state.product;
 
         subImages.unshift(
-            <p className='img-container'>
-                <img src={product.imageURLPath} width={100} height={100} />
+            <p className='img-container' onClick={this.changeActiveImage}>
+                <img className='img active' src={product.imageURLPath} width={100} height={100} />
             </p>);
-
-        const activeImage = this.state.activeImagePath;
 
         return (
             <Screen name='product-show' showBackButton>
@@ -60,7 +58,7 @@ export class ProductShow extends React.Component<Props, State> {
                 <div className='image-container'>
                     <img
                         className='product-img'
-                        src={activeImage}
+                        src={this.state.activeImagePath}
                     />
                     <div className='sub-images-container d-flex'>
                         {subImages}
@@ -115,5 +113,18 @@ export class ProductShow extends React.Component<Props, State> {
                 */}
             </Screen>
         );
+    }
+
+    private changeActiveImage = (e: any) => {
+        const clickedImg = e.target;
+
+        document.querySelectorAll('.sub-images-container .active').forEach(d => {
+            d.classList.remove('active');
+            if (d.parentElement) d.parentElement.classList.add('cover');
+        });
+
+        clickedImg.classList.add('active');
+        e.currentTarget.classList.remove('cover');
+        this.setState({ activeImagePath: clickedImg.src });
     }
 }
