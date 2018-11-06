@@ -3,7 +3,7 @@ import { ProductService } from '../services';
 import { RouteComponentProps, Link} from 'react-router-dom';
 import Screen from './screen';
 import {Product} from '../entities';
-import { Loading, Icon } from '../components';
+import { Loading, Icon, Modal } from '../components';
 import { PhotoService } from '../services/photo';
 import { Footer } from '../components/product_show_footer';
 
@@ -12,6 +12,7 @@ interface Props extends RouteComponentProps<{id: number}> {}
 interface State {
     product: Product | null;
     activeImagePath?: string;
+    showModal: boolean;
 }
 
 export class ProductShow extends React.Component<Props, State> {
@@ -19,6 +20,8 @@ export class ProductShow extends React.Component<Props, State> {
         super(props);
         this.state = {
             product: null,
+            // showModal: false,
+            showModal: true,
         };
     }
 
@@ -49,13 +52,18 @@ export class ProductShow extends React.Component<Props, State> {
                 <img className='img active' src={product.imageURLPath} width={100} height={100} />
             </p>);
 
+        const activeImage = this.state.activeImagePath;
+
         return (
             <Screen name='product-show' showBackButton>
-                {/*
-                    <h1 className='title'>
-                        {this.state.product.title}
-                    </h1>
-                */}
+                <Modal
+                    open={this.state.showModal}
+                    heading='投票が完了しました'
+                    className='voted-modal'
+                    onClose={() => this.setState({ showModal: false })}
+                >
+                    <p>hogehoge</p>
+                </Modal>
                 <div className='image-container'>
                     <img
                         className='product-img'
