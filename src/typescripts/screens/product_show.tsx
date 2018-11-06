@@ -62,7 +62,17 @@ export class ProductShow extends React.Component<Props, State> {
                     className='voted-modal'
                     onClose={() => this.setState({ showModal: false })}
                 >
-                    <p>hogehoge</p>
+                    <p>
+                        '{product.title}'への投票が完了しました。
+                    </p>
+
+                    <p>
+                        次はまるまるへ投票してみませんか？？？？？
+                    </p>
+                    {/* 画像リンクをカードで何個か出す。 */}
+
+                    <p>残り投票数はxxxです</p>
+
                 </Modal>
                 <div className='image-container'>
                     <img

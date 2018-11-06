@@ -17,15 +17,13 @@ export class Modal extends React.Component<Props, {}> {
                 onClick={e => e.target === e.currentTarget ? onClose() : null}
             >
                 <div className='modal-container'>
-                    {/*
-                        <div className='modal-header pb2'>
-                            <h2>{heading}</h2>
-                            <Icon name='times' onClick={e => onClose()} className='close-button'/>
-                        </div>
-                        <div className='modal-content'>
-                            {children}
-                        </div>
-                    */}
+                    <div className='modal-header pb2'>
+                        <h2>{heading}</h2>
+                        <Icon name='times' onClick={e => onClose()} className='close-button'/>
+                    </div>
+                    <div className='modal-content'>
+                        {children}
+                    </div>
                 </div>
             </div>
         );

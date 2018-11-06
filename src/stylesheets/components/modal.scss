@@ -1,4 +1,5 @@
 .component.modal {
+    display: block;
     background-color: rgba(0, 0, 0, 0.5);
     position: absolute;
     left: 0;
@@ -13,7 +14,6 @@
 
     .modal-container {
         width: 90vw;
-        max-width: 340px;
         padding: 10px;
         border-radius: 8px;
         height: 90vh;
