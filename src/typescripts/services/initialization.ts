@@ -1,111 +1,115 @@
 export class InitializationService {
     public static async initialize() {
         try {
-        detectPrivateMode(
-            function(is_private) {
-                document.getElementById('result').innerHTML = typeof is_private === 'undefined' ? 'cannot detect' : is_private ? 'private' : 'not private';
-            }
-        );
+            this.detectPrivateMode(
+                (isPrivate: any) => {
+                    // tslint:disable-next-line:no-unused-expression
+                    typeof isPrivate === 'undefined' ? 'cannot detect' : isPrivate ? 'private' : 'not private';
+                },
+            );
+
         // tslint:disable-next-line:no-empty
         } catch (e) { }
         return;
     }
 
-    function retry(isDone, next) {
-        var current_trial = 0, max_retry = 50, interval = 10, is_timeout = false;
-        var id = window.setInterval(
-            function() {
-                if (isDone()) {
-                    window.clearInterval(id);
-                    next(is_timeout);
-                }
-                if (current_trial++ > max_retry) {
-                    window.clearInterval(id);
-                    is_timeout = true;
-                    next(is_timeout);
-                }
-            },
-            10
-        );
-    }
-
-
-    function isIE10OrLater(user_agent) {
-        var ua = user_agent.toLowerCase();
-        if (ua.indexOf('msie') === 0 && ua.indexOf('trident') === 0) {
-            return false;
-        }
-        var match = /(?:msie|rv:)\s?([\d\.]+)/.exec(ua);
-        if (match && parseInt(match[1], 10) >= 10) {
-            return true;
-        }
-        return false;
-    }
-
-
-    function detectPrivateMode(callback) {
-        var is_private;
+    private static async detectPrivateMode(callback: any) {
+        let isPrivate: any;
 
         if (window.webkitRequestFileSystem) {
             window.webkitRequestFileSystem(
                 window.TEMPORARY, 1,
-                function() {
-                    is_private = false;
+                () => {
+                    isPrivate = false;
                 },
-                function(e) {
+                (e: any) => {
+                    // tslint:disable-next-line:no-console
                     console.log(e);
-                    is_private = true;
-                }
+                    isPrivate = true;
+                },
             );
         } else if (window.indexedDB && /Firefox/.test(window.navigator.userAgent)) {
-            var db;
+            let db: any;
             try {
                 db = window.indexedDB.open('test');
-            } catch(e) {
-                is_private = true;
+            } catch (e) {
+                isPrivate = true;
             }
 
-            if (typeof is_private === 'undefined') {
-                retry(
+            if (typeof isPrivate === 'undefined') {
+                this.retry(
                     function isDone() {
                         return db.readyState === 'done' ? true : false;
                     },
-                    function next(is_timeout) {
-                        if (!is_timeout) {
-                            is_private = db.result ? false : true;
+                    function next(isTimeout: any) {
+                        if (!isTimeout) {
+                            isPrivate = db.result ? false : true;
                         }
-                    }
+                    },
                 );
             }
-        } else if (isIE10OrLater(window.navigator.userAgent)) {
-            is_private = false;
+        } else if (this.isIE10OrLater(window.navigator.userAgent)) {
+            isPrivate = false;
             try {
                 if (!window.indexedDB) {
-                    is_private = true;
+                    isPrivate = true;
                 }
             } catch (e) {
-                is_private = true;
+                isPrivate = true;
             }
         } else if (window.localStorage && /Safari/.test(window.navigator.userAgent)) {
             try {
-                window.localStorage.setItem('test', 1);
-            } catch(e) {
-                is_private = true;
+                window.localStorage.setItem('test', '1');
+            } catch (e) {
+                isPrivate = true;
             }
 
-            if (typeof is_private === 'undefined') {
-                is_private = false;
+            if (typeof isPrivate === 'undefined') {
+                isPrivate = false;
                 window.localStorage.removeItem('test');
             }
         }
 
-        retry(
+        this.retry(
             function isDone() {
-                return typeof is_private !== 'undefined' ? true : false;
+                return typeof isPrivate !== 'undefined' ? true : false;
             },
-            function next(is_timeout) {
-                callback(is_private);
-            }
+            function next(isTimeout: any) {
+                callback(isPrivate);
+            },
         );
     }
+
+    private static async retry(isDone: any, next: any) {
+        let currentTrial = 0;
+        let isTimeout = false;
+        const maxRetry = 50;
+        const interval = 10;
+        const id = window.setInterval(() => {
+                    if (isDone()) {
+                        window.clearInterval(id);
+                        next(isTimeout);
+                    }
+                    if (currentTrial++ > maxRetry) {
+                        window.clearInterval(id);
+                        isTimeout = true;
+                        next(isTimeout);
+                    }
+                },
+                interval,
+            );
+    }
+
+    private static async isIE10OrLater(userAgent: any) {
+            const ua = userAgent.toLowerCase();
+            if (ua.indexOf('msie') === 0 && ua.indexOf('trident') === 0) {
+                return false;
+            }
+            const match = /(?:msie|rv:)\s?([\d\.]+)/.exec(ua);
+            if (match && parseInt(match[1], 10) >= 10) {
+                return true;
+            }
+            return false;
+        }
+
 }
