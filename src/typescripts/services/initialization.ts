@@ -1,3 +1,12 @@
+interface Window {
+    HTMLElement: any;
+    webkitRequestFileSystem: any;
+    indexedDB: any;
+    PointerEvent: any;
+    MSPointerEvent: any;
+}
+declare var window: Window;
+
 export class InitializationService {
     public static async initialize() {
         try {
