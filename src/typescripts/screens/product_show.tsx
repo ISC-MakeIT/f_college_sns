@@ -7,9 +7,7 @@ import {Loading, Icon, Modal} from '../components';
 import {PhotoService} from '../services/photo';
 import {Footer} from '../components/product_show_footer';
 
-interface Props extends RouteComponentProps < {
-  id: number,
-} > {}
+interface Props extends RouteComponentProps < { id: number } > {}
 
 interface State {
   product: Product | null;
@@ -17,8 +15,7 @@ interface State {
   showModal: boolean;
 }
 
-export class ProductShow extends React.Component < Props,
-State > {
+export class ProductShow extends React.Component < Props, State > {
   constructor(props: Props) {
     super(props);
     this.state = {
@@ -35,9 +32,7 @@ State > {
 
   public render() {
 
-    if (this.state.product === null) {
-      return (<Loading/>);
-    }
+    if (this.state.product === null) return <Loading />;
 
     // TODO activeIMGのClass周りの動的な書き換え
     const subImages = ['01.png', '02.png', '11.png', '17.png'].map((img, index) => {
@@ -183,25 +178,16 @@ State > {
   private changeActiveImage = (e: any) => {
     const clickedImg = e.target;
 
-    document
-      .querySelectorAll('.sub-images-container .active')
-      .forEach(d => {
-        d
-          .classList
-          .remove('active');
-        if (d.parentElement) {
-          d.parentElement.classList.add('cover');
-        }
-        },
-      );
+    document.querySelectorAll('.sub-images-container .active')
+            .forEach(d => {
+                d.classList.remove('active');
+                if (d.parentElement) d.parentElement.classList.add('cover');
+            });
 
-    clickedImg
-      .classList
-      .add('active');
-    e
-      .currentTarget
-      .classList
-      .remove('cover');
+    clickedImg.classList.add('active');
+    e.currentTarget
+     .classList
+     .remove('cover');
     this.setState({activeImagePath: clickedImg.src});
   }
 }
