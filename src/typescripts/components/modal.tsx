@@ -29,4 +29,3 @@ export class Modal extends React.Component<Props, {}> {
         );
     }
 }
-
