@@ -62,7 +62,7 @@
         // 現状はエリア保持のためのpadding bottom
         .creators { border: #f2f2f2 1px solid; padding: 2vmin 3.2vmin; }
         .main-creator { font-size: 2.4vmin; }
-        .main-creator .subject { margin: 1.5vmin 0 1vmin; font-weight: 600; }
+        .main-creator .subject { margin: 1vmin 0; font-weight: 600; }
         .main-creator .name { margin-left: 3vmin; }
 
         .main-creator > .concept {
@@ -76,8 +76,8 @@
         }
 
         .owner-img {
-            width: 16vmin;
-            height: 16vmin;
+            width: 15.5vmin;
+            height: 15.5vmin;
             border-radius: 50%;
         }
     }
@@ -91,8 +91,7 @@
         color: $white-text-color;
         font-size: 5vmin;
         width: 60vmin;
-        height: 15vmin;
-        padding-top: 2vmin;
+        height: 14vmin;
         margin: 8vmin 0;
         border: 0px;
         border-radius: 10vmin;
