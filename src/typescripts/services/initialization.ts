@@ -10,15 +10,12 @@ declare var window: Window;
 export class InitializationService {
     public static async initialize() {
         try {
-            this.isPrivateMode().then((isPrivate) => {
-                console.log('Is in private mode: ', isPrivate);
-            });
         // tslint:disable-next-line:no-empty
         } catch (e) { }
         return;
     }
 
-    private static async isPrivateMode() {
+    public static async isPrivateMode() {
         return new Promise(resolve => {
             const on = () => resolve(true); // is in private mode
             const off = () => resolve(false); // not private mode
