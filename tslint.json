@@ -10,6 +10,7 @@
         "curly": [true, "ignore-same-line"],
         "interface-name": [true, "never-prefix"],
         "jsx-boolean-value": [true, "never"],
+        "max-line-length": [true, 160],
         "jsx-no-multiline-js": false,
         "jsx-no-lambda": false,
         "arrow-parens": [true, "ban-single-arg-parens"],

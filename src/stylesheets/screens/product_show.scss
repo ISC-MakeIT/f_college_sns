@@ -103,4 +103,64 @@
             padding: 0 2vmin;
         }
     }
+
+    // --------------------- modal
+    .product.card {
+        display: flex;
+        flex-direction: row;
+        height: 162px; // borderが画像とかぶるため
+        width: 100%;
+
+        .product-thumb {
+            width: 160px;
+            height: 160px;
+        }
+
+        .right-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+
+    .suggest-product-container {
+        display: flex;
+        flex-direction: row;
+        overflow-x: scroll;
+
+        .suggested-product {
+            margin: 0 5px 10px;
+            position: relative;
+            width: 100px;
+        }
+
+        .short-product-thumb {
+            height: 130px;
+            width: 100px;
+        }
+
+        .product-label {
+            background-color: white;
+            opacity: .9;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            text-align: center;
+            width: 100%;
+        }
+    }
+
+    .exitBtn {
+        background-color: $btn-back-color;
+        border-radius: 25px;
+        color: white;
+        font-weight: 600;
+        height: 45px;
+        line-height: 45px;
+        margin: 20px auto 0;
+        text-align: center;
+        width: 60%;
+    }
+
 }
