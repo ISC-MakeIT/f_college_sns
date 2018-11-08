@@ -114,14 +114,14 @@
     }
 
     // --------------------- modal
-    .product.vote-card {
+    .product.voted-card {
         display: flex;
         align-items: center;
-        width: 90%;
+        width: 95%;
         border: 1px solid #e9ecef;
         border-radius: 1vmin;
-        padding: 2vmin;
-        margin: 3vmin auto;
+        padding: 3vmin;
+        margin: 5vmin auto;
 
         .product-thumb {
             width: 24vmin;
@@ -133,15 +133,15 @@
             width: 100%;
             text-align: center;
             padding: 0 1.5vmin;
-            .right-container-title {
+            .right-container__title {
                 font-size: 3vmin;
-                padding: 3vmin 0;
+                padding: 2.3vmin 0;
             }
         }
     }
 
     .suggest-product-title{
-        margin: 3vmin;
+        margin: 0 3vmin 3vmin;
     }
 
     .suggest-product-container {
@@ -159,21 +159,21 @@
         }
 
         .short-product-thumb {
-            height: 32vmin;
-            width: 25.5vmin;
+            height: 30vmin;
+            width: 30vmin;
             object-fit: cover;
+            border-radius: 1vmin;
         }
 
         .product-label {
+            height: 7vmin;
+            line-height: 7vmin;
             display: block;
             background-color: white;
             opacity: .85;
-            position: absolute;
-            bottom: 0;
-            left: 0;
             text-align: center;
             width: 100%;
-            padding: 1.5vmin 1vmin;
+            margin-top: -7vmin;
         }
     }
 
@@ -183,7 +183,7 @@
         font-size: 5vmin;
         width: 55vmin;
         height: 13vmin;
-        margin: 8vmin auto 5vmin;
+        margin: 2.4vmin auto 2.4vmin;
         border: 0px;
         border-radius: 10vmin;
         span {
@@ -193,7 +193,7 @@
 
     // --------------------- re-vote
     .re-vote-button {
-        background-color: #D1D1D1;
+        background-color: #d1d1d1;
         color: #fff;
         font-size: 5vmin;
         width: 55vmin;
@@ -206,14 +206,20 @@
         }
     }
 
+    .re-vote-text {
+        padding: 3vmin;
+        font-size: 3.4vmin;
+    }
+
     .re-vote-image-list {
         width: 85vw;
-        height: 85vmin;
+        height: 39vmin;
         display: flex;
         flex-wrap: wrap;
         justify-content: space-around;
         overflow: auto;
-        padding: 2.5vmin;
+        padding: 0 2.5vmin;
+        margin: 2.5vmin 0 1.5vmin;
     }
 
     .re-vote-product-image {
@@ -221,7 +227,7 @@
         height: 37.5vmin;
         border-radius: 1vmin;
         object-fit: cover;
-        margin-bottom: 2.4vmin;
+        margin: 1.2vmin 0;
     }
 
 }

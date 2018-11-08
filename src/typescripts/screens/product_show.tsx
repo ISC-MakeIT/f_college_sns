@@ -12,8 +12,8 @@ interface Props extends RouteComponentProps < { id: number } > {}
 interface State {
   product: Product | null;
   activeImagePath?: string;
-  showModal: boolean;
-  reVotingModal: boolean;
+  showVoteModal: boolean;
+  reVoteModal: boolean;
 }
 
 export class ProductShow extends React.Component < Props, State > {
@@ -21,8 +21,8 @@ export class ProductShow extends React.Component < Props, State > {
     super(props);
     this.state = {
       product: null,
-      showModal: true,
-      reVotingModal: false,
+      showVoteModal: false,
+      reVoteModal: false,
     };
   }
 
@@ -64,10 +64,10 @@ export class ProductShow extends React.Component < Props, State > {
     return (
       <Screen name='product-show' showBackButton>
         <Modal
-            open={this.state.reVotingModal}
+            open={this.state.reVoteModal}
             heading='投票権がありません'
             className='re-vote-modal'
-            onClose={() => this.setState({ showModal: false})}
+            onClose={() => this.setState({ reVoteModal: false})}
         >
         <p className='re-vote-text'>
             このままこの作品への投票を希望する場合は以下の投票済みリストから投票をキャンセルする作品をお選びください
@@ -111,23 +111,23 @@ export class ProductShow extends React.Component < Props, State > {
           </button>
         </Modal>
         <Modal
-          open={this.state.showModal}
+          open={this.state.showVoteModal}
           heading='投票が完了しました'
           className='voted-modal'
-          onClose={() => this.setState({ showModal: false })}
+          onClose={() => this.setState({ showVoteModal: false })}
         >
 
-          <div className='product vote-card mt-5'>
+          <div className='product voted-card'>
             <img className='product-thumb' src={this.state.activeImagePath}/>
             <div className='right-container'>
-              <p className='right-container-title'>Strongly beautiful pirate</p>
+              <p className='right-container__title'>Strongly beautiful pirate</p>
               made by
               <p className='creator'>野口 愛華</p>
             </div>
           </div>
 
           {/* 画像リンクをカードで何個か出す。 */}
-          <p className='suggest-product-title mt-5'>他の作品も閲覧しませんか？</p>
+          <p className='suggest-product-title'>他の作品も閲覧しませんか？</p>
           <div className='suggest-product-container'>
             <div className='suggested-product'>
               <img
@@ -167,7 +167,7 @@ export class ProductShow extends React.Component < Props, State > {
             </div>
           </div>
 
-          <button className='vote-button-ext' onClick={() => this.setState({showModal: false})}>
+          <button className='vote-button-ext' onClick={() => this.setState({showVoteModal: false})}>
             <span>閉じる</span>
           </button>
         </Modal>
@@ -226,7 +226,7 @@ export class ProductShow extends React.Component < Props, State > {
     // this.setState({showModal: true});
     // これは投票キャンセル用モーダル
     // キャンセル後は自動で投票
-    this.setState({reVotingModal: true});
+    this.setState({reVoteModal: true});
   }
 
   private changeActiveImage = (e: any) => {

@@ -1,6 +1,6 @@
 .component.modal {
     display: flex;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.8);
     position: absolute;
     left: 0;
     top: 0;
@@ -11,11 +11,22 @@
     -webkit-transform: translate3d(0, 0, 1px);
     transform: translate3d(0, 0, 1px);
     height: 100vh;
+    animation: fadeIn 0.1s ease 0s 1 normal;
+    -webkit-animation: fadeIn 0.1s ease 0s 1 normal;
 
+    @keyframes fadeIn {
+        0% {opacity: 0}
+        100% {opacity: 1}
+    }
+    
+    @-webkit-keyframes fadeIn {
+        0% {opacity: 0}
+        100% {opacity: 1}
+    }
     .modal-container {
         width: 90vw;
         padding: 3vmin;
-        max-height: 85vh;
+        max-height: 70vh;
         background-color: white;
         position: relative;
         margin: auto;
@@ -73,10 +84,5 @@
         flex-shrink: 1;
         height: 50%;
         border: none;
-
-        .re-vote-text {
-            padding: 3vmin;
-            font-size: 3.4vmin;
-        }
     }
 }
