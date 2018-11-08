@@ -207,6 +207,7 @@ export class ProductShow extends React.Component < Props, State > {
       e.preventDefault();
       this.setState({showVoteModal: true});
       this.setState({reVoteModal: false});
+      this.setState({deleteImgSelect: false});
     }
   }
 
@@ -233,7 +234,6 @@ export class ProductShow extends React.Component < Props, State > {
      .classList
      .remove('cover');
     this.setState({activeImagePath: clickedImg.src});
-    this.setState({deleteImgSelect: false});
   }
 
   private selectDeleteImage = (e: any) => {
