@@ -13,6 +13,7 @@ interface State {
   product: Product | null;
   activeImagePath?: string;
   showModal: boolean;
+  reVotingModal: boolean;
 }
 
 export class ProductShow extends React.Component < Props, State > {
@@ -20,7 +21,8 @@ export class ProductShow extends React.Component < Props, State > {
     super(props);
     this.state = {
       product: null,
-      showModal: false,
+      showModal: true,
+      reVotingModal: false,
     };
   }
 
@@ -62,16 +64,63 @@ export class ProductShow extends React.Component < Props, State > {
     return (
       <Screen name='product-show' showBackButton>
         <Modal
+            open={this.state.reVotingModal}
+            heading='投票権がありません'
+            className='re-vote-modal'
+            onClose={() => this.setState({ showModal: false})}
+        >
+        <p className='re-vote-text'>
+            このままこの作品への投票を希望する場合は以下の投票済みリストから投票をキャンセルする作品をお選びください
+        </p>
+        <div className='re-vote-image-list'>
+          <img
+            className='re-vote-product-image'
+            src='http://www.marymagdalene.jp/contents/outwear/254/0401/254-0401_06.jpg'
+          />
+          <img
+            className='re-vote-product-image'
+            src='http://www.marymagdalene.jp/contents/outwear/254/0401/254-0401_06.jpg'
+          />
+          <img
+            className='re-vote-product-image'
+            src='http://www.marymagdalene.jp/contents/outwear/254/0401/254-0401_06.jpg'
+          />
+          <img
+            className='re-vote-product-image'
+            src='http://www.marymagdalene.jp/contents/outwear/254/0401/254-0401_06.jpg'
+          />
+          <img
+            className='re-vote-product-image'
+            src='http://www.marymagdalene.jp/contents/outwear/254/0401/254-0401_06.jpg'
+          />
+          <img
+            className='re-vote-product-image'
+            src='http://www.marymagdalene.jp/contents/outwear/254/0401/254-0401_06.jpg'
+          />
+          <img
+            className='re-vote-product-image'
+            src='http://www.marymagdalene.jp/contents/outwear/254/0401/254-0401_06.jpg'
+          />
+          <img
+            className='re-vote-product-image'
+            src='http://www.marymagdalene.jp/contents/outwear/254/0401/254-0401_06.jpg'
+          />
+        </div>
+          <button className='re-vote-button'>
+            <span>投票を取り消す</span>
+          </button>
+        </Modal>
+        <Modal
           open={this.state.showModal}
           heading='投票が完了しました'
           className='voted-modal'
           onClose={() => this.setState({ showModal: false })}
         >
 
-          <div className='product card mt-5'>
+          <div className='product vote-card mt-5'>
             <img className='product-thumb' src={this.state.activeImagePath}/>
             <div className='right-container'>
-              <p className='title'>Strongly beautiful pirate</p>
+              <p className='right-container-title'>Strongly beautiful pirate</p>
               made by
               <p className='creator'>野口 愛華</p>
             </div>
@@ -79,7 +128,7 @@ export class ProductShow extends React.Component < Props, State > {
 
           {/* 画像リンクをカードで何個か出す。 */}
           <p className='suggest-product-title mt-5'>他の作品も閲覧しませんか？</p>
-          <div className='suggest-product-container mt-2'>
+          <div className='suggest-product-container'>
             <div className='suggested-product'>
               <img
                 className='short-product-thumb'
@@ -118,7 +167,9 @@ export class ProductShow extends React.Component < Props, State > {
             </div>
           </div>
 
-          <p className='exitBtn' onClick={() => this.setState({showModal: false})}>戻る</p>
+          <button className='vote-button-ext' onClick={() => this.setState({showModal: false})}>
+            <span>閉じる</span>
+          </button>
         </Modal>
         <div className='image-container'>
           <img className='product-img' src={this.state.activeImagePath}/>
@@ -172,7 +223,10 @@ export class ProductShow extends React.Component < Props, State > {
   private execVote = (e: any) => {
     e.preventDefault();
     // TODO Apiにvote
-    this.setState({showModal: true});
+    // this.setState({showModal: true});
+    // これは投票キャンセル用モーダル
+    // キャンセル後は自動で投票
+    this.setState({reVotingModal: true});
   }
 
   private changeActiveImage = (e: any) => {

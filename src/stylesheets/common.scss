@@ -1,5 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=M+PLUS+1p);
-
+@import url('https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c');
 // 全体の共通設定
 $main-color: #ffffff;
 $gradation-purple-color: #D9D7FC;
@@ -25,7 +24,7 @@ $base-photo-url: 'https://s3-ap-northeast-1.amazonaws.com/f-college-images';
 
 body {
     color: $text-color;
-    font-family: "M PLUS 1p", "Shree Devanagari 714", "Optima", "Nunito", "Yu Gothic", "Hiragino Kaku Gothic Pro", "sans-serif";
+    font-family: "Hiragino Kaku Gothic Pro", "M PLUS Rounded 1c", "Yu Gothic", "Shree Devanagari 714", "Optima", "Nunito", "Meiryo",  "sans-serif";
     font-weight: 400;
     font-size:62.5%; /* 10px */
     background-color: $main-color;
