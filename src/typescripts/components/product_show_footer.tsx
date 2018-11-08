@@ -13,4 +13,8 @@ export class Footer extends React.Component<{}, {}> {
         );
     }
 
+<<<<<<< Updated upstream
 }
+=======
+}
+>>>>>>> Stashed changes

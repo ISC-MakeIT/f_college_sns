@@ -3,9 +3,15 @@ import {ProductService} from '../services';
 import {RouteComponentProps, Link} from 'react-router-dom';
 import Screen from './screen';
 import {Product} from '../entities';
+<<<<<<< Updated upstream
 import {Loading, Icon, Modal} from '../components';
 import {PhotoService} from '../services/photo';
 import {Footer} from '../components/product_show_footer';
+=======
+import { Loading, Icon } from '../components';
+import { PhotoService } from '../services/photo';
+import { Footer } from '../components/product_show_footer';
+>>>>>>> Stashed changes
 
 interface Props extends RouteComponentProps < { id: number } > {}
 
@@ -238,10 +244,17 @@ export class ProductShow extends React.Component < Props, State > {
                 if (d.parentElement) d.parentElement.classList.add('cover');
             });
 
+<<<<<<< Updated upstream
     clickedImg.classList.add('active');
     e.currentTarget
      .classList
      .remove('cover');
     this.setState({activeImagePath: clickedImg.src});
   }
+=======
+                <Footer/>
+            </Screen>
+        );
+    }
+>>>>>>> Stashed changes
 }
