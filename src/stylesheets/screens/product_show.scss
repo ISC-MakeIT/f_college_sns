@@ -120,8 +120,8 @@
         width: 95%;
         border: 1px solid #e9ecef;
         border-radius: 1vmin;
-        padding: 3vmin;
-        margin: 5vmin auto;
+        padding: 2.4vmin;
+        margin: 5vmin auto 4vmin;
 
         .product-thumb {
             width: 24vmin;
@@ -141,11 +141,12 @@
     }
 
     .suggest-product-title{
+        font-weight: 600;
         margin: 0 3vmin 3vmin;
     }
 
     .suggest-product-container {
-        height: 38vmin;
+        height: 34vmin;
         display: flex;
         flex-direction: row;
         overflow: auto;
@@ -183,7 +184,7 @@
         font-size: 5vmin;
         width: 55vmin;
         height: 13vmin;
-        margin: 2.4vmin auto 2.4vmin;
+        margin: 2vmin auto 1.8vmin;
         border: 0px;
         border-radius: 10vmin;
         span {
@@ -204,6 +205,11 @@
         span {
             padding: 0 2vmin;
         }
+    }
+
+    .button-active {
+        background-color: $link-main-color;
+        color: $white-text-color;
     }
 
     .re-vote-text {
@@ -227,7 +233,22 @@
         height: 37.5vmin;
         border-radius: 1vmin;
         object-fit: cover;
+    }
+
+    .non-select {
         margin: 1.2vmin 0;
+    }
+
+    .delete-image-box {
+        width: 37.5vmin;
+        height: 37.5vmin;
+        border-radius: 1vmin;
+        background: $black;
+        margin: 1.2vmin 0;
+    }
+
+    .select {
+        opacity: 0.25;
     }
 
 }

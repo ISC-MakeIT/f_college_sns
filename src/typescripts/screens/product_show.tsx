@@ -14,6 +14,7 @@ interface State {
   activeImagePath?: string;
   showVoteModal: boolean;
   reVoteModal: boolean;
+  deleteImgSelect: boolean;
 }
 
 export class ProductShow extends React.Component < Props, State > {
@@ -22,7 +23,8 @@ export class ProductShow extends React.Component < Props, State > {
     this.state = {
       product: null,
       showVoteModal: false,
-      reVoteModal: false,
+      reVoteModal: true,
+      deleteImgSelect: false,
     };
   }
 
@@ -73,40 +75,20 @@ export class ProductShow extends React.Component < Props, State > {
             このままこの作品への投票を希望する場合は以下の投票済みリストから投票をキャンセルする作品をお選びください
         </p>
         <div className='re-vote-image-list'>
-          <img
-            className='re-vote-product-image'
-            src='http://www.marymagdalene.jp/contents/outwear/254/0401/254-0401_06.jpg'
-          />
-          <img
-            className='re-vote-product-image'
-            src='http://www.marymagdalene.jp/contents/outwear/254/0401/254-0401_06.jpg'
-          />
-          <img
-            className='re-vote-product-image'
-            src='http://www.marymagdalene.jp/contents/outwear/254/0401/254-0401_06.jpg'
-          />
-          <img
-            className='re-vote-product-image'
-            src='http://www.marymagdalene.jp/contents/outwear/254/0401/254-0401_06.jpg'
-          />
-          <img
-            className='re-vote-product-image'
-            src='http://www.marymagdalene.jp/contents/outwear/254/0401/254-0401_06.jpg'
-          />
-          <img
-            className='re-vote-product-image'
-            src='http://www.marymagdalene.jp/contents/outwear/254/0401/254-0401_06.jpg'
-          />
-          <img
-            className='re-vote-product-image'
-            src='http://www.marymagdalene.jp/contents/outwear/254/0401/254-0401_06.jpg'
-          />
-          <img
-            className='re-vote-product-image'
-            src='http://www.marymagdalene.jp/contents/outwear/254/0401/254-0401_06.jpg'
-          />
+          <p className='delete-image-box' onClick={this.selectDeleteImage}>
+            <img
+              className='re-vote-product-image'
+              src='http://www.marymagdalene.jp/contents/outwear/254/0401/254-0401_06.jpg'
+            />
+          </p>
+          <p className='delete-image-box' onClick={this.selectDeleteImage}>
+            <img
+              className='re-vote-product-image'
+              src='http://www.marymagdalene.jp/contents/outwear/254/0401/254-0401_06.jpg'
+            />
+          </p>
         </div>
-          <button className='re-vote-button'>
+          <button className='re-vote-button'　onClick={this.voteSwitch}>
             <span>投票を取り消す</span>
           </button>
         </Modal>
@@ -220,6 +202,14 @@ export class ProductShow extends React.Component < Props, State > {
     );
   }
 
+  private voteSwitch = (e: any) => {
+    if (this.state.deleteImgSelect === true) {
+      e.preventDefault();
+      this.setState({showVoteModal: true});
+      this.setState({reVoteModal: false});
+    }
+  }
+
   private execVote = (e: any) => {
     e.preventDefault();
     // TODO Apiにvote
@@ -243,5 +233,21 @@ export class ProductShow extends React.Component < Props, State > {
      .classList
      .remove('cover');
     this.setState({activeImagePath: clickedImg.src});
+    this.setState({deleteImgSelect: false});
+  }
+
+  private selectDeleteImage = (e: any) => {
+    const selectedImg = e.target;
+    this.setState({deleteImgSelect: true});
+
+    document.querySelectorAll('.delete-image-box .select')
+            .forEach(d => {
+                d.classList.remove('select');
+            });
+    selectedImg.classList.add('select');
+    document.querySelectorAll('.re-vote-button')
+            .forEach(d => {
+              d.classList.add('button-active');
+            });
   }
 }
