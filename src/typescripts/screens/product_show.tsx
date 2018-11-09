@@ -23,7 +23,7 @@ export class ProductShow extends React.Component < Props, State > {
     this.state = {
       product: null,
       showVoteModal: false,
-      reVoteModal: true,
+      reVoteModal: false,
       deleteImgSelect: false,
     };
   }
@@ -69,7 +69,7 @@ export class ProductShow extends React.Component < Props, State > {
             open={this.state.reVoteModal}
             heading='投票権がありません'
             className='re-vote-modal'
-            onClose={() => this.setState({ reVoteModal: false})}
+            onClose={() => this.setState({ reVoteModal: false, deleteImgSelect: false})}
         >
         <p className='re-vote-text'>
             このままこの作品への投票を希望する場合は以下の投票済みリストから投票をキャンセルする作品をお選びください
