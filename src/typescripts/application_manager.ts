@@ -2,6 +2,11 @@ export class ApplicationManager {
     private static BEAUTY_VOTE_COUNT = 5;
     private static FASHION_VOTE_COUNT = 8;
 
+    // Storage keyを定数に
+    private static KEY_VOTE_IDS = 'voteIds';
+    private static KEY_UUID = 'uuid';
+    private static KEY_REMAINED_VOTE_COUNT = 'remainedVoteCount';
+
     public static get instance(): ApplicationManager {
         if (!this._instance) {
             const voteIds = this.getVoteIds();
@@ -17,7 +22,7 @@ export class ApplicationManager {
     private static _instance: ApplicationManager;
 
     private static getVoteIds = () => {
-        const strIds = localStorage.getItem('voteIds');
+        const strIds = localStorage.getItem(ApplicationManager.KEY_VOTE_IDS);
 
         if (!strIds) return [];
 
@@ -25,7 +30,7 @@ export class ApplicationManager {
     }
 
     private static getUuid = () => {
-        const uuid = localStorage.getItem('uuid');
+        const uuid = localStorage.getItem(ApplicationManager.KEY_UUID);
 
         if (!uuid) return '';
 
@@ -33,13 +38,13 @@ export class ApplicationManager {
     }
 
     private static getRemainedVoteCount = () => {
-        let remainedVoteCount: any = localStorage.getItem('remainedVoteCount');
+        let remainedVoteCount: any = localStorage.getItem(ApplicationManager.KEY_REMAINED_VOTE_COUNT);
 
         if (!remainedVoteCount) {
             remainedVoteCount = {};
             remainedVoteCount.fashion = ApplicationManager.FASHION_VOTE_COUNT;
             remainedVoteCount.beauty = ApplicationManager.BEAUTY_VOTE_COUNT;
-            localStorage.setItem('remainedVoteCount', JSON.stringify(remainedVoteCount));
+            localStorage.setItem(ApplicationManager.KEY_REMAINED_VOTE_COUNT, JSON.stringify(remainedVoteCount));
             return remainedVoteCount;
         }
 
@@ -58,6 +63,6 @@ export class ApplicationManager {
 
     public setUuid = (uuid: string) => {
         this.uuid = uuid;
-        localStorage.setItem('uuid', uuid);
+        localStorage.setItem(ApplicationManager.KEY_UUID, uuid);
     }
 }
