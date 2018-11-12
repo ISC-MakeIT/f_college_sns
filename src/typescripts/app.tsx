@@ -9,8 +9,7 @@ import { ApplicationManager } from './application_manager';
 class App extends React.Component<{}, {loaded: boolean}> {
     public async componentDidMount() {
         try {
-            // await InitializationService.initialize();
-            await InitializationService.isPrivateMode().then((isPrivate) => {
+            await InitializationService.isPrivateMode().then(isPrivate => {
                 // tslint:disable-next-line:no-console
                 console.log('Is in private mode: ', isPrivate);
                 if (isPrivate) alert('プライベートウインドウでは正常に動作しない場合があるため通常のブラウザをご利用ください。');
