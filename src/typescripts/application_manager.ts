@@ -55,4 +55,9 @@ export class ApplicationManager {
         this.uuid = uuid;
         this.remainedVoteCount = remainedVoteCount;
     }
+
+    public setUuid = (uuid: string) => {
+        this.uuid = uuid;
+        localStorage.setItem('uuid', uuid);
+    }
 }
