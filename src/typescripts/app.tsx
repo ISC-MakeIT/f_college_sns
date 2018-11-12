@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import * as Screens from './screens';
 import { InitializationService } from './services';
 import { Loading } from './components';
+import { ApplicationManager } from './application_manager';
 
 class App extends React.Component<{}, {loaded: boolean}> {
     public async componentDidMount() {
@@ -14,6 +15,8 @@ class App extends React.Component<{}, {loaded: boolean}> {
                 console.log('Is in private mode: ', isPrivate);
                 if (isPrivate) alert('プライベートウインドウでは正常に動作しない場合があるため通常のブラウザをご利用ください。');
             });
+
+            const applicationManager = ApplicationManager.instance;
         } catch (e) {} // tslint:disable-line:no-empty
     }
 
