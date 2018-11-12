@@ -62,7 +62,7 @@ jobs:
           command: git config --global user.name "iscmakeit" && git config  --global user.email "makeit@gn.iwasaki.ac.jp"
       - run:
           name: git commit
-          command: git add . && git commit -am "update public folder by f_college_sns update, BUILD_NUMBER:${CIRCLE_BUILD_NUM} RUN_USER:${CIRCLE_USERNAME}" && git push origin master
+          command: git add . && git commit -am "auto update public folder by f_college_sns update, BUILD_NUMBER:${CIRCLE_BUILD_NUM} RUN_USER:${CIRCLE_USERNAME}" && git push origin master
 
 workflows:
   version: 2
