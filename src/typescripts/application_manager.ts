@@ -1,4 +1,7 @@
+type ProductType = 'fashion' | 'beauty';
+
 export class ApplicationManager {
+
     private static BEAUTY_VOTE_COUNT = 5;
     private static FASHION_VOTE_COUNT = 8;
 
@@ -22,14 +25,15 @@ export class ApplicationManager {
     private static _instance: ApplicationManager;
 
     private static getVoteIds = () => {
-        const strIds = localStorage.getItem(ApplicationManager.KEY_VOTE_IDS);
+        const voteIds = localStorage.getItem(ApplicationManager.KEY_VOTE_IDS);
 
-        if (!strIds) {
-            localStorage.setItem(ApplicationManager.KEY_VOTE_IDS, JSON.stringify([]));
-            return [];
+        if (!voteIds) {
+            const initialVoteIds = { fashion: [], beauty: [] };
+            localStorage.setItem(ApplicationManager.KEY_VOTE_IDS, JSON.stringify(initialVoteIds));
+            return initialVoteIds;
         }
 
-        return JSON.parse(strIds);
+        return JSON.parse(voteIds);
     }
 
     private static getUuid = () => {
@@ -54,12 +58,12 @@ export class ApplicationManager {
         return JSON.parse(remainedVoteCount);
     }
 
-    public voteIds: any[];
+    public voteIds: {};
     public uuid: string;
     public remainedVoteCount: {};
 
-    private constructor(voteIds: any[], uuid: string, remainedVoteCount: {}) {
-        this.voteIds　= voteIds;
+    private constructor(voteIds: {}, uuid: string, remainedVoteCount: {}) {
+        this.voteIds = voteIds;
         this.uuid = uuid;
         this.remainedVoteCount = remainedVoteCount;
     }
@@ -69,22 +73,22 @@ export class ApplicationManager {
         localStorage.setItem(ApplicationManager.KEY_UUID, uuid);
     }
 
-    public pushVoteIds = (id: number) => {
-        const tmpStorageIds = localStorage.getItem(ApplicationManager.KEY_VOTE_IDS) || '"[]"';
+    public pushVoteIds = (key: ProductType, id: number) => {
+        const tmpStorageIds = localStorage.getItem(ApplicationManager.KEY_VOTE_IDS) || '"{}"';
         const parsedTmpStorageIds = JSON.parse(tmpStorageIds);
 
-        if (parsedTmpStorageIds.includes(id)) return;
+        if (parsedTmpStorageIds[key].includes(id)) return;
 
-        parsedTmpStorageIds.push(id);
+        parsedTmpStorageIds[key].push(id);
         this.voteIds = parsedTmpStorageIds;
         localStorage.setItem(ApplicationManager.KEY_VOTE_IDS, JSON.stringify(parsedTmpStorageIds));
     }
 
-    public popVoteIds = (id: number) => {
-        const tmpStorageIds = localStorage.getItem(ApplicationManager.KEY_VOTE_IDS) || '"[]"';
+    public popVoteIds = (key: ProductType, id: number) => {
+        const tmpStorageIds = localStorage.getItem(ApplicationManager.KEY_VOTE_IDS) || '"{}"';
         const parsedTmpStorageIds = JSON.parse(tmpStorageIds);
-        const filteredStorageIds = parsedTmpStorageIds.filter((e: number) => e !== id);
-        this.voteIds = filteredStorageIds;
-        localStorage.setItem(ApplicationManager.KEY_VOTE_IDS, JSON.stringify(filteredStorageIds));
+        parsedTmpStorageIds[key] = parsedTmpStorageIds[key].filter((e: number) => e !== id);
+        this.voteIds = parsedTmpStorageIds;
+        localStorage.setItem(ApplicationManager.KEY_VOTE_IDS, JSON.stringify(parsedTmpStorageIds));
     }
 }
