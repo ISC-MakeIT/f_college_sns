@@ -1,0 +1,81 @@
+version: 2
+jobs:
+  lint:
+    working_directory: ~/workspace
+    docker:
+      - image: circleci/node:10.13.0
+    steps:
+      - checkout
+      - restore_cache:
+          key: yarn-{{ .Branch }}-{{ checksum "yarn.lock"}}
+      - run:
+          name: Install dependencies
+          command: yarn
+      - run:
+          name: stylelint
+          command: ./node_modules/.bin/stylelint src/stylesheets/**/*.scss
+      - run:
+          name: tslint
+          command: ./node_modules/.bin/tslint ./src/typescripts/**/*.tsx
+      - save_cache:
+          key: yarn-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          paths:
+          - ~/workspace/node_modules
+      - persist_to_workspace:
+          root: .
+          paths:
+            - .
+
+  build:
+    working_directory: ~/workspace
+    docker:
+      - image: circleci/node:10.13.0
+    steps:
+      - attach_workspace:
+          at: .
+      - run:
+          name: Build
+          command: yarn build
+      - persist_to_workspace:
+          root: .
+          paths:
+            - .
+
+  deploy:
+    working_directory: ~/workspace
+    docker:
+      - image: circleci/node:10.13.0
+    steps:
+      - attach_workspace:
+          at: .
+      - run:
+          name: clone f_college_api
+          command: cd .. && git clone https://github.com/ISC-MakeIT/f_college_api.git f_college_api
+      - run:
+          name: replace new public folder
+          command: cd f_college_api && rm -rf ./public && cp -pR ../workspace/public/ ./
+      - add_ssh_keys:
+          fingerprints:
+            - "99:7f:9d:c6:53:47:97:f5:18:4d:35:62:d2:5c:ee:e7"
+      - run:
+          name: git config
+          command: git config --global user.name "iscmakeit" && git config  --global user.email "makeit@gn.iwasaki.ac.jp"
+      - run:
+          name: git commit
+          command: git add . && git commit -am "auto update public folder by f_college_sns update, BUILD_NUMBER:${CIRCLE_BUILD_NUM} RUN_USER:${CIRCLE_USERNAME}" && git push origin master
+
+workflows:
+  version: 2
+  build_and_deploy_api:
+    jobs:
+      - lint
+      - build:
+          requires:
+            - lint
+          filters:
+            branches:
+              only:
+                - master
+      - deploy:
+          requires:
+            - build
