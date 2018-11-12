@@ -91,4 +91,37 @@ export class ApplicationManager {
         this.voteIds = parsedTmpStorageIds;
         localStorage.setItem(ApplicationManager.KEY_VOTE_IDS, JSON.stringify(parsedTmpStorageIds));
     }
+
+    public incrementRemainedVoteCount = (key: ProductType) => {
+        const tmpRemainedVoteCount = localStorage.getItem(ApplicationManager.KEY_REMAINED_VOTE_COUNT);
+        if (!tmpRemainedVoteCount) return;
+
+        const parsedStorageVoteCount = JSON.parse(tmpRemainedVoteCount);
+        const keyName = ['BEAUTY_VOTE_COUNT', 'FASHION_VOTE_COUNT'].find(n => n.includes(key.toUpperCase()));
+
+        // FIXME ↓みたいにしたいけどコンパイラに怒られた if ( keyName && parsedStorageVoteCount[key] >=
+        // ApplicationManager[keyName]) return;
+        if (keyName === 'BEAUTY_VOTE_COUNT') {
+            if (parsedStorageVoteCount[key] >= ApplicationManager.BEAUTY_VOTE_COUNT) return;
+        } else {
+            if (parsedStorageVoteCount[key] >= ApplicationManager.FASHION_VOTE_COUNT) return;
+        }
+
+        parsedStorageVoteCount[key] += 1;
+        this.remainedVoteCount = parsedStorageVoteCount;
+        localStorage.setItem(ApplicationManager.KEY_REMAINED_VOTE_COUNT, JSON.stringify(this.remainedVoteCount));
+    }
+
+    public decrementRemainedVoteCount = (key: ProductType) => {
+        const tmpRemainedVoteCount = localStorage.getItem(ApplicationManager.KEY_REMAINED_VOTE_COUNT);
+        if (!tmpRemainedVoteCount) return;
+
+        const parsedStorageVoteCount = JSON.parse(tmpRemainedVoteCount);
+
+        if (parsedStorageVoteCount[key] <= 0) return;
+
+        parsedStorageVoteCount[key] -= 1;
+        this.remainedVoteCount = parsedStorageVoteCount;
+        localStorage.setItem(ApplicationManager.KEY_REMAINED_VOTE_COUNT, JSON.stringify(this.remainedVoteCount));
+    }
 }
