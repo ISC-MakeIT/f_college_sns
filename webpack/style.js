@@ -2,7 +2,7 @@ const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const sourceDir = path.join(__dirname, '../', 'src', 'stylesheets');
-const targetDir = path.join(__dirname, '../', 'public', 'assets');
+const targetDir = path.join(__dirname, '../', 'public', 'stylesheets');
 
 // const MODE = 'development';
 // ソースマップの利用有無(productionのときはソースマップを利用しない)
