@@ -24,9 +24,12 @@ export class ApplicationManager {
     private static getVoteIds = () => {
         const strIds = localStorage.getItem(ApplicationManager.KEY_VOTE_IDS);
 
-        if (!strIds) return [];
+        if (!strIds) {
+            localStorage.setItem(ApplicationManager.KEY_VOTE_IDS, JSON.stringify([]));
+            return [];
+        }
 
-        return strIds.split(',').map(n => Number(n));
+        return JSON.parse(strIds);
     }
 
     private static getUuid = () => {
@@ -64,5 +67,24 @@ export class ApplicationManager {
     public setUuid = (uuid: string) => {
         this.uuid = uuid;
         localStorage.setItem(ApplicationManager.KEY_UUID, uuid);
+    }
+
+    public pushVoteIds = (id: number) => {
+        const tmpStorageIds = localStorage.getItem(ApplicationManager.KEY_VOTE_IDS) || '"[]"';
+        const parsedTmpStorageIds = JSON.parse(tmpStorageIds);
+
+        if (parsedTmpStorageIds.includes(id)) return;
+
+        parsedTmpStorageIds.push(id);
+        this.voteIds = parsedTmpStorageIds;
+        localStorage.setItem(ApplicationManager.KEY_VOTE_IDS, JSON.stringify(parsedTmpStorageIds));
+    }
+
+    public popVoteIds = (id: number) => {
+        const tmpStorageIds = localStorage.getItem(ApplicationManager.KEY_VOTE_IDS) || '"[]"';
+        const parsedTmpStorageIds = JSON.parse(tmpStorageIds);
+        const filteredStorageIds = parsedTmpStorageIds.filter((e: number) => e !== id);
+        this.voteIds = filteredStorageIds;
+        localStorage.setItem(ApplicationManager.KEY_VOTE_IDS, JSON.stringify(filteredStorageIds));
     }
 }
