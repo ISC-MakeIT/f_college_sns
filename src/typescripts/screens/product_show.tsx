@@ -205,9 +205,11 @@ export class ProductShow extends React.Component < Props, State > {
   private voteSwitch = (e: any) => {
     if (this.state.deleteImgSelect === true) {
       e.preventDefault();
-      this.setState({showVoteModal: true});
-      this.setState({reVoteModal: false});
-      this.setState({deleteImgSelect: false});
+      this.setState({
+        showVoteModal: true,
+        reVoteModal: false,
+        deleteImgSelect: false,
+      });
     }
   }
 
