@@ -21,23 +21,26 @@
         object-position: 0% 0%;
         overflow: hidden;
         width: 100vw;
+        height: 65vh;
+        max-height: auto;
     }
 
     .sub-images-container {
         overflow-y: overlay;
+        width: auto;
 
         .img-container.cover {
             background-color: $black;
         }
 
-        .active {
-            background: whitesmoke;
-            opacity: .9;
-        }
-
         .img {
             opacity: .3;
             position: relative;
+        }
+
+        .active {
+            background: whitesmoke;
+            opacity: .9;
         }
     }
 
@@ -104,63 +107,148 @@
         }
     }
 
+    button {
+        outline: none;
+        box-shadow: none;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    }
+
     // --------------------- modal
-    .product.card {
+    .product.voted-card {
         display: flex;
-        flex-direction: row;
-        height: 162px; // borderが画像とかぶるため
-        width: 100%;
+        align-items: center;
+        width: 95%;
+        border: 1px solid #e9ecef;
+        border-radius: 1vmin;
+        padding: 2.4vmin;
+        margin: 5vmin auto 4vmin;
 
         .product-thumb {
-            width: 160px;
-            height: 160px;
+            width: 24vmin;
+            height: 24vmin;
+            object-fit: cover;
         }
 
         .right-container {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            width: 100%;
+            text-align: center;
+            padding: 0 1.5vmin;
+            .right-container__title {
+                font-size: 3vmin;
+                padding: 2.3vmin 0;
+            }
         }
+    }
+
+    .suggest-product-title{
+        font-weight: 600;
+        margin: 0 3vmin 3vmin;
     }
 
     .suggest-product-container {
+        height: 34vmin;
         display: flex;
         flex-direction: row;
-        overflow-x: scroll;
-
+        overflow: auto;
+        margin: 0 3vmin;
+        
         .suggested-product {
             margin: 0 5px 10px;
             position: relative;
-            width: 100px;
+            width: 33vmin;
+            height: 24vmin;
         }
 
         .short-product-thumb {
-            height: 130px;
-            width: 100px;
+            height: 30vmin;
+            width: 30vmin;
+            object-fit: cover;
+            border-radius: 1vmin;
         }
 
         .product-label {
+            height: 7vmin;
+            line-height: 7vmin;
+            display: block;
             background-color: white;
-            opacity: .9;
-            position: absolute;
-            bottom: 0;
-            left: 0;
+            opacity: .85;
             text-align: center;
             width: 100%;
+            margin-top: -7vmin;
         }
     }
 
-    .exitBtn {
-        background-color: $btn-back-color;
-        border-radius: 25px;
-        color: white;
-        font-weight: 600;
-        height: 45px;
-        line-height: 45px;
-        margin: 20px auto 0;
-        text-align: center;
-        width: 60%;
+    .vote-button-ext {
+        background-color: $link-main-color;
+        color: $white-text-color;
+        font-size: 5vmin;
+        width: 55vmin;
+        height: 13vmin;
+        margin: 2vmin auto 1.8vmin;
+        border: 0px;
+        border-radius: 10vmin;
+        span {
+            padding: 0 2vmin;
+        }
+    }
+
+    // --------------------- re-vote
+    .re-vote-button {
+        background-color: #d1d1d1;
+        color: #fff;
+        font-size: 5vmin;
+        width: 55vmin;
+        height: 13vmin;
+        margin: 5vmin auto 3vmin;
+        border: 0px;
+        border-radius: 10vmin;
+        span {
+            padding: 0 2vmin;
+        }
+    }
+
+    .button-active {
+        background-color: $link-main-color;
+        color: $white-text-color;
+    }
+
+    .re-vote-text {
+        padding: 3vmin;
+        font-size: 3.4vmin;
+    }
+
+    .re-vote-image-list {
+        width: 85vw;
+        height: 39vmin;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        overflow: auto;
+        padding: 0 2.5vmin;
+        margin: 2.5vmin 0 1.5vmin;
+    }
+
+    .re-vote-product-image {
+        width: 37.5vmin;
+        height: 37.5vmin;
+        border-radius: 1vmin;
+        object-fit: cover;
+    }
+
+    .non-select {
+        margin: 1.2vmin 0;
+    }
+
+    .delete-image-box {
+        width: 37.5vmin;
+        height: 37.5vmin;
+        border-radius: 1vmin;
+        background: $black;
+        margin: 1.2vmin 0;
+    }
+
+    .select {
+        opacity: 0.25;
     }
 
 }
