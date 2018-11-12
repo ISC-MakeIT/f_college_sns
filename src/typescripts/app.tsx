@@ -15,7 +15,8 @@ class App extends React.Component<{}, {loaded: boolean}> {
                 if (isPrivate) alert('プライベートウインドウでは正常に動作しない場合があるため通常のブラウザをご利用ください。');
             });
 
-            const applicationManager = ApplicationManager.instance;
+            // インスタンス初期化 && 今後使うなら変数を利用するs
+            const _ = ApplicationManager.instance;
         } catch (e) {} // tslint:disable-line:no-empty
     }
 
