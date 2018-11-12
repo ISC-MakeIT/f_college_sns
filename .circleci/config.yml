@@ -70,12 +70,12 @@ workflows:
     jobs:
       - lint
       - build:
-        requires:
-          - lint
-        filters:
-          branches:
-            only:
-              - master
+          requires:
+            - lint
+          filters:
+            branches:
+              only:
+                - master
       - deploy:
-        requires:
-          - build
+          requires:
+            - build
