@@ -81,7 +81,7 @@ export class ApplicationManager {
 
         parsedTmpStorageIds[key].push(id);
         this.voteIds = parsedTmpStorageIds;
-        localStorage.setItem(ApplicationManager.KEY_VOTE_IDS, JSON.stringify(parsedTmpStorageIds));
+        localStorage.setItem(ApplicationManager.KEY_VOTE_IDS, JSON.stringify(this.voteIds));
     }
 
     public popVoteIds = (key: ProductType, id: number) => {
@@ -89,7 +89,7 @@ export class ApplicationManager {
         const parsedTmpStorageIds = JSON.parse(tmpStorageIds);
         parsedTmpStorageIds[key] = parsedTmpStorageIds[key].filter((e: number) => e !== id);
         this.voteIds = parsedTmpStorageIds;
-        localStorage.setItem(ApplicationManager.KEY_VOTE_IDS, JSON.stringify(parsedTmpStorageIds));
+        localStorage.setItem(ApplicationManager.KEY_VOTE_IDS, JSON.stringify(this.voteIds));
     }
 
     public incrementRemainedVoteCount = (key: ProductType) => {
