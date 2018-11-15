@@ -1,10 +1,11 @@
 import * as React from 'react';
-import { Product as ProductEntity } from '../entities/product';
+import { ProductList } from '../entities';
 import { Link } from 'react-router-dom';
 import { Icon } from './icon';
+import { PhotoService } from '../services/photo';
 
 interface Props {
-    product: ProductEntity;
+    product: ProductList;
 }
 
 export class Product extends React.Component<Props, {}> {
@@ -14,15 +15,15 @@ export class Product extends React.Component<Props, {}> {
         const owner = product.owner;
 
         return (
-            <div key={product.id} className='component product'>
-                <Link to={`/products/${product.id}`} className='link-container'>
-                    <img src={product.imageURLPath} className='product-img'/>
+            <div key={product.productId} className='component product'>
+                <Link to={`/products/${product.productId}`} className='link-container'>
+                    <img src={PhotoService.getS3PhotoPath(product.headShot)} className='product-img'/>
                     <div className='product-creator d-flex flex-row align-items-center'>
                         <div className='owner-area'>
-                            <p className='owner-subject'>{owner.subject}</p>
-                            <p className='owner-name'>{owner.name}</p>
+                            <p className='owner-subject'>{owner.studentClass}</p>
+                            <p className='owner-name'>{owner.studentName}</p>
                         </div>
-                        <img src={owner.profilePhotoPath} className='profile_image'/>
+                        <img src={PhotoService.getS3PhotoPath(owner.profilePhoto)} className='profile_image'/>
                     </div>
                     <p className='likes-count'>
                         <Icon name='heart' />
