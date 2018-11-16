@@ -31,6 +31,10 @@ body {
     background-color: $main-color;
 }
 
+a:active {
+    text-decoration: none;
+}
+
 h1 {
     font-weight: 800;
 }
