@@ -236,5 +236,5 @@ $RECYCLE.BIN/
 # End of https://www.gitignore.io/api/vim,node,macos,windows,webstorm,visualstudiocode
 
 node_modules/*
-public/assets/app.js
-public/assets/bundle.css
+public/javascripts/app.js
+public/stylesheets/bundle.css

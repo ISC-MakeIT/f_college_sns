@@ -3,9 +3,8 @@ import {ProductService} from '../services';
 import {RouteComponentProps, Link} from 'react-router-dom';
 import Screen from './screen';
 import {Product} from '../entities';
-import { Loading, Icon, Modal } from '../components';
-import { PhotoService } from '../services/photo';
-import { Footer } from '../components/product_show_footer';
+import {Loading, Icon, Modal, ProductShowFooter as Footer} from '../components';
+import {PhotoService} from '../services/photo';
 
 interface Props extends RouteComponentProps < { id: number } > {}
 
@@ -197,7 +196,7 @@ export class ProductShow extends React.Component < Props, State > {
             <span>投票する</span>
           </button>
         </div>
-        <Footer/>
+        <Footer id={this.state.product.id}/>
       </Screen>
     );
   }
