@@ -12,6 +12,17 @@
     transform: translate3d(0, 0, 1px);
     height: 100vh;
 
+    @keyframes slideModal {
+        0% {
+            opacity: 0;
+            transform: translateY(50vmin);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
     .modal-container {
         width: 90vw;
         padding: 3vmin;
@@ -25,6 +36,8 @@
         -webkit-transform-origin-z: 2px;
         -webkit-transform: translate3d(0, 0, 2px);
         transform: translate3d(0, 0, 2px);
+        animation-name: slideModal;
+        animation-duration: 0.25s;
 
         @media (min-height: 800px) {
             max-height: 570px;
