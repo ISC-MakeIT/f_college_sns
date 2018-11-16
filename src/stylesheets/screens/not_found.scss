@@ -1,13 +1,12 @@
 .screen.not-found > .contents {
-    background: linear-gradient($main-color, $gradation-purple-color);
-
+    background: $main-color;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 
     .content-title {
-        color: $white-text-color;
+        color: #585858;
         h1 {
             font-weight: inherit;
             font-size: 32vmin;
@@ -20,18 +19,19 @@
     }
 
     .content-nav {
-        color: $white-text-color;
-        margin-top: 45px;
+        color: $minor-text-color;
+        margin-top: 15vmin;
         font-size: 3.3vmin;
         font-weight: 100;
     }
 
     .redirect-link {
-        margin-top: 55px;
+        margin-top: 20vmin;
         width: 60vmin;
-        padding: 22px 0 18px;
-        border-radius: 45px;
-        color: $link-main-color;
+        line-height: 11vmin;
+        border-radius: 30vmin;
+        background-color: $btn-back-color;
+        color: #fff;
         font-size: 4.5vmin;
     }
 }

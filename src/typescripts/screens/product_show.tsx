@@ -240,7 +240,7 @@ export class ProductShow extends React.Component < Props, State > {
 
   private selectDeleteImage = (e: any) => {
     const selectedImg = e.target;
-    if (this.state.deleteImgSelect === false) {
+    if (selectedImg.className === 're-vote-product-image') {
       // 新規選択
       this.setState({deleteImgSelect: true});
       document.querySelectorAll('.delete-image-box .select')
@@ -252,7 +252,7 @@ export class ProductShow extends React.Component < Props, State > {
         .forEach(d => {
           d.classList.add('button-active');
         });
-    } else if (this.state.deleteImgSelect === true) {
+    } else {
       // 既に選択済みの場合は取り消す
       this.setState({deleteImgSelect: false});
       document.querySelectorAll('.delete-image-box .select')
