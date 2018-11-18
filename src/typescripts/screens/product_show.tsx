@@ -38,7 +38,7 @@ export class ProductShow extends React.Component < Props, State > {
 
     public render() {
 
-        if (this.state.product == null) return <Loading />;
+        if (this.state.product == null || this.state.product.photos == null) return <Loading />;
 
         // TODO activeIMGのClass周りの動的な書き換え
         const subImages = this.state.product.photos.filter(e => e !== this.state.activeImagePath).map((img, index) => {
@@ -190,7 +190,7 @@ export class ProductShow extends React.Component < Props, State > {
                 </button>
             </div>
 
-            <Footer id={this.state.product.id}/>
+            <Footer id={this.state.product.productId}/>
             </Screen>
         );
     }
