@@ -156,7 +156,7 @@ export class ProductShow extends React.Component < Props, State > {
                     <div className='main-creator text'>
                         <div className='d-flex justify-content-around align-items-center'>
                             <img // FIXME S3にuserの場所作る
-                                src='/assets/images/users/yamashitamizuki_prof.jpg'
+                                src={owner.profilePhoto}
                                 className='owner-img'
                             />
                             <div className='main-creator'>
