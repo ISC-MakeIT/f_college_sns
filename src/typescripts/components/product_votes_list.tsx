@@ -9,9 +9,9 @@ export class ProductVotesList extends React.Component < Props, {} > {
 
     public render() {
         const product = this.props.product;
-        const owner = product.members.find(m => m.leaderFlg) || product.members[0];
-        // TODO
+        const owner = product.owner;
 
+        // TODO
         return (
             <section className='component product_votes_list'>
                 <section className='main_sub_list'>

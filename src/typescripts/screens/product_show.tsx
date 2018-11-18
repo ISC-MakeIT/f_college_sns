@@ -61,7 +61,7 @@ export class ProductShow extends React.Component < Props, State > {
             </p>,
         );
 
-        const owner = this.state.product.members.find(m => m.leaderFlg) || this.state.product.members[0];
+        const owner = this.state.product.owner;
 
         return (
             <Screen name='product-show' showBackButton>

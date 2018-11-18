@@ -10,4 +10,8 @@ export class Product {
         public members: User[],
         public photos: string[] | null,
     ) {}
+
+    public get owner() {
+        return this.members.find(m => m.leaderFlg) || this.members[0];
+    }
 }
