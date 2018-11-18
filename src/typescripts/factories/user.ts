@@ -5,7 +5,7 @@ interface UserProps {
     student_name: string;
     student_class: string;
     profile_photo: string;
-    leader_flg: boolean | null;
+    leader_flg: boolean;
 }
 
 export class UserFactory {

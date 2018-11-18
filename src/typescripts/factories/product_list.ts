@@ -7,7 +7,7 @@ interface OwnerProps {
     student_name: string;
     student_class: string;
     profile_photo: string;
-    leader_flg: number | null;
+    leader_flg: boolean;
 }
 
 interface ProductProps {
