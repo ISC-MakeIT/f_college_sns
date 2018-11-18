@@ -30,7 +30,7 @@ export class ProductShow extends React.Component < Props, State > {
     public async componentDidMount() {
         const product = await ProductService.get(this.props.match.params.id);
 
-        if (product) {
+        if (product && product.photos) {
             this.setState({product});
             this.setState({activeImagePath: product.photos[0] || ''});
         }
@@ -38,7 +38,7 @@ export class ProductShow extends React.Component < Props, State > {
 
     public render() {
 
-        if (this.state.product === null) return <Loading />;
+        if (this.state.product == null) return <Loading />;
 
         // TODO activeIMGのClass周りの動的な書き換え
         const subImages = this.state.product.photos.filter(e => e !== this.state.activeImagePath).map((img, index) => {
