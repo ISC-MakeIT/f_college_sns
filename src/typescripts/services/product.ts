@@ -11,8 +11,7 @@ export interface ProductTypes {
 export class ProductService {
 
     public static async getAll() {
-        // const res = await ApiClient.get(`${window.location.origin}/api/products/`);
-        const res = await ApiClient.get('http://localhost:3000/api/products/');
+        const res = await ApiClient.get('/products/');
 
         const data: ProductTypes = {
             fashion: [],
@@ -31,8 +30,7 @@ export class ProductService {
     }
 
     public static async get(id: number) {
-        // ApiClient.get(`${window.location.origin}/api/products/${id}`)
-        const res = await ApiClient.get(`http://localhost:3000/api/products/${id}`);
+        const res = await ApiClient.get(`/products/${id}`);
         const product = ProductFactory.createFromJSON(res);
         return product;
     }
