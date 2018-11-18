@@ -174,7 +174,7 @@ export class ProductShow extends React.Component < Props, State > {
                 </div>
 
                 <div className='concept'>
-                    <h2>Creator Comment??????</h2>
+                    <h3>Creator Comment</h3>
                     <p className='text'>
                         {this.state.product.concept}
                     </p>
