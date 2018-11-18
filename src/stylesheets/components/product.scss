@@ -44,6 +44,9 @@
             font-size: 3.9vmin;
             color: $text-color;
             font-weight: 600;
+            width: 30vmin;
+            overflow: hidden;
+            white-space: nowrap;
         }
 
         .profile_image {
@@ -51,6 +54,7 @@
             height: 10.5vmin;
             border-radius: 50%;
             margin: 0 auto 1vmin;
+            object-fit: cover;
         }
 
         .concept {
@@ -61,12 +65,12 @@
 
     .likes-count {
         position: relative;
-        bottom: 19.5vmin;
+        bottom: 19vmin;
         background-color: #31282c;
         border-radius: 0 0 1.3vmin 1.3vmin;
         color: #ababab;
-        height: 4.5vmin;
-        line-height: 4.5vmin;
+        height: 4vmin;
+        line-height: 4vmin;
         font-size: 2.7vmin;
         padding-left: 1.8vmin;
         padding-top: 0;
