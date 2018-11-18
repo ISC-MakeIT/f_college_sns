@@ -4,6 +4,6 @@ export class User {
         public studentName: string,
         public studentClass: string,
         public profilePhoto: string,
-        public leaderFlg: boolean | null,
+        public leaderFlg: boolean,
     ) {}
 }
