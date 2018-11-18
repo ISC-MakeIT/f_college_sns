@@ -207,9 +207,20 @@
         }
     }
 
+    @keyframes colorChange {
+        0% {
+            background-color: #d1d1d1;
+        }
+        100% {
+            background-color: $link-main-color;
+        }
+    }
+
     .button-active {
         background-color: $link-main-color;
         color: $white-text-color;
+        animation-name: colorChange;
+        animation-duration: 0.20s;
     }
 
     .re-vote-text {
