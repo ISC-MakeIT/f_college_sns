@@ -4,6 +4,7 @@ import {RouteComponentProps} from 'react-router-dom';
 import Screen from './screen';
 import {Product} from '../entities';
 import {Loading, Icon, Modal, ProductShowFooter as Footer} from '../components';
+import { ApplicationManager } from '../application_manager';
 
 interface Props extends RouteComponentProps < { id: number } > {}
 
@@ -207,10 +208,10 @@ export class ProductShow extends React.Component < Props, State > {
     private execVote = (e: any) => {
         e.preventDefault();
         // TODO Apiにvote
-        // this.setState({showModal: true});
-        // これは投票キャンセル用モーダル
-        // キャンセル後は自動で投票
-        this.setState({reVoteModal: true});
+        alert('投票期間外となっています。運営にお問い合わせください。');
+
+        // this.setState({showVoteModal: true});
+        // this.setState({reVoteModal: true});
     }
 
     private selectDeleteImage = (e: any) => {
