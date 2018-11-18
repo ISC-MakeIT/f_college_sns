@@ -1,6 +1,6 @@
 import { User } from '../entities';
 
-interface UserProps {
+export interface UserProps {
     student_id: number;
     student_name: string;
     student_class: string;

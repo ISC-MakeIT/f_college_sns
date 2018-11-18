@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { RouteComponentProps } from 'react-router-dom';
-import { ProductService } from '../services';
+import { ProductService, ProductTypes } from '../services';
 import Screen from './screen';
 import { Product as ProductEntity, ProductList} from '../entities';
 import { Product } from '../components/product';
@@ -8,11 +8,6 @@ import { Tab } from '../components/tab';
 import { Header } from '../components/header';
 
 interface Props extends RouteComponentProps<{}> {}
-
-interface ProductTypes {
-    fashion: ProductList[];
-    beauty: ProductList[];
-}
 
 interface State {
     products: ProductTypes;

@@ -1,8 +1,7 @@
 import { UserFactory } from './user';
 import { ProductList, User } from '../entities';
 
-type ProductType = 'fashion' | 'beauty';
-interface OwnerProps {
+export interface OwnerJsonProps {
     student_id: number;
     student_name: string;
     student_class: string;
@@ -10,16 +9,16 @@ interface OwnerProps {
     leader_flg: boolean;
 }
 
-interface ProductProps {
+export interface ProductJsonProps {
     product_id: number;
     entry_order: number;
     product_number: number;
     head_shot: string;
-    owner: OwnerProps;
+    owner: OwnerJsonProps;
 }
 
 export class ProductListFactory {
-    public static createFromJSON(p: ProductProps) {
+    public static createFromJSON(p: ProductJsonProps) {
         return new ProductList(
             p.product_id,
             p.entry_order,

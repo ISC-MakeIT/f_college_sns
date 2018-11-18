@@ -1,26 +1,26 @@
-import { Product, User } from '../entities';
-import { UserFactory } from './user';
-import { PhotoService } from '../services/photo';
+import {Product} from '../entities';
+import {UserFactory, UserProps} from './user';
+import {PhotoService} from '../services/photo';
 
 type ProductType = 'fashion' | 'beauty';
-interface ProductJsonType {
+export interface ProductJsonType {
     product_id: number;
     genre: ProductType;
     theme: string;
     concept: string;
-    members: User[];
+    members: UserProps[];
     photos: string[];
 }
 
 export class ProductFactory {
-    public static createFromJSON(p: ProductJsonType ) {
+    public static createFromJSON(p: ProductJsonType) {
         return new Product(
             p.product_id,
             p.genre,
             p.theme,
             p.concept,
-            p.members.map(m => UserFactory.createFromJSON(m)),
-            p.photos.map(p => PhotoService.getS3PhotoPath(p)),
+            p.members.map((m: UserProps) => UserFactory.createFromJSON(m)),
+            p.photos.map((photoPath: string) => PhotoService.getS3PhotoPath(photoPath)),
         );
     }
 }
