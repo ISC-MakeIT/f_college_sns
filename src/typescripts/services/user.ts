@@ -5,31 +5,15 @@ import { PhotoService } from './photo';
 
 export class UserService {
 
-    public static async getAll() {
-        // ApiClient.get('/users')
-
-        const array = [];
-        for (let i = 1; i <= 3; i++) {
-            const u = new User(
-                i,
-                this.userPhotoNames()[i].name,
-                this.userPhotoNames()[i].subject,
-                this.userPhotoNames()[i].path,
-            );
-            array.push(u);
-        }
-        return array;
-    }
-
     public static async get(id: number) {
         // const ret = ApiClient.get(`api/users/${id}`);
         // const account = UserFactory.createFromJSON(ret);
-        return new User(
-            id,
-            this.userPhotoNames()[id].name,
-            this.userPhotoNames()[id].subject,
-            this.userPhotoNames()[id].path,
-        );
+        // return new User(
+        //     id,
+        //     this.userPhotoNames()[id].name,
+        //     this.userPhotoNames()[id].subject,
+        //     this.userPhotoNames()[id].path,
+        // );
     }
 
     private static userPhotoNames() {

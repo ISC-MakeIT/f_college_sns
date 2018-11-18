@@ -1,16 +1,14 @@
 import * as React from 'react';
 import { RouteComponentProps } from 'react-router-dom';
-import { ProductService } from '../services';
+import { ProductService, ProductTypes } from '../services';
 import Screen from './screen';
-import { Product as ProductEntity } from '../entities';
 import { Product } from '../components/product';
 import { Tab } from '../components/tab';
-import { Header } from '../components/header';
 
 interface Props extends RouteComponentProps<{}> {}
 
 interface State {
-    products: ProductEntity[];
+    products: ProductTypes;
     activeCategory: 'beauty' | 'fashion';
 }
 
@@ -19,7 +17,7 @@ export class Products extends React.Component<Props, State> {
     constructor(props: Props) {
         super(props);
         this.state = {
-            products: [],
+            products: {fashion: [], beauty: []},
             activeCategory: 'fashion',
         };
     }
@@ -38,15 +36,14 @@ export class Products extends React.Component<Props, State> {
     }
 
     public render() {
-        // const products = this.state.products.filter(p => p.beauty).map( p => {
-        const products = this.state.products.map( product => <Product key={product.id} product={product} />);
+        // const products = this.state.products.map( product => <Product key={product.id} product={product} />);
+        const fashionProducts = this.state.products.fashion.map( product => <Product key={product.productId} product={product} /> );
+        const beautyProducts = this.state.products.beauty.map( product => <Product key={product.productId} product={product} /> );
 
         return (
             <Screen name='products'>
                 <div className='product-index'>
-                    {products}
-                    {products}
-                    {products}
+                    {this.state.activeCategory === 'fashion' ? fashionProducts : beautyProducts}
                 </div>
 
                 <footer className='d-flex align-items-center'>

@@ -1,14 +1,17 @@
 import { User } from './';
+type ProductType = 'fashion' | 'beauty';
 
 export class Product {
     public constructor(
-        public id: number,
-        public title: string,
-        public owner: User,
+        public productId: number,
+        public genre: ProductType,
+        public theme: string,
         public concept: string,
-        public imageURLPath: string,
-        public otherImageURLPath: string[] | null,
-        public promotion: string | null,
-        public members: string[] | null,
+        public members: User[],
+        public photos: string[] | null,
     ) {}
+
+    public get owner() {
+        return this.members.find(m => m.leaderFlg) || this.members[0];
+    }
 }
