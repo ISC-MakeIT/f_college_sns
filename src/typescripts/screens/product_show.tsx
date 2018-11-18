@@ -1,10 +1,9 @@
 import * as React from 'react';
 import {ProductService} from '../services';
-import {RouteComponentProps, Link} from 'react-router-dom';
+import {RouteComponentProps} from 'react-router-dom';
 import Screen from './screen';
-import {Product, ProductList} from '../entities';
+import {Product} from '../entities';
 import {Loading, Icon, Modal, ProductShowFooter as Footer} from '../components';
-import {PhotoService} from '../services/photo';
 
 interface Props extends RouteComponentProps < { id: number } > {}
 
@@ -42,7 +41,6 @@ export class ProductShow extends React.Component < Props, State > {
 
         // TODO activeIMGのClass周りの動的な書き換え
         const subImages = this.state.product.photos.filter(e => e !== this.state.activeImagePath).map((img, index) => {
-            // const path = PhotoService.getS3PhotoPath(img, 'products/sample');
             return (
                 <p key={index} className='img-container cover' onClick={this.changeActiveImage}>
                     <img className='img non-active' src={img} width={100} height={100}/>

@@ -2,7 +2,6 @@ import * as React from 'react';
 import { ProductList } from '../entities';
 import { Link } from 'react-router-dom';
 import { Icon } from './icon';
-import { PhotoService } from '../services/photo';
 
 interface Props {
     product: ProductList;
@@ -17,13 +16,13 @@ export class Product extends React.Component<Props, {}> {
         return (
             <div key={product.productId} className='component product'>
                 <Link to={`/products/${product.productId}`} className='link-container'>
-                    <img src={PhotoService.getS3PhotoPath(product.headShot)} className='product-img'/>
+                    <img src={product.headShot} className='product-img'/>
                     <div className='product-creator d-flex flex-row align-items-center'>
                         <div className='owner-area'>
                             <p className='owner-subject'>{owner.studentClass}</p>
                             <p className='owner-name'>{owner.studentName}</p>
                         </div>
-                        <img src={PhotoService.getS3PhotoPath(owner.profilePhoto)} className='profile_image'/>
+                        <img src={owner.profilePhoto} className='profile_image'/>
                     </div>
                     <p className='likes-count'>
                         <Icon name='heart' />

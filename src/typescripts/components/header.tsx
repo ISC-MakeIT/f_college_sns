@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {withRouter, Link} from 'react-router-dom';
 import {Icon} from '../components';
-import { PhotoService } from '../services/photo';
 
 interface Props {
     showBackButton?: boolean;

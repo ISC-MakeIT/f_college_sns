@@ -1,4 +1,5 @@
 import { User } from '../entities';
+import { PhotoService } from '../services/photo';
 
 export interface UserProps {
     student_id: number;
@@ -14,7 +15,7 @@ export class UserFactory {
             user.student_id,
             user.student_name,
             user.student_class,
-            user.profile_photo,
+            PhotoService.getS3PhotoPath(user.profile_photo),
             user.leader_flg,
         );
     }

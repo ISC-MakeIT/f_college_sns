@@ -1,5 +1,6 @@
 import { UserFactory } from './user';
 import { ProductList, User } from '../entities';
+import { PhotoService } from '../services/photo';
 
 export interface OwnerJsonProps {
     student_id: number;
@@ -22,7 +23,7 @@ export class ProductListFactory {
         return new ProductList(
             p.product_id,
             p.entry_order,
-            p.head_shot,
+            PhotoService.getS3PhotoPath(p.head_shot),
             UserFactory.createFromJSON(p.owner),
         );
     }
