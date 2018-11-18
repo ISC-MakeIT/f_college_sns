@@ -41,7 +41,7 @@ export class ProductShow extends React.Component < Props, State > {
         if (this.state.product === null) return <Loading />;
 
         // TODO activeIMGのClass周りの動的な書き換え
-        const subImages = this.state.product.photos.filter(e => e === this.state.activeImagePath).map((img, index) => {
+        const subImages = this.state.product.photos.filter(e => e !== this.state.activeImagePath).map((img, index) => {
             // const path = PhotoService.getS3PhotoPath(img, 'products/sample');
             return (
                 <p key={index} className='img-container cover' onClick={this.changeActiveImage}>
