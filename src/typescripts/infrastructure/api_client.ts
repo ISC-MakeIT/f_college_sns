@@ -17,7 +17,7 @@ export class ApiClient {
     }
 
     private static async call(path: string, method: string, body?: object) {
-        const res = await fetch(path, {
+        const res = await fetch(this.requestUrl(path), {
             headers: { 'Content-Type': 'application/json' },
             method,
             credentials: 'include',
@@ -29,6 +29,14 @@ export class ApiClient {
         if (res.status !== 200) throw new Error(data.result);
         return data;
     }
+
+    private static requestUrl = (path: string) => {
+        if (window.location.origin === 'https://fc-fb-live.com') {
+            return 'https://fc-fb-live.com/api' + path;
+        }
+        return 'http://localhost:3000/api' + path;
+    }
+
 }
 
 // How to use

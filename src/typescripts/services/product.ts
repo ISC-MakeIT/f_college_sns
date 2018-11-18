@@ -1,60 +1,37 @@
-import { Product } from '../entities';
-import { ApiClient } from '../infrastructure';
-import { ProductFactory, UserFactory } from '../factories';
-import { UserService } from './user';
-import { PhotoService } from './photo';
+import {Product, ProductList} from '../entities';
+import {ApiClient} from '../infrastructure';
+import {ProductFactory, UserFactory} from '../factories';
+import {ProductListFactory, ProductJsonProps} from '../factories/product_list';
+
+export interface ProductTypes {
+    fashion: ProductList[];
+    beauty: ProductList[];
+}
 
 export class ProductService {
 
     public static async getAll() {
-        // APIClient.get('/products')で全てのプロダクトJSONもらいたい
-        const array = [];
-        for (let i = 1; i <= 3; i++) {
-            const owner = UserFactory.createFromJSON(await UserService.get(i - 1));
-            const p = new Product(
-                i,
-                `${i}のための〇〇`,
-                owner,
-                `this concept is hogehoge`,
-                PhotoService.buildPhotoPathFromId(i + 1),
-                null, null, null);
-            array.push(p);
-        }
-        return array;
+        const res = await ApiClient.get('/products/');
+
+        const data: ProductTypes = {
+            fashion: [],
+            beauty: [],
+        };
+
+        res.fashion.forEach((d: ProductJsonProps) => data.fashion.push(ProductListFactory.createFromJSON(d)));
+        res.beauty.forEach((d: ProductJsonProps) => data.beauty.push(ProductListFactory.createFromJSON(d)));
+
+        return data;
     }
 
     public static async getVotedProducts() {
-        // ApiClient.get('/products/vote')
-        const array = [];
-        for ( let i = 1; i <= 5; i++ ) {
-            // array.push(ProductFactory.createFromJSON(await ProductService.get(i)));
-            const owner = UserFactory.createFromJSON(await UserService.get(i));
-            const p = new Product(
-                i,
-                `${i}のための〇〇`,
-                owner,
-                `this concept is hogehoge`,
-                PhotoService.buildPhotoPathFromId(i),
-                null, null, null);
-            array.push(p);
-        }
-        return array;
+        // TODO
+        return [];
     }
 
     public static async get(id: number) {
-        // const ret = ApiClient.get(`api/products/${id}`);
-        // const product = ProductFactory.createFromJSON(ret);
-        const owner = UserFactory.createFromJSON(await UserService.get(id));
-        const product = new Product(
-            id,
-            '情熱と希望の賛歌',
-            owner,
-            'このサービスは,情熱をテーマに作成しました。細部までこだわって作成しているのでモデルの手足のその先にある情熱を感じていただけたら幸いです。',
-            PhotoService.buildPhotoPathFromId(id),
-            [`public/assets/images/${id}.jpg`, `public/assets/images/${id}.jpg`],
-            '細部へのこだわりのほか、全体的な配色にもこだわりがあります。正面から見ると妖艶な濃厚な赤を、後ろ姿からは真紅な赤を基調とすることでどこから見ても情熱を感じられるような構成となっています。',
-            ['阿部智恵美', '佐々木みなみ', '鍋島恵里奈'],
-        );
+        const res = await ApiClient.get(`/products/${id}`);
+        const product = ProductFactory.createFromJSON(res);
         return product;
     }
 }
