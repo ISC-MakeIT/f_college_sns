@@ -18,7 +18,7 @@
 
     .product-img {
         object-fit: cover;
-        object-position: 0% 0%;
+        object-position: 50% 0%;
         overflow: hidden;
         width: 100vw;
         height: 65vh;
@@ -28,6 +28,11 @@
     .sub-images-container {
         overflow-y: overlay;
         width: auto;
+        background-color: $white-text-color;
+        
+        img {
+            object-fit: cover;
+        }
 
         .img-container.cover {
             background-color: $black;
@@ -86,6 +91,7 @@
             width: 15.5vmin;
             height: 15.5vmin;
             border-radius: 50%;
+            object-fit: cover;
         }
     }
 
