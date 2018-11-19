@@ -18,7 +18,7 @@ export class Products extends React.Component<Props, State> {
     constructor(props: Props) {
         super(props);
         this.state = {
-            products: {fashion: [], beauty: []},
+            products: { fashion: [], beauty: [] },
             activeCategory: 'fashion',
         };
     }
@@ -28,21 +28,17 @@ export class Products extends React.Component<Props, State> {
         if (e.currentTarget.classList.contains(`${activeCategory}-active`)) return;
 
         const category = activeCategory === 'fashion' ? 'beauty' : 'fashion';
-        this.setState({activeCategory: category});
+        this.setState({ activeCategory: category });
     }
 
     public async componentDidMount() {
         const products = await ProductService.getAll();
-        this.setState({products});
+        this.setState({ products });
     }
 
     public render() {
-        const fashionProducts = this.state.products.fashion.map((product: ProductList) => {
-            return (<Product key={product.productId} product={product} />);
-        });
-        const beautyProducts = this.state.products.beauty.map((product: ProductList) => {
-            return (<Product key={product.productId} product={product} />);
-        });
+        const fashionProducts = this.state.products.fashion.map((product: ProductList) => (<Product key={product.productId} product={product} />));
+        const beautyProducts = this.state.products.beauty.map((product: ProductList) => (<Product key={product.productId} product={product} />));
 
         return (
             <Screen name='products'>
