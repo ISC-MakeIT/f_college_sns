@@ -210,10 +210,9 @@ export class ProductShow extends React.Component < Props, State > {
     private execVote = (e: any) => {
         e.preventDefault();
         // TODO Apiにvote
-        // alert('投票期間外となっています。運営にお問い合わせください。');
+        alert('投票期間外となっています。運営にお問い合わせください。');
 
-        const appManager = ApplicationManager.instance;
-        // console.log(ApplicationManager.canVote(this.props.));
+        const _ = ApplicationManager.instance;
         // this.setState({showVoteModal: true});
         // this.setState({reVoteModal: true});
     }
