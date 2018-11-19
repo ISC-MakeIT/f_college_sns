@@ -1,0 +1,152 @@
+body {
+  color: #615561;
+  font-family: "Nunito", "Yu Gothic", "Hiragino Kaku Gothic Pro", "Meiryo", "sans-serif";
+  font-weight: 400;
+  font-size: 62.5%;
+  /* 10px */
+}
+
+.screen {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  font-weight: 800;
+}
+
+h2 {
+  font-weight: 800;
+}
+
+h3, h4 {
+  font-weight: 400;
+}
+
+h1, h2, h3, h4, h5, p, span, div {
+  margin: 0;
+  color: inherit;
+  letter-spacing: 0.9px;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.6rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+h4 {
+  font-size: 1.4rem;
+}
+
+i {
+  color: inherit;
+}
+
+ul {
+  padding: 0;
+}
+
+li {
+  list-style: none;
+  font-size: 1.6em;
+  /* 16px */
+}
+
+p {
+  font-size: 1.6em;
+}
+
+/* 16px */
+.btn-maincolor {
+  border: none;
+  color: white;
+  background-color: #fd6d84;
+}
+
+.btn-maincolor:disabled {
+  background-color: #c7c7c7;
+}
+
+.btn-facebook {
+  background-color: #3b5998;
+  color: white;
+  border: none;
+}
+
+.btn-critical {
+  border: none;
+  color: white;
+  background-color: #fb2943;
+}
+
+.btn-shadow {
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+}
+
+.btn-default {
+  color: #615561;
+}
+
+.sample .btn {
+  width: 40px;
+  height: 30px;
+  background: #fd6d84;
+  color: white;
+}
+
+.screen.root .title {
+  margin-bottom: 10px;
+  font-size: 5rem;
+}
+
+.screen.root .link {
+  font-size: 3.5rem;
+  line-height: 3.5rem;
+  margin: 5px;
+}
+
+.screen.root .link:visited {
+  color: red;
+}
+
+.screen.root .link:hover {
+  color: cadetblue;
+}
+
+.screen.products .title {
+  margin-bottom: 10px;
+  font-size: 5rem;
+}
+
+.screen.products .products_index {
+  display: flex;
+  flex-direction: column;
+  margin: 10 auto;
+}
+
+.screen.products .products_index .product {
+  height: 200px;
+  width: 90vw;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.screen.products .products_index .owner {
+  font-size: 2.5rem;
+}
+
+.screen.products .products_index .concept {
+  font-weight: 800;
+  font-size: 1.8rem;
+}
