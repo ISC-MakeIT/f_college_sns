@@ -53,7 +53,7 @@ jobs:
             - "68:c7:c0:78:43:24:5b:41:57:1e:d4:6e:25:03:f1:f4"
       - run:
           name: git config
-          command: git config --global user.name "iscmakeit" && git config --global user.email "makeit@gn.iwasaki.ac.jp"
+          command: git config --global user.name "iscmakeit" && git config --global user.email "makeit@gn.iwasaki.ac.jp" && git config --global pack.windowMemory "100m" && git config --global pack.packSizeLimit "100m" && git config --global pack.threads "1"
       - run:
           name: clone f_college_api
           command: cd .. && git clone https://github.com/ISC-MakeIT/f_college_api.git && cd ./f_college_api && git fetch && git checkout develop
