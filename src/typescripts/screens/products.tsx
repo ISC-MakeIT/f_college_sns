@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { RouteComponentProps } from 'react-router-dom';
-import { ProductService, ProductTypes } from '../services';
+import { ProductService, ProductTypes} from '../services';
+import { ProductList } from '../entities';
 import Screen from './screen';
 import { Product } from '../components/product';
 import { Tab } from '../components/tab';
@@ -36,9 +37,12 @@ export class Products extends React.Component<Props, State> {
     }
 
     public render() {
-        // const products = this.state.products.map( product => <Product key={product.id} product={product} />);
-        const fashionProducts = this.state.products.fashion.map( product => <Product key={product.productId} product={product} /> );
-        const beautyProducts = this.state.products.beauty.map( product => <Product key={product.productId} product={product} /> );
+        const fashionProducts = this.state.products.fashion.map((product: ProductList) => {
+            return (<Product key={product.productId} product={product} />);
+        });
+        const beautyProducts = this.state.products.beauty.map((product: ProductList) => {
+            return (<Product key={product.productId} product={product} />);
+        });
 
         return (
             <Screen name='products'>
