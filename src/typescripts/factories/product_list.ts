@@ -1,5 +1,5 @@
 import { UserFactory } from './user';
-import { ProductList, User } from '../entities';
+import { ProductList } from '../entities';
 import { PhotoService } from '../services/photo';
 
 export interface OwnerJsonProps {

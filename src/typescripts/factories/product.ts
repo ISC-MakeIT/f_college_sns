@@ -1,8 +1,7 @@
-import {Product} from '../entities';
+import {Product, ProductType} from '../entities';
 import {UserFactory, UserProps} from './user';
 import {PhotoService} from '../services/photo';
 
-type ProductType = 'fashion' | 'beauty';
 export interface ProductJsonType {
     product_id: number;
     genre: ProductType;

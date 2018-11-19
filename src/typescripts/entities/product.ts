@@ -1,5 +1,5 @@
 import { User } from './';
-type ProductType = 'fashion' | 'beauty';
+export type ProductType = 'FASHION' | 'BEAUTY';
 
 export class Product {
     public constructor(

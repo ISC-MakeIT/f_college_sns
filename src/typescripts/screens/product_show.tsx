@@ -62,6 +62,8 @@ export class ProductShow extends React.Component < Props, State > {
 
         const owner = this.state.product.owner;
 
+        const entryOrder = ProductService.productId2EntryOrderMapperByValue(this.state.product.genre, this.state.product.productId);
+
         return (
             <Screen name='product-show' showBackButton>
                 <Modal
@@ -189,7 +191,7 @@ export class ProductShow extends React.Component < Props, State > {
                 </button>
             </div>
 
-            <Footer id={this.state.product.productId}/>
+            <Footer entryOrder={entryOrder} product={this.state.product} />
             </Screen>
         );
     }
@@ -210,6 +212,7 @@ export class ProductShow extends React.Component < Props, State > {
         // TODO Apiにvote
         alert('投票期間外となっています。運営にお問い合わせください。');
 
+        const _ = ApplicationManager.instance;
         // this.setState({showVoteModal: true});
         // this.setState({reVoteModal: true});
     }
