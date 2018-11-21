@@ -1,7 +1,10 @@
 import * as React from 'react';
+import { ProductService } from '../services';
+import { Product } from '../entities';
 
 interface Props {
-    id: number;
+    entryOrder: number | undefined;
+    product: Product;
 }
 
 export class ProductShowFooter extends React.Component<Props, {}> {
@@ -12,8 +15,14 @@ export class ProductShowFooter extends React.Component<Props, {}> {
 
     public render() {
 
-        const prevUrl = `/products/${Number(this.props.id) - 1}`;
-        const nextUrl = `/products/${Number(this.props.id) + 1}`;
+        if (!this.props.entryOrder) return null;
+
+        const entryOrder = this.props.entryOrder;
+        const prevProductId = ProductService.entryOrder2ProductIdMapperByValue(this.props.product.genre, entryOrder - 2) || this.props.product.productId;
+        const nextProductId = ProductService.entryOrder2ProductIdMapperByValue(this.props.product.genre, entryOrder + 1);
+
+        const prevUrl = `/products/${prevProductId}`;
+        const nextUrl = `/products/${nextProductId}`;
 
         return (
             <footer>

@@ -1,4 +1,4 @@
-type ProductType = 'fashion' | 'beauty';
+import { ProductType } from './entities';
 
 export class ApplicationManager {
 
