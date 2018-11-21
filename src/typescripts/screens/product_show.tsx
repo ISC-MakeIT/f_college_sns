@@ -61,6 +61,18 @@ export class ProductShow extends React.Component < Props, State > {
 
         const owner = this.state.product.owner;
 
+        const entryOrder = ProductService.productId2EntryOrderMapperByValue(this.state.product.genre, this.state.product.productId);
+
+        const members = this.state.product.members.map((m, index) => {
+          return (
+              <p
+                key={index}
+                className={`${this.state.product.genre === 'FASHION' ? 'member-name' : 'members-name'}`}
+              >
+              {m.studentName}
+              </p>
+            );
+          });
         return (
             <Screen name='product-show' showBackButton>
                 <Modal
@@ -145,7 +157,7 @@ export class ProductShow extends React.Component < Props, State > {
             </Modal>
 
             <div className='image-container'>
-                <img className='product-img' src={this.state.activeImagePath}/>
+                <img className='product-img img-cover' src={this.state.activeImagePath}/>
                 <div className='sub-images-container d-flex'>
                     {subImages}
                 </div>
@@ -170,16 +182,33 @@ export class ProductShow extends React.Component < Props, State > {
                 </div>
 
                 <div className='creator-box'>
-                    <h2>Concept</h2>
-                    <p className='concept-text'>
+                    <h2>Thema</h2>
+                    <p className='thema-text'>
                         {this.state.product.theme}
                     </p>
                 </div>
                 <div className='creator-box'>
-                    <h2>Creator Comment</h2>
+                    <h2>Concept</h2>
                     <p className='text'>
                         {this.state.product.concept}
                     </p>
+                </div>
+
+                <div className='creator-box'>
+                    <div
+                      className={`${this.state.product.genre === 'FASHION' ? 'made-by' : 'made-by block'}`}
+                    >
+                        made by
+                        {/* {this.state.product.members.map(m => {
+                          m.studentName
+                          }
+                        } */}
+                        <p
+                          className={`${this.state.product.genre === 'FASHION' ? 'member-list' : 'members-list'}`}
+                        >
+                        {members}
+                        </p>
+                    </div>
                 </div>
             </div>
 
@@ -254,6 +283,20 @@ export class ProductShow extends React.Component < Props, State > {
 
         clickedImg.classList.add('active');
         e.currentTarget.classList.remove('cover');
+        if (clickedImg.naturalHeight < clickedImg.naturalWidth) {
+          document.querySelectorAll('.product-img')
+                  .forEach(d => {
+                    d.classList.remove('img-cover');
+                    d.classList.add('img-contain');
+                  });
+          } else if (clickedImg.naturalHeight > clickedImg.naturalWidth) {
+            document.querySelectorAll('.product-img')
+                    .forEach(d => {
+                    d.classList.remove('img-contain');
+                    d.classList.add('img-cover');
+                  });
+          }
         this.setState({activeImagePath: clickedImg.src});
+        }
     }
 }

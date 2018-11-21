@@ -17,14 +17,17 @@
     }
 
     .product-img {
-        object-fit: cover;
-        object-position: 50% 0%;
+        object-position: 50% 50%;
         overflow: hidden;
         width: 100vw;
-        height: 65vh;
-        max-height: auto;
+        height: 100vw;
     }
-
+    .img-cover {
+        object-fit: cover;
+    }
+    .img-contain {
+        object-fit: contain;
+    }
     .sub-images-container {
         overflow-y: overlay;
         width: auto;
@@ -69,10 +72,15 @@
                 font-size: 3.8vmin;
                 line-height: 180%;
             }
-            .concept-text {
+            .thema-text {
                 text-align: center;
                 font-size: 6vmin;
                 font-family: "Playfair Display SC", cursive;
+            }
+            .creator-name {
+                font-size: 4vmin;
+                text-align: center;
+                margin: 7vmin 0 2vmin;
             }
         }
 
@@ -80,9 +88,9 @@
         // TODO 複数のクリエイターのパターンの対応
         // 現状はエリア保持のためのpadding bottom
         .creators { border: #f2f2f2 1px solid; padding: 2vmin 3.2vmin; }
-        .main-creator { font-size: 2.4vmin; }
-        .main-creator .subject { width: 70vmin; font-weight: 400; padding: 1vmin 0 1vmin 1.7vmin; }
-        .main-creator .name { font-weight: 600; display: block; padding-top: 1vmin; }
+        .main-creator { font-size: 2.4vmin; position: relative; }
+        .main-creator .subject { width: 70vmin; font-weight: 400; padding-left: 1.7vmin; }
+        .main-creator .name { font-weight: 600; display: block; padding-top: 1.3vmin; }
 
         .main-creator > .concept {
             width: 67vw;
@@ -95,11 +103,42 @@
         }
 
         .owner-img {
-            width: 15vmin;
-            height: 15vmin;
+            width: 14.3vmin;
+            height: 14.3vmin;
             border-radius: 50%;
             object-fit: cover;
         }
+    }
+
+    .made-by {
+        font-size: 3.8vmin;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 5vmin;
+
+        .member-name {
+            text-align: center;
+            display: inline;
+            padding-left: 2vmin;
+        }
+    }
+
+    .block {
+        display: block;
+        text-align: center;
+    }
+
+    .members-list {
+        width: 60vmin;
+        display: flex;
+        flex-wrap: wrap;
+        margin: 1vmin auto;
+    }
+
+    .members-name {
+        width: 30vmin;
+        text-align: center;
     }
 
     .bottom {

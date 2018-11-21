@@ -31,7 +31,8 @@ export class ApiClient {
     }
 
     private static requestUrl = (path: string) => {
-        return 'https://fc-fb-live.com/api' + path;
+        // return 'https://fc-fb-live.com/api' + path;
+        return 'http://localhost:3000/api' + path;
     }
 
 }
