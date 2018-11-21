@@ -61,7 +61,7 @@ export class ProductShow extends React.Component < Props, State > {
 
         const owner = this.state.product.owner;
 
-        const entryOrder = ProductService.productId2EntryOrderMapperByValue(this.state.product.genre, this.state.product.productId);
+        // const entryOrder = ProductService.productId2EntryOrderMapperByValue(this.state.product.genre, this.state.product.productId);
 
         const members = this.state.product.members.map((m, index) => {
           return (
@@ -219,7 +219,7 @@ export class ProductShow extends React.Component < Props, State > {
                 </button>
             </div>
 
-            <Footer id={this.state.product.productId}/>
+            {/* <Footer id={this.state.product.productId}/> */}
             </Screen>
         );
     }
@@ -299,4 +299,3 @@ export class ProductShow extends React.Component < Props, State > {
         this.setState({activeImagePath: clickedImg.src});
         }
     }
-}
