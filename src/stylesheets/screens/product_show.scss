@@ -87,9 +87,9 @@
 
         // TODO 複数のクリエイターのパターンの対応
         // 現状はエリア保持のためのpadding bottom
-        .creators { border: #f2f2f2 1px solid; padding: 2vmin 3.2vmin; }
+        .creators { border: #f2f2f2 1px solid; padding: 2vmin 3vmin; }
         .main-creator { font-size: 2.4vmin; position: relative; }
-        .main-creator .subject { width: 70vmin; font-weight: 400; padding-left: 1.7vmin; }
+        .main-creator .subject { width: 70vmin; font-weight: 400; padding-left: 2vmin; }
         .main-creator .name { font-weight: 600; display: block; padding-top: 1.3vmin; }
 
         .main-creator > .concept {

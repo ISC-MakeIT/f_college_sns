@@ -41,24 +41,29 @@ export class ProductShow extends React.Component < Props, State > {
         if (this.state.product == null || this.state.product.photos == null) return <Loading />;
 
         // TODO activeIMGのClass周りの動的な書き換え
-        const subImages = this.state.product.photos.filter(e => e !== this.state.activeImagePath).map((img, index) => {
+        const subImages = this.state.product.photos.map((img, index) => {
             return (
                 <p key={index} className='img-container cover' onClick={this.changeActiveImage}>
-                    <img className='img non-active' src={img} width={100} height={100}/>
+                    <img
+                        className={`${this.state.activeImagePath === img ? 'img active' : 'img none-active'}`}
+                        src={img}
+                        width={100}
+                        height={100}
+                    />
                 </p>
             );
         });
 
-        subImages.unshift(
-            <p className='img-container' onClick={this.changeActiveImage}>
-                <img
-                    className='img active'
-                    src={this.state.activeImagePath}
-                    width={100}
-                    height={100}
-                />
-            </p>,
-        );
+        // subImages.push(
+        //     <p className='img-container' onClick={this.changeActiveImage}>
+        //         <img
+        //             className='img active'
+        //             src={this.state.activeImagePath}
+        //             width={100}
+        //             height={100}
+        //         />
+        //     </p>,
+        // );
 
         const owner = this.state.product.owner;
 
@@ -286,6 +291,7 @@ export class ProductShow extends React.Component < Props, State > {
 
         clickedImg.classList.add('active');
         e.currentTarget.classList.remove('cover');
+
         if (clickedImg.naturalHeight < clickedImg.naturalWidth) {
           document.querySelectorAll('.product-img')
                   .forEach(d => {
