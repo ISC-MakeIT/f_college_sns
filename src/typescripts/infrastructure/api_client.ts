@@ -31,10 +31,7 @@ export class ApiClient {
     }
 
     private static requestUrl = (path: string) => {
-        if (window.location.origin === 'https://fc-fb-live.com') {
-            return 'https://fc-fb-live.com/api' + path;
-        }
-        return 'http://localhost:3000/api' + path;
+        return 'https://fc-fb-live.com/api' + path;
     }
 
 }

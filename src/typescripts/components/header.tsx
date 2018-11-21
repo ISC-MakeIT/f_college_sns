@@ -22,7 +22,7 @@ export class Header extends React.Component < Props, {} > {
                 <Link to='/votes'>
                     <div id='header_label'>
                         <Icon name='crown'/>
-                        <span>あと５票</span>
+                        <span>あと5票</span>
                         <div className='label_push'>5</div>
                     </div>
                 </Link>

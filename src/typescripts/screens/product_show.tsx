@@ -156,7 +156,7 @@ export class ProductShow extends React.Component < Props, State > {
                     <div className='main-creator text'>
                         <div className='d-flex justify-content-around align-items-center'>
                             <img // FIXME S3にuserの場所作る
-                                src='/assets/images/users/yamashitamizuki_prof.jpg'
+                                src={owner.profilePhoto}
                                 className='owner-img'
                             />
                             <div className='main-creator'>
@@ -164,17 +164,19 @@ export class ProductShow extends React.Component < Props, State > {
                                     {owner.studentClass}
                                     <span className='name'>{owner.studentName}</span>
                                 </p>
-
-                                <p className='concept'>
-                                    {this.state.product.theme}
-                                </p>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div className='concept'>
-                    <h2>Creator Comment??????</h2>
+                <div className='creator-box'>
+                    <h2>Concept</h2>
+                    <p className='concept-text'>
+                        {this.state.product.theme}
+                    </p>
+                </div>
+                <div className='creator-box'>
+                    <h2>Creator Comment</h2>
                     <p className='text'>
                         {this.state.product.concept}
                     </p>
