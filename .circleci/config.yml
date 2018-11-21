@@ -16,7 +16,7 @@ jobs:
           command: ./node_modules/.bin/stylelint src/stylesheets/**/*.scss
       - run:
           name: tslint
-          command: ./node_modules/.bin/tslint ./src/typescripts/**/*.tsx
+          command: ./node_modules/.bin/tslint ./**/*.tsx ./**/*.ts
       - save_cache:
           key: yarn-{{ .Branch }}-{{ checksum "yarn.lock" }}
           paths:
