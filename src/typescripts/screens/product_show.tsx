@@ -5,6 +5,7 @@ import Screen from './screen';
 import {Product} from '../entities';
 import {Loading, Icon, Modal, ProductShowFooter as Footer} from '../components';
 import { ApplicationManager } from '../application_manager';
+import { VoteService } from '../services/vote';
 
 interface Props extends RouteComponentProps < { id: number } > {}
 
@@ -243,11 +244,19 @@ export class ProductShow extends React.Component < Props, State > {
     }
 
     private execVote = (e: any) => {
-        e.preventDefault();
-        // TODO Apiにvote
-        alert('投票期間外となっています。運営にお問い合わせください。');
+        if (!this.state.product) return;
 
-        const _ = ApplicationManager.instance;
+        e.preventDefault();
+        // alert('投票期間外となっています。運営にお問い合わせください。');
+
+        const appManager = ApplicationManager.instance;
+        console.log(appManager.voteIds);
+
+        const genre = this.state.product.genre;
+        const votedIds = appManager.voteIds[genre.toLowerCase()];
+
+        VoteService.vote('POST', this.state.product.productId);
+
         // this.setState({showVoteModal: true});
         // this.setState({reVoteModal: true});
     }
