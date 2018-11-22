@@ -70,15 +70,15 @@ export class ProductShow extends React.Component < Props, State > {
         const entryOrder = ProductService.productId2EntryOrderMapperByValue(this.state.product.genre, this.state.product.productId);
 
         const members = this.state.product.members.map((m, index) => {
-          return (
-              <p
-                key={index}
-                className={`${this.state.product.genre === 'FASHION' ? 'member-name' : 'members-name'}`}
-              >
-              {m.studentName}
-              </p>
-            );
-          });
+            return (
+                <p
+                    key={index}
+                    className={`${this.state.product && this.state.product.genre === 'FASHION' ? 'member-name' : 'members-name'}`}
+                >
+                {m.studentName}
+                </p>
+                );
+            });
         return (
             <Screen name='product-show' showBackButton>
                 <Modal
