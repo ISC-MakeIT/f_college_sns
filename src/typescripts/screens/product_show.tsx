@@ -41,7 +41,6 @@ export class ProductShow extends React.Component < Props, State > {
 
         if (this.state.product == null || this.state.product.photos == null) return <Loading />;
 
-        // TODO activeIMGのClass周りの動的な書き換え
         const subImages = this.state.product.photos.map((img, index) => {
             return (
                 <p key={index} className='img-container cover' onClick={this.changeActiveImage}>
@@ -54,17 +53,6 @@ export class ProductShow extends React.Component < Props, State > {
                 </p>
             );
         });
-
-        // subImages.push(
-        //     <p className='img-container' onClick={this.changeActiveImage}>
-        //         <img
-        //             className='img active'
-        //             src={this.state.activeImagePath}
-        //             width={100}
-        //             height={100}
-        //         />
-        //     </p>,
-        // );
 
         const owner = this.state.product.owner;
 
@@ -203,17 +191,13 @@ export class ProductShow extends React.Component < Props, State > {
 
                 <div className='creator-box'>
                     <div
-                      className={`${this.state.product.genre === 'FASHION' ? 'made-by' : 'made-by block'}`}
+                        className={`${this.state.product.genre === 'FASHION' ? 'made-by' : 'made-by block'}`}
                     >
                         made by
-                        {/* {this.state.product.members.map(m => {
-                          m.studentName
-                          }
-                        } */}
                         <div
-                          className={`${this.state.product.genre === 'FASHION' ? 'member-list' : 'members-list'}`}
+                            className={`${this.state.product.genre === 'FASHION' ? 'member-list' : 'members-list'}`}
                         >
-                        {members}
+                            {members}
                         </div>
                     </div>
                 </div>
@@ -267,54 +251,39 @@ export class ProductShow extends React.Component < Props, State > {
         if (selectedImg.className === 're-vote-product-image') {
             // 新規選択
             this.setState({deleteImgSelect: true});
-            document.querySelectorAll('.delete-image-box .select')
-                    .forEach(d => {
-                        d.classList.remove('select');
-                    });
+            document.querySelectorAll('.delete-image-box .select').forEach(d => d.classList.remove('select'));
             selectedImg.classList.add('select');
-            document.querySelectorAll('.re-vote-button')
-                .forEach(d => {
-                d.classList.add('button-active');
-                });
+            document.querySelectorAll('.re-vote-button').forEach(d => d.classList.add('button-active'));
         } else {
             // 既に選択済みの場合は取り消す
             this.setState({deleteImgSelect: false});
-            document.querySelectorAll('.delete-image-box .select')
-            .forEach(d => {
-                d.classList.remove('select');
-            });
-            document.querySelectorAll('.re-vote-button')
-            .forEach(d => {
-                d.classList.remove('button-active');
-            });
+            document.querySelectorAll('.delete-image-box .select').forEach(d => d.classList.remove('select'));
+            document.querySelectorAll('.re-vote-button').forEach(d => d.classList.remove('button-active'));
         }
     }
 
     private changeActiveImage = (e: any) => {
         const clickedImg = e.target;
 
-        document.querySelectorAll('.sub-images-container .active')
-                .forEach(d => {
-                    d.classList.remove('active');
-                    if (d.parentElement) d.parentElement.classList.add('cover');
-                });
+        document.querySelectorAll('.sub-images-container .active').forEach(d => {
+            d.classList.remove('active');
+            if (d.parentElement) d.parentElement.classList.add('cover');
+        });
 
         clickedImg.classList.add('active');
         e.currentTarget.classList.remove('cover');
 
         if (clickedImg.naturalHeight < clickedImg.naturalWidth) {
-          document.querySelectorAll('.product-img')
-                  .forEach(d => {
-                    d.classList.remove('img-cover');
-                    d.classList.add('img-contain');
-                  });
-          } else if (clickedImg.naturalHeight > clickedImg.naturalWidth) {
-            document.querySelectorAll('.product-img')
-                    .forEach(d => {
-                    d.classList.remove('img-contain');
-                    d.classList.add('img-cover');
-                  });
-          }
+            document.querySelectorAll('.product-img').forEach(d => {
+                d.classList.remove('img-cover');
+                d.classList.add('img-contain');
+            });
+        } else if (clickedImg.naturalHeight > clickedImg.naturalWidth) {
+            document.querySelectorAll('.product-img').forEach(d => {
+                d.classList.remove('img-contain');
+                d.classList.add('img-cover');
+            });
+        }
         this.setState({activeImagePath: clickedImg.src});
         }
     }
