@@ -5,7 +5,7 @@ interface VoteIdsType { 'fashion': number[]; 'beauty': number[]; }
 export class ApplicationManager {
 
     public static get instance(): ApplicationManager {
-        if (!this._instance) {
+        if (this.DEBUG && !this._instance) {
             const voteIds = this.getVoteIds();
             const uuid = this.getUuid();
             const remainedVoteCount = this.getRemainedVoteCount();
@@ -17,6 +17,8 @@ export class ApplicationManager {
 
     public static BEAUTY_VOTE_COUNT = 3;
     public static FASHION_VOTE_COUNT = 3;
+    // TODO
+    public static DEBUG = true;
 
     // Storage keyを定数に
     private static KEY_VOTE_IDS = 'voteIds';
@@ -29,7 +31,7 @@ export class ApplicationManager {
     private static getVoteIds = () => {
         const voteIds = localStorage.getItem(ApplicationManager.KEY_VOTE_IDS);
 
-        if (!voteIds) {
+        if (ApplicationManager.DEBUG && !voteIds) {
             const initialVoteIds = { fashion: [], beauty: [] };
             localStorage.setItem(ApplicationManager.KEY_VOTE_IDS, JSON.stringify(initialVoteIds));
             return initialVoteIds;
@@ -41,7 +43,7 @@ export class ApplicationManager {
     private static getUuid = () => {
         const uuid = localStorage.getItem(ApplicationManager.KEY_UUID);
 
-        if (!uuid) return '';
+        if (ApplicationManager.DEBUG && !uuid) return '';
 
         return uuid;
     }
@@ -49,7 +51,7 @@ export class ApplicationManager {
     private static getRemainedVoteCount = () => {
         let remainedVoteCount: any = localStorage.getItem(ApplicationManager.KEY_REMAINED_VOTE_COUNT);
 
-        if (!remainedVoteCount) {
+        if (ApplicationManager.DEBUG && !remainedVoteCount) {
             remainedVoteCount = {};
             remainedVoteCount.fashion = ApplicationManager.FASHION_VOTE_COUNT;
             remainedVoteCount.beauty = ApplicationManager.BEAUTY_VOTE_COUNT;
