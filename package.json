@@ -7,7 +7,7 @@
         "start": "./node_modules/.bin/webpack-dev-server --watch --config ./webpack/dev.js --mode development --history-api-fallback --open --hot --inline",
         "build": "webpack --config ./webpack/prod.js --mode production",
         "lint:style": "./node_modules/.bin/stylelint src/stylesheets/**/*.scss --fix",
-        "lint:ts": "./node_modules/.bin/tslint src/typescripts/**/*.tsx src/typescripts/**/.ts --fix",
+        "lint:ts": "./node_modules/.bin/tslint src/typescripts/**/*.tsx src/typescripts/**/*.ts --fix",
         "lint": "./node_modules/.bin/stylelint src/stylesheets/**/*.scss --fix && ./node_modules/.bin/tslint src/typescripts/**/*.tsx src/typescripts/**/*.ts--fix"
     },
     "author": "",
