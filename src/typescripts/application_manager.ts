@@ -1,14 +1,8 @@
 import { ProductType } from './entities';
 
+type VoteIdsType = { fashion: number[], beauty: number[] }
+
 export class ApplicationManager {
-
-    private static BEAUTY_VOTE_COUNT = 5;
-    private static FASHION_VOTE_COUNT = 8;
-
-    // Storage keyを定数に
-    private static KEY_VOTE_IDS = 'voteIds';
-    private static KEY_UUID = 'uuid';
-    private static KEY_REMAINED_VOTE_COUNT = 'remainedVoteCount';
 
     public static get instance(): ApplicationManager {
         if (!this._instance) {
@@ -20,6 +14,14 @@ export class ApplicationManager {
 
         return this._instance;
     }
+
+    private static BEAUTY_VOTE_COUNT = 5;
+    private static FASHION_VOTE_COUNT = 8;
+
+    // Storage keyを定数に
+    private static KEY_VOTE_IDS = 'voteIds';
+    private static KEY_UUID = 'uuid';
+    private static KEY_REMAINED_VOTE_COUNT = 'remainedVoteCount';
 
     // tslint:disable-next-line:variable-name
     private static _instance: ApplicationManager;
@@ -58,11 +60,11 @@ export class ApplicationManager {
         return JSON.parse(remainedVoteCount);
     }
 
-    public voteIds: {};
+    public voteIds: VoteIdsType;
     public uuid: string;
     public remainedVoteCount: {};
 
-    private constructor(voteIds: {}, uuid: string, remainedVoteCount: {}) {
+    private constructor(voteIds: VoteIdsType, uuid: string, remainedVoteCount: {}) {
         this.voteIds = voteIds;
         this.uuid = uuid;
         this.remainedVoteCount = remainedVoteCount;
