@@ -15,8 +15,8 @@ export class ApplicationManager {
         return this._instance;
     }
 
-    private static BEAUTY_VOTE_COUNT = 5;
-    private static FASHION_VOTE_COUNT = 8;
+    public static BEAUTY_VOTE_COUNT = 3;
+    public static FASHION_VOTE_COUNT = 3;
 
     // Storage keyを定数に
     private static KEY_VOTE_IDS = 'voteIds';
