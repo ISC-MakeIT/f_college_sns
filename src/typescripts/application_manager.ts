@@ -5,7 +5,8 @@ interface VoteIdsType { 'fashion': number[]; 'beauty': number[]; }
 export class ApplicationManager {
 
     public static get instance(): ApplicationManager {
-        if (this.DEBUG && !this._instance) {
+
+        if (this.DEBUG || !this._instance) {
             const voteIds = this.getVoteIds();
             const uuid = this.getUuid();
             const remainedVoteCount = this.getRemainedVoteCount();
