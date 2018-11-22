@@ -1,6 +1,6 @@
 import { ProductType } from './entities';
 
-type VoteIdsType = { fashion: number[], beauty: number[] }
+interface VoteIdsType { fashion: number[]; beauty: number[]; }
 
 export class ApplicationManager {
 
