@@ -1,21 +1,23 @@
 import { ApiClient } from '../infrastructure';
 import { ApplicationManager } from '../application_manager';
+import { ProductType } from '../entities';
 
 export class VoteService {
-    public static async vote(method: 'POST' | 'DELETE', productId: number) {
+    public static async vote(method: 'POST' | 'DELETE', productId: number, genre: ProductType) {
+        if (!this.canIncrement(genre)) return;
         if (method === 'POST') {
-            if (!this.canIncrement) return;
             // this.increment(productId);
         } else {
             // this.decrement(productId);
         }
     }
 
-    private static canIncrement() {
+    private static canIncrement(genre: ProductType) {
         const appManager = ApplicationManager.instance;
-        return true;
-        // appManager.voteIds;
-        // appManager.remainedVoteCount;
+        const maxVoteCount = genre.toLowerCase() === 'fashion' ? ApplicationManager.FASHION_VOTE_COUNT : ApplicationManager.BEAUTY_VOTE_COUNT;
+        const voteIds = appManager.voteIds[genre.toLowerCase()];
+
+        return maxVoteCount > voteIds.length - 1 ? true : false;
     }
 
     private static increment(productId: number) {

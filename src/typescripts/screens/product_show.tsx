@@ -245,17 +245,14 @@ export class ProductShow extends React.Component < Props, State > {
 
     private execVote = (e: any) => {
         if (!this.state.product) return;
+        const product = this.state.product;
 
         e.preventDefault();
         // alert('投票期間外となっています。運営にお問い合わせください。');
 
         const appManager = ApplicationManager.instance;
-        console.log(appManager.voteIds);
 
-        const genre = this.state.product.genre;
-        const votedIds = appManager.voteIds[genre.toLowerCase()];
-
-        VoteService.vote('POST', this.state.product.productId);
+        VoteService.vote('POST', product.productId, product.genre);
 
         // this.setState({showVoteModal: true});
         // this.setState({reVoteModal: true});
