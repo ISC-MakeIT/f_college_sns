@@ -188,8 +188,8 @@ export class ProductShow extends React.Component < Props, State > {
                 </div>
 
                 <div className='creator-box'>
-                    <h2>Thema</h2>
-                    <p className='thema-text'>
+                    <h2>Theme</h2>
+                    <p className='theme-text'>
                         {this.state.product.theme}
                     </p>
                 </div>
@@ -209,11 +209,11 @@ export class ProductShow extends React.Component < Props, State > {
                           m.studentName
                           }
                         } */}
-                        <p
+                        <div
                           className={`${this.state.product.genre === 'FASHION' ? 'member-list' : 'members-list'}`}
                         >
                         {members}
-                        </p>
+                        </div>
                     </div>
                 </div>
             </div>
