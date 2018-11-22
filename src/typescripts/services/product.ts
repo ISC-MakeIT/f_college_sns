@@ -2,6 +2,8 @@ import {ProductType, ProductList} from '../entities';
 import {ApiClient} from '../infrastructure';
 import {ProductFactory, UserFactory} from '../factories';
 import {ProductListFactory, ProductJsonProps} from '../factories/product_list';
+import { ApplicationManager } from '../application_manager';
+import { ProductVoteItem } from '../components';
 
 export interface ProductTypes {
     fashion: ProductList[];
@@ -25,8 +27,15 @@ export class ProductService {
     }
 
     public static async getVotedProducts() {
-        // TODO
-        return [];
+        const appManager = ApplicationManager.instance;
+        const beautyProducts = await ProductService.asyncMap(appManager.voteIds.beauty, async (id: number) => {
+            return await ProductService.get(id);
+        });
+        const fashionProducts = await ProductService.asyncMap(appManager.voteIds.fashion, async (id: number) => {
+            return await ProductService.get(id);
+        });
+
+        return { beauty: beautyProducts, fashion: fashionProducts};
     }
 
     public static entryOrder2ProductIdMapperByValue(genre: ProductType, value: number) {
@@ -41,6 +50,11 @@ export class ProductService {
         const res = await ApiClient.get(`/products/${id}`);
         const product = ProductFactory.createFromJSON(res);
         return product;
+    }
+
+    // https://qiita.com/janus_wel/items/1dc491d866f49af76e98
+    public static async asyncMap(array: any[], operation: (arg0: any) => void) {
+        return Promise.all(array.map(async item => await operation(item)));
     }
 
     private static fashionProductId2EntryOrderMap() {

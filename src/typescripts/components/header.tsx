@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {withRouter, Link} from 'react-router-dom';
 import {Icon} from '../components';
+import { ApplicationManager } from '../application_manager';
 
 interface Props {
     showBackButton?: boolean;
@@ -9,6 +10,9 @@ interface Props {
 export class Header extends React.Component < Props, {} > {
 
     public render() {
+        const appManager = ApplicationManager.instance;
+        const remainVoteCount = appManager.remainedVoteCount.beauty + appManager.remainedVoteCount.fashion;
+
         return (
             <header id='header_wrap' className='component'>
                 {this.props.showBackButton ? <BackButton/> : null}
@@ -22,8 +26,8 @@ export class Header extends React.Component < Props, {} > {
                 <Link to='/votes'>
                     <div id='header_label'>
                         <Icon name='crown'/>
-                        <span>あと5票</span>
-                        <div className='label_push'>5</div>
+                        <span>あと{remainVoteCount}票</span>
+                        <div className='label_push'>{remainVoteCount}</div>
                     </div>
                 </Link>
             </header>

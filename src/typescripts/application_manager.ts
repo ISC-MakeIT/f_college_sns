@@ -65,9 +65,9 @@ export class ApplicationManager {
 
     public voteIds: VoteIdsType;
     public uuid: string;
-    public remainedVoteCount: {};
+    public remainedVoteCount: { fashion: number, beauty: number };
 
-    private constructor(voteIds: VoteIdsType, uuid: string, remainedVoteCount: {}) {
+    private constructor(voteIds: VoteIdsType, uuid: string, remainedVoteCount: { fashion: number, beauty: number }) {
         this.voteIds = voteIds;
         this.uuid = uuid;
         this.remainedVoteCount = remainedVoteCount;

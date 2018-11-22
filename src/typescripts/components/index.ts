@@ -11,7 +11,7 @@ export * from './icon';
 export * from './product';
 export * from './header';
 export * from './sub_header';
-export * from './product_votes_list';
+export * from './product_vote_item';
 export * from './footer';
 export * from './product_show_footer';
 export * from './modal';

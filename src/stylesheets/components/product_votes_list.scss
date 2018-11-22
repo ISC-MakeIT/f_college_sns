@@ -1,55 +1,51 @@
 .component.product_votes_list{
-    /*================================================
-        リストページCSS
-    =================================================*/
     .main_list_votes {
         letter-spacing: 2px;
         margin-right: 35px;
     }
 
     .main_sub_list {
-        height: 20vmin;
-        color: #f4f4f4;
-        border-bottom: 1px solid #707070;
-        display: flex;
-        justify-content: space-around;
         align-items: center;
+        border-bottom: 1px solid #707070;
+        color: #f4f4f4;
+        display: flex;
+        height: 20vmin;
+        justify-content: space-around;
         padding: 0 4vmin;
     }
 
     .main_sub_list p {
-        width: 72%;
-        padding: 0 0 0 3vmin;
         font-size: 4vmin;
         line-height: 180%;
+        padding: 0 0 0 3vmin;
+        width: 72%;
     }
 
-    @media (min-width: 500px) {  
+    @media (min-width: 500px) {
         .main_sub_list p {
-            width: 80%;
             padding: 0 0 0 4vmin;
+            width: 80%;
         }
     }
 
     .main_sub_list img {
-        width: 15vmin;
-        height: auto;
-        border-radius: 50%;
         border: 1px solid #f4f4f4;
+        border-radius: 50%;
+        height: 15vmin;
         object-fit: cover;
+        width: 15vmin;
     }
 
     .main_sub_list span {
-        font-weight: 600;
         display: block;
+        font-weight: 600;
     }
 
     .list_arrow{
-        width: 7.5vmin;
-        height: 7.5vmin;
         border: 0.4vmin solid;
         border-color: #f4f4f4 #f4f4f4 transparent transparent;
+        height: 7.5vmin;
         transform: rotate(45deg);
+        width: 7.5vmin;
     }
-
 }
