@@ -252,10 +252,14 @@ export class ProductShow extends React.Component < Props, State > {
 
         const appManager = ApplicationManager.instance;
 
-        VoteService.vote('POST', product.productId, product.genre);
-
-        // this.setState({showVoteModal: true});
-        // this.setState({reVoteModal: true});
+        if (VoteService.canIncrement(product.genre)) {
+            VoteService.vote('POST', product.productId, product.genre);
+            this.setState({showVoteModal: true});
+        } else if (VoteService.includeVoteId(product)) {
+            this.setState({reVoteModal: true});
+        } else {
+            this.setState({reVoteModal: true});
+        }
     }
 
     private selectDeleteImage = (e: any) => {
