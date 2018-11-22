@@ -14,4 +14,9 @@ export class Product {
     public get owner() {
         return this.members.find(m => m.leaderFlg) || this.members[0];
     }
+
+    public get genreLowerCase(): 'fashion' | 'beauty' {
+        return this.genre === 'FASHION' ? 'fashion' : 'beauty';
+    }
+
 }

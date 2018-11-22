@@ -11,10 +11,10 @@ export class VoteService {
         }
     }
 
-    public static canIncrement(genre: ProductType) {
+    public static canIncrement(genre: 'fashion' | 'beauty') {
         const appManager = ApplicationManager.instance;
-        const maxVoteCount = genre.toLowerCase() === 'fashion' ? ApplicationManager.FASHION_VOTE_COUNT : ApplicationManager.BEAUTY_VOTE_COUNT;
-        const voteIds = appManager.voteIds[genre.toLowerCase()];
+        const maxVoteCount = genre === 'fashion' ? ApplicationManager.FASHION_VOTE_COUNT : ApplicationManager.BEAUTY_VOTE_COUNT;
+        const voteIds = appManager.voteIds[genre];
 
         const beVoter = maxVoteCount > voteIds.length ? true : false;
         return beVoter;
@@ -22,9 +22,8 @@ export class VoteService {
 
     public static includeVoteId(product: Product) {
         const appManager = ApplicationManager.instance;
-        const type = product.genre.toLowerCase() === 'fashion' ? 'fashion' : 'beauty';
 
-        return appManager.voteIds[type].includes(product.productId);
+        return appManager.voteIds[product.genreLowerCase].includes(product.productId);
     }
 
     private static async increment(productId: number, genre: ProductType) {

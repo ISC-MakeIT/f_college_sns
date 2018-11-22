@@ -236,7 +236,7 @@ export class ProductShow extends React.Component < Props, State > {
 
         const appManager = ApplicationManager.instance;
 
-        if (VoteService.canIncrement(product.genre)) {
+        if (VoteService.canIncrement(product.genreLowerCase)) {
             VoteService.vote('POST', product.productId, product.genre);
             this.setState({showVoteModal: true});
         } else if (VoteService.includeVoteId(product)) {

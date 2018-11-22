@@ -8,7 +8,7 @@ export class ApplicationManager {
 
         if (this.DEBUG || !this._instance) {
             const voteIds = this.getVoteIds();
-            const uuid = this.getUuid();
+            const uuid = this.getUuid() || '';
             const remainedVoteCount = this.getRemainedVoteCount();
             this._instance = new ApplicationManager(voteIds, uuid, remainedVoteCount);
         }
@@ -30,7 +30,7 @@ export class ApplicationManager {
     private static _instance: ApplicationManager;
 
     private static getVoteIds = () => {
-        const voteIds = localStorage.getItem(ApplicationManager.KEY_VOTE_IDS);
+        const voteIds = localStorage.getItem(ApplicationManager.KEY_VOTE_IDS) || '"{}"';
 
         if (ApplicationManager.DEBUG && !voteIds) {
             const initialVoteIds = { fashion: [], beauty: [] };
