@@ -30,6 +30,7 @@ class App extends React.Component<{}, {loaded: boolean}> {
                     <Route exact path='/products' component={Screens.Products}/>
                     <Route exact path='/products/:id' component={Screens.ProductShow}/>
                     <Route exact path='/votes' component={Screens.ProductVoteList} />
+                    <Route exact path='/rank' component={Screens.ProductRank} />
                     <Route path='*' component={Screens.NotFound} />
                 </Switch>
             </Router>
