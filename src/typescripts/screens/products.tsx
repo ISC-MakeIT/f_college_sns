@@ -39,13 +39,14 @@ export class Products extends React.Component<Props, State> {
     }
 
     public render() {
-        const fashionProducts = this.state.products.fashion.map((product: ProductList) => (<Product key={product.productId} product={product} />));
-        const beautyProducts = this.state.products.beauty.map((product: ProductList) => (<Product key={product.productId} product={product} />));
+        const products = this.state.activeCategory === 'fashion' ?
+            this.state.products.fashion.map((product: ProductList) => (<Product key={product.productId} product={product} />)) :
+            this.state.products.beauty.map((product: ProductList) => (<Product key={product.productId} product={product} />));
 
         return (
             <Screen name='products'>
                 <div className='product-index'>
-                    {this.state.activeCategory === 'fashion' ? fashionProducts : beautyProducts}
+                    {products}
                 </div>
 
                 <footer className='d-flex align-items-center'>

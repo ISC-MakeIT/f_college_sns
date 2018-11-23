@@ -38,8 +38,7 @@ export class ProductShow extends React.Component < Props, State > {
         const product = await ProductService.get(this.props.match.params.id);
 
         if (product && product.photos) {
-            this.setState({product});
-            this.setState({activeImagePath: product.photos[0] || ''});
+            this.setState({product, activeImagePath: product.headShot});
         }
 
         const suggestedProductIds: number[] = [];
@@ -53,16 +52,12 @@ export class ProductShow extends React.Component < Props, State > {
             return await ProductService.get(id);
         });
 
-        if (suggestedProducts.length > 0) {
-            this.setState({ suggestedProducts });
-        }
-
         const appManager = ApplicationManager.instance;
         const votedProducts = await ProductService.asyncMap(appManager.voteIds[product.genreLowerCase], async (id: number) => {
             return await ProductService.get(id);
         });
 
-        this.setState({ votedProducts });
+        this.setState({ suggestedProducts, votedProducts });
     }
 
     public render() {
