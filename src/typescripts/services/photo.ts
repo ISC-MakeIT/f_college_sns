@@ -5,10 +5,11 @@ export class PhotoService {
     }
 
     public static getS3PhotoPath = (img: string, path?: string) => {
+        const awsURL = 'https://image.fc-fb-live.com';
         if (path === undefined) {
-            return `https://s3-ap-northeast-1.amazonaws.com/f-college-images/${img}`;
+            return `${awsURL}/${img}`;
         }
-        return `https://s3-ap-northeast-1.amazonaws.com/f-college-images/${path}/${img}`;
+        return `${awsURL}/${path}/${img}`;
     }
     private static basePhotoPath = () => './assets/images';
 }

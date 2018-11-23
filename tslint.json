@@ -17,5 +17,12 @@
         "object-literal-sort-keys": false,
         "ordered-imports": false
     },
+    "linterOptions": {
+        "exclude": [
+            "./node_modules/**/*.tsx",
+            "./node_modules/**/*.ts",
+            "./public/"
+        ]
+      },
     "rulesDirectory": []
 }
