@@ -17,16 +17,18 @@
     }
 
     .product-img {
-        object-position: 50% 50%;
         overflow: hidden;
         width: 100vw;
         height: 100vw;
     }
     .img-cover {
+        object-position: 50% 0%;
         object-fit: cover;
     }
     .img-contain {
-        object-fit: contain;
+        object-position: 50% 50%;
+        // object-fit: contain;
+        object-fit: scale-down;
     }
     .sub-images-container {
         overflow-y: overlay;
@@ -83,7 +85,6 @@
                 margin: 7vmin 0 2vmin;
             }
         }
-
 
         // TODO 複数のクリエイターのパターンの対応
         // 現状はエリア保持のためのpadding bottom

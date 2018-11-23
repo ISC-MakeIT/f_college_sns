@@ -52,4 +52,55 @@
         transform: rotate(45deg);
     }
 
+    /*================================================
+        ランキングページCSS
+    =================================================*/
+    &.rank-list {
+        counter-reset: rank;
+    }
+
+    li:before {
+        counter-increment: rank;
+        content: counter(rank) "位";
+        font-size: 9vmin;
+        position: absolute;
+        padding: 3vmin 4vmin;
+    }
+
+    .rank_sub_list {
+        height: 20vmin;
+        color: #f4f4f4;
+        border-bottom: 1px solid #707070;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        padding: 0 4vmin;
+
+        img {
+            width: 15vmin;
+            height: auto;
+            border-radius: 50%;
+            border: 1px solid #f4f4f4;
+            object-fit: cover;
+        }
+    
+        span {
+            font-weight: 600;
+            display: block;
+        }
+        p {
+            width: 65%;
+            padding: 0 0 0 3vmin;
+            font-size: 4vmin;
+            line-height: 180%;
+        }
+    
+        @media (min-width: 500px) {  
+            p {
+                width: 70%;
+                padding: 0 0 0 4vmin;
+            }
+        }
+
+    }
 }
