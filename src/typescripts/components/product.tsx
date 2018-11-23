@@ -17,7 +17,8 @@ export class Product extends React.Component<Props, {}> {
             <div key={product.productId} className='component product'>
                 <Link to={`/products/${product.productId}`} className='link-container'>
                     <img src={product.headShot} className='product-img'/>
-                    <div className='product-creator d-flex flex-row align-items-center'>
+                    <div className='product-creator'>
+                        <div className='product_number'/>
                         <div className='owner-area'>
                             <p className='owner-subject'>{owner.studentClass}</p>
                             <p className='owner-name'>{owner.studentName}</p>
