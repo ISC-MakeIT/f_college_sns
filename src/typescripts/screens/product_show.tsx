@@ -92,7 +92,12 @@ export class ProductShow extends React.Component < Props, State > {
                     key={index}
                     className={`${this.state.product && this.state.product.genre === 'FASHION' ? 'member-name' : 'members-name'}`}
                 >
-                    {m.studentName}
+                    {
+                        // product id == 12 だけ対応
+                        m.studentName.includes('<br />') ?
+                            m.studentName.split('<br />').map(e => (<p>{e}</p>)) :
+                            m.studentName
+                    }
                 </p>
             );
         });
