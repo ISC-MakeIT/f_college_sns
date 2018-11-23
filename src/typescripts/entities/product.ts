@@ -19,4 +19,9 @@ export class Product {
         return this.genre === 'FASHION' ? 'fashion' : 'beauty';
     }
 
+    public get headShot() {
+        if (this.photos == null || this.photos.length < 0) return '';
+        return this.photos[0];
+    }
+
 }
