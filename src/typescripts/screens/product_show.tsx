@@ -264,7 +264,7 @@ export class ProductShow extends React.Component < Props, State > {
         });
     }
 
-    private execVote = (e: any) => {
+    private execVote = async (e: any) => {
         if (!this.state.product) return;
         const product = this.state.product;
 
@@ -276,6 +276,11 @@ export class ProductShow extends React.Component < Props, State > {
         if (VoteService.includeVoteId(product)) {
             VoteService.vote('DELETE', product.productId, product.genre);
             alert('投票を取り消しました。');
+            const votedProducts = await ProductService.asyncMap(appManager.voteIds[product.genreLowerCase], async (id: number) => {
+                return await ProductService.get(id);
+            });
+            this.setState({ votedProducts });
+
         } else if (VoteService.canIncrement(product.genreLowerCase)) {
             VoteService.vote('POST', product.productId, product.genre);
             this.setState({showVoteModal: true});
