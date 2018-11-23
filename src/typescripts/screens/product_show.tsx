@@ -41,11 +41,11 @@ export class ProductShow extends React.Component < Props, State > {
             this.setState({product, activeImagePath: product.headShot});
         }
 
-        const suggestedProductIds: number[] = [];
+        let suggestedProductIds: number[] = [];
         while (suggestedProductIds.length < 5) {
             const rand = Math.floor(Math.random() * 50) + 1;
-            if (suggestedProductIds.includes(rand) || suggestedProductIds.includes(product.productId)) return;
             suggestedProductIds.push(rand);
+            suggestedProductIds = [...new Set(suggestedProductIds)];
         }
 
         const suggestedProducts = await ProductService.asyncMap(suggestedProductIds, async (id: number) => {
@@ -264,7 +264,7 @@ export class ProductShow extends React.Component < Props, State > {
         });
     }
 
-    private execVote = (e: any) => {
+    private execVote = async (e: any) => {
         if (!this.state.product) return;
         const product = this.state.product;
 
@@ -276,6 +276,11 @@ export class ProductShow extends React.Component < Props, State > {
         if (VoteService.includeVoteId(product)) {
             VoteService.vote('DELETE', product.productId, product.genre);
             alert('投票を取り消しました。');
+            const votedProducts = await ProductService.asyncMap(appManager.voteIds[product.genreLowerCase], async (id: number) => {
+                return await ProductService.get(id);
+            });
+            this.setState({ votedProducts });
+
         } else if (VoteService.canIncrement(product.genreLowerCase)) {
             VoteService.vote('POST', product.productId, product.genre);
             this.setState({showVoteModal: true});
