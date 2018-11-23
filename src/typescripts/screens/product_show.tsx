@@ -132,7 +132,6 @@ export class ProductShow extends React.Component < Props, State > {
         const voteBtn = (VoteService.includeVoteId(this.state.product)) ?
             (<span>取り消す</span>) : (<span>投票する</span>);
 
-
         return (
             <Screen name='product-show' showBackButton>
                 <Modal
@@ -255,12 +254,8 @@ export class ProductShow extends React.Component < Props, State > {
         const product = this.state.product;
         const deleteProductId = this.state.deleteSelectProductId;
 
-        console.log('before delete');
         await VoteService.vote('DELETE', deleteProductId, product.genre);
-        console.log('after delete');
-        console.log('before post');
         await VoteService.vote('POST', product.productId, product.genre);
-        console.log('after post');
 
         this.setState({
             showVoteModal: true,
@@ -323,12 +318,12 @@ export class ProductShow extends React.Component < Props, State > {
                 d.classList.remove('img-cover');
                 d.classList.add('img-contain');
             });
-          } else if (clickedImg.naturalHeight > clickedImg.naturalWidth || clickedImg.src.indexOf('/01.') === -1) {
+        } else if (clickedImg.naturalHeight > clickedImg.naturalWidth || clickedImg.src.indexOf('/01.') === -1) {
             document.querySelectorAll('.product-img').forEach(d => {
                 d.classList.remove('img-contain');
                 d.classList.add('img-cover');
             });
-          }
+        }
         this.setState({activeImagePath: clickedImg.src});
     }
 }
