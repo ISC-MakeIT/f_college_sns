@@ -18,7 +18,7 @@ export class ProductShowFooter extends React.Component<Props, {}> {
         if (!this.props.entryOrder) return null;
 
         const entryOrder = this.props.entryOrder;
-        const prevProductId = ProductService.entryOrder2ProductIdMapperByValue(this.props.product.genre, entryOrder - 2) || this.props.product.productId;
+        const prevProductId = ProductService.entryOrder2ProductIdMapperByValue(this.props.product.genre, entryOrder - 1);
         const nextProductId = ProductService.entryOrder2ProductIdMapperByValue(this.props.product.genre, entryOrder + 1);
 
         const prevUrl = `/products/${prevProductId}`;
