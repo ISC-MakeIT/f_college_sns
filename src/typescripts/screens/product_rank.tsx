@@ -10,7 +10,7 @@ import { ProductRankList } from '../components';
 interface Props extends RouteComponentProps<{}> {}
 
 interface State {
-    products: ProductEntity[] | null;
+    products: any;
 }
 
 export class ProductRank extends React.Component<Props, State> {
@@ -29,10 +29,6 @@ export class ProductRank extends React.Component<Props, State> {
 
     public render() {
         if (this.state.products === null) return( <Loading />);
-
-        // const productRankList = this.state.products.map( p => (
-        //     <ProductRankList key={p.productId} product={p} />
-        // ));
 
         return(
             <Screen name='product_vote_list' showBackButton>
