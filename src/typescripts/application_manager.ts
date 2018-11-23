@@ -22,9 +22,9 @@ export class ApplicationManager {
     public static DEBUG = true;
 
     // Storage keyを定数に
-    private static KEY_VOTE_IDS = 'voteIds';
-    private static KEY_UUID = 'uuid';
-    private static KEY_REMAINED_VOTE_COUNT = 'remainedVoteCount';
+    private static KEY_VOTE_IDS = 'DEBUG_voteIds';
+    private static KEY_UUID = 'DEBUG_uuid';
+    private static KEY_REMAINED_VOTE_COUNT = 'DEBUG_remainedVoteCount';
 
     // tslint:disable-next-line:variable-name
     private static _instance: ApplicationManager;
