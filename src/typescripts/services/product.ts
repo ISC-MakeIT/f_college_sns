@@ -28,12 +28,20 @@ export class ProductService {
 
     public static async getVotedProducts() {
         const appManager = ApplicationManager.instance;
-        const beautyProducts = await ProductService.asyncMap(appManager.voteIds.beauty, async (id: number) => {
-            return await ProductService.get(id);
-        });
-        const fashionProducts = await ProductService.asyncMap(appManager.voteIds.fashion, async (id: number) => {
-            return await ProductService.get(id);
-        });
+
+        let beautyProducts: any = [];
+        if (appManager.voteIds.beauty && appManager.voteIds.beauty.length > 0) {
+            beautyProducts = await ProductService.asyncMap(appManager.voteIds.beauty, async (id: number) => {
+                return await ProductService.get(id);
+            });
+        }
+
+        let fashionProducts: any = [];
+        if (appManager.voteIds.fashion && appManager.voteIds.fashion.length > 0) {
+            fashionProducts = await ProductService.asyncMap(appManager.voteIds.fashion, async (id: number) => {
+                return await ProductService.get(id);
+            });
+        }
 
         return { beauty: beautyProducts, fashion: fashionProducts};
     }

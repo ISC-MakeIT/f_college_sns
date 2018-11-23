@@ -5,9 +5,9 @@ import { ProductType, Product } from '../entities';
 export class VoteService {
     public static async vote(method: 'POST' | 'DELETE', productId: number, genre: ProductType) {
         if (method === 'POST') {
-            this.increment(productId, genre);
+            await this.increment(productId, genre);
         } else {
-            this.decrement(productId, genre);
+            await this.decrement(productId, genre);
         }
     }
 
@@ -29,12 +29,12 @@ export class VoteService {
     private static async increment(productId: number, genre: ProductType) {
         await ApiClient.post(`/vote/${productId}`);
         const appManager = ApplicationManager.instance;
-        appManager.pushVoteIds(productId, genre);
+        await appManager.pushVoteIds(productId, genre);
     }
 
     private static async decrement(productId: number, genre: ProductType) {
         await ApiClient.delete(`/vote/${productId}`);
         const appManager = ApplicationManager.instance;
-        appManager.popVoteIds(productId, genre);
+        await appManager.popVoteIds(productId, genre);
     }
 }

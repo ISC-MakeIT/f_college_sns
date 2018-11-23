@@ -30,7 +30,7 @@ export class ApplicationManager {
     private static _instance: ApplicationManager;
 
     private static getVoteIds = () => {
-        const voteIds = localStorage.getItem(ApplicationManager.KEY_VOTE_IDS) || '"{}"';
+        const voteIds: any = localStorage.getItem(ApplicationManager.KEY_VOTE_IDS);
 
         if (ApplicationManager.DEBUG && !voteIds) {
             const initialVoteIds = { fashion: [], beauty: [] };
@@ -78,7 +78,7 @@ export class ApplicationManager {
         localStorage.setItem(ApplicationManager.KEY_UUID, uuid);
     }
 
-    public pushVoteIds = (id: number, key: ProductType) => {
+    public pushVoteIds = async (id: number, key: ProductType) => {
         const tmpStorageIds = localStorage.getItem(ApplicationManager.KEY_VOTE_IDS) || '"{}"';
         const parsedTmpStorageIds = JSON.parse(tmpStorageIds);
 
@@ -87,48 +87,35 @@ export class ApplicationManager {
         parsedTmpStorageIds[key.toLowerCase()].push(id);
         this.voteIds = parsedTmpStorageIds;
         localStorage.setItem(ApplicationManager.KEY_VOTE_IDS, JSON.stringify(this.voteIds));
-        this.decrementRemainedVoteCount(key);
+        await this.decrementRemainedVoteCount(key);
     }
 
-    public popVoteIds = (id: number, key: ProductType) => {
+    public popVoteIds = async (id: number, key: ProductType) => {
         const tmpStorageIds = localStorage.getItem(ApplicationManager.KEY_VOTE_IDS) || '"{}"';
         const parsedTmpStorageIds = JSON.parse(tmpStorageIds);
         parsedTmpStorageIds[key.toLowerCase()] = parsedTmpStorageIds[key.toLowerCase()].filter((e: number) => e !== id);
         this.voteIds = parsedTmpStorageIds;
         localStorage.setItem(ApplicationManager.KEY_VOTE_IDS, JSON.stringify(this.voteIds));
-        this.incrementRemainedVoteCount(key);
+        await this.incrementRemainedVoteCount(key);
     }
 
-    public incrementRemainedVoteCount = (key: ProductType) => {
-        const tmpRemainedVoteCount = localStorage.getItem(ApplicationManager.KEY_REMAINED_VOTE_COUNT);
+    public async incrementRemainedVoteCount(key: ProductType) {
+        const tmpRemainedVoteCount = await localStorage.getItem(ApplicationManager.KEY_REMAINED_VOTE_COUNT);
         if (!tmpRemainedVoteCount) return;
 
         const parsedStorageVoteCount = JSON.parse(tmpRemainedVoteCount);
-        const keyName = ['BEAUTY_VOTE_COUNT', 'FASHION_VOTE_COUNT'].find(n => n.includes(key.toUpperCase()));
-
-        // FIXME ↓みたいにしたいけどコンパイラに怒られた if ( keyName && parsedStorageVoteCount[key] >=
-        // ApplicationManager[keyName]) return;
-        if (keyName === 'BEAUTY_VOTE_COUNT') {
-            if (parsedStorageVoteCount[key.toLowerCase()] >= ApplicationManager.BEAUTY_VOTE_COUNT) return;
-        } else {
-            if (parsedStorageVoteCount[key.toLowerCase()] >= ApplicationManager.FASHION_VOTE_COUNT) return;
-        }
-
         parsedStorageVoteCount[key.toLowerCase()] += 1;
         this.remainedVoteCount = parsedStorageVoteCount;
-        localStorage.setItem(ApplicationManager.KEY_REMAINED_VOTE_COUNT, JSON.stringify(this.remainedVoteCount));
+        await localStorage.setItem(ApplicationManager.KEY_REMAINED_VOTE_COUNT, JSON.stringify(this.remainedVoteCount));
     }
 
-    public decrementRemainedVoteCount = (key: ProductType) => {
+    public async decrementRemainedVoteCount(key: ProductType) {
         const tmpRemainedVoteCount = localStorage.getItem(ApplicationManager.KEY_REMAINED_VOTE_COUNT);
         if (!tmpRemainedVoteCount) return;
 
         const parsedStorageVoteCount = JSON.parse(tmpRemainedVoteCount);
-
-        if (parsedStorageVoteCount[key.toLowerCase()] <= 0) return;
-
         parsedStorageVoteCount[key.toLowerCase()] -= 1;
         this.remainedVoteCount = parsedStorageVoteCount;
-        localStorage.setItem(ApplicationManager.KEY_REMAINED_VOTE_COUNT, JSON.stringify(this.remainedVoteCount));
+        await localStorage.setItem(ApplicationManager.KEY_REMAINED_VOTE_COUNT, JSON.stringify(this.remainedVoteCount));
     }
 }

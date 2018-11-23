@@ -32,7 +32,7 @@
         overflow-y: overlay;
         width: auto;
         background-color: $white-text-color;
-        
+
         img {
             object-fit: cover;
         }
@@ -209,7 +209,7 @@
         flex-direction: row;
         overflow: auto;
         margin: 0 3vmin;
-        
+
         .suggested-product {
             margin: 0 5px 10px;
             position: relative;
@@ -234,6 +234,8 @@
             text-align: center;
             width: 100%;
             margin-top: -7vmin;
+            text-overflow: ellipsis;
+            white-space: nowrap;
         }
     }
 
@@ -291,8 +293,6 @@
         width: 85vw;
         height: 39vmin;
         display: flex;
-        flex-wrap: wrap;
-        justify-content: space-around;
         overflow: auto;
         padding: 0 2.5vmin;
         margin: 2.5vmin 0 1.5vmin;
@@ -314,7 +314,7 @@
         height: 37.5vmin;
         border-radius: 1vmin;
         background: $black;
-        margin: 1.2vmin 0;
+        margin: 1.2vmin 1vmin;
     }
 
     .select {
