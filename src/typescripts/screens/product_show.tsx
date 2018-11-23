@@ -179,7 +179,7 @@ export class ProductShow extends React.Component < Props, State > {
 
             <div className='image-container'>
                 <img
-                    className={`${this.state.product.photos[0].indexOf('/01.') !== -1 ? 'product-img img-contain' : 'product-img img-cover'}`}
+                    className={`${this.state.product.headShot.indexOf('/01.') !== -1 ? 'product-img img-contain' : 'product-img img-cover'}`}
                     src={this.state.activeImagePath}
                 />
                 <div className='sub-images-container d-flex'>
