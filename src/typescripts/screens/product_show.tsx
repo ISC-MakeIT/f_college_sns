@@ -318,25 +318,20 @@ export class ProductShow extends React.Component < Props, State > {
         clickedImg.classList.add('active');
         e.currentTarget.classList.remove('cover');
 
-        if (clickedImg.naturalHeight < clickedImg.naturalWidth || clickedImg.src.indexOf('/01.') !== -1) {
+        // s3/**/\d/\d.jpgの画像 || beatuty, fashionの01
+        const containImg = (clickedImg.src.search(/beauty\/(\d*)*\/02./) !== -1 || clickedImg.src.search(/(beauty|fashion)\/\d*\/01./) !== -1);
+        if (containImg || clickedImg.naturalHeight < clickedImg.naturalWidth) {
             document.querySelectorAll('.product-img').forEach(d => {
                 d.classList.remove('img-cover');
                 d.classList.add('img-contain');
             });
-        } else if (clickedImg.naturalHeight > clickedImg.naturalWidth || clickedImg.src.indexOf('/01.') === -1) {
-            if (clickedImg.src.indexOf('/beauty.') !== -1 && clickedImg.src.indexOf('/02.') !== -1) {
-                console.log (clickedImg.src.indexOf('/beauty.'));
-                document.querySelectorAll('.product-img').forEach(d => {
-                    d.classList.remove('img-cover');
-                    d.classList.add('img-contain');
-                });
-            } else {
-                document.querySelectorAll('.product-img').forEach(d => {
-                    d.classList.remove('img-contain');
-                    d.classList.add('img-cover');
-                });
-            }
+        } else {
+            document.querySelectorAll('.product-img').forEach(d => {
+                d.classList.remove('img-contain');
+                d.classList.add('img-cover');
+            });
         }
+
         this.setState({activeImagePath: clickedImg.src});
     }
 }
