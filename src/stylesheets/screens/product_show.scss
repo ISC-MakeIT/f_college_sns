@@ -177,14 +177,15 @@
         display: flex;
         align-items: center;
         width: 95%;
+        height: 24vmin;
         border: 1px solid #e9ecef;
         border-radius: 1vmin;
         padding: 2.4vmin;
-        margin: 5vmin auto 4vmin;
+        margin: 3.5vmin auto 2.5vmin;
 
         .product-thumb {
-            width: 24vmin;
-            height: 24vmin;
+            width: 19vmin;
+            height: 19vmin;
             object-fit: cover;
         }
 
@@ -192,9 +193,10 @@
             width: 100%;
             text-align: center;
             padding: 0 1.5vmin;
+
             .right-container__title {
                 font-size: 3vmin;
-                padding: 2.3vmin 0;
+                padding: 1.5vmin 0;
             }
         }
     }
@@ -205,7 +207,7 @@
     }
 
     .suggest-product-container {
-        height: 34vmin;
+        // height: 24vmin;np
         display: flex;
         flex-direction: row;
         overflow: auto;
@@ -214,29 +216,29 @@
         .suggested-product {
             margin: 0 5px 10px;
             position: relative;
-            width: 33vmin;
-            height: 24vmin;
+            width: 20vmin;
         }
 
         .short-product-thumb {
-            height: 30vmin;
-            width: 30vmin;
+            height: 20vmin;
+            width: 20vmin;
             object-fit: cover;
             border-radius: 1vmin;
         }
 
         .product-label {
             font-size: 3vmin;
-            height: 7vmin;
-            line-height: 7vmin;
+            height: 6vmin;
+            line-height: 6vmin;
             display: block;
             background-color: white;
             opacity: .85;
             text-align: center;
-            width: 100%;
-            margin-top: -7vmin;
+            width: 20vmin;
+            margin-top: -6vmin;
             text-overflow: ellipsis;
             white-space: nowrap;
+            overflow: hidden;
         }
     }
 
@@ -292,16 +294,16 @@
 
     .re-vote-image-list {
         width: 85vw;
-        height: 39vmin;
         display: flex;
+        justify-content: center;
+        align-items: center;
         overflow: auto;
-        padding: 0 2.5vmin;
         margin: 2.5vmin 0 1.5vmin;
     }
 
     .re-vote-product-image {
-        width: 37.5vmin;
-        height: 37.5vmin;
+        width: 25vmin;
+        height: 25vmin;
         border-radius: 1vmin;
         object-fit: cover;
     }
@@ -311,8 +313,8 @@
     }
 
     .delete-image-box {
-        width: 37.5vmin;
-        height: 37.5vmin;
+        width: calc(25vmin - 2px);
+        height: calc(25vmin - 2px);
         border-radius: 1vmin;
         background: $black;
         margin: 1.2vmin 1vmin;
