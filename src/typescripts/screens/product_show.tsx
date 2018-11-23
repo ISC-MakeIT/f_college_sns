@@ -132,6 +132,7 @@ export class ProductShow extends React.Component < Props, State > {
         const voteBtn = (VoteService.includeVoteId(this.state.product)) ?
             (<span>取り消す</span>) : (<span>投票する</span>);
 
+
         return (
             <Screen name='product-show' showBackButton>
                 <Modal
@@ -178,7 +179,10 @@ export class ProductShow extends React.Component < Props, State > {
             </Modal>
 
             <div className='image-container'>
-                <img className='product-img img-cover' src={this.state.activeImagePath}/>
+                <img
+                    className={`${this.state.product.photos[0].indexOf('/01.') !== -1 ? 'product-img img-contain' : 'product-img img-cover'}`}
+                    src={this.state.activeImagePath}
+                />
                 <div className='sub-images-container d-flex'>
                     {subImages}
                 </div>
@@ -208,7 +212,7 @@ export class ProductShow extends React.Component < Props, State > {
                         {this.state.product.theme}
                     </p>
                 </div>
-                <div className='creator-box'>
+                <div className='creator-box concept'>
                     <h2>Concept</h2>
                     <p className='text'>
                         {this.state.product.concept}
@@ -314,17 +318,17 @@ export class ProductShow extends React.Component < Props, State > {
         clickedImg.classList.add('active');
         e.currentTarget.classList.remove('cover');
 
-        if (clickedImg.naturalHeight < clickedImg.naturalWidth) {
+        if (clickedImg.naturalHeight < clickedImg.naturalWidth || clickedImg.src.indexOf('/01.') !== -1) {
             document.querySelectorAll('.product-img').forEach(d => {
                 d.classList.remove('img-cover');
                 d.classList.add('img-contain');
             });
-        } else if (clickedImg.naturalHeight > clickedImg.naturalWidth) {
+          } else if (clickedImg.naturalHeight > clickedImg.naturalWidth || clickedImg.src.indexOf('/01.') === -1) {
             document.querySelectorAll('.product-img').forEach(d => {
                 d.classList.remove('img-contain');
                 d.classList.add('img-cover');
             });
-        }
+          }
         this.setState({activeImagePath: clickedImg.src});
     }
 }
