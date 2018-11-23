@@ -24,10 +24,7 @@ export class Product extends React.Component<Props, {}> {
                         </div>
                         <img src={owner.profilePhoto} className='profile_image'/>
                     </div>
-                    <p className='likes-count'>
-                        <Icon name='heart' />
-                        345
-                    </p>
+                    <p className='likes-count'/>
                 </Link>
             </div>
         );
