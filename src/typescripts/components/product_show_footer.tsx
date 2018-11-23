@@ -27,11 +27,16 @@ export class ProductShowFooter extends React.Component<Props, {}> {
         return (
             <footer>
                 <nav id='footer_menu'>
-                    {/* <div className='footer_fashion' onClick={() => this.linkClick(prevUrl)} >＜ PREV</div>
-                    <div className='footer_beauty' onClick={() => this.linkClick(nextUrl)} >NEXT ＞</div> */}
-
-                    <div className='footer_fashion' onClick={() => this.linkClick(prevUrl)} >＜ PREV</div>
-                    <div className='footer_beauty' onClick={() => this.linkClick(nextUrl)} >NEXT ＞</div>
+                {
+                    prevProductId ?
+                        <div className='footer_fashion' onClick={() => this.linkClick(prevUrl)} >＜ PREV</div> :
+                        <div className='footer_fashion' />
+                }
+                {
+                    nextProductId ?
+                        <div className='footer_beauty' onClick={() => this.linkClick(nextUrl)} >NEXT ＞</div> :
+                        <div className='footer_beauty' />
+                }
                 </nav>
             </footer>
         );
@@ -39,22 +44,18 @@ export class ProductShowFooter extends React.Component<Props, {}> {
 
     private currentURL = () => window.location.href.replace(window.location.pathname, '');
 
-    private linkClick = (url: string) => {
+    private linkClick = (url: any) => {
+
         const productId = this.props.product.productId;
         const genre = this.props.product.genre;
         if (genre === 'FASHION') {
-            if (productId > 20 && productId < 51) {
-                return (
-                    window.location.href = this.currentURL() + url
-                );
+            if (20 < productId && productId < 51) {
+                return (window.location.href = this.currentURL() + url);
             }
         } else if (genre === 'BEAUTY') {
-            if (productId > 0 && productId < 21) {
-                return (
-                    window.location.href = this.currentURL() + url
-                );
+            if ( 0 < productId && productId < 21) {
+                return (window.location.href = this.currentURL() + url);
             }
         }
     }
-
 }
