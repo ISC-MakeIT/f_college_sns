@@ -12,6 +12,7 @@ export class Header extends React.Component < Props, {} > {
     public render() {
         const appManager = ApplicationManager.instance;
         const remainVoteCount = appManager.remainedVoteCount.beauty + appManager.remainedVoteCount.fashion;
+        const showIcon = remainVoteCount !== 0 ? <div className='label_push'>{remainVoteCount}</div> : null;
 
         return (
             <header id='header_wrap' className='component'>
@@ -27,7 +28,7 @@ export class Header extends React.Component < Props, {} > {
                     <div id='header_label'>
                         <Icon name='crown'/>
                         <span>あと{remainVoteCount}票</span>
-                        <div className='label_push'>{remainVoteCount}</div>
+                        {showIcon}
                     </div>
                 </Link>
             </header>
