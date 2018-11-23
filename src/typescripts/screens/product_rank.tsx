@@ -5,7 +5,7 @@ import { Product as ProductEntity } from '../entities/product';
 import { ProductService } from '../services/product';
 import { Loading } from '../components';
 import { RankSubHeader } from '../components';
-import { ProductVotesList } from '../components';
+import { ProductRankList } from '../components';
 
 interface Props extends RouteComponentProps<{}> {}
 
@@ -30,16 +30,35 @@ export class ProductRank extends React.Component<Props, State> {
     public render() {
         if (this.state.products === null) return( <Loading />);
 
-        const votedProductsRank = this.state.products.map( p => (
-            // ここをいい感じにランキング形式にする
-            <ProductVotesList key={p.productId} product={p} />
-        ));
+        // const productRankList = this.state.products.map( p => (
+        //     <ProductRankList key={p.productId} product={p} />
+        // ));
 
         return(
             <Screen name='product_vote_list' showBackButton>
                 <RankSubHeader category='fashion'/>
                 <RankSubHeader category='beauty'/>
-                {votedProductsRank}
+                {ProductRankList}
+                <ul className='component product_votes_list rank-list'>
+                    <li className='component product_votes_list'>
+                        <section className='rank_sub_list'>
+                        <p>
+                            <span>ブライダル科1年 山田花子</span>
+                            コンセプト
+                        </p>
+                        <img src='./assets/images/users/kizunaai.jpeg' alt=''/>
+                        </section>
+                    </li>
+                    <li className='component product_votes_list'>
+                        <section className='rank_sub_list'>
+                        <p>
+                            <span>ブライダル科1年 山田花子</span>
+                            コンセプト
+                        </p>
+                        <img src='./assets/images/users/kizunaai.jpeg' alt=''/>
+                        </section>
+                    </li>
+                </ul>
             </Screen>
         );
     }
