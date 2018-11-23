@@ -41,11 +41,11 @@ export class ProductShow extends React.Component < Props, State > {
             this.setState({product, activeImagePath: product.headShot});
         }
 
-        const suggestedProductIds: number[] = [];
+        let suggestedProductIds: number[] = [];
         while (suggestedProductIds.length < 5) {
             const rand = Math.floor(Math.random() * 50) + 1;
-            if (suggestedProductIds.includes(rand) || suggestedProductIds.includes(product.productId)) return;
             suggestedProductIds.push(rand);
+            suggestedProductIds = [...new Set(suggestedProductIds)];
         }
 
         const suggestedProducts = await ProductService.asyncMap(suggestedProductIds, async (id: number) => {
