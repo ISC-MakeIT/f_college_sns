@@ -5,6 +5,7 @@ import { ProductList } from '../entities';
 import Screen from './screen';
 import { Product } from '../components/product';
 import { Tab } from '../components/tab';
+import { ApplicationManager } from '../application_manager';
 
 interface Props extends RouteComponentProps<{}> {}
 
@@ -19,7 +20,7 @@ export class Products extends React.Component<Props, State> {
         super(props);
         this.state = {
             products: { fashion: [], beauty: [] },
-            activeCategory: 'fashion',
+            activeCategory: ApplicationManager.instance.activeCategory,
         };
     }
 
@@ -29,6 +30,7 @@ export class Products extends React.Component<Props, State> {
 
         const category = activeCategory === 'fashion' ? 'beauty' : 'fashion';
         this.setState({ activeCategory: category });
+        ApplicationManager.instance.changeActiveCategory(category);
     }
 
     public async componentDidMount() {
@@ -37,13 +39,14 @@ export class Products extends React.Component<Props, State> {
     }
 
     public render() {
-        const fashionProducts = this.state.products.fashion.map((product: ProductList) => (<Product key={product.productId} product={product} />));
-        const beautyProducts = this.state.products.beauty.map((product: ProductList) => (<Product key={product.productId} product={product} />));
+        const products = this.state.activeCategory === 'fashion' ?
+            this.state.products.fashion.map((product: ProductList) => (<Product key={product.productId} product={product} />)) :
+            this.state.products.beauty.map((product: ProductList) => (<Product key={product.productId} product={product} />));
 
         return (
             <Screen name='products'>
                 <div className='product-index'>
-                    {this.state.activeCategory === 'fashion' ? fashionProducts : beautyProducts}
+                    {products}
                 </div>
 
                 <footer className='d-flex align-items-center'>

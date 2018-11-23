@@ -8,9 +8,9 @@ export class ApplicationManager {
 
         if (this.DEBUG || !this._instance) {
             const voteIds = this.getVoteIds();
-            const uuid = this.getUuid() || '';
             const remainedVoteCount = this.getRemainedVoteCount();
-            this._instance = new ApplicationManager(voteIds, uuid, remainedVoteCount);
+            const activeCategory = this.getActiveCategory();
+            this._instance = new ApplicationManager(voteIds, remainedVoteCount, activeCategory);
         }
 
         return this._instance;
@@ -22,9 +22,10 @@ export class ApplicationManager {
     public static DEBUG = true;
 
     // Storage keyを定数に
-    private static KEY_VOTE_IDS = 'DEBUG_voteIds';
-    private static KEY_UUID = 'DEBUG_uuid';
-    private static KEY_REMAINED_VOTE_COUNT = 'DEBUG_remainedVoteCount';
+    public static KEY_PREFIX = 'DEBUG';
+    private static KEY_VOTE_IDS = `${ApplicationManager.KEY_PREFIX}_voteIds`;
+    private static KEY_REMAINED_VOTE_COUNT = `${ApplicationManager.KEY_PREFIX}_remainedVoteCount`;
+    private static KEY_ACTIVE_CATEGORY = `${ApplicationManager.KEY_PREFIX}_activeCategory`;
 
     // tslint:disable-next-line:variable-name
     private static _instance: ApplicationManager;
@@ -41,14 +42,6 @@ export class ApplicationManager {
         return JSON.parse(voteIds);
     }
 
-    private static getUuid = () => {
-        const uuid = localStorage.getItem(ApplicationManager.KEY_UUID);
-
-        if (ApplicationManager.DEBUG && !uuid) return '';
-
-        return uuid;
-    }
-
     private static getRemainedVoteCount = () => {
         let remainedVoteCount: any = localStorage.getItem(ApplicationManager.KEY_REMAINED_VOTE_COUNT);
 
@@ -63,19 +56,31 @@ export class ApplicationManager {
         return JSON.parse(remainedVoteCount);
     }
 
-    public voteIds: VoteIdsType;
-    public uuid: string;
-    public remainedVoteCount: { fashion: number, beauty: number };
+    private static getActiveCategory = () => {
+        let activeCategory: any = localStorage.getItem(ApplicationManager.KEY_ACTIVE_CATEGORY);
 
-    private constructor(voteIds: VoteIdsType, uuid: string, remainedVoteCount: { fashion: number, beauty: number }) {
-        this.voteIds = voteIds;
-        this.uuid = uuid;
-        this.remainedVoteCount = remainedVoteCount;
+        if (ApplicationManager.DEBUG && !activeCategory) {
+            activeCategory = 'fashion';
+            localStorage.setItem(ApplicationManager.KEY_ACTIVE_CATEGORY, JSON.stringify(activeCategory));
+            return activeCategory;
+        }
+
+        return JSON.parse(activeCategory);
     }
 
-    public setUuid = (uuid: string) => {
-        this.uuid = uuid;
-        localStorage.setItem(ApplicationManager.KEY_UUID, uuid);
+    public voteIds: VoteIdsType;
+    public remainedVoteCount: { fashion: number, beauty: number };
+    public activeCategory: 'fashion' | 'beauty';
+
+    private constructor(voteIds: VoteIdsType, remainedVoteCount: { fashion: number, beauty: number }, activeCategory: 'fashion' | 'beauty') {
+        this.voteIds = voteIds;
+        this.remainedVoteCount = remainedVoteCount;
+        this.activeCategory = activeCategory;
+    }
+
+    public changeActiveCategory(category: 'fashion' | 'beauty') {
+        this.activeCategory = category;
+        localStorage.setItem(ApplicationManager.KEY_ACTIVE_CATEGORY, JSON.stringify(this.activeCategory));
     }
 
     public pushVoteIds = async (id: number, key: ProductType) => {

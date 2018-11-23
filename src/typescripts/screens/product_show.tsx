@@ -38,31 +38,26 @@ export class ProductShow extends React.Component < Props, State > {
         const product = await ProductService.get(this.props.match.params.id);
 
         if (product && product.photos) {
-            this.setState({product});
-            this.setState({activeImagePath: product.photos[0] || ''});
+            this.setState({product, activeImagePath: product.headShot});
         }
 
-        const suggestedProductIds: number[] = [];
+        let suggestedProductIds: number[] = [];
         while (suggestedProductIds.length < 5) {
             const rand = Math.floor(Math.random() * 50) + 1;
-            if (suggestedProductIds.includes(rand) || suggestedProductIds.includes(product.productId)) return;
             suggestedProductIds.push(rand);
+            suggestedProductIds = [...new Set(suggestedProductIds)];
         }
 
         const suggestedProducts = await ProductService.asyncMap(suggestedProductIds, async (id: number) => {
             return await ProductService.get(id);
         });
 
-        if (suggestedProducts.length > 0) {
-            this.setState({ suggestedProducts });
-        }
-
         const appManager = ApplicationManager.instance;
         const votedProducts = await ProductService.asyncMap(appManager.voteIds[product.genreLowerCase], async (id: number) => {
             return await ProductService.get(id);
         });
 
-        this.setState({ votedProducts });
+        this.setState({ suggestedProducts, votedProducts });
     }
 
     public render() {
@@ -92,7 +87,12 @@ export class ProductShow extends React.Component < Props, State > {
                     key={index}
                     className={`${this.state.product && this.state.product.genre === 'FASHION' ? 'member-name' : 'members-name'}`}
                 >
-                    {m.studentName}
+                    {
+                        // product id == 12 だけ対応
+                        m.studentName.includes('<br />') ?
+                            m.studentName.split('<br />').map(e => (<p>{e}</p>)) :
+                            m.studentName
+                    }
                 </p>
             );
         });
@@ -264,7 +264,7 @@ export class ProductShow extends React.Component < Props, State > {
         });
     }
 
-    private execVote = (e: any) => {
+    private execVote = async (e: any) => {
         if (!this.state.product) return;
         const product = this.state.product;
 
@@ -276,6 +276,11 @@ export class ProductShow extends React.Component < Props, State > {
         if (VoteService.includeVoteId(product)) {
             VoteService.vote('DELETE', product.productId, product.genre);
             alert('投票を取り消しました。');
+            const votedProducts = await ProductService.asyncMap(appManager.voteIds[product.genreLowerCase], async (id: number) => {
+                return await ProductService.get(id);
+            });
+            this.setState({ votedProducts });
+
         } else if (VoteService.canIncrement(product.genreLowerCase)) {
             VoteService.vote('POST', product.productId, product.genre);
             this.setState({showVoteModal: true});
