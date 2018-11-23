@@ -1,19 +1,14 @@
 import { ProductType } from './entities';
 
+interface VoteIdsType { 'fashion': number[]; 'beauty': number[]; }
+
 export class ApplicationManager {
 
-    private static BEAUTY_VOTE_COUNT = 5;
-    private static FASHION_VOTE_COUNT = 8;
-
-    // Storage keyを定数に
-    private static KEY_VOTE_IDS = 'voteIds';
-    private static KEY_UUID = 'uuid';
-    private static KEY_REMAINED_VOTE_COUNT = 'remainedVoteCount';
-
     public static get instance(): ApplicationManager {
-        if (!this._instance) {
+
+        if (this.DEBUG || !this._instance) {
             const voteIds = this.getVoteIds();
-            const uuid = this.getUuid();
+            const uuid = this.getUuid() || '';
             const remainedVoteCount = this.getRemainedVoteCount();
             this._instance = new ApplicationManager(voteIds, uuid, remainedVoteCount);
         }
@@ -21,13 +16,23 @@ export class ApplicationManager {
         return this._instance;
     }
 
+    public static BEAUTY_VOTE_COUNT = 3;
+    public static FASHION_VOTE_COUNT = 3;
+    // TODO
+    public static DEBUG = true;
+
+    // Storage keyを定数に
+    private static KEY_VOTE_IDS = 'DEBUG_voteIds';
+    private static KEY_UUID = 'DEBUG_uuid';
+    private static KEY_REMAINED_VOTE_COUNT = 'DEBUG_remainedVoteCount';
+
     // tslint:disable-next-line:variable-name
     private static _instance: ApplicationManager;
 
     private static getVoteIds = () => {
-        const voteIds = localStorage.getItem(ApplicationManager.KEY_VOTE_IDS);
+        const voteIds: any = localStorage.getItem(ApplicationManager.KEY_VOTE_IDS);
 
-        if (!voteIds) {
+        if (ApplicationManager.DEBUG && !voteIds) {
             const initialVoteIds = { fashion: [], beauty: [] };
             localStorage.setItem(ApplicationManager.KEY_VOTE_IDS, JSON.stringify(initialVoteIds));
             return initialVoteIds;
@@ -39,7 +44,7 @@ export class ApplicationManager {
     private static getUuid = () => {
         const uuid = localStorage.getItem(ApplicationManager.KEY_UUID);
 
-        if (!uuid) return '';
+        if (ApplicationManager.DEBUG && !uuid) return '';
 
         return uuid;
     }
@@ -47,7 +52,7 @@ export class ApplicationManager {
     private static getRemainedVoteCount = () => {
         let remainedVoteCount: any = localStorage.getItem(ApplicationManager.KEY_REMAINED_VOTE_COUNT);
 
-        if (!remainedVoteCount) {
+        if (ApplicationManager.DEBUG && !remainedVoteCount) {
             remainedVoteCount = {};
             remainedVoteCount.fashion = ApplicationManager.FASHION_VOTE_COUNT;
             remainedVoteCount.beauty = ApplicationManager.BEAUTY_VOTE_COUNT;
@@ -58,11 +63,11 @@ export class ApplicationManager {
         return JSON.parse(remainedVoteCount);
     }
 
-    public voteIds: {};
+    public voteIds: VoteIdsType;
     public uuid: string;
-    public remainedVoteCount: {};
+    public remainedVoteCount: { fashion: number, beauty: number };
 
-    private constructor(voteIds: {}, uuid: string, remainedVoteCount: {}) {
+    private constructor(voteIds: VoteIdsType, uuid: string, remainedVoteCount: { fashion: number, beauty: number }) {
         this.voteIds = voteIds;
         this.uuid = uuid;
         this.remainedVoteCount = remainedVoteCount;
@@ -73,55 +78,44 @@ export class ApplicationManager {
         localStorage.setItem(ApplicationManager.KEY_UUID, uuid);
     }
 
-    public pushVoteIds = (key: ProductType, id: number) => {
+    public pushVoteIds = async (id: number, key: ProductType) => {
         const tmpStorageIds = localStorage.getItem(ApplicationManager.KEY_VOTE_IDS) || '"{}"';
         const parsedTmpStorageIds = JSON.parse(tmpStorageIds);
 
-        if (parsedTmpStorageIds[key].includes(id)) return;
+        if (parsedTmpStorageIds[key.toLowerCase()].includes(id)) return;
 
-        parsedTmpStorageIds[key].push(id);
+        parsedTmpStorageIds[key.toLowerCase()].push(id);
         this.voteIds = parsedTmpStorageIds;
         localStorage.setItem(ApplicationManager.KEY_VOTE_IDS, JSON.stringify(this.voteIds));
+        await this.decrementRemainedVoteCount(key);
     }
 
-    public popVoteIds = (key: ProductType, id: number) => {
+    public popVoteIds = async (id: number, key: ProductType) => {
         const tmpStorageIds = localStorage.getItem(ApplicationManager.KEY_VOTE_IDS) || '"{}"';
         const parsedTmpStorageIds = JSON.parse(tmpStorageIds);
-        parsedTmpStorageIds[key] = parsedTmpStorageIds[key].filter((e: number) => e !== id);
+        parsedTmpStorageIds[key.toLowerCase()] = parsedTmpStorageIds[key.toLowerCase()].filter((e: number) => e !== id);
         this.voteIds = parsedTmpStorageIds;
         localStorage.setItem(ApplicationManager.KEY_VOTE_IDS, JSON.stringify(this.voteIds));
+        await this.incrementRemainedVoteCount(key);
     }
 
-    public incrementRemainedVoteCount = (key: ProductType) => {
+    public async incrementRemainedVoteCount(key: ProductType) {
+        const tmpRemainedVoteCount = await localStorage.getItem(ApplicationManager.KEY_REMAINED_VOTE_COUNT);
+        if (!tmpRemainedVoteCount) return;
+
+        const parsedStorageVoteCount = JSON.parse(tmpRemainedVoteCount);
+        parsedStorageVoteCount[key.toLowerCase()] += 1;
+        this.remainedVoteCount = parsedStorageVoteCount;
+        await localStorage.setItem(ApplicationManager.KEY_REMAINED_VOTE_COUNT, JSON.stringify(this.remainedVoteCount));
+    }
+
+    public async decrementRemainedVoteCount(key: ProductType) {
         const tmpRemainedVoteCount = localStorage.getItem(ApplicationManager.KEY_REMAINED_VOTE_COUNT);
         if (!tmpRemainedVoteCount) return;
 
         const parsedStorageVoteCount = JSON.parse(tmpRemainedVoteCount);
-        const keyName = ['BEAUTY_VOTE_COUNT', 'FASHION_VOTE_COUNT'].find(n => n.includes(key.toUpperCase()));
-
-        // FIXME ↓みたいにしたいけどコンパイラに怒られた if ( keyName && parsedStorageVoteCount[key] >=
-        // ApplicationManager[keyName]) return;
-        if (keyName === 'BEAUTY_VOTE_COUNT') {
-            if (parsedStorageVoteCount[key] >= ApplicationManager.BEAUTY_VOTE_COUNT) return;
-        } else {
-            if (parsedStorageVoteCount[key] >= ApplicationManager.FASHION_VOTE_COUNT) return;
-        }
-
-        parsedStorageVoteCount[key] += 1;
+        parsedStorageVoteCount[key.toLowerCase()] -= 1;
         this.remainedVoteCount = parsedStorageVoteCount;
-        localStorage.setItem(ApplicationManager.KEY_REMAINED_VOTE_COUNT, JSON.stringify(this.remainedVoteCount));
-    }
-
-    public decrementRemainedVoteCount = (key: ProductType) => {
-        const tmpRemainedVoteCount = localStorage.getItem(ApplicationManager.KEY_REMAINED_VOTE_COUNT);
-        if (!tmpRemainedVoteCount) return;
-
-        const parsedStorageVoteCount = JSON.parse(tmpRemainedVoteCount);
-
-        if (parsedStorageVoteCount[key] <= 0) return;
-
-        parsedStorageVoteCount[key] -= 1;
-        this.remainedVoteCount = parsedStorageVoteCount;
-        localStorage.setItem(ApplicationManager.KEY_REMAINED_VOTE_COUNT, JSON.stringify(this.remainedVoteCount));
+        await localStorage.setItem(ApplicationManager.KEY_REMAINED_VOTE_COUNT, JSON.stringify(this.remainedVoteCount));
     }
 }
