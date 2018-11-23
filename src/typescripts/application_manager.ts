@@ -9,7 +9,8 @@ export class ApplicationManager {
         if (this.DEBUG || !this._instance) {
             const voteIds = this.getVoteIds();
             const remainedVoteCount = this.getRemainedVoteCount();
-            this._instance = new ApplicationManager(voteIds, remainedVoteCount);
+            const activeCategory = this.getActiveCategory();
+            this._instance = new ApplicationManager(voteIds, remainedVoteCount, activeCategory);
         }
 
         return this._instance;
@@ -24,6 +25,7 @@ export class ApplicationManager {
     public static KEY_PREFIX = 'DEBUG';
     private static KEY_VOTE_IDS = `${ApplicationManager.KEY_PREFIX}_voteIds`;
     private static KEY_REMAINED_VOTE_COUNT = `${ApplicationManager.KEY_PREFIX}_remainedVoteCount`;
+    private static KEY_ACTIVE_CATEGORY = `${ApplicationManager.KEY_PREFIX}_activeCategory`;
 
     // tslint:disable-next-line:variable-name
     private static _instance: ApplicationManager;
@@ -54,12 +56,31 @@ export class ApplicationManager {
         return JSON.parse(remainedVoteCount);
     }
 
+    private static getActiveCategory = () => {
+        let activeCategory: any = localStorage.getItem(ApplicationManager.KEY_ACTIVE_CATEGORY);
+
+        if (ApplicationManager.DEBUG && !activeCategory) {
+            activeCategory = 'fashion';
+            localStorage.setItem(ApplicationManager.KEY_ACTIVE_CATEGORY, JSON.stringify(activeCategory));
+            return activeCategory;
+        }
+
+        return JSON.parse(activeCategory);
+    }
+
     public voteIds: VoteIdsType;
     public remainedVoteCount: { fashion: number, beauty: number };
+    public activeCategory: 'fashion' | 'beauty';
 
-    private constructor(voteIds: VoteIdsType, remainedVoteCount: { fashion: number, beauty: number }) {
+    private constructor(voteIds: VoteIdsType, remainedVoteCount: { fashion: number, beauty: number }, activeCategory: 'fashion' | 'beauty') {
         this.voteIds = voteIds;
         this.remainedVoteCount = remainedVoteCount;
+        this.activeCategory = activeCategory;
+    }
+
+    public changeActiveCategory(category: 'fashion' | 'beauty') {
+        this.activeCategory = category;
+        localStorage.setItem(ApplicationManager.KEY_ACTIVE_CATEGORY, JSON.stringify(this.activeCategory));
     }
 
     public pushVoteIds = async (id: number, key: ProductType) => {
