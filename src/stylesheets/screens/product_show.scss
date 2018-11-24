@@ -347,4 +347,11 @@
         opacity: 0.25;
     }
 
+    // 拡大イメージ
+    .view-image {
+        width: 100vw;
+        height: auto;
+        object-fit: contain;
+    }
+
 }

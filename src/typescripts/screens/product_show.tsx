@@ -3,7 +3,7 @@ import {ProductService} from '../services';
 import {RouteComponentProps} from 'react-router-dom';
 import Screen from './screen';
 import {Product} from '../entities';
-import {Loading, Icon, ProductShowFooter as Footer, VotedModal, RefuseVoteModal} from '../components';
+import {Loading, Icon, Mask, ProductShowFooter as Footer, VotedModal, RefuseVoteModal} from '../components';
 import { ApplicationManager } from '../application_manager';
 import { VoteService } from '../services/vote';
 
@@ -18,6 +18,7 @@ interface State {
     deleteSelectProductId: number | null;
     suggestedProducts: any;
     votedProducts: any;
+    viewImageMask: boolean;
 }
 
 export class ProductShow extends React.PureComponent < Props, State > {
@@ -31,7 +32,8 @@ export class ProductShow extends React.PureComponent < Props, State > {
             deleteSelectProductId: null,
             suggestedProducts: [],
             votedProducts: [],
-        };
+            viewImageMask: false,
+};
     }
 
     public async componentDidMount() {
@@ -103,6 +105,16 @@ export class ProductShow extends React.PureComponent < Props, State > {
 
         return (
             <Screen name='product-show' showBackButton>
+                <Mask
+                    open={this.state.viewImageMask}
+                    className='viewImageMask'
+                    onClose={() => this.setState({ viewImageMask: false})}
+                >
+                    <img
+                        className='view-image'
+                        src={this.state.activeImagePath}
+                    />
+                </Mask>
 
                 <VotedModal
                     open={this.state.showVoteModal}
@@ -118,15 +130,21 @@ export class ProductShow extends React.PureComponent < Props, State > {
                     voteSwitch={(e: any) => this.voteSwitch(e)}
                     selectDeleteImage={(e: any) => this.selectDeleteImage(e)}
                 />
-            <div className='image-container'>
-                <img
-                    className={`${this.state.product.headShot.indexOf('/01.') !== -1 ? 'product-img img-contain' : 'product-img img-cover'}`}
-                    src={this.state.activeImagePath}
-                />
-                <div className='sub-images-container d-flex'>
-                    {subImages}
+
+                <div className='image-container'>
+                    <div
+                        className='image-container'
+                        onClick={this.viewImage}
+                    >
+                        <img
+                            className={`${this.state.product.headShot.indexOf('/01.') !== -1 ? 'product-img img-contain' : 'product-img img-cover'}`}
+                            src={this.state.activeImagePath}
+                        />
+                        <div className='sub-images-container d-flex'>
+                            {subImages}
+                        </div>
+                    </div>
                 </div>
-            </div>
 
             <div className='product-container'>
                 <div className='creators'>
@@ -281,5 +299,9 @@ export class ProductShow extends React.PureComponent < Props, State > {
         }
 
         this.setState({activeImagePath: clickedImg.src});
+    }
+
+    private viewImage = (e: any) => {
+        this.setState({viewImageMask: true});
     }
 }
