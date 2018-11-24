@@ -39,7 +39,7 @@ export class Products extends React.Component<Props, State> {
     }
 
     public render() {
-        if (this.state.products.fashion.length <= 0 || this.state.products.fashion.length <=　0) return <Loading />;
+        if (this.state.products[this.state.activeCategory].length <= 0) return <Loading />;
 
         const products = this.state.activeCategory === 'fashion' ?
             this.state.products.fashion.map((product: ProductList) => (<Product key={product.productId} product={product} />)) :
