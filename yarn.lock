@@ -125,6 +125,10 @@
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/@nodelib/fs.stat/-/fs.stat-1.1.1.tgz#53f349bb986ab273d601175aa1b25a655ab90ee3"
 
+"@tjoskar/react-lazyload-img@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@tjoskar/react-lazyload-img/-/react-lazyload-img-1.1.0.tgz#c82fb7aaaa6bf9e131ce2e4377d3066692c77630"
+
 "@types/history@*":
   version "4.7.0"
   resolved "https://registry.yarnpkg.com/@types/history/-/history-4.7.0.tgz#2fac51050c68f7d6f96c5aafc631132522f4aa3f"
@@ -4668,6 +4672,10 @@ react-dom@^16.4.1:
 react-is@^16.3.2, react-is@^16.4.2:
   version "16.4.2"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.4.2.tgz#84891b56c2b6d9efdee577cc83501dfc5ecead88"
+
+react-lazyload-img@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/react-lazyload-img/-/react-lazyload-img-1.0.3.tgz#5b5d386da009fd71421d9326cad6772dc62ad131"
 
 react-lifecycles-compat@^3.0.4:
   version "3.0.4"

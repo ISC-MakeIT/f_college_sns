@@ -35,13 +35,15 @@
         "webpack-merge": "^4.1.3"
     },
     "dependencies": {
+        "@tjoskar/react-lazyload-img": "^1.1.0",
         "@types/react": "^16.4.7",
         "@types/react-bootstrap": "^0.32.11",
         "@types/react-dom": "^16.0.6",
         "@types/react-router-dom": "^4.3.0",
         "react": "^16.4.1",
-        "react-dom": "^16.4.1",
         "react-bootstrap": "^0.32.1",
+        "react-dom": "^16.4.1",
+        "react-lazyload-img": "^1.0.3",
         "react-router-dom": "^4.3.1"
     }
 }

@@ -1,7 +1,9 @@
 import * as React from 'react';
 import { ProductList } from '../entities';
 import { Link } from 'react-router-dom';
+import { LazyLoadImage } from '@tjoskar/react-lazyload-img';
 import { Icon } from './icon';
+import { PhotoService } from '../services/photo';
 
 interface Props {
     product: ProductList;
@@ -12,11 +14,12 @@ export class Product extends React.PureComponent<Props, {}> {
     public render() {
         const product = this.props.product;
         const owner = product.owner;
+        const imagePath = PhotoService.getS3PhotoPath('loading.svg', 'app/logos');
 
         return (
             <div key={product.productId} className='component product'>
                 <Link to={`/products/${product.productId}`} className='link-container'>
-                    <img src={product.headShot} className='product-img'/>
+                    <LazyLoadImage width='46.2vmin' height='100%' defaultImage={imagePath} image={product.headShot}/>
                     <div className='product-creator'>
                         <div className='product_number'/>
                         <div className='owner-area'>
