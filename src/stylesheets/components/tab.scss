@@ -2,10 +2,11 @@
     width: 50%;
     height: 10vmin;
     font-size: 4.2vmin;
-    background-color: $black;
-    color: white;
+    color: $active-text-color;
+    background-color: $footer-color;
     text-align: center;
     line-height: 10vmin;
+    border-top: #f0f0f0 1px solid;
 
     .text {
         font-size: 4.5vmin;
@@ -15,14 +16,14 @@
     }
 
     &.fashion-active{
-        color: $active-text-color;
-        background-color: $footer-color;
-        border-top: #f0f0f0 1px solid;
+        border-top: $black 1px solid;
+        background-color: $black;
+        color: white;
     }
 
     &.beauty-active {
-        color: $active-text-color;
-        background-color: $footer-color;
-        border-top: #f0f0f0 1px solid;
+        border-top: $black 1px solid;
+        background-color: $black;
+        color: white;
     }
 }

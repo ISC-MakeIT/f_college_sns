@@ -3,7 +3,7 @@ import {ProductService} from '../services';
 import {RouteComponentProps} from 'react-router-dom';
 import Screen from './screen';
 import {Product} from '../entities';
-import {Loading, Icon, ProductShowFooter as Footer, VotedModal, RefuseVoteModal} from '../components';
+import {Loading, Icon, Mask, ProductShowFooter as Footer, VotedModal, RefuseVoteModal} from '../components';
 import { ApplicationManager } from '../application_manager';
 import { VoteService } from '../services/vote';
 
@@ -18,6 +18,7 @@ interface State {
     deleteSelectProductId: number | null;
     suggestedProducts: any;
     votedProducts: any;
+    viewImageMask: boolean;
 }
 
 export class ProductShow extends React.PureComponent < Props, State > {
@@ -31,7 +32,8 @@ export class ProductShow extends React.PureComponent < Props, State > {
             deleteSelectProductId: null,
             suggestedProducts: [],
             votedProducts: [],
-        };
+            viewImageMask: false,
+};
     }
 
     public async componentDidMount() {
@@ -67,7 +69,11 @@ export class ProductShow extends React.PureComponent < Props, State > {
 
         const subImages = this.state.product.photos.map((img, index) => {
             return (
-                <p key={index} className='img-container cover' onClick={this.changeActiveImage}>
+                <p
+                    key={index}
+                    className={`img-container ${this.state.activeImagePath !== img ? 'cover' : null}`}
+                    onClick={this.changeActiveImage}
+                >
                     <img
                         className={`${this.state.activeImagePath === img ? 'img active' : 'img none-active'}`}
                         src={img}
@@ -103,6 +109,16 @@ export class ProductShow extends React.PureComponent < Props, State > {
 
         return (
             <Screen name='product-show' showBackButton>
+                <Mask
+                    open={this.state.viewImageMask}
+                    className='viewImageMask'
+                    onClose={() => this.setState({ viewImageMask: false})}
+                >
+                    <img
+                        className='view-image'
+                        src={this.state.activeImagePath}
+                    />
+                </Mask>
 
                 <VotedModal
                     open={this.state.showVoteModal}
@@ -118,15 +134,19 @@ export class ProductShow extends React.PureComponent < Props, State > {
                     voteSwitch={(e: any) => this.voteSwitch(e)}
                     selectDeleteImage={(e: any) => this.selectDeleteImage(e)}
                 />
-            <div className='image-container'>
-                <img
-                    className={`${this.state.product.headShot.indexOf('/01.') !== -1 ? 'product-img img-contain' : 'product-img img-cover'}`}
-                    src={this.state.activeImagePath}
-                />
-                <div className='sub-images-container d-flex'>
-                    {subImages}
+
+                <div className='image-container'>
+                    <div className='image-container'>
+                        <img
+                            className={`${this.state.product.headShot.indexOf('/01.') !== -1 ? 'product-img img-contain' : 'product-img img-cover'}`}
+                            src={this.state.activeImagePath}
+                            onClick={this.viewImage}
+                        />
+                        <div className='sub-images-container d-flex'>
+                            {subImages}
+                        </div>
+                    </div>
                 </div>
-            </div>
 
             <div className='product-container'>
                 <div className='creators'>
@@ -149,7 +169,7 @@ export class ProductShow extends React.PureComponent < Props, State > {
                 <div className='creator-box'>
                     <h2>Theme</h2>
                     <p className='theme-text'>
-                    <span className='product-id'>{entryOrder}.</span>
+                    <span className='product-id'>{entryOrder}<span>.</span></span>
                     <span className='product_theme'>
                         {this.state.product.theme}
                     </span>
@@ -281,5 +301,9 @@ export class ProductShow extends React.PureComponent < Props, State > {
         }
 
         this.setState({activeImagePath: clickedImg.src});
+    }
+
+    private viewImage = (e: any) => {
+        this.setState({viewImageMask: true});
     }
 }

@@ -19,3 +19,4 @@ export * from './product_show_footer';
 export * from './modal';
 export * from './voted_modal';
 export * from './refuse_vote_modal';
+export * from './view_image_mask';
