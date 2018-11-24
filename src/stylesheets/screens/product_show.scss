@@ -197,6 +197,9 @@
             .right-container__title {
                 font-size: 3vmin;
                 padding: 1.5vmin 0;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                overflow: hidden;
             }
 
             .creator {
