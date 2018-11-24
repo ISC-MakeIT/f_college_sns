@@ -3,10 +3,10 @@ import { ApplicationManager } from '../application_manager';
 import { ProductType, Product } from '../entities';
 
 export class VoteService {
-    public static async vote(method: 'POST' | 'DELETE', productId: number, genre: ProductType) {
-        if (method === 'POST') {
+    public static async vote(method: 'POST' | 'DELETE', productId: number, genre: 'fashion' | 'beauty') {
+        if (method === 'POST' && this.canIncrement) {
             await this.increment(productId, genre);
-        } else {
+        } else if (method === 'DELETE' && this.includeVoteId(productId, genre)) {
             await this.decrement(productId, genre);
         }
     }
@@ -20,19 +20,19 @@ export class VoteService {
         return beVoter;
     }
 
-    public static includeVoteId(product: Product) {
+    public static includeVoteId(productId: number, genre: 'fashion' | 'beauty'): boolean {
         const appManager = ApplicationManager.instance;
 
-        return appManager.voteIds[product.genreLowerCase].includes(product.productId);
+        return appManager.voteIds[genre].includes(productId);
     }
 
-    private static async increment(productId: number, genre: ProductType) {
+    private static async increment(productId: number, genre: 'fashion' | 'beauty') {
         await ApiClient.post(`/vote/${productId}`);
         const appManager = ApplicationManager.instance;
         await appManager.pushVoteIds(productId, genre);
     }
 
-    private static async decrement(productId: number, genre: ProductType) {
+    private static async decrement(productId: number, genre: 'fashion' | 'beauty') {
         await ApiClient.delete(`/vote/${productId}`);
         const appManager = ApplicationManager.instance;
         await appManager.popVoteIds(productId, genre);
