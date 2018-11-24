@@ -1,5 +1,6 @@
 import { User } from './';
 export type ProductType = 'FASHION' | 'BEAUTY';
+export type ProductLowerType = 'fashion' | 'beauty';
 
 export class Product {
     public constructor(
@@ -15,7 +16,7 @@ export class Product {
         return this.members.find(m => m.leaderFlg) || this.members[0];
     }
 
-    public get genreLowerCase(): 'fashion' | 'beauty' {
+    public get genreLowerCase(): ProductLowerType {
         return this.genre === 'FASHION' ? 'fashion' : 'beauty';
     }
 

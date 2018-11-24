@@ -129,7 +129,7 @@ export class ProductShow extends React.Component < Props, State > {
             );
         });
 
-        const voteBtn = (VoteService.includeVoteId(this.state.product)) ?
+        const voteBtn = (VoteService.includeVoteId(this.state.product.productId, this.state.product.genreLowerCase)) ?
             (<span>取り消す</span>) : (<span>投票する</span>);
 
         return (
@@ -254,8 +254,8 @@ export class ProductShow extends React.Component < Props, State > {
         const product = this.state.product;
         const deleteProductId = this.state.deleteSelectProductId;
 
-        await VoteService.vote('DELETE', deleteProductId, product.genre);
-        await VoteService.vote('POST', product.productId, product.genre);
+        await VoteService.vote('DELETE', deleteProductId, product.genreLowerCase);
+        await VoteService.vote('POST', product.productId, product.genreLowerCase);
 
         this.setState({
             showVoteModal: true,
@@ -266,27 +266,27 @@ export class ProductShow extends React.Component < Props, State > {
 
     private execVote = async (e: any) => {
         if (!this.state.product) return;
-        const product = this.state.product;
-
         e.preventDefault();
-        // alert('投票期間外となっています。運営にお問い合わせください。');
-
+        const target = e.currentTarget;
+        target.disable = true;
+        const product = this.state.product;
         const appManager = ApplicationManager.instance;
 
-        if (VoteService.includeVoteId(product)) {
-            VoteService.vote('DELETE', product.productId, product.genre);
+        if (VoteService.includeVoteId(product.productId, product.genreLowerCase)) {
             alert('投票を取り消しました。');
+            VoteService.vote('DELETE', product.productId, product.genreLowerCase);
             const votedProducts = await ProductService.asyncMap(appManager.voteIds[product.genreLowerCase], async (id: number) => {
                 return await ProductService.get(id);
             });
             this.setState({ votedProducts });
 
         } else if (VoteService.canIncrement(product.genreLowerCase)) {
-            VoteService.vote('POST', product.productId, product.genre);
+            VoteService.vote('POST', product.productId, product.genreLowerCase);
             this.setState({showVoteModal: true});
         } else {
             this.setState({reVoteModal: true});
         }
+        target.disable = false;
     }
 
     private selectDeleteImage = (e: any) => {
