@@ -266,7 +266,9 @@ export class ProductShow extends React.Component < Props, State > {
 
     private execVote = async (e: any) => {
         if (!this.state.product) return;
-        e.currentTarget.disable = true;
+        e.preventDefault();
+        const target = e.currentTarget;
+        target.disable = true;
         const product = this.state.product;
         const appManager = ApplicationManager.instance;
 
@@ -284,8 +286,7 @@ export class ProductShow extends React.Component < Props, State > {
         } else {
             this.setState({reVoteModal: true});
         }
-
-        e.currentTarget.disable = false;
+        target.disable = false;
     }
 
     private selectDeleteImage = (e: any) => {
