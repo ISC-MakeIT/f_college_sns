@@ -84,10 +84,12 @@
 
                 .product-id {
                     font-size: 12vmin;
-                    // color: $header-ribbon-color;
                     font-family: "Playfair Display SC", cursive;
                     padding-right: 3vmin;
                     padding-bottom: 3vmin;
+                    span {
+                        font-size: 6vmin;
+                    }
                 }
             }
             .creator-name {
@@ -346,6 +348,13 @@
 
     .select {
         opacity: 0.25;
+    }
+
+    // 拡大イメージ
+    .view-image {
+        width: 100vw;
+        height: auto;
+        object-fit: contain;
     }
 
 }

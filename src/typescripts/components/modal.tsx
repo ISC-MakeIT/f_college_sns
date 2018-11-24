@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { Icon } from '.';
 
 interface Props extends React.HTMLProps<HTMLDivElement> {
     open?: boolean;
