@@ -38,7 +38,7 @@
     }
     .product-creator {
         background-color: rgba(255, 255, 255, 0.75);
-        width: 100%;
+        width: 46.2vmin;
         height: 13.5vmin;
         position: relative;
         bottom: 16.5vmin;
@@ -55,6 +55,9 @@
         .owner-subject {
             font-size: 3.1vmin;
             color: $text-color;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
         }
 
         .owner-name {
