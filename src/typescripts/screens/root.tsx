@@ -1,8 +1,6 @@
 import * as React from 'react';
 import Screen from './screen';
 import { RouteComponentProps, Link} from 'react-router-dom';
-import { Icon } from '../components/icon';
-import { Loading } from '../components';
 import { PhotoService } from '../services/photo';
 
 interface Props extends RouteComponentProps<{}> {
@@ -14,7 +12,6 @@ export class Root extends React.Component<Props, {}> {
     public render() {
         return (
             <Screen name='root' style='d-flex flex-column text-center justify-content-center' hideHeader hideFooter>
-                {/* <Loading /> */}
                 <div className='back-overlay'>
                     <div className='img-container'>
                         <img

@@ -3,7 +3,7 @@ import { RouteComponentProps } from 'react-router-dom';
 import { ProductService, ProductTypes} from '../services';
 import { ProductList } from '../entities';
 import Screen from './screen';
-import { Product } from '../components/product';
+import { Product, Loading } from '../components';
 import { Tab } from '../components/tab';
 import { ApplicationManager } from '../application_manager';
 
@@ -39,6 +39,8 @@ export class Products extends React.Component<Props, State> {
     }
 
     public render() {
+        if (this.state.products.fashion.length <= 0 || this.state.products.fashion.length <=　0) return <Loading />;
+
         const products = this.state.activeCategory === 'fashion' ?
             this.state.products.fashion.map((product: ProductList) => (<Product key={product.productId} product={product} />)) :
             this.state.products.beauty.map((product: ProductList) => (<Product key={product.productId} product={product} />));

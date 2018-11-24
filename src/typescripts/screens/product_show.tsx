@@ -37,10 +37,6 @@ export class ProductShow extends React.Component < Props, State > {
     public async componentDidMount() {
         const product = await ProductService.get(this.props.match.params.id);
 
-        if (product && product.photos) {
-            this.setState({product, activeImagePath: product.headShot});
-        }
-
         let suggestedProductIds: number[] = [];
         while (suggestedProductIds.length < 5) {
             const rand = Math.floor(Math.random() * 50) + 1;
@@ -57,7 +53,12 @@ export class ProductShow extends React.Component < Props, State > {
             return await ProductService.get(id);
         });
 
-        this.setState({ suggestedProducts, votedProducts });
+        this.setState({
+            product: product || null,
+            activeImagePath: product.headShot,
+            suggestedProducts,
+            votedProducts,
+        });
     }
 
     public render() {
