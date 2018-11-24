@@ -11,7 +11,7 @@
         position: fixed; // instead of background-attachment
         top: 0;
         left: 0;
-        background: url("../assets/images/top.png") no-repeat center center;
+        background: url(#{$base-photo-url}/app/logos/top.png) no-repeat center center;
         background-size: cover;
         will-change: transform; // creates a new paint layer
         z-index: -1;
