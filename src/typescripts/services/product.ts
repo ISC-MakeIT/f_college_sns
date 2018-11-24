@@ -22,7 +22,6 @@ export class ProductService {
 
         res.fashion.forEach((d: ProductJsonProps) => data.fashion.push(ProductListFactory.createFromJSON(d)));
         res.beauty.forEach((d: ProductJsonProps) => data.beauty.push(ProductListFactory.createFromJSON(d)));
-
         return data;
     }
 

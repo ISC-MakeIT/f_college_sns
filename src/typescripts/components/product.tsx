@@ -20,7 +20,7 @@ export class Product extends React.Component<Props, {}> {
                     <div className='product-creator'>
                         <div className='product_number'/>
                         <div className='owner-area'>
-                            <p className='owner-subject'>{owner.studentClass}</p>
+                            <p className='owner-subject'>{product.theme}</p>
                             <p className='owner-name'>{owner.studentName}</p>
                         </div>
                         <img src={owner.profilePhoto} className='profile_image'/>

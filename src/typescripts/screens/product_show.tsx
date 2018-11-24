@@ -208,7 +208,10 @@ export class ProductShow extends React.Component < Props, State > {
                 <div className='creator-box'>
                     <h2>Theme</h2>
                     <p className='theme-text'>
+                    <span className='product-id'>{entryOrder}.</span>
+                    <span className='product_theme'>
                         {this.state.product.theme}
+                    </span>
                     </p>
                 </div>
                 <div className='creator-box concept'>
