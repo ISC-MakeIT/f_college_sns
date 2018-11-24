@@ -6,7 +6,7 @@ export class ApplicationManager {
 
     public static get instance(): ApplicationManager {
 
-        if (this.DEBUG || !this._instance) {
+        if (!this._instance) {
             const voteIds = this.getVoteIds();
             const remainedVoteCount = this.getRemainedVoteCount();
             const activeCategory = this.getActiveCategory();
@@ -18,11 +18,9 @@ export class ApplicationManager {
 
     public static BEAUTY_VOTE_COUNT = 3;
     public static FASHION_VOTE_COUNT = 3;
-    // TODO
-    public static DEBUG = true;
 
     // Storage keyを定数に
-    public static KEY_PREFIX = 'DEBUG';
+    public static KEY_PREFIX = 'PROD';
     private static KEY_VOTE_IDS = `${ApplicationManager.KEY_PREFIX}_voteIds`;
     private static KEY_REMAINED_VOTE_COUNT = `${ApplicationManager.KEY_PREFIX}_remainedVoteCount`;
     private static KEY_ACTIVE_CATEGORY = `${ApplicationManager.KEY_PREFIX}_activeCategory`;
@@ -33,7 +31,7 @@ export class ApplicationManager {
     private static getVoteIds = () => {
         const voteIds: any = localStorage.getItem(ApplicationManager.KEY_VOTE_IDS);
 
-        if (ApplicationManager.DEBUG && !voteIds) {
+        if (!voteIds) {
             const initialVoteIds = { fashion: [], beauty: [] };
             localStorage.setItem(ApplicationManager.KEY_VOTE_IDS, JSON.stringify(initialVoteIds));
             return initialVoteIds;
@@ -45,7 +43,7 @@ export class ApplicationManager {
     private static getRemainedVoteCount = () => {
         let remainedVoteCount: any = localStorage.getItem(ApplicationManager.KEY_REMAINED_VOTE_COUNT);
 
-        if (ApplicationManager.DEBUG && !remainedVoteCount) {
+        if (!remainedVoteCount) {
             remainedVoteCount = {};
             remainedVoteCount.fashion = ApplicationManager.FASHION_VOTE_COUNT;
             remainedVoteCount.beauty = ApplicationManager.BEAUTY_VOTE_COUNT;
@@ -59,7 +57,7 @@ export class ApplicationManager {
     private static getActiveCategory = () => {
         let activeCategory: any = localStorage.getItem(ApplicationManager.KEY_ACTIVE_CATEGORY);
 
-        if (ApplicationManager.DEBUG && !activeCategory) {
+        if (!activeCategory) {
             activeCategory = 'fashion';
             localStorage.setItem(ApplicationManager.KEY_ACTIVE_CATEGORY, JSON.stringify(activeCategory));
             return activeCategory;
