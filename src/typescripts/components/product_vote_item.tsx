@@ -15,10 +15,10 @@ export class ProductVoteItem extends React.Component < Props, {} > {
             <section className='component product_votes_list' onClick={this.linkClick}>
                 <section className='main_sub_list'>
 
-                <img src={owner.profilePhoto} alt=''/>
+                <img src={this.props.product.headShot} alt=''/>
                 <p>
-                    <span>{owner.studentClass} {owner.studentName}</span>
-                    {product.theme}
+                    <span>{product.theme}</span>
+                    {owner.studentName}
                 </p>
                 <div className='list_arrow'/>
                 </section>
