@@ -302,6 +302,7 @@ export class ProductShow extends React.PureComponent < Props, State > {
             this.setState({deleteImgSelect: true, deleteSelectProductId: selectProductId});
             document.querySelectorAll('.delete-image-box .select').forEach(d => d.classList.remove('select'));
             selectedImg.classList.add('select');
+            e.currentTarget.style.backgroundColor = '#31282C';
             document.querySelectorAll('.re-vote-button').forEach(d => d.classList.add('button-active'));
         } else {
             // 既に選択済みの場合は取り消す
