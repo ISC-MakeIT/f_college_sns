@@ -1,7 +1,7 @@
 .screen.root {
     height: 100vh;
     width: 100vw;
-    background-image: url(#{$base-photo-url}/logos/top.png);
+    background-image: url(#{$base-photo-url}/app/logos/top.png);
     background-size: cover;
 
     .back-overlay {
