@@ -14,7 +14,7 @@ interface State {
     activeCategory: 'beauty' | 'fashion';
 }
 
-export class Products extends React.Component<Props, State> {
+export class Products extends React.PureComponent<Props, State> {
 
     constructor(props: Props) {
         super(props);

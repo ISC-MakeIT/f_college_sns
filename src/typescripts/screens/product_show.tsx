@@ -20,7 +20,7 @@ interface State {
     votedProducts: any;
 }
 
-export class ProductShow extends React.Component < Props, State > {
+export class ProductShow extends React.PureComponent < Props, State > {
     constructor(props: Props) {
         super(props);
         this.state = {
