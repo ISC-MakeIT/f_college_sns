@@ -3,7 +3,7 @@ import {ProductService} from '../services';
 import {RouteComponentProps} from 'react-router-dom';
 import Screen from './screen';
 import {Product} from '../entities';
-import {Loading, Icon, Modal, ProductShowFooter as Footer} from '../components';
+import {Loading, Icon, ProductShowFooter as Footer, VotedModal, RefuseVoteModal} from '../components';
 import { ApplicationManager } from '../application_manager';
 import { VoteService } from '../services/vote';
 
@@ -13,7 +13,7 @@ interface State {
     product: Product | null;
     activeImagePath?: string;
     showVoteModal: boolean;
-    reVoteModal: boolean;
+    refuseVoteModal: boolean;
     deleteImgSelect: boolean;
     deleteSelectProductId: number | null;
     suggestedProducts: any;
@@ -26,7 +26,7 @@ export class ProductShow extends React.PureComponent < Props, State > {
         this.state = {
             product: null,
             showVoteModal: false,
-            reVoteModal: false,
+            refuseVoteModal: false,
             deleteImgSelect: false,
             deleteSelectProductId: null,
             suggestedProducts: [],
@@ -98,86 +98,26 @@ export class ProductShow extends React.PureComponent < Props, State > {
             );
         });
 
-        const votedProducts = this.state.votedProducts.map((product: Product, index: number) => {
-            return (
-                <p
-                    key={index}
-                    className='delete-image-box'
-                    onClick={this.selectDeleteImage}
-                    data-product-id={Number(product.productId)}
-                >
-                    <img
-                        className='re-vote-product-image'
-                        src={product.headShot}
-                    />
-                </p>
-            );
-        });
-
-        const suggestedProducts = this.state.suggestedProducts.map((product: Product, index: number) => {
-            return (
-                <div
-                    key={index}
-                    className='suggested-product'
-                    onClick={() => window.location.href = window.location.origin + '/products/' + product.productId}
-                >
-                    <img
-                        className='short-product-thumb'
-                        src={product.headShot}
-                    />
-                    <span className='product-label'>{product.theme}</span>
-                </div>
-            );
-        });
-
         const voteBtn = (VoteService.includeVoteId(this.state.product.productId, this.state.product.genreLowerCase)) ?
             (<span>取り消す</span>) : (<span>投票する</span>);
 
         return (
             <Screen name='product-show' showBackButton>
-                <Modal
-                    open={this.state.reVoteModal}
-                    heading='投票権がありません'
-                    className='re-vote-modal'
-                    onClose={() => this.setState({ reVoteModal: false, deleteImgSelect: false})}
-                >
-                    <p className='re-vote-text'>
-                        このままこの作品への投票を希望する場合は以下の投票済みリストから投票をキャンセルする作品をお選びください
-                    </p>
-                    <div className='re-vote-image-list'>
-                        {votedProducts}
-                    </div>
-                    <button className='re-vote-button'　onClick={this.voteSwitch}>
-                        <span>投票を取り消す</span>
-                    </button>
-                </Modal>
-            <Modal
-                open={this.state.showVoteModal}
-                heading='投票が完了しました'
-                className='voted-modal'
-                onClose={() => this.setState({ showVoteModal: false })}
-            >
 
-                <div className='product voted-card'>
-                    <img className='product-thumb' src={this.state.product.headShot}/>
-                    <div className='right-container'>
-                            <p className='right-container__title'>{this.state.product.theme}</p>
-                            made by
-                        <p className='creator'>{owner.studentName}</p>
-                    </div>
-                </div>
+                <VotedModal
+                    open={this.state.showVoteModal}
+                    product={this.state.product}
+                    suggestedProducts={this.state.suggestedProducts}
+                    onClose={() => this.setState({showVoteModal: false})}
+                />
 
-            {/* 画像リンクをカードで何個か出す。 */}
-                <p className='suggest-product-title'>他の作品も閲覧しませんか？</p>
-                <div className='suggest-product-container'>
-                    {suggestedProducts}
-                </div>
-
-                <button className='vote-button-ext' onClick={() => this.setState({showVoteModal: false})}>
-                    <span>閉じる</span>
-                </button>
-            </Modal>
-
+                <RefuseVoteModal
+                    open={this.state.refuseVoteModal}
+                    votedProducts={this.state.votedProducts}
+                    onClose={() => this.setState({refuseVoteModal: false})}
+                    voteSwitch={(e: any) => this.voteSwitch(e)}
+                    selectDeleteImage={(e: any) => this.selectDeleteImage(e)}
+                />
             <div className='image-container'>
                 <img
                     className={`${this.state.product.headShot.indexOf('/01.') !== -1 ? 'product-img img-contain' : 'product-img img-cover'}`}
@@ -266,7 +206,7 @@ export class ProductShow extends React.PureComponent < Props, State > {
         target.disable = false;
         this.setState({
             showVoteModal: true,
-            reVoteModal: false,
+            refuseVoteModal: false,
             deleteImgSelect: false,
         });
     }
@@ -291,7 +231,7 @@ export class ProductShow extends React.PureComponent < Props, State > {
             VoteService.vote('POST', product.productId, product.genreLowerCase);
             this.setState({showVoteModal: true});
         } else {
-            this.setState({reVoteModal: true});
+            this.setState({refuseVoteModal: true});
         }
         target.disable = false;
     }
