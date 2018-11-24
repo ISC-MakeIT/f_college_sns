@@ -7,7 +7,7 @@ interface Props {
     product: ProductList;
 }
 
-export class Product extends React.Component<Props, {}> {
+export class Product extends React.PureComponent<Props, {}> {
 
     public render() {
         const product = this.props.product;
