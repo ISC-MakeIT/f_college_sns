@@ -3,7 +3,7 @@ import {ProductService} from '../services';
 import {RouteComponentProps} from 'react-router-dom';
 import Screen from './screen';
 import {Product} from '../entities';
-import {Loading, Icon, Modal, ProductShowFooter as Footer} from '../components';
+import {Loading, Icon, Modal, ProductShowFooter as Footer, VotedModal} from '../components';
 import { ApplicationManager } from '../application_manager';
 import { VoteService } from '../services/vote';
 
@@ -114,22 +114,6 @@ export class ProductShow extends React.PureComponent < Props, State > {
             );
         });
 
-        const suggestedProducts = this.state.suggestedProducts.map((product: Product, index: number) => {
-            return (
-                <div
-                    key={index}
-                    className='suggested-product'
-                    onClick={() => window.location.href = window.location.origin + '/products/' + product.productId}
-                >
-                    <img
-                        className='short-product-thumb'
-                        src={product.headShot}
-                    />
-                    <span className='product-label'>{product.theme}</span>
-                </div>
-            );
-        });
-
         const voteBtn = (VoteService.includeVoteId(this.state.product.productId, this.state.product.genreLowerCase)) ?
             (<span>取り消す</span>) : (<span>投票する</span>);
 
@@ -151,32 +135,13 @@ export class ProductShow extends React.PureComponent < Props, State > {
                         <span>投票を取り消す</span>
                     </button>
                 </Modal>
-            <Modal
-                open={this.state.showVoteModal}
-                heading='投票が完了しました'
-                className='voted-modal'
-                onClose={() => this.setState({ showVoteModal: false })}
-            >
 
-                <div className='product voted-card'>
-                    <img className='product-thumb' src={this.state.product.headShot}/>
-                    <div className='right-container'>
-                            <p className='right-container__title'>{this.state.product.theme}</p>
-                            made by
-                        <p className='creator'>{owner.studentName}</p>
-                    </div>
-                </div>
-
-            {/* 画像リンクをカードで何個か出す。 */}
-                <p className='suggest-product-title'>他の作品も閲覧しませんか？</p>
-                <div className='suggest-product-container'>
-                    {suggestedProducts}
-                </div>
-
-                <button className='vote-button-ext' onClick={() => this.setState({showVoteModal: false})}>
-                    <span>閉じる</span>
-                </button>
-            </Modal>
+                <VotedModal
+                    open={this.state.showVoteModal}
+                    product={this.state.product}
+                    suggestedProducts={this.state.suggestedProducts}
+                    onClose={() => this.setState({showVoteModal: false})}
+                />
 
             <div className='image-container'>
                 <img

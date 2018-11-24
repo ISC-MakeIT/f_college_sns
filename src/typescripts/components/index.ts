@@ -17,3 +17,4 @@ export * from './product_rank_item';
 export * from './footer';
 export * from './product_show_footer';
 export * from './modal';
+export * from './voted_modal';
