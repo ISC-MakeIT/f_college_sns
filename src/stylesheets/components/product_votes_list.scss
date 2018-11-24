@@ -36,12 +36,16 @@
         border-radius: 50%;
         height: 15vmin;
         object-fit: cover;
+        object-position: 50% 0%;
         width: 15vmin;
     }
 
     .main_sub_list span {
         display: block;
         font-weight: 600;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
     }
 
     .list_arrow{

@@ -34,7 +34,10 @@
         overflow-y: overlay;
         width: auto;
         background-color: $white-text-color;
-
+        
+        &::-webkit-scrollbar {
+            display: none;
+        }
         img {
             object-fit: cover;
         }
@@ -50,7 +53,7 @@
 
         .active {
             background: whitesmoke;
-            opacity: .9;
+            opacity: 1;
         }
     }
 
