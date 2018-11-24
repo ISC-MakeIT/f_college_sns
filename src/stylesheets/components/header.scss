@@ -1,10 +1,4 @@
 #header_wrap {
-    width: 100%;
-    background-color: #fff;
-    border-bottom: 1px solid $white-text-color;
-    position: fixed;
-    top: 0;
-    z-index: 5;
 
     #header_label {
         width: 15vmin;
@@ -70,4 +64,22 @@
         top: 4.5vmin;
     }
 
+}
+
+.header_wrap {
+    width: 100%;
+    background-color: #fff;
+    border-bottom: 1px solid $white-text-color;
+    position: fixed;
+    top: 0;
+    z-index: 5;
+}
+
+.header_wrap_auto {
+    width: 100%;
+    background-color: #fff;
+    border-bottom: 1px solid $white-text-color;
+    position: fixed;
+    top: 0;
+    z-index: auto;
 }

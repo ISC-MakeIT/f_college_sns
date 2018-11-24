@@ -21,7 +21,7 @@ interface State {
     viewImageMask: boolean;
 }
 
-export class ProductShow extends React.PureComponent < Props, State > {
+export class ProductShow extends React.Component < Props, State > {
     constructor(props: Props) {
         super(props);
         this.state = {
@@ -108,7 +108,7 @@ export class ProductShow extends React.PureComponent < Props, State > {
             (<span>取り消す</span>) : (<span>投票する</span>);
 
         return (
-            <Screen name='product-show' showBackButton>
+            <Screen name='product-show' showBackButton headerAbsolute={this.state.showVoteModal || this.state.refuseVoteModal || this.state.viewImageMask} >
                 <Mask
                     open={this.state.viewImageMask}
                     className='viewImageMask'

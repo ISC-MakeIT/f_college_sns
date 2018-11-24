@@ -5,9 +5,10 @@ import { ApplicationManager } from '../application_manager';
 
 interface Props {
     showBackButton?: boolean;
+    headerAbsolute?: boolean;
 }
 
-export class Header extends React.Component<Props, {}> {
+export class Header extends React.PureComponent<Props, {}> {
 
     public render() {
         const appManager = ApplicationManager.instance;
@@ -15,7 +16,7 @@ export class Header extends React.Component<Props, {}> {
         const showIcon = remainVoteCount !== 0 ? <div className='label_push'>{remainVoteCount}</div> : null;
 
         return (
-            <header id='header_wrap' className='component'>
+            <header id='header_wrap' className={`component ${this.props.headerAbsolute ? 'header_wrap_auto' : 'header_wrap'}`}>
                 {this.props.showBackButton ? <BackButton/> : null}
                 <div
                     className='header-logo'

@@ -8,6 +8,7 @@ interface Props {
     hideHeader?: boolean;
     hideFooter?: boolean;
     showBackButton?: boolean;
+    headerAbsolute?: boolean;
 }
 
 export default class Screen extends React.Component<Props, {}> {
@@ -15,10 +16,10 @@ export default class Screen extends React.Component<Props, {}> {
         super(props);
     }
 
-    public render() {
+    public render () {
         console.info(`${this.props.name}'s screen`); // tslint:disable-line:no-console
         const header = this.props.hideHeader ? null
-        : <Header showBackButton={this.props.showBackButton} />;
+            : <Header showBackButton={this.props.showBackButton} headerAbsolute={this.props.headerAbsolute} />;
         // const footer = this.props.hideFooter ? null : <Footer/>;
 
         return (
