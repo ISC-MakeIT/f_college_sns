@@ -1,4 +1,4 @@
-import { ProductType } from './entities';
+import { ProductLowerType } from './entities';
 
 interface VoteIdsType { 'fashion': number[]; 'beauty': number[]; }
 
@@ -70,20 +70,20 @@ export class ApplicationManager {
 
     public voteIds: VoteIdsType;
     public remainedVoteCount: { fashion: number, beauty: number };
-    public activeCategory: 'fashion' | 'beauty';
+    public activeCategory: ProductLowerType;
 
-    private constructor(voteIds: VoteIdsType, remainedVoteCount: { fashion: number, beauty: number }, activeCategory: 'fashion' | 'beauty') {
+    private constructor(voteIds: VoteIdsType, remainedVoteCount: { fashion: number, beauty: number }, activeCategory: ProductLowerType) {
         this.voteIds = voteIds;
         this.remainedVoteCount = remainedVoteCount;
         this.activeCategory = activeCategory;
     }
 
-    public changeActiveCategory(category: 'fashion' | 'beauty') {
+    public changeActiveCategory(category: ProductLowerType) {
         this.activeCategory = category;
         localStorage.setItem(ApplicationManager.KEY_ACTIVE_CATEGORY, JSON.stringify(this.activeCategory));
     }
 
-    public pushVoteIds = async (id: number, key: 'fashion' | 'beauty') => {
+    public pushVoteIds = async (id: number, key: ProductLowerType) => {
         const tmpStorageIds = localStorage.getItem(ApplicationManager.KEY_VOTE_IDS) || '"{}"';
         const parsedTmpStorageIds = JSON.parse(tmpStorageIds);
 
@@ -95,7 +95,7 @@ export class ApplicationManager {
         await this.decrementRemainedVoteCount(key);
     }
 
-    public popVoteIds = async (id: number, key: 'fashion' | 'beauty') => {
+    public popVoteIds = async (id: number, key: ProductLowerType) => {
         const tmpStorageIds = localStorage.getItem(ApplicationManager.KEY_VOTE_IDS) || '"{}"';
         const parsedTmpStorageIds = JSON.parse(tmpStorageIds);
         parsedTmpStorageIds[key] = parsedTmpStorageIds[key.toLowerCase()].filter((e: number) => e !== id);
@@ -104,7 +104,7 @@ export class ApplicationManager {
         await this.incrementRemainedVoteCount(key);
     }
 
-    public async incrementRemainedVoteCount(key: 'fashion' | 'beauty') {
+    public async incrementRemainedVoteCount(key: ProductLowerType) {
         const tmpRemainedVoteCount = await localStorage.getItem(ApplicationManager.KEY_REMAINED_VOTE_COUNT);
         if (!tmpRemainedVoteCount) return;
 
@@ -114,7 +114,7 @@ export class ApplicationManager {
         await localStorage.setItem(ApplicationManager.KEY_REMAINED_VOTE_COUNT, JSON.stringify(this.remainedVoteCount));
     }
 
-    public async decrementRemainedVoteCount(key: 'fashion' | 'beauty') {
+    public async decrementRemainedVoteCount(key: ProductLowerType) {
         const tmpRemainedVoteCount = localStorage.getItem(ApplicationManager.KEY_REMAINED_VOTE_COUNT);
         if (!tmpRemainedVoteCount) return;
 
