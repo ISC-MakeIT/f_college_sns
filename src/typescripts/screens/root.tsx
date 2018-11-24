@@ -17,7 +17,7 @@ export class Root extends React.Component<Props, {}> {
                         <img
                             alt='top page icon'
                             className='icon'
-                            src={PhotoService.getS3PhotoPath('icon.png', 'logos')}
+                            src={PhotoService.getS3PhotoPath('icon.png', 'app/logos')}
                         />
                         <img
                             alt='top page f-college logo'
