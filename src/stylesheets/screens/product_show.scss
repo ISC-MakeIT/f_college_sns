@@ -34,7 +34,7 @@
         overflow-y: overlay;
         width: auto;
         background-color: $white-text-color;
-        
+
         &::-webkit-scrollbar {
             display: none;
         }
@@ -179,6 +179,7 @@
         margin: 8vmin 0;
         border: 0px;
         border-radius: 10vmin;
+
         span {
             padding: 0 2vmin;
         }
@@ -278,6 +279,7 @@
         margin: 2vmin auto 1.8vmin;
         border: 0px;
         border-radius: 10vmin;
+
         span {
             padding: 0 2vmin;
         }
@@ -293,6 +295,7 @@
         margin: 5vmin auto 3vmin;
         border: 0px;
         border-radius: 10vmin;
+
         span {
             padding: 0 2vmin;
         }
