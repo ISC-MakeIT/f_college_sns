@@ -78,6 +78,14 @@
                 text-align: center;
                 font-size: 6vmin;
                 font-family: "Playfair Display SC", cursive;
+
+                .product-id {
+                    font-size: 12vmin;
+                    // color: $header-ribbon-color;
+                    font-family: "Playfair Display SC", cursive;
+                    padding-right: 3vmin;
+                    padding-bottom: 3vmin;
+                }
             }
             .creator-name {
                 font-size: 4vmin;
@@ -90,8 +98,13 @@
         // 現状はエリア保持のためのpadding bottom
         .creators { border: #f2f2f2 1px solid; padding: 2vmin 3vmin; }
         .main-creator { font-size: 2.4vmin; position: relative; }
-        .main-creator .subject { width: 70vmin; font-weight: 400; padding-left: 2vmin; }
         .main-creator .name { font-weight: 600; display: block; padding-top: 1.3vmin; }
+
+        .main-creator .subject {
+            width: 70vmin;
+            font-weight: 400;
+            padding-left: 2vmin;
+        }
 
         .main-creator > .concept {
             width: 67vw;

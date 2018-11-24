@@ -17,13 +17,19 @@ export class Header extends React.Component < Props, {} > {
         return (
             <header id='header_wrap' className='component'>
                 {this.props.showBackButton ? <BackButton/> : null}
-                <Link to='/products' className='header-logo'>
+                <div
+                    className='header-logo'
+                    onClick={async () => {
+                        await ApplicationManager.instance.changeActiveCategory('fashion');
+                        window.location.href = window.location.origin + '/products';
+                    }}
+                >
                 <img
                     alt='header-logo'
                     className='header_logo'
                     src='../assets/images/logo_png.png'
                 />
-                </Link>
+                </div>
                 <Link to='/votes'>
                     <div id='header_label'>
                         <Icon name='crown'/>

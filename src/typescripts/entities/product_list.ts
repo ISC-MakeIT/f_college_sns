@@ -6,5 +6,6 @@ export class ProductList {
         public entryOrder: number,
         public headShot: string,
         public owner: User,
+        public theme: string,
     ) { }
 }

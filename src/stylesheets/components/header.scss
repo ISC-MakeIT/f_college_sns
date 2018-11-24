@@ -2,7 +2,6 @@
     width: 100%;
     background-color: #fff;
     border-bottom: 1px solid $white-text-color;
-    padding: 2vmin 0 2vmin;
     position: fixed;
     top: 0;
     z-index: 5;
@@ -56,6 +55,8 @@
         height: 14vmin;
         display: block;
         margin: 0 auto;
+        box-sizing: content-box;
+        padding: 2vmin 5vmin;
     }
 
     .back-arrow {
