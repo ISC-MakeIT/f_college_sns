@@ -3,7 +3,7 @@ import {ProductService} from '../services';
 import {RouteComponentProps} from 'react-router-dom';
 import Screen from './screen';
 import {Product} from '../entities';
-import {Loading, Icon, Modal, ProductShowFooter as Footer, VotedModal} from '../components';
+import {Loading, Icon, ProductShowFooter as Footer, VotedModal, RefuseVoteModal} from '../components';
 import { ApplicationManager } from '../application_manager';
 import { VoteService } from '../services/vote';
 
@@ -13,7 +13,7 @@ interface State {
     product: Product | null;
     activeImagePath?: string;
     showVoteModal: boolean;
-    reVoteModal: boolean;
+    refuseVoteModal: boolean;
     deleteImgSelect: boolean;
     deleteSelectProductId: number | null;
     suggestedProducts: any;
@@ -26,7 +26,7 @@ export class ProductShow extends React.PureComponent < Props, State > {
         this.state = {
             product: null,
             showVoteModal: false,
-            reVoteModal: false,
+            refuseVoteModal: false,
             deleteImgSelect: false,
             deleteSelectProductId: null,
             suggestedProducts: [],
@@ -98,43 +98,11 @@ export class ProductShow extends React.PureComponent < Props, State > {
             );
         });
 
-        const votedProducts = this.state.votedProducts.map((product: Product, index: number) => {
-            return (
-                <p
-                    key={index}
-                    className='delete-image-box'
-                    onClick={this.selectDeleteImage}
-                    data-product-id={Number(product.productId)}
-                >
-                    <img
-                        className='re-vote-product-image'
-                        src={product.headShot}
-                    />
-                </p>
-            );
-        });
-
         const voteBtn = (VoteService.includeVoteId(this.state.product.productId, this.state.product.genreLowerCase)) ?
             (<span>取り消す</span>) : (<span>投票する</span>);
 
         return (
             <Screen name='product-show' showBackButton>
-                <Modal
-                    open={this.state.reVoteModal}
-                    heading='投票権がありません'
-                    className='re-vote-modal'
-                    onClose={() => this.setState({ reVoteModal: false, deleteImgSelect: false})}
-                >
-                    <p className='re-vote-text'>
-                        このままこの作品への投票を希望する場合は以下の投票済みリストから投票をキャンセルする作品をお選びください
-                    </p>
-                    <div className='re-vote-image-list'>
-                        {votedProducts}
-                    </div>
-                    <button className='re-vote-button'　onClick={this.voteSwitch}>
-                        <span>投票を取り消す</span>
-                    </button>
-                </Modal>
 
                 <VotedModal
                     open={this.state.showVoteModal}
@@ -143,6 +111,13 @@ export class ProductShow extends React.PureComponent < Props, State > {
                     onClose={() => this.setState({showVoteModal: false})}
                 />
 
+                <RefuseVoteModal
+                    open={this.state.refuseVoteModal}
+                    votedProducts={this.state.votedProducts}
+                    onClose={() => this.setState({refuseVoteModal: false})}
+                    voteSwitch={(e: any) => this.voteSwitch(e)}
+                    selectDeleteImage={(e: any) => this.selectDeleteImage(e)}
+                />
             <div className='image-container'>
                 <img
                     className={`${this.state.product.headShot.indexOf('/01.') !== -1 ? 'product-img img-contain' : 'product-img img-cover'}`}
@@ -231,7 +206,7 @@ export class ProductShow extends React.PureComponent < Props, State > {
         target.disable = false;
         this.setState({
             showVoteModal: true,
-            reVoteModal: false,
+            refuseVoteModal: false,
             deleteImgSelect: false,
         });
     }
@@ -256,7 +231,7 @@ export class ProductShow extends React.PureComponent < Props, State > {
             VoteService.vote('POST', product.productId, product.genreLowerCase);
             this.setState({showVoteModal: true});
         } else {
-            this.setState({reVoteModal: true});
+            this.setState({refuseVoteModal: true});
         }
         target.disable = false;
     }
