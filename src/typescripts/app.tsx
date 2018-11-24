@@ -3,7 +3,6 @@ import { render } from 'react-dom';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import * as Screens from './screens';
 import { InitializationService } from './services';
-import { Loading } from './components';
 import { ApplicationManager } from './application_manager';
 
 class App extends React.Component<{}, {loaded: boolean}> {
@@ -21,8 +20,6 @@ class App extends React.Component<{}, {loaded: boolean}> {
     }
 
     public render() {
-        // if (this.state == null) return( <Loading /> );
-
         return (
             <Router>
                 <Switch>

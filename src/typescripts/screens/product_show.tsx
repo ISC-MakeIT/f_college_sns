@@ -20,7 +20,7 @@ interface State {
     votedProducts: any;
 }
 
-export class ProductShow extends React.Component < Props, State > {
+export class ProductShow extends React.PureComponent < Props, State > {
     constructor(props: Props) {
         super(props);
         this.state = {
@@ -36,10 +36,6 @@ export class ProductShow extends React.Component < Props, State > {
 
     public async componentDidMount() {
         const product = await ProductService.get(this.props.match.params.id);
-
-        if (product && product.photos) {
-            this.setState({product, activeImagePath: product.headShot});
-        }
 
         let suggestedProductIds: number[] = [];
         while (suggestedProductIds.length < 5) {
@@ -57,7 +53,12 @@ export class ProductShow extends React.Component < Props, State > {
             return await ProductService.get(id);
         });
 
-        this.setState({ suggestedProducts, votedProducts });
+        this.setState({
+            product: product || null,
+            activeImagePath: product.headShot,
+            suggestedProducts,
+            votedProducts,
+        });
     }
 
     public render() {
@@ -304,6 +305,7 @@ export class ProductShow extends React.Component < Props, State > {
             this.setState({deleteImgSelect: true, deleteSelectProductId: selectProductId});
             document.querySelectorAll('.delete-image-box .select').forEach(d => d.classList.remove('select'));
             selectedImg.classList.add('select');
+            e.currentTarget.style.backgroundColor = '#31282C';
             document.querySelectorAll('.re-vote-button').forEach(d => d.classList.add('button-active'));
         } else {
             // 既に選択済みの場合は取り消す

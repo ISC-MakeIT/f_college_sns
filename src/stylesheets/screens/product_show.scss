@@ -203,13 +203,22 @@
         }
 
         .right-container {
-            width: 100%;
+            width: 75%;
             text-align: center;
             padding: 0 1.5vmin;
 
             .right-container__title {
                 font-size: 3vmin;
                 padding: 1.5vmin 0;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                overflow: hidden;
+            }
+
+            .creator {
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                overflow: hidden;
             }
         }
     }
@@ -329,7 +338,6 @@
         width: calc(25vmin - 2px);
         height: calc(25vmin - 2px);
         border-radius: 1vmin;
-        background: $black;
         margin: 1.2vmin 1vmin;
     }
 
