@@ -266,16 +266,13 @@ export class ProductShow extends React.Component < Props, State > {
 
     private execVote = async (e: any) => {
         if (!this.state.product) return;
+        e.currentTarget.disable = true;
         const product = this.state.product;
-
-        e.preventDefault();
-        // alert('投票期間外となっています。運営にお問い合わせください。');
-
         const appManager = ApplicationManager.instance;
 
         if (VoteService.includeVoteId(product)) {
-            VoteService.vote('DELETE', product.productId, product.genre);
             alert('投票を取り消しました。');
+            VoteService.vote('DELETE', product.productId, product.genre);
             const votedProducts = await ProductService.asyncMap(appManager.voteIds[product.genreLowerCase], async (id: number) => {
                 return await ProductService.get(id);
             });
@@ -287,6 +284,8 @@ export class ProductShow extends React.Component < Props, State > {
         } else {
             this.setState({reVoteModal: true});
         }
+
+        e.currentTarget.disable = false;
     }
 
     private selectDeleteImage = (e: any) => {
