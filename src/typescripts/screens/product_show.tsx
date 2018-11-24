@@ -69,7 +69,11 @@ export class ProductShow extends React.PureComponent < Props, State > {
 
         const subImages = this.state.product.photos.map((img, index) => {
             return (
-                <p key={index} className='img-container cover' onClick={this.changeActiveImage}>
+                <p
+                    key={index}
+                    className={`img-container ${this.state.activeImagePath !== img ? 'cover' : null}`}
+                    onClick={this.changeActiveImage}
+                >
                     <img
                         className={`${this.state.activeImagePath === img ? 'img active' : 'img none-active'}`}
                         src={img}
@@ -132,13 +136,11 @@ export class ProductShow extends React.PureComponent < Props, State > {
                 />
 
                 <div className='image-container'>
-                    <div
-                        className='image-container'
-                        onClick={this.viewImage}
-                    >
+                    <div className='image-container'>
                         <img
                             className={`${this.state.product.headShot.indexOf('/01.') !== -1 ? 'product-img img-contain' : 'product-img img-cover'}`}
                             src={this.state.activeImagePath}
+                            onClick={this.viewImage}
                         />
                         <div className='sub-images-container d-flex'>
                             {subImages}
