@@ -19,6 +19,9 @@
         line-height: 180%;
         padding: 0 0 0 3vmin;
         width: 72%;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
     }
 
     @media (min-width: 500px) {
