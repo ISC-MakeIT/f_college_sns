@@ -250,6 +250,8 @@ export class ProductShow extends React.Component < Props, State > {
         if (this.state.deleteImgSelect === false) return;
         if (!this.state.product) return;
         if (!this.state.deleteSelectProductId) return;
+        const target = e.currentTarget;
+        target.disable = true;
 
         const product = this.state.product;
         const deleteProductId = this.state.deleteSelectProductId;
@@ -257,6 +259,7 @@ export class ProductShow extends React.Component < Props, State > {
         await VoteService.vote('DELETE', deleteProductId, product.genreLowerCase);
         await VoteService.vote('POST', product.productId, product.genreLowerCase);
 
+        target.disable = false;
         this.setState({
             showVoteModal: true,
             reVoteModal: false,
