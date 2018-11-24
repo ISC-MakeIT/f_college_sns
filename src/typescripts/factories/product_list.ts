@@ -16,6 +16,7 @@ export interface ProductJsonProps {
     product_number: number;
     head_shot: string;
     owner: OwnerJsonProps;
+    theme: string;
 }
 
 export class ProductListFactory {
@@ -25,6 +26,7 @@ export class ProductListFactory {
             p.entry_order,
             PhotoService.getS3PhotoPath(p.head_shot),
             UserFactory.createFromJSON(p.owner),
+            p.theme,
         );
     }
 }
