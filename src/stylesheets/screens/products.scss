@@ -12,6 +12,7 @@
         flex-wrap: wrap;
         background: whitesmoke;
         padding: 0 2.45vmin 3vmin;
+        counter-reset: product_number;
     }
 
     footer {
