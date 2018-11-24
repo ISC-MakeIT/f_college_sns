@@ -25,8 +25,7 @@ module.exports = {
                     fallback: "style-loader",
                     use: [
                         {loader: "css-loader", options: {url: false} },
-                        {loader: "sass-loader?outputStyle=expanded", options: {url: false}},
-                        { test: /\.png$/, use: 'url-loader',},
+                        {loader: "sass-loader?outputStyle=expanded", options: {url: false}}
                     ]
                 }
             ),
