@@ -1,24 +1,23 @@
 import * as React from 'react';
-import {Product} from '../entities/product';
+import { RankingProduct } from '../entities';
 
 interface Props {
-    product: Product;
+    product: RankingProduct;
 }
 
 export class ProductRankItem extends React.Component < Props, {} > {
 
     public render() {
         const product = this.props.product;
-        const owner = product.owner;
 
         return (
             <section className='component product_votes_list'>
                 <section className='main_sub_list'>
                 <p>
-                    <span>{owner.studentClass} {owner.studentName}</span>
-                    {product.concept}
+                        <span>{product.theme}</span>
+                    {product.leader}
                 </p>
-                <img src={product.headShot} alt='' />
+                {/* <img src={product.headShot} alt='' /> */}
                 </section>
             </section>
         );

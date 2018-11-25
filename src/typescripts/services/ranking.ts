@@ -1,12 +1,12 @@
 import { ApiClient } from '../infrastructure';
-import {ProductListFactory, ProductJsonProps} from '../factories/product_list';
+import {RankingProductFactory, RankingJsonProps } from '../factories/ranking_product';
 
 export class RankingService {
     public static async ranking() {
         const res = await ApiClient.get('/ranking');
         const data: any = {fashion: [], beauty: []};
-        res.fashion.forEach((d: ProductJsonProps) => data.fashion.push(ProductListFactory.createFromJSON(d)));
-        res.beauty.forEach((d: ProductJsonProps) => data.beauty.push(ProductListFactory.createFromJSON(d)));
+        res[0].fashion_ranking.forEach((d: RankingJsonProps) => data.fashion.push(RankingProductFactory.createFromJSON(d)));
+        res[1].beauty_ranking.forEach((d: RankingJsonProps) => data.beauty.push(RankingProductFactory.createFromJSON(d)));
 
         return data;
     }

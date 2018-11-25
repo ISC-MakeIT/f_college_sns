@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { RouteComponentProps, Link} from 'react-router-dom';
 import Screen from './screen';
-import { Product } from '../entities';
+import { Product, RankingProduct } from '../entities';
 import { ProductService, RankingService } from '../services';
 import { RankSubHeader, ProductRankItem, Loading } from '../components';
 
@@ -31,8 +31,8 @@ export class ProductRank extends React.Component<Props, State> {
     public render() {
         if (this.state.products === null) return( <Loading />);
 
-        const fashionRankingProducts = this.state.products.fashion.map((p: Product) => <ProductRankItem key={p.productId} product={p} />);
-        const beautyRankingProducts = this.state.products.beauty.map((p: Product) => <ProductRankItem key={p.productId} product={p} />);
+        const fashionRankingProducts = this.state.products.fashion.map((p: RankingProduct) => <ProductRankItem key={p.productId} product={p} />);
+        const beautyRankingProducts = this.state.products.beauty.map((p: RankingProduct) => <ProductRankItem key={p.productId} product={p} />);
 
         return(
             <Screen name='product_vote_list' showBackButton>
