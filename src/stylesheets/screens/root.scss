@@ -1,8 +1,21 @@
 .screen.root {
     height: 100vh;
     width: 100vw;
-    background-image: url(#{$base-photo-url}/app/logos/top.png);
-    background-size: cover;
+    overflow: hidden; // added for pseudo-element
+    position: relative; // added for pseudo-element
+
+    &:before {
+        width: 100%;
+        height: 100%;
+        content: " ";
+        position: fixed; // instead of background-attachment
+        top: 0;
+        left: 0;
+        background: url(#{$base-photo-url}/app/logos/top.png) no-repeat center center;
+        background-size: cover;
+        will-change: transform; // creates a new paint layer
+        z-index: -1;
+    }
 
     .back-overlay {
         height: 100vh;
