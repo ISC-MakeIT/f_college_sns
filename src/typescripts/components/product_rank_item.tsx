@@ -11,15 +11,14 @@ export class ProductRankItem extends React.Component < Props, {} > {
         const product = this.props.product;
 
         return (
-            <section className='component product_votes_list'>
-                <section className='main_sub_list'>
+                <li className='rank_sub_list'>
                 <p>
-                        <span>{product.theme}</span>
+                    <span>{product.theme}</span>
                     {product.leader}
                 </p>
                 {/* <img src={product.headShot} alt='' /> */}
-                </section>
-            </section>
+                <img src='https://cdn.kdkw.jp/cover_1000/321507/321507000276.jpg' alt=''/>
+                </li>
         );
     }
 

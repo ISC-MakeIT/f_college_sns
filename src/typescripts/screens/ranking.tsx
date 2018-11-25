@@ -37,9 +37,13 @@ export class ProductRank extends React.Component<Props, State> {
         return(
             <Screen name='product_vote_list' showBackButton>
                 <RankSubHeader category='fashion'/>
+                <ul className='component product_votes_list rank-list'>
                 {fashionRankingProducts}
+                </ul>
                 <RankSubHeader category='beauty'/>
+                <ul className='component product_votes_list rank-list'>
                 {beautyRankingProducts}
+                </ul>
             </Screen>
         );
     }

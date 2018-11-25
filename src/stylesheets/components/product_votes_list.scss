@@ -67,8 +67,7 @@
         counter-increment: rank;
         content: counter(rank) "位";
         font-size: 9vmin;
-        position: absolute;
-        padding: 3vmin 4vmin;
+        padding: 3vmin 0;
     }
 
     .rank_sub_list {
@@ -76,7 +75,7 @@
         color: #f4f4f4;
         border-bottom: 1px solid #707070;
         display: flex;
-        justify-content: flex-end;
+        justify-content: space-between;
         align-items: center;
         padding: 0 4vmin;
 
@@ -94,7 +93,7 @@
         }
         p {
             width: 65%;
-            padding: 0 0 0 3vmin;
+            padding: 0 3.5vmin 0;
             font-size: 4vmin;
             line-height: 180%;
         }
