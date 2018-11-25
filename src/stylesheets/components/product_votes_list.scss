@@ -78,6 +78,9 @@
         justify-content: space-between;
         align-items: center;
         padding: 0 4vmin;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
 
         img {
             width: 15vmin;
@@ -90,12 +93,19 @@
         span {
             font-weight: 600;
             display: block;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
         }
+
         p {
             width: 65%;
             padding: 0 3.5vmin 0;
             font-size: 4vmin;
             line-height: 180%;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
         }
 
         @media (min-width: 500px) {
