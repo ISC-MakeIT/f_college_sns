@@ -6,6 +6,7 @@ import {Product} from '../entities';
 import {Loading, Icon, Mask, ProductShowFooter as Footer, VotedModal, RefuseVoteModal} from '../components';
 import { ApplicationManager } from '../application_manager';
 import { VoteService } from '../services/vote';
+import { PhotoService } from '../services/photo';
 
 interface Props extends RouteComponentProps < { id: number } > {}
 
@@ -140,6 +141,11 @@ export class ProductShow extends React.PureComponent < Props, State > {
                         <img
                             className={`${this.state.product.headShot.indexOf('/01.') !== -1 ? 'product-img img-contain' : 'product-img img-cover'}`}
                             src={this.state.activeImagePath}
+                            onClick={this.viewImage}
+                        />
+                        <img
+                            src={PhotoService.getS3PhotoPath('view-icon.png', 'app/logos')}
+                            className='image-view-icon'
                             onClick={this.viewImage}
                         />
                         <div className='sub-images-container d-flex'>
