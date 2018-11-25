@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Playfair+Display+SC|Allura");
+@import url("https://s3-ap-northeast-1.amazonaws.com/f-college-images/app/logos/icomoon/style.css");
 
 
 .screen.product-show {
@@ -14,6 +15,15 @@
     .image-container {
         margin-top: 18vmin;
         width: 100vw;
+        position: relative;
+
+        .image-view-icon {
+            width: 9vmin;
+            position: absolute;
+            right: 2vmin;
+            bottom: calc(100px + 2vmin);
+            opacity: .15;
+        }
     }
 
     .product-img {
