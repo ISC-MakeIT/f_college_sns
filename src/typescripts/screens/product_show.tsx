@@ -142,7 +142,7 @@ export class ProductShow extends React.PureComponent < Props, State > {
                             src={this.state.activeImagePath}
                             onClick={this.viewImage}
                         />
-                        <img src='../assets/images/view-icon.png' className='image-view-icon' alt=''/>
+                        <img src='https://s3-ap-northeast-1.amazonaws.com/f-college-images/app/logos/view-icon.png' className='image-view-icon' alt=''/>
                         <div className='sub-images-container d-flex'>
                             {subImages}
                         </div>
