@@ -6,6 +6,7 @@ import {Product} from '../entities';
 import {Loading, Icon, Mask, ProductShowFooter as Footer, VotedModal, RefuseVoteModal} from '../components';
 import { ApplicationManager } from '../application_manager';
 import { VoteService } from '../services/vote';
+import { PhotoService } from '../services/photo';
 
 interface Props extends RouteComponentProps < { id: number } > {}
 
@@ -142,7 +143,11 @@ export class ProductShow extends React.PureComponent < Props, State > {
                             src={this.state.activeImagePath}
                             onClick={this.viewImage}
                         />
-                        <img src='https://s3-ap-northeast-1.amazonaws.com/f-college-images/app/logos/view-icon.png' className='image-view-icon' alt=''/>
+                        <img
+                            src={PhotoService.getS3PhotoPath('view-icon.png', 'app/logos')}
+                            className='image-view-icon'
+                            onClick={this.viewImage}
+                        />
                         <div className='sub-images-container d-flex'>
                             {subImages}
                         </div>
