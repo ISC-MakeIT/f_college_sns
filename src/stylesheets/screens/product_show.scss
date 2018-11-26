@@ -114,10 +114,13 @@
         .main-creator { font-size: 2.4vmin; position: relative; }
         .main-creator .name { font-weight: 600; display: block; padding-top: 1.3vmin; }
 
-        .main-creator .subject {
+        .main-creator > .subject {
             width: 70vmin;
             font-weight: 400;
             padding-left: 2vmin;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
         }
 
         .main-creator > .concept {

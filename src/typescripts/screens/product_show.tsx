@@ -3,8 +3,9 @@ import {ProductService} from '../services';
 import {RouteComponentProps} from 'react-router-dom';
 import Screen from './screen';
 import {Product} from '../entities';
-import {Loading, Icon, Mask, ProductShowFooter as Footer, VotedModal, RefuseVoteModal} from '../components';
-import { ApplicationManager } from '../application_manager';
+import {Loading, Mask, ProductShowFooter as Footer} from '../components';
+// import {Loading, Icon, Mask, ProductShowFooter as Footer, VotedModal, RefuseVoteModal} from '../components';
+// import { ApplicationManager } from '../application_manager';
 import { VoteService } from '../services/vote';
 import { PhotoService } from '../services/photo';
 
@@ -12,14 +13,14 @@ interface Props extends RouteComponentProps < { id: number } > {}
 
 interface State {
     product: Product | null;
-    activeImagePath?: string;
-    showVoteModal: boolean;
-    refuseVoteModal: boolean;
-    deleteImgSelect: boolean;
-    deleteSelectProductId: number | null;
-    suggestedProducts: any;
-    votedProducts: any;
     viewImageMask: boolean;
+    activeImagePath?: string;
+    // showVoteModal: boolean;
+    // refuseVoteModal: boolean;
+    // deleteImgSelect: boolean;
+    // deleteSelectProductId: number | null;
+    // suggestedProducts: any;
+    // votedProducts: any;
 }
 
 export class ProductShow extends React.PureComponent < Props, State > {
@@ -27,40 +28,38 @@ export class ProductShow extends React.PureComponent < Props, State > {
         super(props);
         this.state = {
             product: null,
-            showVoteModal: false,
-            refuseVoteModal: false,
-            deleteImgSelect: false,
-            deleteSelectProductId: null,
-            suggestedProducts: [],
-            votedProducts: [],
             viewImageMask: false,
+            // showVoteModal: false,
+            // refuseVoteModal: false,
+            // deleteImgSelect: false,
+            // deleteSelectProductId: null,
+            // suggestedProducts: [],
+            // votedProducts: [],
 };
     }
 
     public async componentDidMount() {
         const product = await ProductService.get(this.props.match.params.id);
 
-        let suggestedProductIds: number[] = [];
-        while (suggestedProductIds.length < 5) {
-            const rand = Math.floor(Math.random() * 50) + 1;
-            suggestedProductIds.push(rand);
-            suggestedProductIds = [...new Set(suggestedProductIds)];
-        }
-
-        const suggestedProducts = await ProductService.asyncMap(suggestedProductIds, async (id: number) => {
-            return await ProductService.get(id);
-        });
-
-        const appManager = ApplicationManager.instance;
-        const votedProducts = await ProductService.asyncMap(appManager.voteIds[product.genreLowerCase], async (id: number) => {
-            return await ProductService.get(id);
-        });
+        // let suggestedProductIds: number[] = [];
+        // while (suggestedProductIds.length < 5) {
+        //     const rand = Math.floor(Math.random() * 50) + 1;
+        //     suggestedProductIds.push(rand);
+        //     suggestedProductIds = [...new Set(suggestedProductIds)];
+        // }
+        // const suggestedProducts = await ProductService.asyncMap(suggestedProductIds, async (id: number) => {
+        //     return await ProductService.get(id);
+        // });
+        // const appManager = ApplicationManager.instance;
+        // const votedProducts = await ProductService.asyncMap(appManager.voteIds[product.genreLowerCase], async (id: number) => {
+        //     return await ProductService.get(id);
+        // });
 
         this.setState({
             product: product || null,
             activeImagePath: product.headShot,
-            suggestedProducts,
-            votedProducts,
+            // suggestedProducts,
+            // votedProducts,
         });
     }
 
@@ -121,20 +120,22 @@ export class ProductShow extends React.PureComponent < Props, State > {
                     />
                 </Mask>
 
-                <VotedModal
-                    open={this.state.showVoteModal}
-                    product={this.state.product}
-                    suggestedProducts={this.state.suggestedProducts}
-                    onClose={() => this.setState({showVoteModal: false})}
-                />
+                {/*
+                    <VotedModal
+                        open={this.state.showVoteModal}
+                        product={this.state.product}
+                        suggestedProducts={this.state.suggestedProducts}
+                        onClose={() => this.setState({showVoteModal: false})}
+                    />
 
-                <RefuseVoteModal
-                    open={this.state.refuseVoteModal}
-                    votedProducts={this.state.votedProducts}
-                    onClose={() => this.setState({refuseVoteModal: false})}
-                    voteSwitch={(e: any) => this.voteSwitch(e)}
-                    selectDeleteImage={(e: any) => this.selectDeleteImage(e)}
-                />
+                    <RefuseVoteModal
+                        open={this.state.refuseVoteModal}
+                        votedProducts={this.state.votedProducts}
+                        onClose={() => this.setState({refuseVoteModal: false})}
+                        voteSwitch={(e: any) => this.voteSwitch(e)}
+                        selectDeleteImage={(e: any) => this.selectDeleteImage(e)}
+                    />
+                */}
 
                 <div className='image-container'>
                     <div className='image-container'>
@@ -165,6 +166,8 @@ export class ProductShow extends React.PureComponent < Props, State > {
                             <div className='main-creator'>
                                 <p className='subject'>
                                     {owner.studentClass}
+                                </p>
+                                <p className='subject'>
                                     <span className='name'>{owner.studentName}</span>
                                 </p>
                             </div>
@@ -202,12 +205,14 @@ export class ProductShow extends React.PureComponent < Props, State > {
                 </div>
             </div>
 
-            <div className='bottom'>
-                <button className='vote-button' onClick={this.execVote}>
-                    <Icon name='crown'/>
-                    {voteBtn}
-                </button>
-            </div>
+            {/*
+                <div className='bottom'>
+                    <button className='vote-button' onClick={this.execVote}>
+                        <Icon name='crown'/>
+                        {voteBtn}
+                    </button>
+                </div>
+            */}
 
             {/* <Footer id={this.state.product.productId}/> */}
             <Footer entryOrder={entryOrder} product={this.state.product} />
@@ -215,71 +220,70 @@ export class ProductShow extends React.PureComponent < Props, State > {
         );
     }
 
-    private voteSwitch = async (e: any) => {
-        e.preventDefault();
-        if (this.state.deleteImgSelect === false) return;
-        if (!this.state.product) return;
-        if (!this.state.deleteSelectProductId) return;
-        const target = e.currentTarget;
-        target.disable = true;
+    // private voteSwitch = async (e: any) => {
+    //     e.preventDefault();
+    //     if (this.state.deleteImgSelect === false) return;
+    //     if (!this.state.product) return;
+    //     if (!this.state.deleteSelectProductId) return;
+    //     const target = e.currentTarget;
+    //     target.disable = true;
 
-        const product = this.state.product;
-        const deleteProductId = this.state.deleteSelectProductId;
+    //     const product = this.state.product;
+    //     const deleteProductId = this.state.deleteSelectProductId;
 
-        await VoteService.vote('DELETE', deleteProductId, product.genreLowerCase);
-        await VoteService.vote('POST', product.productId, product.genreLowerCase);
+    //     await VoteService.vote('DELETE', deleteProductId, product.genreLowerCase);
+    //     await VoteService.vote('POST', product.productId, product.genreLowerCase);
 
-        target.disable = false;
-        this.setState({
-            showVoteModal: true,
-            refuseVoteModal: false,
-            deleteImgSelect: false,
-        });
-    }
+    //     target.disable = false;
+    //     this.setState({
+    //         showVoteModal: true,
+    //         refuseVoteModal: false,
+    //         deleteImgSelect: false,
+    //     });
+    // }
 
-    private execVote = async (e: any) => {
-        if (!this.state.product) return;
-        e.preventDefault();
-        const target = e.currentTarget;
-        target.disable = true;
-        const product = this.state.product;
-        const appManager = ApplicationManager.instance;
+    // private execVote = async (e: any) => {
+    //     if (!this.state.product) return;
+    //     e.preventDefault();
+    //     const target = e.currentTarget;
+    //     target.disable = true;
+    //     const product = this.state.product;
+    //     const appManager = ApplicationManager.instance;
 
-        if (VoteService.includeVoteId(product.productId, product.genreLowerCase)) {
-            alert('投票を取り消しました。');
-            VoteService.vote('DELETE', product.productId, product.genreLowerCase);
-            const votedProducts = await ProductService.asyncMap(appManager.voteIds[product.genreLowerCase], async (id: number) => {
-                return await ProductService.get(id);
-            });
-            this.setState({ votedProducts });
+    //     if (VoteService.includeVoteId(product.productId, product.genreLowerCase)) {
+    //         alert('投票を取り消しました。');
+    //         VoteService.vote('DELETE', product.productId, product.genreLowerCase);
+    //         const votedProducts = await ProductService.asyncMap(appManager.voteIds[product.genreLowerCase], async (id: number) => {
+    //             return await ProductService.get(id);
+    //         });
+    //         this.setState({ votedProducts });
 
-        } else if (VoteService.canIncrement(product.genreLowerCase)) {
-            VoteService.vote('POST', product.productId, product.genreLowerCase);
-            this.setState({showVoteModal: true});
-        } else {
-            this.setState({refuseVoteModal: true});
-        }
-        target.disable = false;
-    }
+    //     } else if (VoteService.canIncrement(product.genreLowerCase)) {
+    //         VoteService.vote('POST', product.productId, product.genreLowerCase);
+    //         this.setState({showVoteModal: true});
+    //     } else {
+    //         this.setState({refuseVoteModal: true});
+    //     }
+    //     target.disable = false;
+    // }
+    // private selectDeleteImage = (e: any) => {
+    //     const selectedImg = e.target;
+    //     const selectProductId = Number(e.currentTarget.attributes['data-product-id'].value);
 
-    private selectDeleteImage = (e: any) => {
-        const selectedImg = e.target;
-        const selectProductId = Number(e.currentTarget.attributes['data-product-id'].value);
-
-        if (selectedImg.className === 're-vote-product-image') {
-            // 新規選択
-            this.setState({deleteImgSelect: true, deleteSelectProductId: selectProductId});
-            document.querySelectorAll('.delete-image-box .select').forEach(d => d.classList.remove('select'));
-            selectedImg.classList.add('select');
-            e.currentTarget.style.backgroundColor = '#31282C';
-            document.querySelectorAll('.re-vote-button').forEach(d => d.classList.add('button-active'));
-        } else {
-            // 既に選択済みの場合は取り消す
-            this.setState({deleteImgSelect: false});
-            document.querySelectorAll('.delete-image-box .select').forEach(d => d.classList.remove('select'));
-            document.querySelectorAll('.re-vote-button').forEach(d => d.classList.remove('button-active'));
-        }
-    }
+    //     if (selectedImg.className === 're-vote-product-image') {
+    //         // 新規選択
+    //         this.setState({deleteImgSelect: true, deleteSelectProductId: selectProductId});
+    //         document.querySelectorAll('.delete-image-box .select').forEach(d => d.classList.remove('select'));
+    //         selectedImg.classList.add('select');
+    //         e.currentTarget.style.backgroundColor = '#31282C';
+    //         document.querySelectorAll('.re-vote-button').forEach(d => d.classList.add('button-active'));
+    //     } else {
+    //         // 既に選択済みの場合は取り消す
+    //         this.setState({deleteImgSelect: false});
+    //         document.querySelectorAll('.delete-image-box .select').forEach(d => d.classList.remove('select'));
+    //         document.querySelectorAll('.re-vote-button').forEach(d => d.classList.remove('button-active'));
+    //     }
+    // }
 
     private changeActiveImage = (e: any) => {
         const clickedImg = e.target;
