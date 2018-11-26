@@ -1,10 +1,10 @@
 import { ApiClient } from '../infrastructure';
 import {RankingProductFactory, RankingJsonProps } from '../factories/ranking_product';
 import { ProductService } from '../services';
+import * as _ from 'lodash';
 
 export class RankingService {
     public static async ranking() {
-        // const res = await ApiClient.get('/ranking');
         const data: any = { fashion: [], beauty: [], voteCount: this.voteCount() };
 
         data.beauty = await this.createBeautyRanking();
@@ -15,25 +15,25 @@ export class RankingService {
     public static async createBeautyRanking() {
         const data: any[] = [];
 
-        const _ = await ProductService.asyncMap(this.info().beauty_ranking, async d => {
+        await ProductService.asyncMap(this.info().beauty_ranking, async d => {
             const product = await ProductService.get(d.product_id);
             data.push(RankingProductFactory.createFromJsonWithProduct(d, product));
             return;
         });
 
-        return data;
+        return _.sortBy(data, 'ranking');
     }
 
     public static async createFashionRanking() {
         const data: any[] = [];
 
-        const _ = await ProductService.asyncMap(this.info().fashion_ranking, async d => {
+        await ProductService.asyncMap(this.info().fashion_ranking, async d => {
             const product = await ProductService.get(d.product_id);
             data.push(RankingProductFactory.createFromJsonWithProduct(d, product));
             return;
         });
 
-        return data;
+        return _.sortBy(data, 'ranking');
     }
 
     public static voteCount() {
