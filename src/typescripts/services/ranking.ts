@@ -14,20 +14,24 @@ export class RankingService {
 
     public static async createBeautyRanking() {
         const data: any[] = [];
-        for (const d of this.info().beauty_ranking) {
+
+        const _ = await ProductService.asyncMap(this.info().beauty_ranking, async d => {
             const product = await ProductService.get(d.product_id);
             data.push(RankingProductFactory.createFromJsonWithProduct(d, product));
-        }
+            return;
+        });
 
         return data;
     }
 
     public static async createFashionRanking() {
         const data: any[] = [];
-        for (const d of this.info().fashion_ranking) {
+
+        const _ = await ProductService.asyncMap(this.info().fashion_ranking, async d => {
             const product = await ProductService.get(d.product_id);
             data.push(RankingProductFactory.createFromJsonWithProduct(d, product));
-        }
+            return;
+        });
 
         return data;
     }
