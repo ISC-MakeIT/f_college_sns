@@ -38,7 +38,7 @@ export class ProductRank extends React.PureComponent<Props, State> {
         const beautyRankingProducts = this.state.products.beauty.map((p: RankingProduct) => <ProductRankItem key={`beauty_${p.productId}`} product={p} />);
 
         return(
-            <Screen name='product_vote_list' showBackButton>
+            <Screen name='product_vote_list'>
                 <RankSubHeader category='fashion'/>
                 <ul className='component product_votes_list rank-list'>
                 {fashionRankingProducts}
