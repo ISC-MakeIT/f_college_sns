@@ -59,16 +59,20 @@
     /*================================================
         ランキングページCSS
     =================================================*/
-    &.rank-list {
-        counter-reset: rank;
-    }
+    // &.rank-list {
+    //     counter-reset: rank;
+    // }
 
-    li:before {
-        counter-increment: rank;
-        content: counter(rank) "位";
+    // li:before {
+    //     counter-increment: rank;
+    //     content: counter(rank) "位";
+    //     font-size: 9vmin;
+    //     padding: 3vmin 0;
+    // }
+
+    .rank {
         font-size: 9vmin;
-        position: absolute;
-        padding: 3vmin 4vmin;
+        padding: 3vmin 0;
     }
 
     .rank_sub_list {
@@ -76,27 +80,37 @@
         color: #f4f4f4;
         border-bottom: 1px solid #707070;
         display: flex;
-        justify-content: flex-end;
+        justify-content: space-between;
         align-items: center;
         padding: 0 4vmin;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
 
         img {
-            width: 15vmin;
-            height: auto;
+            width: 18vmin;
+            height: 18vmin;
             border-radius: 50%;
             border: 1px solid #f4f4f4;
-            object-fit: cover;
+            object-fit: unset;
         }
 
         span {
             font-weight: 600;
             display: block;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
         }
+
         p {
             width: 65%;
-            padding: 0 0 0 3vmin;
+            padding: 0 3.5vmin 0;
             font-size: 4vmin;
             line-height: 180%;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
         }
 
         @media (min-width: 500px) {

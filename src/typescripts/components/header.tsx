@@ -7,7 +7,7 @@ interface Props {
     showBackButton?: boolean;
 }
 
-export class Header extends React.Component<Props, {}> {
+export class Header extends React.PureComponent<Props, {}> {
 
     public render() {
         const appManager = ApplicationManager.instance;
@@ -30,11 +30,14 @@ export class Header extends React.Component<Props, {}> {
                     src='../assets/images/logo_png.png'
                 />
                 </div>
-                <Link to='/votes'>
+                <Link to='/ranking'>
                     <div id='header_label'>
                         <Icon name='crown'/>
-                        <span>あと{remainVoteCount}票</span>
-                        {showIcon}
+                        <span>投票結果</span>
+                        {/*
+                            <span>あと{remainVoteCount}票</span>
+                            {showIcon}
+                        */}
                     </div>
                 </Link>
             </header>

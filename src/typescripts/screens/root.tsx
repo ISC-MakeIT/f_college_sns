@@ -26,7 +26,8 @@ export class Root extends React.Component<Props, {}> {
                         />
                     </div>
 
-                    <Link to='/products' className='link btn btn-sm mt-3' >
+                    {/* <Link to='/products' className='link btn btn-sm mt-3' > */}
+                    <Link to='/ranking' className='link btn btn-sm mt-3' >
                         <div className='circle'>
                             <i className='root_icon' />
                         </div>
