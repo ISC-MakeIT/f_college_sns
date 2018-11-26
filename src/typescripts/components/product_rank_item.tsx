@@ -13,7 +13,7 @@ export class ProductRankItem extends React.Component < Props, {} > {
         if (!product) return null;
 
         return (
-            <li className='rank_sub_list'>
+            <li className='rank_sub_list' onClick={this.linkClick}>
                 <span className='rank'>{rankProduct.ranking}</span>
                 <p>
                     <span>{product.theme}</span>
@@ -22,6 +22,10 @@ export class ProductRankItem extends React.Component < Props, {} > {
                 <img src={product.headShot} alt={product.theme}/>
             </li>
         );
+    }
+
+    private linkClick = () => {
+        window.location.href = window.location.origin + '/products/' + this.props.product.productId;
     }
 
 }
