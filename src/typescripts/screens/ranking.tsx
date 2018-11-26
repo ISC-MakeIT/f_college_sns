@@ -11,7 +11,7 @@ interface State {
     products: any;
 }
 
-export class ProductRank extends React.Component<Props, State> {
+export class ProductRank extends React.PureComponent<Props, State> {
 
     constructor(props: Props) {
         super(props);
