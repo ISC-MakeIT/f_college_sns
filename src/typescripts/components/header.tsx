@@ -33,6 +33,7 @@ export class Header extends React.PureComponent<Props, {}> {
                 <Link to='/ranking'>
                     <div id='header_label'>
                         <Icon name='crown'/>
+                        <span>投票結果</span>
                         {/*
                             <span>あと{remainVoteCount}票</span>
                             {showIcon}
