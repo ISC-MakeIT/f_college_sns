@@ -165,6 +165,8 @@ export class ProductShow extends React.PureComponent < Props, State > {
                             <div className='main-creator'>
                                 <p className='subject'>
                                     {owner.studentClass}
+                                </p>
+                                <p className='subject'>
                                     <span className='name'>{owner.studentName}</span>
                                 </p>
                             </div>
