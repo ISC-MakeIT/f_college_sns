@@ -22,7 +22,9 @@
         right: 2vmin;
         z-index: 10;
         box-sizing: border-box;
-        display: block;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         font-weight: 600;
 
         span {

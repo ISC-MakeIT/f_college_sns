@@ -30,11 +30,13 @@ export class Header extends React.Component<Props, {}> {
                     src='../assets/images/logo_png.png'
                 />
                 </div>
-                <Link to='/votes'>
+                <Link to='/ranking'>
                     <div id='header_label'>
                         <Icon name='crown'/>
-                        <span>あと{remainVoteCount}票</span>
-                        {showIcon}
+                        {/*
+                            <span>あと{remainVoteCount}票</span>
+                            {showIcon}
+                        */}
                     </div>
                 </Link>
             </header>
