@@ -8,17 +8,19 @@ interface Props {
 export class ProductRankItem extends React.Component < Props, {} > {
 
     public render() {
-        const product = this.props.product;
+        const rankProduct = this.props.product;
+        const product = rankProduct.product || null;
+        if (!product) return null;
 
         return (
-                <li className='rank_sub_list'>
+            <li className='rank_sub_list'>
+                <span className='rank'>{rankProduct.ranking}</span>
                 <p>
                     <span>{product.theme}</span>
-                    {product.leader}
+                    {product.owner.studentName}
                 </p>
-                {/* <img src={product.headShot} alt='' /> */}
-                <img src='https://cdn.kdkw.jp/cover_1000/321507/321507000276.jpg' alt=''/>
-                </li>
+                <img src={product.headShot} alt={product.theme}/>
+            </li>
         );
     }
 

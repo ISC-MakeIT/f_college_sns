@@ -22,17 +22,20 @@ export class ProductRank extends React.Component<Props, State> {
 
     public async componentDidMount() {
         const products = await RankingService.ranking();
-        this.setState({products: {
-            fashion: products.fashion,
-            beauty: products.beauty,
-        }});
+
+        this.setState({
+            products: {
+                fashion: products.fashion,
+                beauty: products.beauty,
+            },
+        });
     }
 
     public render() {
-        if (this.state.products === null) return( <Loading />);
+        if (JSON.stringify(this.state.products) === JSON.stringify({ fashion: [], beauty: [] })) return (<Loading />);
 
-        const fashionRankingProducts = this.state.products.fashion.map((p: RankingProduct) => <ProductRankItem key={p.productId} product={p} />);
-        const beautyRankingProducts = this.state.products.beauty.map((p: RankingProduct) => <ProductRankItem key={p.productId} product={p} />);
+        const fashionRankingProducts = this.state.products.fashion.map((p: RankingProduct) => <ProductRankItem key={`fashion_${p.productId}`} product={p} />);
+        const beautyRankingProducts = this.state.products.beauty.map((p: RankingProduct) => <ProductRankItem key={`beauty_${p.productId}`} product={p} />);
 
         return(
             <Screen name='product_vote_list' showBackButton>

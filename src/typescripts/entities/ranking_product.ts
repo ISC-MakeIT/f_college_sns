@@ -1,15 +1,14 @@
 import { User } from './';
 import { ProductType } from './product';
+import { Product } from '../entities';
 
 export class RankingProduct {
     public constructor(
-        public entryOrder: number,
-        public genre: ProductType,
-        public leader: string,
-        public productId: number,
         public ranking: number,
-        public theme: string,
+        public productId: number,
+        public entryOrder: number,
         public vote: number,
+        public product?: Product,
         // public headShot: string,
     ) {}
 }

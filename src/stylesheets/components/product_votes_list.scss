@@ -59,13 +59,18 @@
     /*================================================
         ランキングページCSS
     =================================================*/
-    &.rank-list {
-        counter-reset: rank;
-    }
+    // &.rank-list {
+    //     counter-reset: rank;
+    // }
 
-    li:before {
-        counter-increment: rank;
-        content: counter(rank) "位";
+    // li:before {
+    //     counter-increment: rank;
+    //     content: counter(rank) "位";
+    //     font-size: 9vmin;
+    //     padding: 3vmin 0;
+    // }
+
+    .rank {
         font-size: 9vmin;
         padding: 3vmin 0;
     }
@@ -83,11 +88,11 @@
         overflow: hidden;
 
         img {
-            width: 15vmin;
-            height: auto;
+            width: 18vmin;
+            height: 18vmin;
             border-radius: 50%;
             border: 1px solid #f4f4f4;
-            object-fit: cover;
+            object-fit: unset;
         }
 
         span {
