@@ -18,6 +18,7 @@ export class RankingService {
         await ProductService.asyncMap(this.info().beauty_ranking, async d => {
             const product = await ProductService.get(d.product_id);
             data.push(RankingProductFactory.createFromJsonWithProduct(d, product));
+            _.sortBy(data, 'ranking');
             return;
         });
 
@@ -30,6 +31,7 @@ export class RankingService {
         await ProductService.asyncMap(this.info().fashion_ranking, async d => {
             const product = await ProductService.get(d.product_id);
             data.push(RankingProductFactory.createFromJsonWithProduct(d, product));
+            _.sortBy(data, 'ranking');
             return;
         });
 
