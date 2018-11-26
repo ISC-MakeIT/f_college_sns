@@ -7,7 +7,7 @@ interface Props {
     showBackButton?: boolean;
 }
 
-export class Header extends React.Component<Props, {}> {
+export class Header extends React.PureComponent<Props, {}> {
 
     public render() {
         const appManager = ApplicationManager.instance;
