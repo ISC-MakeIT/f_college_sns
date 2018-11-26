@@ -23,9 +23,9 @@ export class RankingProductFactory {
     public static createFromJsonWithProduct(p: RankingJsonProps, product: Product) {
         return new RankingProduct(
             p.ranking,
-            p.vote,
             p.product_id,
             p.entry_order,
+            p.vote,
             product,
             // PhotoService.getS3PhotoPath(p.head_shot),
         );
