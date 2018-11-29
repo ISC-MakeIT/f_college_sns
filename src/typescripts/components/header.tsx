@@ -10,17 +10,6 @@ interface Props {
 export class Header extends React.PureComponent<Props, {}> {
 
     public render() {
-        const appManager = ApplicationManager.instance;
-        const remainVoteCount = appManager.remainedVoteCount.beauty + appManager.remainedVoteCount.fashion;
-        const showIcon = remainVoteCount !== 0 ? <div className='label_push'>{remainVoteCount}</div> : null;
-        const headerLink = (location: Location) => {
-            if (location.pathname.match('/products')) {
-                return <RankingLink/>;
-            } else {
-                return <ProductsLink/>;
-            }
-        };
-
         return (
             <header id='header_wrap' className='component'>
                 {this.props.showBackButton ? <BackButton/> : null}
@@ -37,7 +26,7 @@ export class Header extends React.PureComponent<Props, {}> {
                     src='../assets/images/logo_png.png'
                 />
                 </div>
-                {headerLink(location)}
+                {location.pathname.includes('/products') ? <RankingLink /> : <ProductsLink />}
             </header>
         );
     }
