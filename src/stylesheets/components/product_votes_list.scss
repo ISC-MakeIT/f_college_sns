@@ -71,6 +71,8 @@
     // }
 
     .rank {
+        width: 12vmin;
+        text-align: center;
         font-size: 9vmin;
         padding: 3vmin 0;
     }
@@ -92,7 +94,7 @@
             height: 18vmin;
             border-radius: 50%;
             border: 1px solid #f4f4f4;
-            object-fit: unset;
+            object-fit: cover;
         }
 
         span {
