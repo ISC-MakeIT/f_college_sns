@@ -10,10 +10,6 @@ interface Props {
 export class Header extends React.PureComponent<Props, {}> {
 
     public render() {
-        const appManager = ApplicationManager.instance;
-        const remainVoteCount = appManager.remainedVoteCount.beauty + appManager.remainedVoteCount.fashion;
-        const showIcon = remainVoteCount !== 0 ? <div className='label_push'>{remainVoteCount}</div> : null;
-
         return (
             <header id='header_wrap' className='component'>
                 {this.props.showBackButton ? <BackButton/> : null}
@@ -30,19 +26,28 @@ export class Header extends React.PureComponent<Props, {}> {
                     src='../assets/images/logo_png.png'
                 />
                 </div>
-                <Link to='/ranking'>
-                    <div id='header_label'>
-                        <Icon name='crown'/>
-                        <span>投票結果</span>
-                        {/*
-                            <span>あと{remainVoteCount}票</span>
-                            {showIcon}
-                        */}
-                    </div>
-                </Link>
+                {location.pathname.includes('/products') ? <RankingLink /> : <ProductsLink />}
             </header>
         );
     }
 }
 
 const BackButton = withRouter(props => (<div className='back-arrow' onClick={() => props.history.goBack()}/>));
+
+const RankingLink = withRouter(props => (
+    <Link to='/ranking'>
+        <div id='header_label'>
+            <Icon name='crown'/>
+            <span>投票結果</span>
+        </div>
+    </Link>
+));
+
+const ProductsLink = withRouter(props => (
+    <Link to='/products'>
+        <div id='header_label'>
+            <Icon name='th-large'/>
+            <span>作品一覧</span>
+        </div>
+    </Link>
+));
