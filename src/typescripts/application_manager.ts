@@ -1,4 +1,6 @@
 import { ProductLowerType } from './entities';
+import { BorderBottomLeftRadiusProperty } from 'csstype';
+import { log } from 'util';
 
 interface VoteIdsType { 'fashion': number[]; 'beauty': number[]; }
 
@@ -10,7 +12,8 @@ export class ApplicationManager {
             const voteIds = this.getVoteIds();
             const remainedVoteCount = this.getRemainedVoteCount();
             const activeCategory = this.getActiveCategory();
-            this._instance = new ApplicationManager(voteIds, remainedVoteCount, activeCategory);
+            const canVote = this.getCanVote();
+            this._instance = new ApplicationManager(voteIds, remainedVoteCount, activeCategory, canVote);
         }
 
         return this._instance;
@@ -24,6 +27,7 @@ export class ApplicationManager {
     private static KEY_VOTE_IDS = `${ApplicationManager.KEY_PREFIX}_voteIds`;
     private static KEY_REMAINED_VOTE_COUNT = `${ApplicationManager.KEY_PREFIX}_remainedVoteCount`;
     private static KEY_ACTIVE_CATEGORY = `${ApplicationManager.KEY_PREFIX}_activeCategory`;
+    private static KEY_CAN_VOTE = `${ApplicationManager.KEY_PREFIX}_can_vote`;
 
     // tslint:disable-next-line:variable-name
     private static _instance: ApplicationManager;
@@ -66,19 +70,40 @@ export class ApplicationManager {
         return JSON.parse(activeCategory);
     }
 
+    private static getCanVote = () => {
+        let vote: any = localStorage.getItem(ApplicationManager.KEY_CAN_VOTE);
+
+        if (!vote) {
+            vote = true;
+            localStorage.setItem(ApplicationManager.KEY_CAN_VOTE, JSON.stringify(vote));
+            return vote;
+        }
+
+        return JSON.parse(vote);
+    }
+
     public voteIds: VoteIdsType;
     public remainedVoteCount: { fashion: number, beauty: number };
     public activeCategory: ProductLowerType;
+    public canVote: boolean;
 
-    private constructor(voteIds: VoteIdsType, remainedVoteCount: { fashion: number, beauty: number }, activeCategory: ProductLowerType) {
+    private constructor(voteIds: VoteIdsType, remainedVoteCount: { fashion: number, beauty: number }, activeCategory: ProductLowerType, canVote: boolean) {
         this.voteIds = voteIds;
         this.remainedVoteCount = remainedVoteCount;
         this.activeCategory = activeCategory;
+        this.canVote = canVote;
     }
 
     public changeActiveCategory(category: ProductLowerType) {
         this.activeCategory = category;
         localStorage.setItem(ApplicationManager.KEY_ACTIVE_CATEGORY, JSON.stringify(this.activeCategory));
+    }
+
+    public updateCanUpdate() {
+        // ひっくり返す
+        this.canVote = !this.canVote;
+        localStorage.setItem(ApplicationManager.KEY_CAN_VOTE, JSON.stringify(this.canVote));
+        console.log(`this.vote updated :${this.canVote}`);
     }
 
     public pushVoteIds = async (id: number, key: ProductLowerType) => {

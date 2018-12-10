@@ -13,11 +13,15 @@ export class VoteService {
 
     public static canIncrement(genre: ProductLowerType) {
         const appManager = ApplicationManager.instance;
-        const maxVoteCount = genre === 'fashion' ? ApplicationManager.FASHION_VOTE_COUNT : ApplicationManager.BEAUTY_VOTE_COUNT;
-        const voteIds = appManager.voteIds[genre];
+        if (appManager.canVote) {
 
-        const beVoter = maxVoteCount > voteIds.length ? true : false;
-        return beVoter;
+            const maxVoteCount = genre === 'fashion' ? ApplicationManager.FASHION_VOTE_COUNT : ApplicationManager.BEAUTY_VOTE_COUNT;
+            const voteIds = appManager.voteIds[genre];
+
+            const beVoter = maxVoteCount > voteIds.length ? true : false;
+            return beVoter;
+        }
+        return false;
     }
 
     public static includeVoteId(productId: number, genre: ProductLowerType): boolean {
@@ -26,15 +30,27 @@ export class VoteService {
         return appManager.voteIds[genre].includes(productId);
     }
 
-    private static async increment(productId: number, genre: ProductLowerType) {
-        await ApiClient.post(`/vote/${productId}`);
+    private static async increment (productId: number, genre: ProductLowerType) {
         const appManager = ApplicationManager.instance;
+        if (!appManager.canVote) {
+            alert('別作品への投票が完了していません');
+            return;
+        }
+        appManager.updateCanUpdate();
+        await ApiClient.post(`/vote/${productId}`);
         await appManager.pushVoteIds(productId, genre);
+        appManager.updateCanUpdate();
     }
 
     private static async decrement(productId: number, genre: ProductLowerType) {
-        await ApiClient.delete(`/vote/${productId}`);
         const appManager = ApplicationManager.instance;
+        if (!appManager.canVote) {
+            alert('別作品への投票が完了していません');
+            return;
+        }
+        appManager.updateCanUpdate();
+        await ApiClient.delete(`/vote/${productId}`);
         await appManager.popVoteIds(productId, genre);
+        appManager.updateCanUpdate();
     }
 }
